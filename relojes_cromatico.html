@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Relojes | Signo cromático</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"C";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* PALETA GENERAL */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.paleta-general{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:14px;
+}
+
+/* MUESTRAS */
+
+.color{
+    background:rgba(245,249,245,.85);
+    border:1px solid rgba(23,102,74,.12);
+    border-radius:11px;
+    padding:10px;
+    text-align:center;
+    min-width:0;
+}
+
+.muestra{
+    height:90px;
+    border-radius:9px;
+    border:1px solid rgba(0,0,0,.10);
+    box-shadow:0 4px 10px rgba(0,0,0,.07);
+    margin-bottom:12px;
+}
+
+.color strong{
+    display:block;
+    font-size:12px;
+    color:var(--verde);
+    margin-bottom:6px;
+}
+
+.color span{
+    display:block;
+    font-size:11px;
+    color:#6F8176;
+    overflow-wrap:anywhere;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.etiqueta{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.paleta-marca{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+    margin-bottom:19px;
+}
+
+.paleta-marca .muestra{
+    height:86px;
+}
+
+.explicacion{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.nota{
+    margin-top:15px;
+    padding-top:13px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#7A8B7F;
+    font-size:11px;
+    line-height:1.7;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas{grid-template-columns:1fr}
+    .paleta-general{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .tarjeta-contenido{padding:16px}
+    .paleta-marca{gap:8px}
+    .color{padding:7px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / RELOJES
+    </div>
+
+    <h1 class="titulo">SIGNO CROMÁTICO</h1>
+
+    <p class="subtitulo">
+        Análisis del color en diez marcas de relojes
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO C / ANÁLISIS CROMÁTICO
+    </div>
+
+    <h2>¿Qué colores identifican a las marcas de relojes?</h2>
+
+    <p>
+        El signo cromático analiza
+        los colores presentes en los
+        identificadores visuales
+        de las marcas.
+        En el sector relojero,
+        las combinaciones cromáticas
+        pueden contribuir a comunicar
+        elegancia, precisión,
+        tradición y modernidad.
+        Este análisis se basa
+        en los logotipos seleccionados
+        para el catálogo.
+    </p>
+</section>
+
+<!-- 01. PALETA GENERAL -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Paleta cromática predominante</h2>
+</div>
+
+<section class="resumen">
+
+    <p>
+        En las diez marcas analizadas
+        destacan el negro, el azul,
+        el rojo, el verde y el dorado.
+        Rolex utiliza verde y dorado;
+        Casio emplea azul;
+        Omega utiliza rojo;
+        Tissot combina negro, rojo y blanco;
+        Seiko presenta negro;
+        Citizen utiliza negro y rojo;
+        Swatch combina negro, rojo y blanco;
+        TAG Heuer incorpora verde, rojo
+        y blanco; Fossil utiliza azul,
+        amarillo y rojo; y Timex
+        presenta negro.
+    </p>
+
+    <div class="paleta-general">
+
+        <div class="color">
+            <div class="muestra" style="background:#111111"></div>
+            <strong>Negro</strong>
+            <span>#111111</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#003DA5"></div>
+            <strong>Azul</strong>
+            <span>#003DA5</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#D71920"></div>
+            <strong>Rojo</strong>
+            <span>#D71920</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#006B3F"></div>
+            <strong>Verde</strong>
+            <span>#006B3F</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#B48A30"></div>
+            <strong>Dorado</strong>
+            <span>#B48A30</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- 02. PALETAS INDIVIDUALES -->
+
+<div class="seccion">
+    <small>02 / PALETAS INDIVIDUALES</small>
+    <h2>Colores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación cromática:</strong>
+        En las diez marcas de relojes
+        se observa una combinación
+        de colores sobrios
+        y tonalidades de alto contraste.
+        Rolex destaca por el verde
+        y el dorado, colores que pueden
+        asociarse con prestigio
+        y exclusividad.
+        Casio utiliza azul,
+        relacionado visualmente
+        con confianza y tecnología.
+        Omega emplea rojo,
+        que aporta intensidad.
+        Otras marcas, como Seiko
+        y Timex, utilizan negro
+        para construir una imagen
+        sencilla y elegante.
+        TAG Heuer y Fossil
+        presentan combinaciones
+        cromáticas más variadas
+        que favorecen su diferenciación.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis cromático demuestra
+        que los colores contribuyen
+        a construir la identidad
+        de las marcas de relojes.
+        Las combinaciones sobrias,
+        como el negro y el blanco,
+        pueden comunicar elegancia
+        y claridad visual.
+        El verde y el dorado
+        pueden sugerir prestigio;
+        el azul puede transmitir
+        confianza; y el rojo
+        aporta fuerza y visibilidad.
+        La selección cromática
+        permite diferenciar
+        a cada marca
+        y reforzar su reconocimiento
+        en productos,
+        empaques y publicidad.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · RELOJES · SIGNO CROMÁTICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  COLORES APROXIMADOS DE LOS LOGOTIPOS
+  MOSTRADOS EN EL CATÁLOGO
+*/
+
+const marcas=[
+
+{
+    nombre:"Rolex",
+    colores:[
+        ["Verde","#006B3F"],
+        ["Dorado","#B48A30"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Rolex combina verde en su denominación y dorado en el símbolo de la corona. Esta combinación puede asociarse con elegancia, prestigio y exclusividad.",
+    nota:
+        "El verde y el dorado son los colores predominantes de la versión analizada."
+},
+
+{
+    nombre:"Casio",
+    colores:[
+        ["Azul","#003DA5"],
+        ["Azul oscuro","#002D72"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Casio utiliza azul intenso en su denominación. Este color puede relacionarse con tecnología, precisión y confianza, mientras que el blanco mejora el contraste.",
+    nota:
+        "El azul es el color principal del logotipo."
+},
+
+{
+    nombre:"Omega",
+    colores:[
+        ["Rojo","#D71920"],
+        ["Rojo oscuro","#B91C2B"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Omega utiliza rojo en su nombre y en el símbolo de la letra griega omega. Este color aporta fuerza visual y facilita su diferenciación.",
+    nota:
+        "El rojo es el color predominante de la versión analizada."
+},
+
+{
+    nombre:"Tissot",
+    colores:[
+        ["Negro","#111111"],
+        ["Rojo","#D71920"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Tissot combina letras negras con un pequeño elemento rojo y blanco que incorpora una cruz suiza. El contraste genera una composición clara y reconocible.",
+    nota:
+        "El negro predomina en el nombre y el rojo funciona como acento."
+},
+
+{
+    nombre:"Seiko",
+    colores:[
+        ["Negro","#171717"],
+        ["Blanco","#FFFFFF"],
+        ["Gris","#777777"]
+    ],
+    descripcion:
+        "Seiko utiliza negro en su denominación y en el símbolo inferior de la versión analizada. El contraste con el blanco produce una apariencia sobria y directa.",
+    nota:
+        "El negro y el blanco dominan el identificador."
+},
+
+{
+    nombre:"Citizen",
+    colores:[
+        ["Negro","#111111"],
+        ["Rojo","#C91F2D"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Citizen combina una denominación negra con un pequeño símbolo circular rojo. El negro aporta claridad tipográfica y el rojo introduce un punto de atención.",
+    nota:
+        "El negro predomina y el rojo actúa como elemento diferenciador."
+},
+
+{
+    nombre:"Swatch",
+    colores:[
+        ["Negro","#111111"],
+        ["Rojo","#E30613"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Swatch presenta letras negras y un pequeño cuadrado rojo con una cruz blanca. Esta combinación crea contraste y refuerza su identidad visual.",
+    nota:
+        "El negro, el rojo y el blanco conforman la paleta principal."
+},
+
+{
+    nombre:"TAG Heuer",
+    colores:[
+        ["Verde","#00814A"],
+        ["Rojo","#E2231A"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "TAG Heuer combina verde y rojo en su escudo, con letras blancas. La composición cromática permite diferenciar los dos niveles del nombre y destacar su estructura geométrica.",
+    nota:
+        "El verde y el rojo forman las áreas principales del escudo."
+},
+
+{
+    nombre:"Fossil",
+    colores:[
+        ["Azul oscuro","#103D6B"],
+        ["Amarillo","#F5B51B"],
+        ["Rojo","#D71920"]
+    ],
+    descripcion:
+        "Fossil utiliza una composición ovalada con azul oscuro, amarillo y rojo. Los colores generan una apariencia de estilo retro y permiten destacar la denominación central.",
+    nota:
+        "La versión del catálogo presenta una combinación multicolor."
+},
+
+{
+    nombre:"Timex",
+    colores:[
+        ["Negro","#111111"],
+        ["Blanco","#FFFFFF"],
+        ["Gris","#777777"]
+    ],
+    descripcion:
+        "Timex presenta su denominación en negro sobre fondo blanco. La combinación monocromática favorece la legibilidad y construye una imagen sencilla y moderna.",
+    nota:
+        "El negro es el color principal del logotipo mostrado."
+}
+
+];
+
+/* CONTENEDOR */
+
+const tarjetas=document.getElementById("tarjetas");
+
+/* CREAR MUESTRAS */
+
+function crearColor(nombre,hex){
+
+    const color=document.createElement("div");
+    color.className="color";
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+    muestra.style.backgroundColor=hex;
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=nombre;
+
+    const codigo=document.createElement("span");
+    codigo.textContent=hex;
+
+    color.append(muestra,etiqueta,codigo);
+
+    return color;
+}
+
+/* GENERAR TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.className="etiqueta";
+    etiqueta.textContent="PALETA CROMÁTICA";
+
+    const paleta=document.createElement("div");
+    paleta.className="paleta-marca";
+
+    marca.colores.forEach(color=>{
+        paleta.appendChild(
+            crearColor(color[0],color[1])
+        );
+    });
+
+    const descripcion=document.createElement("p");
+    descripcion.className="explicacion";
+    descripcion.textContent=marca.descripcion;
+
+    const nota=document.createElement("p");
+    nota.className="nota";
+    nota.textContent=marca.nota;
+
+    contenido.append(
+        etiqueta,
+        paleta,
+        descripcion,
+        nota
+    );
+
+    tarjeta.append(cabecera,contenido);
+    tarjetas.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

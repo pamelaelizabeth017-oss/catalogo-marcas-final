@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo lingüístico | Comida rápida</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:rgba(255,250,240,.94);
+    --salvia:rgba(225,241,230,.94);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS TRANSPARENTES */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:30px 0 20px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+/* BLOQUES */
+
+.bloque{
+    margin-bottom:25px;
+    background:rgba(255,255,255,.78);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+}
+
+.bloque-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:17px 23px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.bloque-cabecera h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    color:white;
+    font-size:24px;
+    font-weight:500;
+    margin:0;
+}
+
+.cantidad{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+}
+
+.definicion{
+    padding:19px 23px;
+    background:rgba(235,244,236,.75);
+    border-bottom:1px solid rgba(153,190,161,.3);
+}
+
+.definicion strong{
+    display:block;
+    color:#A47B39;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.definicion p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+    padding:20px;
+}
+
+.tarjeta{
+    padding:21px;
+    border-radius:12px;
+    border:1px solid rgba(197,160,96,.26);
+    border-left:3px solid var(--dorado);
+    background:var(--crema);
+    box-shadow:0 5px 16px rgba(26,80,55,.04);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:nth-child(even){
+    background:var(--salvia);
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(26,80,55,.1);
+}
+
+.numero{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    margin-bottom:11px;
+}
+
+.marca{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    color:var(--verde);
+    margin:0;
+}
+
+.linea{
+    width:45px;
+    height:2px;
+    background:var(--dorado);
+    margin:13px 0;
+}
+
+.explicacion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* OBSERVACIÓN */
+
+.nota{
+    margin-top:23px;
+    padding:21px 25px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 13px 13px 0;
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+/* CONCLUSIÓN */
+
+.cierre{
+    margin-top:30px;
+    padding:24px 27px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+@media(max-width:650px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+        padding:14px;
+    }
+
+    .presentacion{
+        padding:23px 20px;
+    }
+
+    .titulo{
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+
+    .bloque-cabecera{
+        padding:15px 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / COMIDA RÁPIDA
+    </div>
+
+    <h1 class="titulo">
+        SIGNO LINGÜÍSTICO
+    </h1>
+
+    <p class="subtitulo">
+        El nombre como elemento de identidad de marca
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>
+        ¿Cómo se construyen los nombres?
+    </h2>
+
+    <p>
+        El signo lingüístico corresponde a la
+        denominación verbal de una marca.
+        En la categoría Comida rápida se analizan
+        diez marcas y se identifican cuatro
+        tipologías principales: patronímico,
+        descriptivo, evocativo y sigla.
+        Cada nombre se presenta dentro de
+        su clasificación, acompañado de
+        una justificación relacionada con
+        su origen o significado.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN DE NOMBRES</small>
+    <h2>Tipologías identificadas</h2>
+</div>
+
+<!-- PATRONÍMICO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>01. Patronímico</h3>
+        <span class="cantidad">4 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es patronímico?</strong>
+        <p>
+            Es una denominación comercial que
+            proviene del nombre, apellido
+            o sobrenombre de una persona.
+            Puede hacer referencia a un fundador,
+            a una persona vinculada con el origen
+            de la marca o a un personaje.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4 class="marca">McDonald's</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Proviene del apellido de los hermanos
+                Richard y Maurice McDonald, quienes
+                fundaron el restaurante original.
+                Es patronímico porque utiliza
+                directamente el apellido de
+                sus fundadores como denominación
+                comercial.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4 class="marca">Wendy's</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre procede del apodo Wendy,
+                utilizado para Melinda Lou Thomas,
+                hija del fundador Dave Thomas.
+                Es patronímico porque emplea
+                un nombre personal como
+                identificador de la marca.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4 class="marca">Taco Bell</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Combina la palabra «taco»,
+                que identifica un producto
+                de su oferta, con Bell,
+                apellido de su fundador
+                Glen Bell. Se clasifica
+                principalmente como patronímico
+                por la presencia del apellido
+                personal, aunque también
+                contiene un elemento descriptivo.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4 class="marca">Popeyes</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                El nombre hace referencia
+                a Popeye Doyle, personaje
+                de la película The French
+                Connection. Se considera
+                patronímico en sentido
+                amplio porque utiliza
+                el nombre de un personaje
+                como denominación comercial,
+                aunque no corresponde
+                al apellido de su fundador.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- DESCRIPTIVO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>02. Descriptivo</h3>
+        <span class="cantidad">2 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es descriptivo?</strong>
+        <p>
+            Es una denominación que comunica
+            directamente un producto,
+            una actividad o una característica
+            relacionada con la oferta
+            comercial de la marca.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4 class="marca">Burger King</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre significa
+                «rey de las hamburguesas»
+                en inglés. Es descriptivo
+                porque incluye directamente
+                la palabra burger,
+                que identifica el producto
+                principal de la marca,
+                acompañada de king
+                como expresión de superioridad.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4 class="marca">Pizza Hut</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre combina pizza,
+                el producto principal,
+                con hut, que significa
+                «cabaña» en inglés.
+                Es descriptivo porque
+                identifica directamente
+                el alimento que ofrece
+                la empresa y alude
+                al establecimiento.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- EVOCATIVO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>03. Evocativo</h3>
+        <span class="cantidad">3 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es evocativo?</strong>
+        <p>
+            Es un nombre que sugiere
+            conceptos, imágenes o
+            asociaciones simbólicas
+            sin describir directamente
+            el producto o servicio.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4 class="marca">Subway</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                La palabra subway significa
+                «metro» o «paso subterráneo»
+                en inglés. Es evocativo
+                porque utiliza una referencia
+                urbana que no describe
+                directamente los sándwiches
+                que comercializa la marca.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4 class="marca">Domino's</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre hace referencia
+                al dominó, un juego de fichas.
+                Es evocativo porque utiliza
+                una asociación con un objeto
+                cotidiano que no describe
+                directamente las pizzas
+                que ofrece la empresa.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4 class="marca">Little Caesars</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre significa
+                «pequeños césares» en inglés.
+                Es evocativo porque utiliza
+                una referencia simbólica
+                al título César, asociado
+                históricamente con el poder
+                romano, sin describir
+                directamente sus pizzas.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- SIGLA -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>04. Sigla</h3>
+        <span class="cantidad">1 marca</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es sigla?</strong>
+        <p>
+            Es una denominación formada
+            mediante las letras iniciales
+            de varias palabras que
+            integran el nombre original
+            de una empresa o marca.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4 class="marca">KFC</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Corresponde a las iniciales
+                de Kentucky Fried Chicken,
+                que significa «pollo frito
+                de Kentucky». Es una sigla
+                porque utiliza las primeras
+                letras de las tres palabras
+                que forman su denominación
+                original.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<div class="nota">
+    <strong>Observación lingüística:</strong>
+    Algunas marcas combinan más de una
+    estrategia de denominación. Taco Bell
+    incorpora un apellido y un término
+    descriptivo, mientras que Burger King
+    combina una referencia directa al
+    producto con una expresión evocativa.
+    Popeyes procede del nombre de un
+    personaje cinematográfico, por lo
+    que su clasificación como patronímico
+    es amplia e interpretativa.
+    Para este catálogo se selecciona
+    una tipología principal por marca.
+</div>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        En las diez marcas de comida rápida
+        se identificaron cuatro tipologías
+        lingüísticas principales:
+        patronímico, descriptivo,
+        evocativo y sigla.
+        Predomina la denominación
+        patronímica, presente en
+        cuatro marcas, seguida
+        de la evocativa con tres.
+        La descriptiva aparece en
+        dos marcas y la sigla en una.
+        Estas estrategias muestran
+        cómo las empresas utilizan
+        nombres personales, referencias
+        al producto, asociaciones
+        simbólicas y abreviaciones
+        para construir denominaciones
+        reconocibles y diferenciadas
+        dentro del mercado.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · COMIDA RÁPIDA · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

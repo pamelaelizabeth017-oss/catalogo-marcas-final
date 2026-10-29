@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aerolíneas | Signo icónico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS DECORATIVAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot",
+        "Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"D";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    padding:24px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.clasificacion:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    border-top:1px solid rgba(197,160,96,.4);
+    margin-top:15px;
+    padding-top:13px;
+    color:#17664A;
+    font-size:12px;
+    line-height:1.8;
+    font-weight:700;
+}
+
+/* TARJETAS DE MARCAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* LOGOTIPOS */
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:280px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+/* CONTENIDO */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.tipo{
+    display:inline-block;
+    background:#E6F1E9;
+    color:#17664A;
+    border:1px solid #BDD6C4;
+    border-radius:7px;
+    padding:9px 12px;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.tarjeta-contenido p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0 0 15px;
+}
+
+.detalle{
+    padding-top:14px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.85;
+}
+
+/* TABLA COMPARATIVA */
+
+.tabla-contenedor{
+    padding:13px;
+    background:rgba(255,255,255,.90);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow-x:auto;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+table{
+    width:100%;
+    min-width:570px;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+th{
+    padding:17px 14px;
+    text-align:left;
+    background:#063D2D;
+    color:white;
+    font-size:12px;
+}
+
+td{
+    padding:16px 14px;
+    color:var(--texto);
+    border-bottom:1px solid #D6E5D9;
+    line-height:1.7;
+}
+
+tr:nth-child(even) td{
+    background:#EAF3ED;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .clasificaciones,
+    .tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .observacion,
+    .cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / AEROLÍNEAS
+    </div>
+
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+
+    <p class="subtitulo">
+        Símbolos, representaciones visuales
+        y niveles de iconicidad de diez aerolíneas
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué representan los símbolos de las aerolíneas?</h2>
+
+    <p>
+        El signo icónico estudia los elementos
+        visuales que acompañan o identifican
+        una marca. En las aerolíneas aparecen
+        representaciones de aves, figuras
+        geométricas, líneas dinámicas
+        y símbolos relacionados con el vuelo.
+        Para el análisis se consideran
+        cuatro niveles de iconicidad:
+        figurativa realista,
+        figurativa no realista,
+        abstracción figurativa
+        y abstracción no figurativa.
+    </p>
+</section>
+
+<!-- 01. NIVELES DE ICONICIDAD -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clasificacion">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representa elementos reconocibles
+            de la realidad mediante formas
+            próximas a su apariencia natural,
+            conservando detalles característicos.
+        </p>
+        <div class="ejemplos">
+            En los logotipos seleccionados
+            no predominan representaciones
+            realistas detalladas.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representa seres u objetos
+            identificables, pero mediante
+            formas estilizadas que no reproducen
+            exactamente su apariencia natural.
+        </p>
+        <div class="ejemplos">
+            Qatar Airways: oryx estilizado.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Simplifica una figura reconocible
+            hasta conservar sus rasgos
+            visuales esenciales.
+        </p>
+        <div class="ejemplos">
+            Avianca: ave simplificada.
+            Lufthansa: grulla estilizada.
+            American Airlines: referencia
+            geométrica a un águila.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Utiliza figuras geométricas,
+            franjas o composiciones
+            sin representar directamente
+            un objeto concreto.
+        </p>
+        <div class="ejemplos">
+            LATAM Airlines, Delta Air Lines,
+            United Airlines, Iberia
+            y Air France.
+        </div>
+    </article>
+
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez aerolíneas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- 03. COMPARACIÓN GENERAL -->
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-iconicidad"></tbody>
+    </table>
+</section>
+
+<!-- OBSERVACIÓN ICÓNICA -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación icónica:</strong>
+        En las diez aerolíneas analizadas
+        se observa una combinación de símbolos
+        figurativos y abstractos.
+        Avianca, American Airlines
+        y Lufthansa utilizan referencias
+        visuales a aves,
+        mientras que Qatar Airways
+        incorpora la representación
+        estilizada de un oryx.
+        LATAM Airlines, Delta Air Lines,
+        United Airlines, Iberia
+        y Air France recurren
+        a formas geométricas
+        y composiciones simplificadas.
+        Emirates incorpora
+        escritura árabe,
+        que funciona principalmente
+        como un elemento caligráfico
+        de identidad cultural.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        El análisis icónico demuestra
+        que las aerolíneas utilizan
+        diferentes recursos visuales
+        para construir identificadores
+        reconocibles.
+        Las aves estilizadas pueden
+        relacionarse con el vuelo,
+        la libertad y el movimiento,
+        mientras que las formas
+        geométricas permiten comunicar
+        dinamismo y modernidad.
+        También existen marcas
+        que destacan su procedencia
+        mediante elementos culturales.
+        En conjunto, estos símbolos
+        complementan los nombres
+        de las compañías y contribuyen
+        a su diferenciación
+        en el sector aeronáutico.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · AEROLÍNEAS · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/* DATOS DE LAS DIEZ AEROLÍNEAS */
+
+const marcas = [
+
+{
+    nombre:"Avianca",
+    imagenes:["avianca"],
+    identificador:"Ave roja simplificada",
+    tipo:"Abstracción figurativa",
+    leyenda:"AVE ESTILIZADA",
+    descripcion:
+        "Avianca utiliza una figura roja que puede interpretarse como un ave en movimiento. Sus curvas y extremos puntiagudos reducen la representación a una silueta dinámica.",
+    detalle:
+        "Se clasifica como abstracción figurativa porque conserva una referencia reconocible a un ave mediante formas simplificadas."
+},
+
+{
+    nombre:"LATAM Airlines",
+    imagenes:["latam","latamairlines","latam_airlines"],
+    identificador:"Franjas diagonales superpuestas",
+    tipo:"Abstracción no figurativa",
+    leyenda:"FRANJAS GEOMÉTRICAS",
+    descripcion:
+        "LATAM Airlines presenta un símbolo formado por franjas diagonales azules y magenta. La superposición de las formas genera una composición que transmite movimiento.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque las franjas funcionan como un recurso geométrico sin representar directamente un objeto concreto."
+},
+
+{
+    nombre:"American Airlines",
+    imagenes:[
+        "americanairlines",
+        "american_airlines",
+        "american"
+    ],
+    identificador:"Águila geométrica estilizada",
+    tipo:"Abstracción figurativa",
+    leyenda:"REFERENCIA A UN ÁGUILA",
+    descripcion:
+        "American Airlines utiliza un símbolo rojo y azul de apariencia angular. Su construcción geométrica puede interpretarse como una representación simplificada de un águila.",
+    detalle:
+        "Se clasifica como abstracción figurativa porque conserva una referencia simbólica al ave mediante planos y formas geométricas."
+},
+
+{
+    nombre:"Delta Air Lines",
+    imagenes:["delta","deltaairlines","delta_airlines"],
+    identificador:"Triángulo rojo",
+    tipo:"Abstracción no figurativa",
+    leyenda:"SÍMBOLO TRIANGULAR",
+    descripcion:
+        "Delta Air Lines utiliza un símbolo triangular rojo formado por superficies geométricas. La figura acompaña al nombre y produce una composición de apariencia sólida.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque utiliza una construcción geométrica sin representar directamente un ser u objeto."
+},
+
+{
+    nombre:"United Airlines",
+    imagenes:["united","unitedairlines","united_airlines"],
+    identificador:"Globo terráqueo geométrico",
+    tipo:"Abstracción figurativa",
+    leyenda:"GLOBO ESTILIZADO",
+    descripcion:
+        "United Airlines presenta un símbolo cuadrado azul con líneas curvas blancas que evocan los meridianos y paralelos de un globo terráqueo.",
+    detalle:
+        "Se clasifica como abstracción figurativa porque simplifica la representación reconocible del planeta mediante una estructura de líneas geométricas."
+},
+
+{
+    nombre:"Emirates",
+    imagenes:["emirates"],
+    identificador:"Caligrafía árabe",
+    tipo:"Sin ícono figurativo independiente",
+    leyenda:"IDENTIFICADOR CALIGRÁFICO",
+    descripcion:
+        "Emirates incorpora escritura árabe sobre su denominación en caracteres latinos. El elemento superior corresponde a un tratamiento caligráfico y no a la representación de un objeto.",
+    detalle:
+        "Se analiza como un recurso escritural y cultural. No es adecuado asignarle un nivel de iconicidad figurativa como si fuera una imagen de la realidad."
+},
+
+{
+    nombre:"Iberia",
+    imagenes:["iberia"],
+    identificador:"Formas curvas rojas y amarillas",
+    tipo:"Abstracción no figurativa",
+    leyenda:"FORMAS DINÁMICAS",
+    descripcion:
+        "Iberia utiliza un símbolo compuesto por formas curvas rojas y amarillas. La composición transmite una sensación de desplazamiento y dirección.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque las formas funcionan como un símbolo gráfico sin representar claramente un objeto."
+},
+
+{
+    nombre:"Air France",
+    imagenes:["airfrance","air_france"],
+    identificador:"Franja diagonal roja",
+    tipo:"Abstracción no figurativa",
+    leyenda:"FRANJA DIAGONAL",
+    descripcion:
+        "Air France utiliza una pequeña franja roja inclinada junto a su nombre. Este elemento aporta dinamismo y contraste a la composición tipográfica.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque la franja es un recurso geométrico sin una representación figurativa directa."
+},
+
+{
+    nombre:"Lufthansa",
+    imagenes:["lufthansa"],
+    identificador:"Grulla estilizada dentro de un círculo",
+    tipo:"Abstracción figurativa",
+    leyenda:"GRULLA EN VUELO",
+    descripcion:
+        "Lufthansa utiliza una grulla representada mediante una silueta de líneas simples dentro de un círculo. La figura conserva rasgos suficientes para reconocer un ave en vuelo.",
+    detalle:
+        "Se clasifica como abstracción figurativa porque simplifica la forma natural de una grulla y mantiene su significado visual."
+},
+
+{
+    nombre:"Qatar Airways",
+    imagenes:["qatar","qatarairways","qatar_airways"],
+    identificador:"Oryx estilizado",
+    tipo:"Figurativa no realista",
+    leyenda:"ORYX ESTILIZADO",
+    descripcion:
+        "Qatar Airways incorpora la figura de un oryx, animal asociado con la identidad de Qatar. Su representación conserva la cabeza y los cuernos característicos mediante un tratamiento gráfico estilizado.",
+    detalle:
+        "Se clasifica como figurativa no realista porque el animal es claramente reconocible, aunque su apariencia ha sido simplificada y adaptada al diseño del logotipo."
+}
+
+];
+
+/* CONTENEDORES */
+
+const zona=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla-iconicidad");
+
+/* BUSCAR LOGOTIPOS */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png","jpg","jpeg","webp","svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+/* CREAR TARJETAS Y TABLA */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador visual de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const tipo=document.createElement("span");
+    tipo.className="tipo";
+    tipo.textContent=marca.tipo;
+
+    const descripcion=document.createElement("p");
+    descripcion.textContent=marca.descripcion;
+
+    const detalle=document.createElement("div");
+    detalle.className="detalle";
+    detalle.textContent=marca.detalle;
+
+    contenido.append(tipo,descripcion,detalle);
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(
+        imagen,
+        marca.imagenes,
+        marca.nombre
+    );
+
+    /* FILA DE TABLA */
+
+    const fila=document.createElement("tr");
+
+    const celdaMarca=document.createElement("td");
+    celdaMarca.textContent=marca.nombre;
+
+    const celdaIdentificador=document.createElement("td");
+    celdaIdentificador.textContent=marca.identificador;
+
+    const celdaTipo=document.createElement("td");
+    celdaTipo.textContent=marca.tipo;
+
+    fila.append(
+        celdaMarca,
+        celdaIdentificador,
+        celdaTipo
+    );
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

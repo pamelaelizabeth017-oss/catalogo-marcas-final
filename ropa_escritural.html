@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo escritural | Ropa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#4D665A;
+    --crema:rgba(255,250,240,.94);
+    --salvia:rgba(225,241,230,.94);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,body::after {
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+body::before {
+    width:330px;height:330px;
+    right:-125px;top:130px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:inset 12px 12px 25px rgba(255,255,255,.65),
+               inset -15px -15px 28px rgba(31,116,81,.12);
+}
+body::after {
+    width:220px;height:220px;
+    left:-100px;bottom:50px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+    box-shadow:inset 8px 8px 20px rgba(255,255,255,.7),
+               inset -12px -12px 22px rgba(36,117,78,.1);
+}
+
+.contenedor {
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+.encabezado {
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+.ruta {
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+.titulo {
+    font-family:"Bodoni MT","Bodoni 72","Didot",
+                "Libre Bodoni","Times New Roman",serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+.subtitulo {
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+.encabezado::after {
+    content:"";
+    display:block;
+    width:85px;height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(90deg,
+        transparent,var(--dorado),transparent);
+}
+
+.presentacion {
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+.presentacion::after {
+    content:"Aa";
+    position:absolute;
+    right:22px;bottom:-45px;
+    font:145px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+.codigo {
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+.presentacion h2 {
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+.presentacion p {
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+.seccion { margin:30px 0 20px; }
+.seccion small {
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+.seccion h2 {
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+.clasificaciones {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+.clase {
+    padding:23px;
+    background:var(--crema);
+    border:1px solid rgba(197,160,96,.30);
+    border-top:3px solid var(--dorado);
+    border-radius:14px;
+    box-shadow:0 8px 22px rgba(33,91,60,.06);
+}
+.clase:nth-child(even) { background:var(--salvia); }
+.clase h3 {
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+.clase p {
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.85;
+    margin:0 0 14px;
+}
+.clase .ejemplos {
+    border-top:1px solid rgba(197,160,96,.30);
+    padding-top:12px;
+    font-size:11px;
+    line-height:1.8;
+    font-weight:700;
+    color:var(--verde2);
+}
+
+.nota {
+    padding:19px 22px;
+    margin-top:20px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 12px 12px 0;
+    color:var(--texto);
+    font-size:11px;
+    line-height:1.9;
+}
+.nota strong { color:var(--verde); }
+
+.fichas {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+.ficha {
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+    transition:transform .25s,box-shadow .25s;
+}
+.ficha:hover {
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px rgba(19,88,56,.12);
+}
+.ficha-cabecera {
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:2px solid var(--dorado);
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+.ficha-cabecera span {
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.2px;
+}
+.ficha-cabecera strong {
+    color:white;
+    font-size:15px;
+}
+
+.muestra {
+    min-height:185px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:13px;
+    border-bottom:1px solid rgba(197,160,96,.22);
+    background:rgba(250,247,239,.94);
+}
+.ficha:nth-child(even) .muestra {
+    background:rgba(225,239,229,.94);
+}
+.muestra img {
+    display:block;
+    width:100%;
+    max-width:260px;
+    height:110px;
+    object-fit:contain;
+}
+.sin-imagen {
+    display:none;
+    text-align:center;
+    font-size:12px;
+    color:#789184;
+    line-height:1.8;
+}
+.etiqueta-muestra {
+    color:#A37C3C;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-align:center;
+}
+
+.ficha-contenido { padding:21px; }
+.dato { margin-bottom:15px; }
+.dato:last-child { margin-bottom:0; }
+.dato strong {
+    display:block;
+    color:#A37C3C;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+.dato p {
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.85;
+    margin:0;
+}
+
+.resumen {
+    overflow-x:auto;
+    background:rgba(255,255,255,.83);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:14px;
+    padding:12px;
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+}
+th {
+    background:var(--verde);
+    color:white;
+    padding:13px 11px;
+    text-align:left;
+}
+td {
+    padding:12px 11px;
+    color:var(--texto);
+    border-bottom:1px solid rgba(153,190,161,.25);
+    line-height:1.6;
+}
+tr:nth-child(even) td {
+    background:rgba(225,241,230,.48);
+}
+tr:last-child td { border-bottom:none; }
+
+.cierre {
+    margin-top:30px;
+    padding:24px 27px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+.cierre h3 {
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+.cierre p {
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+.pie {
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+@media(max-width:650px) {
+    .contenedor { width:93%; }
+    .clasificaciones,.fichas {
+        grid-template-columns:1fr;
+    }
+    .presentacion { padding:23px 20px; }
+    .titulo {
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+    .ficha-contenido { padding:18px; }
+}
+</style>
+</head>
+
+<body>
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / ROPA</div>
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+    <p class="subtitulo">
+        Clasificación y estilos tipográficos
+        de las marcas de moda
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+    <h2>¿Cómo se representan los nombres?</h2>
+    <p>
+        El signo escritural analiza la representación
+        gráfica de los nombres de marca mediante
+        sus características tipográficas.
+        En la categoría Ropa se estudian diez
+        marcas, identificando las clasificaciones
+        tipográficas presentes y los estilos
+        utilizados: peso, inclinación, mayúsculas,
+        minúsculas y personalización de las letras.
+        El análisis se realiza sobre los logotipos
+        principales seleccionados.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIONES TIPOGRÁFICAS</small>
+    <h2>Familias y estilos presentes</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clase">
+        <h3>01. Serif</h3>
+        <p>
+            Tipografía con remates o terminaciones
+            en los extremos de sus trazos.
+            En la moda se utiliza frecuentemente
+            por su apariencia elegante,
+            tradicional y editorial.
+        </p>
+        <div class="ejemplos">
+            Marcas: Zara, Gucci, Prada, Louis Vuitton,
+            Dior y Burberry.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>02. Sans serif</h3>
+        <p>
+            Tipografía sin remates, de estructura
+            limpia y apariencia contemporánea.
+            Puede presentar trazos uniformes,
+            formas geométricas y distintos pesos.
+        </p>
+        <div class="ejemplos">
+            Marcas: H&amp;M y Chanel.
+            También aparece en versiones
+            tipográficas secundarias de otras marcas.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>03. Caligráfica y gestual</h3>
+        <p>
+            Escritura que presenta características
+            relacionadas con el trazo manual,
+            el movimiento del pincel o la
+            expresión caligráfica.
+        </p>
+        <div class="ejemplos">
+            Marca: H&amp;M, por sus trazos
+            de apariencia manual y dinámica.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>04. Personalizada</h3>
+        <p>
+            Diseño de letras modificado
+            especialmente para la identidad
+            de una marca. Puede incluir
+            contrastes, uniones, cortes
+            o proporciones particulares.
+        </p>
+        <div class="ejemplos">
+            Se observa en Zara, Levi's,
+            Chanel, Dior, Versace y otras
+            marcas de la categoría.
+        </div>
+    </article>
+
+</section>
+
+<div class="nota">
+    <strong>Nota sobre las clasificaciones:</strong>
+    Serif y sans serif son familias generales.
+    Caligráfica describe una construcción de
+    apariencia manuscrita, mientras que
+    personalizada indica modificaciones
+    propias de la marca. Estas características
+    pueden combinarse en un mismo logotipo.
+</div>
+
+<div class="seccion">
+    <small>02 / ESTILOS TIPOGRÁFICOS</small>
+    <h2>Análisis escritural de las diez marcas</h2>
+</div>
+
+<section class="fichas" id="fichas"></section>
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de características</h2>
+</div>
+
+<section class="resumen">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Clasificación</th>
+                <th>Peso</th>
+                <th>Inclinación</th>
+                <th>Letras</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</section>
+
+<div class="nota">
+    <strong>Observación:</strong>
+    La clasificación debe corresponder
+    al logotipo que se visualiza en cada ficha.
+    Algunas marcas han utilizado distintas
+    versiones a lo largo de su historia.
+    Por ello, el análisis describe la
+    versión principal indicada y no
+    necesariamente todas sus variantes.
+</div>
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        El análisis escritural de las diez
+        marcas de ropa muestra una importante
+        presencia de tipografías serif,
+        asociadas con la tradición y la
+        elegancia de la moda. También
+        se identifican escrituras sans serif,
+        composiciones de apariencia gestual
+        y diseños tipográficos personalizados.
+        Los logotipos presentan diferencias
+        en el peso de los trazos, la
+        inclinación y el uso de mayúsculas
+        o minúsculas. Estas decisiones
+        tipográficas contribuyen a
+        construir identidades visuales
+        distintivas y reconocibles.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · ROPA · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  LAS IMÁGENES SE BUSCAN EN:
+  imagenes/
+
+  Si un archivo no aparece, escribe su
+  nombre exacto en la lista correspondiente.
+*/
+
+const marcas = [
+
+{
+    nombre:"Zara",
+    archivos:["zara.png","Zara.png","zara.jpg","zara.webp","logo_zara.png"],
+    clasificacion:"Serif de alto contraste y diseño personalizado.",
+    peso:"Contraste marcado entre trazos gruesos y finos.",
+    inclinacion:"Recta; no presenta cursiva.",
+    letras:"Mayúsculas: ZARA.",
+    personalizacion:
+        "El logotipo utiliza letras de remates pronunciados y trazos superpuestos o muy próximos. La composición compacta y el contraste de grosores crean una identidad editorial y elegante.",
+    resumen:"Serif",
+    pesoCorto:"Alto contraste",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"H&M",
+    archivos:["hm.png","h&m.png","h_m.png","HM.png","hm.jpg","hm.webp"],
+    clasificacion:"Escritura gestual de apariencia caligráfica.",
+    peso:"Variable, con trazos de apariencia gruesa y expresiva.",
+    inclinacion:"Trazos inclinados e irregulares.",
+    letras:"Iniciales mayúsculas H y M, unidas por el signo &.",
+    personalizacion:
+        "El identificador utiliza una escritura de aspecto manual, con movimientos semejantes a pinceladas. Su irregularidad visual lo diferencia de una tipografía geométrica convencional.",
+    resumen:"Gestual / caligráfica",
+    pesoCorto:"Variable",
+    inclinacionCorta:"Inclinada",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Levi's",
+    archivos:["levis.png","levi's.png","Levis.png","levis.jpg","levis.webp"],
+    clasificacion:"Sans serif de peso grueso.",
+    peso:"Grueso o negrita, con trazos sólidos.",
+    inclinacion:"Recta; sin cursiva.",
+    letras:"L mayúscula inicial y las demás letras minúsculas.",
+    personalizacion:
+        "La escritura se presenta habitualmente en blanco dentro de la característica forma roja de la marca. El apóstrofo forma parte de su denominación.",
+    resumen:"Sans serif",
+    pesoCorto:"Grueso",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mixtas"
+},
+
+{
+    nombre:"Gucci",
+    archivos:["gucci.png","Gucci.png","gucci.jpg","gucci.webp","logo_gucci.png"],
+    clasificacion:"Serif de inspiración clásica.",
+    peso:"Medio, con diferencias entre trazos finos y gruesos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: GUCCI.",
+    personalizacion:
+        "Las letras presentan remates y una composición horizontal equilibrada. El espaciado entre caracteres favorece una apariencia refinada.",
+    resumen:"Serif",
+    pesoCorto:"Medio",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Chanel",
+    archivos:["chanel.png","Chanel.png","chanel.jpg","chanel.webp","logo_chanel.png"],
+    clasificacion:"Sans serif geométrica.",
+    peso:"Medio a grueso, con trazos de apariencia uniforme.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: CHANEL.",
+    personalizacion:
+        "El nombre utiliza letras de estructura limpia, proporciones equilibradas y espaciado definido. La ausencia de remates aporta claridad visual.",
+    resumen:"Sans serif",
+    pesoCorto:"Medio / grueso",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Prada",
+    archivos:["prada.png","Prada.png","prada.jpg","prada.webp","logo_prada.png"],
+    clasificacion:"Serif de diseño personalizado.",
+    peso:"Medio a grueso, con contraste en algunos trazos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: PRADA.",
+    personalizacion:
+        "Presenta remates definidos y detalles particulares en la construcción de sus caracteres. La escritura mantiene una composición horizontal de apariencia clásica.",
+    resumen:"Serif",
+    pesoCorto:"Medio / grueso",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Louis Vuitton",
+    archivos:["louisvuitton.png","louis_vuitton.png","LouisVuitton.png","louis-vuitton.png","louisvuitton.jpg"],
+    clasificacion:"Serif de estilo clásico en la denominación escrita.",
+    peso:"Medio, con contraste entre trazos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas en la denominación LOUIS VUITTON.",
+    personalizacion:
+        "El nombre completo utiliza letras con remates y espaciado controlado. Debe distinguirse del monograma LV, que funciona como un identificador gráfico adicional.",
+    resumen:"Serif",
+    pesoCorto:"Medio",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Dior",
+    archivos:["dior.png","Dior.png","dior.jpg","dior.webp","logo_dior.png"],
+    clasificacion:"Serif de alto contraste.",
+    peso:"Contraste marcado entre trazos finos y gruesos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: DIOR.",
+    personalizacion:
+        "Su logotipo presenta remates finos y una construcción elegante de inspiración editorial. Las proporciones y el contraste de los caracteres forman parte de su identidad.",
+    resumen:"Serif",
+    pesoCorto:"Alto contraste",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Versace",
+    archivos:["versace.png","Versace.png","versace.jpg","versace.webp","logo_versace.png"],
+    clasificacion:"Sans serif de estructura clásica en el nombre VERSACE.",
+    peso:"Medio, con trazos definidos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: VERSACE.",
+    personalizacion:
+        "El nombre se presenta con caracteres de proporciones amplias y espaciado controlado. La cabeza de Medusa es un símbolo independiente que debe analizarse por separado de la escritura.",
+    resumen:"Sans serif",
+    pesoCorto:"Medio",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+},
+
+{
+    nombre:"Burberry",
+    archivos:["burberry.png","Burberry.png","burberry.jpg","burberry.webp","logo_burberry.png"],
+    clasificacion:"Serif de estilo clásico en la identidad tradicional.",
+    peso:"Medio, con contraste moderado entre trazos.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: BURBERRY.",
+    personalizacion:
+        "La denominación utiliza una escritura con remates en su identidad clásica. La marca también ha empleado versiones sans serif, por lo que la clasificación depende del logotipo seleccionado.",
+    resumen:"Serif (versión clásica)",
+    pesoCorto:"Medio",
+    inclinacionCorta:"Recta",
+    letrasCortas:"Mayúsculas"
+}
+
+];
+
+/* CARGAR IMÁGENES */
+
+function cargarImagen(imagen,aviso,archivos,indice=0) {
+
+    if(indice>=archivos.length) {
+        imagen.style.display="none";
+        aviso.style.display="block";
+        return;
+    }
+
+    imagen.onerror=function() {
+        cargarImagen(imagen,aviso,archivos,indice+1);
+    };
+
+    imagen.onload=function() {
+        imagen.style.display="block";
+        aviso.style.display="none";
+    };
+
+    imagen.src="imagenes/"+archivos[indice];
+}
+
+/* CREAR FICHAS Y TABLA */
+
+const fichas=document.getElementById("fichas");
+const tabla=document.getElementById("tabla");
+
+marcas.forEach((marca,indice)=>{
+
+    const ficha=document.createElement("article");
+    ficha.className="ficha";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="ficha-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent="MARCA "+
+        String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("strong");
+    nombre.textContent=marca.nombre.toUpperCase();
+
+    cabecera.append(numero,nombre);
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const aviso=document.createElement("div");
+    aviso.className="sin-imagen";
+    aviso.textContent=
+        "No se encontró la imagen de "+
+        marca.nombre+
+        " en la carpeta imagenes.";
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="etiqueta-muestra";
+    etiqueta.textContent=marca.clasificacion;
+
+    muestra.append(imagen,aviso,etiqueta);
+
+    cargarImagen(imagen,aviso,marca.archivos);
+
+    const cuerpo=document.createElement("div");
+    cuerpo.className="ficha-contenido";
+
+    const datos=[
+        ["Clasificación tipográfica",marca.clasificacion],
+        ["Peso tipográfico",marca.peso],
+        ["Inclinación",marca.inclinacion],
+        ["Mayúsculas y minúsculas",marca.letras],
+        ["Personalización",marca.personalizacion]
+    ];
+
+    datos.forEach(([titulo,texto])=>{
+        const dato=document.createElement("div");
+        dato.className="dato";
+
+        const etiquetaDato=document.createElement("strong");
+        etiquetaDato.textContent=titulo;
+
+        const parrafo=document.createElement("p");
+        parrafo.textContent=texto;
+
+        dato.append(etiquetaDato,parrafo);
+        cuerpo.appendChild(dato);
+    });
+
+    ficha.append(cabecera,muestra,cuerpo);
+    fichas.appendChild(ficha);
+
+    const fila=document.createElement("tr");
+
+    [
+        marca.nombre,
+        marca.resumen,
+        marca.pesoCorto,
+        marca.inclinacionCorta,
+        marca.letrasCortas
+    ].forEach(valor=>{
+        const celda=document.createElement("td");
+        celda.textContent=valor;
+        fila.appendChild(celda);
+    });
+
+    tabla.appendChild(fila);
+});
+
+</script>
+</body>
+</html>

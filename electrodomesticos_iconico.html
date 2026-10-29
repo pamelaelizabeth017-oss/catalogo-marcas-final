@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Electrodomésticos | Signo icónico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+
+    background-attachment:fixed;
+}
+
+/* BURBUJAS DECORATIVAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot",
+        "Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"D";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    padding:24px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.clasificacion:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    border-top:1px solid rgba(197,160,96,.4);
+    margin-top:15px;
+    padding-top:13px;
+    color:#17664A;
+    font-size:12px;
+    line-height:1.8;
+    font-weight:700;
+}
+
+/* TARJETAS DE MARCAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* LOGOTIPOS */
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:280px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+/* CONTENIDO */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.tipo{
+    display:inline-block;
+    background:#E6F1E9;
+    color:#17664A;
+    border:1px solid #BDD6C4;
+    border-radius:7px;
+    padding:9px 12px;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.tarjeta-contenido p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0 0 15px;
+}
+
+.detalle{
+    padding-top:14px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.85;
+}
+
+/* TABLA COMPARATIVA */
+
+.tabla-contenedor{
+    padding:13px;
+    background:rgba(255,255,255,.90);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow-x:auto;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+table{
+    width:100%;
+    min-width:570px;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+th{
+    padding:17px 14px;
+    text-align:left;
+    background:#063D2D;
+    color:white;
+    font-size:12px;
+}
+
+td{
+    padding:16px 14px;
+    color:var(--texto);
+    border-bottom:1px solid #D6E5D9;
+    line-height:1.7;
+}
+
+tr:nth-child(even) td{
+    background:#EAF3ED;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* ADAPTACIÓN A PANTALLAS */
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .clasificaciones,
+    .tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .observacion,
+    .cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / ELECTRODOMÉSTICOS
+    </div>
+
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+
+    <p class="subtitulo">
+        Formas, símbolos y niveles de iconicidad
+        en las marcas de electrodomésticos
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué representan los símbolos de estas marcas?</h2>
+
+    <p>
+        El signo icónico estudia los elementos
+        visuales que representan o identifican
+        una marca. Para este análisis se
+        consideran cuatro niveles:
+        figurativa realista,
+        figurativa no realista,
+        abstracción figurativa
+        y abstracción no figurativa.
+        También se distingue cuándo
+        un identificador está compuesto
+        principalmente por letras
+        y no presenta un ícono independiente.
+    </p>
+</section>
+
+<!-- 01. NIVELES DE ICONICIDAD -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clasificacion">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representa personas, animales
+            u objetos de manera cercana
+            a su apariencia real,
+            conservando detalles visuales
+            que permiten reconocerlos.
+        </p>
+        <div class="ejemplos">
+            No se identifican símbolos
+            plenamente realistas
+            en los diez logotipos analizados.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representa elementos reconocibles
+            de la realidad, pero mediante
+            una interpretación estilizada
+            o modificada gráficamente.
+        </p>
+        <div class="ejemplos">
+            LG: rostro humano estilizado,
+            formado a partir de las letras L y G.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Reduce una figura reconocible
+            a sus formas esenciales,
+            utilizando líneas,
+            curvas o geometría simple.
+        </p>
+        <div class="ejemplos">
+            Bosch: componente electromecánico
+            simplificado. Electrolux:
+            figura geométrica asociada
+            a una forma circular segmentada.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Utiliza formas geométricas,
+            líneas o composiciones
+            que no representan
+            directamente un objeto real.
+        </p>
+        <div class="ejemplos">
+            Whirlpool: curva orbital.
+            Black+Decker: conjunto
+            de líneas diagonales.
+            Las marcas solo tipográficas
+            se distinguen por separado.
+        </div>
+    </article>
+
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- 03. COMPARACIÓN GENERAL -->
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla-iconicidad"></tbody>
+    </table>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación icónica:</strong>
+        En la categoría de electrodomésticos
+        se observa una combinación
+        de símbolos geométricos
+        y logotipos tipográficos.
+        LG incorpora un rostro estilizado
+        dentro de una figura circular;
+        Bosch utiliza un componente
+        electromecánico simplificado;
+        y Electrolux presenta
+        un símbolo geométrico abstracto.
+        Whirlpool y Black+Decker
+        utilizan recursos gráficos
+        que acompañan sus nombres.
+        Por otro lado, Mabe, Oster,
+        KitchenAid, Philips y Teka
+        se identifican principalmente
+        mediante su escritura.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis icónico de las diez
+        marcas demuestra que la identidad
+        visual de los electrodomésticos
+        no depende exclusivamente
+        de imágenes figurativas.
+        Algunas empresas emplean
+        símbolos simplificados
+        para representar conceptos
+        relacionados con la tecnología
+        o el funcionamiento de sus productos,
+        mientras que otras priorizan
+        el reconocimiento de sus nombres
+        mediante la tipografía.
+        Esta combinación de recursos
+        permite construir marcas
+        diferenciadas y reconocibles
+        en productos, empaques
+        y medios publicitarios.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS ·
+    ELECTRODOMÉSTICOS ·
+    SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  DATOS DE LAS DIEZ MARCAS
+
+  Las imágenes se buscan
+  dentro de la carpeta "imagenes".
+*/
+
+const marcas = [
+
+{
+    nombre:"LG",
+    imagenes:["lg","LG"],
+    identificador:"Rostro circular formado por L y G",
+    tipo:"Figurativa no realista",
+    leyenda:"ROSTRO ESTILIZADO",
+    descripcion:
+        "LG utiliza un símbolo circular rojo que integra las letras L y G. Su disposición genera la apariencia de un rostro humano, con un punto que puede interpretarse como un ojo.",
+    detalle:
+        "Se clasifica como figurativa no realista porque presenta una interpretación gráfica de un rostro mediante letras y formas simplificadas."
+},
+
+{
+    nombre:"Whirlpool",
+    imagenes:["whirlpool"],
+    identificador:"Curva orbital alrededor del nombre",
+    tipo:"Abstracción no figurativa",
+    leyenda:"CURVA ORBITAL",
+    descripcion:
+        "Whirlpool utiliza una línea curva amarilla que rodea parcialmente su denominación. La figura transmite visualmente una sensación de giro y movimiento.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque el trazo curvo funciona como un recurso gráfico dinámico sin representar un objeto específico."
+},
+
+{
+    nombre:"Mabe",
+    imagenes:["mabe"],
+    identificador:"Logotipo de letras personalizadas",
+    tipo:"Sin ícono independiente",
+    leyenda:"IDENTIFICADOR TIPOGRÁFICO",
+    descripcion:
+        "Mabe se identifica principalmente mediante su nombre escrito con letras gruesas y redondeadas. En la versión del catálogo no presenta un símbolo figurativo separado.",
+    detalle:
+        "Su identidad se construye a partir de la forma de las letras, por lo que no corresponde asignarle un nivel de iconicidad figurativa."
+},
+
+{
+    nombre:"Electrolux",
+    imagenes:["electrolux"],
+    identificador:"Figura geométrica circular segmentada",
+    tipo:"Abstracción no figurativa",
+    leyenda:"SÍMBOLO GEOMÉTRICO",
+    descripcion:
+        "Electrolux utiliza un símbolo geométrico de apariencia circular dentro de un cuadrado azul. Las divisiones internas producen una composición equilibrada de áreas claras y oscuras.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque su identificador se basa en una composición geométrica sin representar directamente un objeto reconocible."
+},
+
+{
+    nombre:"Bosch",
+    imagenes:["bosch"],
+    identificador:"Componente electromecánico estilizado",
+    tipo:"Abstracción figurativa",
+    leyenda:"ELEMENTO ELECTROMECÁNICO",
+    descripcion:
+        "Bosch incorpora un símbolo circular formado por líneas y una estructura interior. La figura remite de manera simplificada a un componente electromecánico.",
+    detalle:
+        "Se clasifica como abstracción figurativa porque conserva una referencia reconocible a una pieza técnica mediante líneas geométricas."
+},
+
+{
+    nombre:"Oster",
+    imagenes:["oster"],
+    identificador:"Logotipo caligráfico",
+    tipo:"Sin ícono independiente",
+    leyenda:"IDENTIFICADOR TIPOGRÁFICO",
+    descripcion:
+        "Oster utiliza un nombre escrito con letras caligráficas inclinadas y unidas. El protagonismo visual corresponde a la escritura, sin un símbolo separado.",
+    detalle:
+        "Su identificador es principalmente tipográfico y no presenta una figura independiente que pueda clasificarse por iconicidad."
+},
+
+{
+    nombre:"Black+Decker",
+    imagenes:[
+        "blackdecker",
+        "black_decker",
+        "blackanddecker",
+        "black+decker"
+    ],
+    identificador:"Tres franjas diagonales",
+    tipo:"Abstracción no figurativa",
+    leyenda:"FRANJAS GEOMÉTRICAS",
+    descripcion:
+        "En la versión del catálogo, Black+Decker utiliza tres franjas diagonales naranjas junto a su nombre. Las franjas forman un elemento gráfico geométrico.",
+    detalle:
+        "Se clasifica como abstracción no figurativa porque las franjas no representan de manera directa un objeto de la realidad."
+},
+
+{
+    nombre:"KitchenAid",
+    imagenes:["kitchenaid","kitchen_aid"],
+    identificador:"Logotipo de letras rojas",
+    tipo:"Sin ícono independiente",
+    leyenda:"IDENTIFICADOR TIPOGRÁFICO",
+    descripcion:
+        "KitchenAid presenta su nombre mediante letras rojas gruesas. En la versión analizada no aparece un símbolo figurativo separado del texto.",
+    detalle:
+        "El reconocimiento de la marca depende de su composición tipográfica, por lo que se considera un logotipo sin ícono independiente."
+},
+
+{
+    nombre:"Philips",
+    imagenes:["philips"],
+    identificador:"Nombre en letras mayúsculas",
+    tipo:"Sin ícono independiente",
+    leyenda:"IDENTIFICADOR TIPOGRÁFICO",
+    descripcion:
+        "La versión mostrada de Philips utiliza únicamente letras mayúsculas azules. Aunque la empresa ha empleado otros emblemas en su historia, el identificador del catálogo es tipográfico.",
+    detalle:
+        "No presenta un símbolo independiente en la versión analizada; por ello, no se le asigna un nivel figurativo."
+},
+
+{
+    nombre:"Teka",
+    imagenes:["teka"],
+    identificador:"Letras blancas sobre fondo rojo",
+    tipo:"Sin ícono independiente",
+    leyenda:"IDENTIFICADOR TIPOGRÁFICO",
+    descripcion:
+        "Teka utiliza letras blancas dentro de un recuadro rojo. El rectángulo actúa como soporte cromático del nombre, sin representar un objeto.",
+    detalle:
+        "Se considera un logotipo tipográfico. El recuadro es un recurso de composición y no un ícono figurativo independiente."
+}
+
+];
+
+/* CONTENEDORES */
+
+const zona=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla-iconicidad");
+
+/* BUSCADOR DE LOGOTIPOS */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png","jpg","jpeg","webp","svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+/* CREAR TARJETAS Y TABLA */
+
+marcas.forEach((marca,indice)=>{
+
+    /* TARJETA */
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    /* LOGOTIPO */
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador visual de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    /* CONTENIDO */
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const tipo=document.createElement("span");
+    tipo.className="tipo";
+    tipo.textContent=marca.tipo;
+
+    const descripcion=document.createElement("p");
+    descripcion.textContent=marca.descripcion;
+
+    const detalle=document.createElement("div");
+    detalle.className="detalle";
+    detalle.textContent=marca.detalle;
+
+    contenido.append(tipo,descripcion,detalle);
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(
+        imagen,
+        marca.imagenes,
+        marca.nombre
+    );
+
+    /* FILA DE TABLA */
+
+    const fila=document.createElement("tr");
+
+    const celdaMarca=document.createElement("td");
+    celdaMarca.textContent=marca.nombre;
+
+    const celdaIdentificador=document.createElement("td");
+    celdaIdentificador.textContent=marca.identificador;
+
+    const celdaTipo=document.createElement("td");
+    celdaTipo.textContent=marca.tipo;
+
+    fila.append(
+        celdaMarca,
+        celdaIdentificador,
+        celdaTipo
+    );
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

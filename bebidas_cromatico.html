@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bebidas | Signo cromático</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%
+    );
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%
+    );
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"C";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* PALETA GENERAL */
+
+.panel-general{
+    background:rgba(255,255,255,.86);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:16px;
+    padding:26px;
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+}
+
+.panel-general>p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 23px;
+}
+
+.paleta-general{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:13px;
+}
+
+/* MUESTRAS */
+
+.muestra{
+    background:rgba(241,248,242,.72);
+    border:1px solid rgba(23,102,74,.12);
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+    min-width:0;
+}
+
+.color{
+    height:91px;
+    width:100%;
+    border-radius:10px;
+    border:1px solid rgba(0,0,0,.1);
+    box-shadow:0 5px 12px rgba(0,0,0,.08);
+    margin-bottom:11px;
+}
+
+.nombre-color{
+    display:block;
+    color:var(--verde);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.codigo-color{
+    display:block;
+    color:#708477;
+    font-size:11px;
+    overflow-wrap:anywhere;
+}
+
+/* TARJETAS INDIVIDUALES */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.94);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera span{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* PANEL DE COLORES */
+
+.tarjeta-paleta{
+    padding:23px 20px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .tarjeta-paleta{
+    background:#E2F0E7;
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin:0 0 16px;
+    text-transform:uppercase;
+}
+
+.colores-marca{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.colores-marca .color{
+    height:92px;
+}
+
+/* EXPLICACIÓN */
+
+.tarjeta-contenido{
+    padding:23px;
+}
+
+.tarjeta-contenido p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+    }
+
+    .paleta-general{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .presentacion{
+        padding:25px 22px;
+    }
+
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+
+    .seccion h2{
+        font-size:29px;
+    }
+
+    .panel-general{
+        padding:18px;
+    }
+
+    .observacion,
+    .cierre{
+        padding:23px 20px;
+    }
+}
+
+@media(max-width:420px){
+    .paleta-general{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .colores-marca{
+        gap:7px;
+    }
+
+    .muestra{
+        padding:7px;
+    }
+
+    .nombre-color{
+        font-size:11px;
+    }
+
+    .codigo-color{
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / BEBIDAS</div>
+    <h1 class="titulo">SIGNO CROMÁTICO</h1>
+    <p class="subtitulo">
+        El color como elemento de identidad visual
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO C / ANÁLISIS CROMÁTICO
+    </div>
+
+    <h2>¿Qué colores identifican a las marcas?</h2>
+
+    <p>
+        El signo cromático estudia los colores presentes
+        en la identidad visual de las marcas.
+        En la categoría Bebidas se identifican los tonos
+        predominantes y se presentan muestras cromáticas
+        individuales para observar sus semejanzas,
+        diferencias y funciones dentro de cada
+        identificador visual.
+    </p>
+
+</section>
+
+<!-- PALETA GENERAL -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Paleta cromática predominante</h2>
+</div>
+
+<section class="panel-general">
+
+    <p>
+        En las marcas de bebidas analizadas destacan
+        los colores rojo, azul, blanco, verde y negro.
+        El rojo aparece en identidades de gran
+        reconocimiento comercial; el azul se utiliza
+        en bebidas refrescantes y deportivas;
+        el verde se relaciona visualmente con
+        frescura y componentes naturales.
+        El blanco y el negro funcionan como
+        colores de contraste y apoyo.
+    </p>
+
+    <div class="paleta-general" id="paletaGeneral"></div>
+
+</section>
+
+<!-- PALETAS INDIVIDUALES -->
+
+<div class="seccion">
+    <small>02 / PALETAS INDIVIDUALES</small>
+    <h2>Colores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación cromática:</strong>
+        Las muestras representan aproximaciones digitales
+        de los colores visibles en los identificadores
+        seleccionados para este catálogo.
+        Algunas marcas emplean diferentes versiones
+        cromáticas según el producto, la campaña
+        publicitaria o el fondo de aplicación.
+        Por ello, los códigos HEX deben entenderse
+        como referencias visuales de análisis
+        y no necesariamente como especificaciones
+        oficiales de sus manuales de marca.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas de bebidas se observa
+        una diversidad cromática en la que destacan
+        el rojo, el azul, el verde, el negro y el blanco.
+        Coca-Cola y Red Bull utilizan combinaciones
+        de alto contraste; Sprite y Nestea incorporan
+        verdes asociados visualmente con frescura;
+        Pepsi, Gatorade y Powerade emplean azules
+        que fortalecen su identificación.
+        Los colores permiten diferenciar las marcas,
+        facilitar su reconocimiento y comunicar
+        atributos relacionados con su personalidad
+        e identidad visual.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · BEBIDAS · SIGNO CROMÁTICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  Los códigos HEX son aproximaciones visuales
+  para el análisis académico de los logotipos
+  mostrados en el catálogo.
+*/
+
+const paletaGeneral = [
+    {nombre:"Rojo",hex:"#E31B23"},
+    {nombre:"Azul",hex:"#003DA5"},
+    {nombre:"Blanco",hex:"#FFFFFF"},
+    {nombre:"Verde",hex:"#008C44"},
+    {nombre:"Negro",hex:"#111111"}
+];
+
+const marcas = [
+{
+    nombre:"Coca-Cola",
+    colores:[
+        {nombre:"Rojo",hex:"#F40009"},
+        {nombre:"Blanco",hex:"#FFFFFF"},
+        {nombre:"Negro",hex:"#111111"}
+    ],
+    descripcion:"El rojo constituye uno de los elementos cromáticos más reconocibles de Coca-Cola. El blanco genera contraste y permite destacar la escritura del logotipo. El negro aparece en algunas aplicaciones alternativas."
+},
+{
+    nombre:"Pepsi",
+    colores:[
+        {nombre:"Azul",hex:"#004B93"},
+        {nombre:"Rojo",hex:"#E32934"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"Pepsi utiliza una combinación de azul, rojo y blanco. Estos colores estructuran su identificador circular y generan una identidad de alto contraste y fácil reconocimiento."
+},
+{
+    nombre:"Sprite",
+    colores:[
+        {nombre:"Verde",hex:"#008B47"},
+        {nombre:"Blanco",hex:"#FFFFFF"},
+        {nombre:"Amarillo",hex:"#F7D417"}
+    ],
+    descripcion:"En el identificador seleccionado de Sprite predomina el verde, acompañado de blanco y detalles amarillos. La combinación se asocia visualmente con frescura y dinamismo."
+},
+{
+    nombre:"Fanta",
+    colores:[
+        {nombre:"Naranja",hex:"#FF8300"},
+        {nombre:"Azul",hex:"#0056A6"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"Fanta utiliza el naranja como color destacado, combinado con azul y blanco. El contraste refuerza una identidad llamativa y expresiva, relacionada visualmente con su carácter frutal."
+},
+{
+    nombre:"Red Bull",
+    colores:[
+        {nombre:"Rojo",hex:"#D50032"},
+        {nombre:"Amarillo",hex:"#FFCC00"},
+        {nombre:"Azul",hex:"#003399"}
+    ],
+    descripcion:"Red Bull combina el rojo de los toros con el amarillo del círculo y tonos azules presentes en diversas aplicaciones de marca. La composición produce un identificador energético y reconocible."
+},
+{
+    nombre:"Monster Energy",
+    colores:[
+        {nombre:"Verde",hex:"#7AC143"},
+        {nombre:"Negro",hex:"#000000"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"Monster Energy destaca por la combinación de verde intenso y negro. El verde identifica el símbolo de las tres marcas verticales y el negro crea un contraste fuerte. El blanco aparece como apoyo."
+},
+{
+    nombre:"Gatorade",
+    colores:[
+        {nombre:"Negro",hex:"#111111"},
+        {nombre:"Naranja",hex:"#F36B21"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"En la versión analizada de Gatorade predomina el negro de la letra G, acompañado de un rayo naranja y detalles blancos. El contraste enfatiza el símbolo y su apariencia deportiva."
+},
+{
+    nombre:"Powerade",
+    colores:[
+        {nombre:"Azul",hex:"#00AEEF"},
+        {nombre:"Negro",hex:"#111111"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"Powerade utiliza azul y negro en su logotipo, acompañados de blanco en determinadas aplicaciones. La combinación refuerza su identidad deportiva y facilita la lectura del nombre."
+},
+{
+    nombre:"Schweppes",
+    colores:[
+        {nombre:"Amarillo",hex:"#F7D417"},
+        {nombre:"Negro",hex:"#111111"},
+        {nombre:"Rojo",hex:"#C8102E"}
+    ],
+    descripcion:"Schweppes utiliza un fondo amarillo de alta visibilidad con letras negras y un detalle rojo en su identificador. Estos colores generan contraste y conservan una apariencia tradicional."
+},
+{
+    nombre:"Nestea",
+    colores:[
+        {nombre:"Azul",hex:"#1F4E9B"},
+        {nombre:"Verde",hex:"#69B845"},
+        {nombre:"Blanco",hex:"#FFFFFF"}
+    ],
+    descripcion:"Nestea combina letras azules con elementos gráficos verdes relacionados visualmente con las hojas de té. El blanco aporta limpieza y contraste en la composición."
+}
+];
+
+/* CREACIÓN DE MUESTRAS */
+
+function crearMuestra(color){
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+
+    const bloque=document.createElement("div");
+    bloque.className="color";
+    bloque.style.backgroundColor=color.hex;
+
+    const nombre=document.createElement("span");
+    nombre.className="nombre-color";
+    nombre.textContent=color.nombre;
+
+    const codigo=document.createElement("span");
+    codigo.className="codigo-color";
+    codigo.textContent=color.hex.toUpperCase();
+
+    muestra.append(bloque,nombre,codigo);
+
+    return muestra;
+}
+
+/* PALETA GENERAL */
+
+const general=document.getElementById("paletaGeneral");
+
+paletaGeneral.forEach(color=>{
+    general.appendChild(crearMuestra(color));
+});
+
+/* TARJETAS INDIVIDUALES */
+
+const zona=document.getElementById("tarjetas");
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="tarjeta-paleta";
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent="PALETA CROMÁTICA";
+
+    const colores=document.createElement("div");
+    colores.className="colores-marca";
+
+    marca.colores.forEach(color=>{
+        colores.appendChild(crearMuestra(color));
+    });
+
+    panel.append(leyenda,colores);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const descripcion=document.createElement("p");
+    descripcion.textContent=marca.descripcion;
+
+    contenido.appendChild(descripcion);
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

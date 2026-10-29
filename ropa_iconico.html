@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo icónico | Ropa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 9% 18%,
+            rgba(255,255,255,.95),transparent 29%),
+        radial-gradient(circle at 92% 13%,
+            rgba(61,157,111,.30),transparent 34%),
+        radial-gradient(circle at 5% 72%,
+            rgba(93,194,153,.22),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(201,175,114,.18),transparent 35%),
+        linear-gradient(135deg,
+            #F4F7F2,#E1EEE5 48%,#F3F0E6);
+    background-attachment:fixed;
+}
+
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.8);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:125px;
+    background:radial-gradient(
+        circle at 28% 25%,
+        rgba(255,255,255,.85),
+        rgba(178,230,200,.18) 40%,
+        rgba(50,138,99,.07) 70%,
+        transparent 85%);
+    box-shadow:
+        inset 14px 14px 30px rgba(255,255,255,.65),
+        inset -15px -15px 30px rgba(38,120,83,.10);
+}
+
+body::after{
+    width:230px;
+    height:230px;
+    left:-110px;
+    bottom:80px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,219,180,.18) 40%,
+        rgba(45,134,96,.08) 70%,
+        transparent 85%);
+}
+
+.contenedor{
+    width:88%;
+    max-width:1100px;
+    margin:auto;
+    padding:28px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+.encabezado{
+    text-align:center;
+    padding:14px 10px 22px;
+    margin-bottom:25px;
+}
+
+.ruta{
+    font-size:10px;
+    font-weight:700;
+    color:#A17B3D;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot",
+        "Libre Bodoni",Georgia,serif;
+    font-size:clamp(31px,4.5vw,60px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 13px;
+}
+
+.subtitulo{
+    font-size:13px;
+    color:#5C786A;
+    margin:0;
+    line-height:1.7;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:2px;
+    margin:18px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* INTRODUCCIÓN */
+
+.presentacion{
+    position:relative;
+    overflow:hidden;
+    border-radius:16px;
+    padding:28px 32px;
+    margin-bottom:35px;
+    background:
+        radial-gradient(circle at 95% 12%,
+            rgba(131,213,168,.22),transparent 35%),
+        linear-gradient(110deg,#043727,#126448);
+    border:1px solid rgba(197,160,96,.55);
+    box-shadow:0 12px 28px rgba(9,74,48,.13);
+}
+
+.presentacion::after{
+    content:"◇";
+    position:absolute;
+    right:30px;
+    bottom:-65px;
+    font-size:190px;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E3C385;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.7px;
+}
+
+.presentacion h2{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:clamp(23px,3vw,30px);
+    font-weight:500;
+    color:white;
+    margin:10px 0 13px;
+}
+
+.presentacion p{
+    max-width:800px;
+    color:#E6F1E9;
+    font-size:12px;
+    line-height:1.9;
+    margin:0;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:33px 0 18px;
+    padding-left:3px;
+}
+
+.seccion small{
+    color:#A57E3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:clamp(25px,3.2vw,33px);
+    font-weight:400;
+    margin:9px 0 0;
+}
+
+/* NIVELES DE ICONICIDAD */
+
+.niveles{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+
+.nivel{
+    background:rgba(255,255,255,.83);
+    border:1px solid rgba(170,204,178,.4);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    padding:22px;
+}
+
+.nivel:nth-child(even){
+    background:rgba(230,243,232,.9);
+}
+
+.nivel h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:22px;
+    font-weight:500;
+    margin:0 0 10px;
+}
+
+.nivel p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.85;
+    margin:0;
+}
+
+.nivel .ejemplo{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid rgba(197,160,96,.3);
+    color:var(--verde2);
+    font-size:11px;
+    font-weight:700;
+    line-height:1.7;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+}
+
+.tarjeta{
+    overflow:hidden;
+    border-radius:15px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(170,204,178,.4);
+    box-shadow:0 8px 25px rgba(24,85,55,.08);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(24,85,55,.13);
+}
+
+.tarjeta-cabecera{
+    min-height:55px;
+    padding:15px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.tarjeta-cabecera span{
+    color:#E4C587;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    margin:0;
+    color:white;
+    font-size:16px;
+    text-align:right;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.icono-visual{
+    height:155px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#F7FAF5,#E7F1E9);
+    border:1px solid rgba(170,204,178,.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    padding:15px;
+    margin-bottom:18px;
+}
+
+.icono-visual img{
+    max-width:100%;
+    max-height:105px;
+    object-fit:contain;
+}
+
+.sin-imagen{
+    display:none;
+    color:#758A7D;
+    font-size:11px;
+    text-align:center;
+    line-height:1.7;
+}
+
+.etiqueta{
+    font-size:10px;
+    color:#A68040;
+    font-weight:700;
+    letter-spacing:1.1px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.clasificacion{
+    display:inline-block;
+    padding:8px 12px;
+    margin-bottom:14px;
+    background:#E7F0E8;
+    border:1px solid rgba(25,104,71,.17);
+    border-radius:8px;
+    color:#0D553C;
+    font-size:11px;
+    font-weight:700;
+    line-height:1.5;
+}
+
+.descripcion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.detalle{
+    margin-top:14px;
+    padding-top:13px;
+    border-top:1px solid rgba(197,160,96,.25);
+    font-size:11px;
+    line-height:1.8;
+    color:#637A6D;
+}
+
+/* RESUMEN */
+
+.tabla-contenedor{
+    overflow-x:auto;
+    border-radius:13px;
+    background:rgba(255,255,255,.87);
+    border:1px solid rgba(170,204,178,.4);
+    padding:12px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+}
+
+th{
+    background:var(--verde);
+    color:white;
+    padding:13px 12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid rgba(170,204,178,.35);
+    color:var(--texto);
+    line-height:1.7;
+}
+
+tr:nth-child(even) td{
+    background:rgba(229,241,231,.6);
+}
+
+/* CONCLUSIÓN */
+
+.conclusion{
+    margin-top:32px;
+    padding:26px 29px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.4);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.conclusion h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:26px;
+    font-weight:500;
+    margin:0 0 12px;
+}
+
+.conclusion p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.95;
+    margin:0;
+}
+
+.pie{
+    margin-top:30px;
+    padding:21px 0;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:1px;
+    color:#6D8377;
+    border-top:1px solid rgba(197,160,96,.45);
+}
+
+@media(max-width:750px){
+    .contenedor{width:92%}
+    .niveles,.tarjetas{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:430px){
+    .presentacion{padding:23px 19px}
+    .tarjeta-contenido{padding:17px}
+    .titulo{letter-spacing:-1px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / ROPA</div>
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+    <p class="subtitulo">
+        Representación visual y niveles de iconicidad
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué representan los símbolos de las marcas?</h2>
+
+    <p>
+        El signo icónico estudia las imágenes y
+        símbolos que forman parte de la identidad
+        visual de las marcas. En la categoría
+        Ropa se analizan diez marcas y se
+        determina el nivel de iconicidad
+        de sus identificadores: figurativa
+        realista, figurativa no realista,
+        abstracción figurativa o abstracción
+        no figurativa. Cuando una marca
+        presenta únicamente un logotipo
+        tipográfico, se indica expresamente.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="niveles">
+
+    <article class="nivel">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representación de una persona,
+            animal u objeto con características
+            visuales cercanas a su apariencia
+            en la realidad.
+        </p>
+        <div class="ejemplo">
+            En las versiones seleccionadas
+            no se identifica un caso claramente
+            realista.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representación reconocible de
+            una figura real o imaginaria,
+            pero simplificada, estilizada
+            o ilustrada.
+        </p>
+        <div class="ejemplo">
+            Marcas: Versace y Burberry.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Simplificación de una figura
+            reconocible, conservando
+            algunos rasgos que permiten
+            relacionarla con su referente.
+        </p>
+        <div class="ejemplo">
+            No se asigna una marca a este
+            nivel en la selección principal.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Construcción visual que no
+            representa directamente
+            personas, animales u objetos
+            reconocibles; utiliza formas
+            geométricas, abstractas
+            o composiciones simbólicas.
+        </p>
+        <div class="ejemplo">
+            Levi's y símbolos alfabéticos
+            de Gucci, Chanel y Louis Vuitton,
+            con la aclaración de que estos
+            últimos son monogramas.
+        </div>
+    </article>
+
+</section>
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</section>
+
+<section class="conclusion">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        El análisis icónico de las diez marcas
+        de ropa evidencia distintas estrategias
+        de representación visual. Algunas
+        identidades utilizan principalmente
+        logotipos tipográficos, como Zara,
+        H&amp;M y Dior. Otras incorporan
+        monogramas formados por letras,
+        como Gucci, Chanel y Louis Vuitton,
+        o formas abstractas como la silueta
+        característica de Levi's. Por su
+        parte, Versace y Burberry emplean
+        representaciones figurativas
+        estilizadas. Estas diferencias
+        demuestran que la identidad visual
+        puede construirse mediante palabras,
+        símbolos abstractos o figuras
+        reconocibles.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · ROPA · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+    UTILIZA LA MISMA CARPETA:
+    imagenes/
+
+    NO NECESITAS CREAR OTRA CARPETA.
+
+    Para cada marca se prueban varios
+    nombres posibles de archivo.
+*/
+
+const marcas=[
+
+{
+    nombre:"Zara",
+    archivos:["zara.png","Zara.png","zara.jpg","zara.webp"],
+    identificador:"Logotipo tipográfico",
+    clasificacion:"Sin ícono",
+    descripcion:
+        "Zara utiliza principalmente un identificador formado por letras. Su nombre presenta una composición tipográfica personalizada, pero no incorpora una figura independiente que pueda clasificarse dentro de los niveles de iconicidad.",
+    detalle:
+        "Las letras constituyen el logotipo, no una representación figurativa."
+},
+
+{
+    nombre:"H&M",
+    archivos:["hm.png","h&m.png","h_m.png","HM.png","hm.jpg"],
+    identificador:"Logotipo gestual",
+    clasificacion:"Sin ícono",
+    descripcion:
+        "H&M utiliza una escritura de apariencia manual formada por las letras H y M y el signo ampersand. Su carácter expresivo proviene del trazo de las letras, no de un ícono independiente.",
+    detalle:
+        "Es un identificador lingüístico y escritural."
+},
+
+{
+    nombre:"Levi's",
+    archivos:["levis.png","Levis.png","levis.jpg","levis.webp"],
+    identificador:"Logotipo con forma Batwing",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:
+        "El nombre Levi's se integra en una forma roja característica conocida como Batwing. La silueta funciona como un recurso gráfico distintivo y se analiza aquí como una forma abstracta no figurativa.",
+    detalle:
+        "La forma gráfica acompaña al nombre y no representa directamente una figura natural reconocible."
+},
+
+{
+    nombre:"Gucci",
+    archivos:["gucci.png","Gucci.png","gucci.jpg","gucci.webp"],
+    identificador:"Monograma de doble G",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:
+        "Gucci utiliza un símbolo formado por dos letras G entrelazadas, relacionadas con las iniciales de Guccio Gucci. Su composición es simbólica y no representa una figura realista.",
+    detalle:
+        "Es un monograma alfabético; no debe confundirse con una imagen figurativa."
+},
+
+{
+    nombre:"Chanel",
+    archivos:["chanel.png","Chanel.png","chanel.jpg","chanel.webp"],
+    identificador:"Monograma de doble C",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:
+        "Chanel utiliza dos letras C entrelazadas y orientadas en sentidos opuestos. El símbolo se construye mediante formas curvas simplificadas y no representa directamente un objeto real.",
+    detalle:
+        "El monograma se relaciona con las iniciales de Coco Chanel."
+},
+
+{
+    nombre:"Prada",
+    archivos:["prada.png","Prada.png","prada.jpg","prada.webp"],
+    identificador:"Logotipo tipográfico principal",
+    clasificacion:"Sin ícono en la versión principal",
+    descripcion:
+        "El identificador principal PRADA se presenta como una denominación tipográfica. Aunque la firma utiliza un emblema triangular en determinadas líneas y aplicaciones, ese recurso no aparece necesariamente en el logotipo tipográfico principal.",
+    detalle:
+        "Si se analiza específicamente el triángulo de Prada, puede estudiarse como una forma geométrica no figurativa."
+},
+
+{
+    nombre:"Louis Vuitton",
+    archivos:["louisvuitton.png","louis_vuitton.png","LouisVuitton.png","louis-vuitton.png","louisvuitton.jpg"],
+    identificador:"Monograma LV",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:
+        "El monograma LV combina las iniciales de Louis Vuitton mediante una composición de letras superpuestas. Se trata de un símbolo alfabético que no representa directamente una figura natural.",
+    detalle:
+        "El monograma debe diferenciarse del nombre escrito LOUIS VUITTON."
+},
+
+{
+    nombre:"Dior",
+    archivos:["dior.png","Dior.png","dior.jpg","dior.webp"],
+    identificador:"Logotipo tipográfico",
+    clasificacion:"Sin ícono en la versión principal",
+    descripcion:
+        "El identificador principal DIOR está construido mediante letras serif de alto contraste. En la versión analizada no aparece un símbolo independiente, por lo que no corresponde asignarle un nivel de iconicidad figurativa.",
+    detalle:
+        "La identidad se reconoce principalmente por su construcción tipográfica."
+},
+
+{
+    nombre:"Versace",
+    archivos:["versace.png","Versace.png","versace.jpg","versace.webp"],
+    identificador:"Cabeza de Medusa",
+    clasificacion:"Figurativa no realista",
+    descripcion:
+        "Versace utiliza la representación de la cabeza de Medusa, personaje de la mitología griega. Aunque se reconoce un rostro humano, está representado de forma ornamental y estilizada, por lo que corresponde al nivel figurativo no realista.",
+    detalle:
+        "La figura conserva rasgos reconocibles, pero no busca una representación fotográfica."
+},
+
+{
+    nombre:"Burberry",
+    archivos:["burberry.png","Burberry.png","burberry.jpg","burberry.webp"],
+    identificador:"Caballero ecuestre",
+    clasificacion:"Figurativa no realista",
+    descripcion:
+        "El emblema ecuestre de Burberry representa a un caballero montado a caballo y portando una bandera. Sus formas están sintetizadas mediante trazos gráficos, conservando el reconocimiento de la figura.",
+    detalle:
+        "Es una representación figurativa estilizada, no una imagen realista."
+}
+
+];
+
+/* BUSCADOR DE IMÁGENES */
+
+function cargarImagen(img,aviso,archivos,indice=0){
+
+    if(indice>=archivos.length){
+        img.style.display="none";
+        aviso.style.display="block";
+        return;
+    }
+
+    img.onerror=function(){
+        cargarImagen(img,aviso,archivos,indice+1);
+    };
+
+    img.onload=function(){
+        img.style.display="block";
+        aviso.style.display="none";
+    };
+
+    img.src="imagenes/"+archivos[indice];
+}
+
+/* GENERACIÓN DE TARJETAS */
+
+const tarjetas=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla");
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const visual=document.createElement("div");
+    visual.className="icono-visual";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador de "+marca.nombre;
+
+    const aviso=document.createElement("div");
+    aviso.className="sin-imagen";
+    aviso.textContent=
+        "Imagen no encontrada en la carpeta imagenes.";
+
+    visual.append(imagen,aviso);
+
+    cargarImagen(imagen,aviso,marca.archivos);
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="etiqueta";
+    etiqueta.textContent=marca.identificador;
+
+    const clasificacion=document.createElement("div");
+    clasificacion.className="clasificacion";
+    clasificacion.textContent=marca.clasificacion;
+
+    const descripcion=document.createElement("p");
+    descripcion.className="descripcion";
+    descripcion.textContent=marca.descripcion;
+
+    const detalle=document.createElement("div");
+    detalle.className="detalle";
+    detalle.textContent=marca.detalle;
+
+    contenido.append(
+        visual,
+        etiqueta,
+        clasificacion,
+        descripcion,
+        detalle
+    );
+
+    tarjeta.append(cabecera,contenido);
+    tarjetas.appendChild(tarjeta);
+
+    /* TABLA */
+
+    const fila=document.createElement("tr");
+
+    [
+        marca.nombre,
+        marca.identificador,
+        marca.clasificacion
+    ].forEach(texto=>{
+
+        const celda=document.createElement("td");
+        celda.textContent=texto;
+        fila.appendChild(celda);
+
+    });
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

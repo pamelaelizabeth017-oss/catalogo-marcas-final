@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo de Marcas | Identidad Visual</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #F7F7F4;
+        }
+
+        /* ENCABEZADO VERDE */
+
+        .encabezado {
+            width: 100%;
+            height: 45px;
+
+            background: linear-gradient(
+                180deg,
+                #052F23 0%,
+                #073A2B 55%,
+                #052F23 100%
+            );
+
+            border-bottom: 2px solid #D8B16C;
+
+            box-shadow: 0 3px 10px
+                rgba(0, 0, 0, 0.12);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+
+        .estructura {
+            display: flex;
+            width: 100%;
+            height: calc(100vh - 45px);
+        }
+
+        /* MENÚ DE LA IZQUIERDA */
+
+        .zona-menu {
+            width: 260px;
+            min-width: 260px;
+            height: 100%;
+
+            background: #052F23;
+            border-right: 1px solid
+                rgba(255,255,255,0.15);
+        }
+
+        /* CONTENIDO DE LA DERECHA */
+
+        .zona-contenido {
+            flex: 1;
+            min-width: 0;
+            height: 100%;
+
+            background: #FAFAF7;
+        }
+
+        /* MARCOS */
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* AJUSTE PARA PANTALLAS PEQUEÑAS */
+
+        @media (max-width: 700px) {
+
+            .zona-menu {
+                width: 220px;
+                min-width: 220px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO SUPERIOR -->
+
+    <header class="encabezado"></header>
+
+    <!-- ESTRUCTURA DEL CATÁLOGO -->
+
+    <main class="estructura">
+
+        <!-- MENÚ IZQUIERDO -->
+
+        <aside class="zona-menu">
+
+            <iframe
+                src="menu.html"
+                name="menu"
+                title="Menú de navegación">
+            </iframe>
+
+        </aside>
+
+        <!-- CONTENIDO DERECHO -->
+
+        <section class="zona-contenido">
+
+            <iframe
+                src="inicio.html"
+                name="contenido"
+                id="contenido"
+                title="Contenido del catálogo">
+            </iframe>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signo lingüístico | Calzado</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:rgba(255,250,240,.94);
+    --salvia:rgba(225,241,230,.94);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+    box-shadow:
+        inset 8px 8px 20px rgba(255,255,255,.7),
+        inset -12px -12px 22px rgba(36,117,78,.1);
+}
+
+.contenedor{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:30px 0 20px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+/* BLOQUES LINGÜÍSTICOS */
+
+.bloque{
+    margin-bottom:25px;
+    background:rgba(255,255,255,.78);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+}
+
+.bloque-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:17px 23px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.bloque-cabecera h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    color:white;
+    font-size:24px;
+    font-weight:500;
+    margin:0;
+}
+
+.cantidad{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.definicion{
+    padding:19px 23px;
+    background:rgba(235,244,236,.75);
+    border-bottom:1px solid rgba(153,190,161,.3);
+}
+
+.definicion strong{
+    display:block;
+    color:#A47B39;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.definicion p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+    padding:20px;
+}
+
+.tarjeta{
+    padding:21px;
+    border-radius:12px;
+    border:1px solid rgba(197,160,96,.26);
+    border-left:3px solid var(--dorado);
+    background:var(--crema);
+    box-shadow:0 5px 16px rgba(26,80,55,.04);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:nth-child(even){
+    background:var(--salvia);
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(26,80,55,.1);
+}
+
+.numero{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    margin-bottom:11px;
+}
+
+.marca{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    color:var(--verde);
+    margin:0;
+}
+
+.linea{
+    width:45px;
+    height:2px;
+    background:var(--dorado);
+    margin:13px 0;
+}
+
+.explicacion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* OBSERVACIÓN */
+
+.nota{
+    margin-top:23px;
+    padding:21px 25px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 13px 13px 0;
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+/* CONCLUSIÓN */
+
+.cierre{
+    margin-top:30px;
+    padding:24px 27px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:650px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+        padding:14px;
+    }
+
+    .presentacion{
+        padding:23px 20px;
+    }
+
+    .titulo{
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+
+    .bloque-cabecera{
+        padding:15px 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / CALZADO
+    </div>
+
+    <h1 class="titulo">
+        SIGNO LINGÜÍSTICO
+    </h1>
+
+    <p class="subtitulo">
+        El nombre como elemento de identidad de marca
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>
+        ¿Cómo se construyen los nombres?
+    </h2>
+
+    <p>
+        El signo lingüístico corresponde a la
+        denominación verbal de una marca.
+        En la categoría Calzado se analizan
+        diez marcas y se identifican sus
+        tipologías lingüísticas según el
+        origen, la construcción y el
+        significado de cada nombre.
+        Cada marca se presenta dentro
+        de su clasificación, acompañada
+        de una justificación.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN DE NOMBRES</small>
+    <h2>Tipologías identificadas</h2>
+</div>
+
+<!-- EVOCATIVO -->
+
+<section class="bloque">
+    <div class="bloque-cabecera">
+        <h3>01. Evocativo</h3>
+        <span class="cantidad">3 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es evocativo?</strong>
+        <p>
+            Es un nombre que sugiere ideas,
+            cualidades o asociaciones simbólicas
+            sin describir directamente
+            el producto o servicio.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4 class="marca">Nike</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre proviene de Niké,
+                diosa griega de la victoria.
+                Es evocativo porque relaciona
+                simbólicamente la marca con
+                el triunfo, la competencia
+                y el éxito deportivo,
+                sin describir directamente
+                un tipo de calzado.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4 class="marca">Puma</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Utiliza el nombre de un felino
+                conocido por su velocidad,
+                agilidad y fuerza.
+                Es evocativo porque asocia
+                estas cualidades del animal
+                con el rendimiento deportivo
+                y el movimiento.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4 class="marca">Reebok</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre procede de una
+                denominación relacionada con
+                una especie de antílope
+                africano. Es evocativo porque
+                sugiere velocidad, ligereza
+                y agilidad, características
+                asociadas con la actividad
+                deportiva.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- DESCRIPTIVO -->
+
+<section class="bloque">
+    <div class="bloque-cabecera">
+        <h3>02. Descriptivo</h3>
+        <span class="cantidad">1 marca</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es descriptivo?</strong>
+        <p>
+            Es una denominación que comunica
+            de manera relativamente directa
+            una característica, cualidad
+            o beneficio relacionado con
+            el producto o su uso.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4 class="marca">New Balance</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre significa
+                «nuevo equilibrio» en inglés.
+                Se clasifica como descriptivo
+                porque hace referencia
+                a una cualidad funcional
+                vinculada con la estabilidad
+                y el equilibrio del pie,
+                aspectos relacionados
+                con el calzado.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- PATRONÍMICO -->
+
+<section class="bloque">
+    <div class="bloque-cabecera">
+        <h3>03. Patronímico</h3>
+        <span class="cantidad">4 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es patronímico?</strong>
+        <p>
+            Es una denominación comercial
+            que procede del nombre,
+            apellido o identificación
+            personal de un fundador
+            o de una figura vinculada
+            directamente con la marca.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4 class="marca">Converse</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre procede del apellido
+                de Marquis Mills Converse,
+                fundador de la empresa.
+                Es patronímico porque
+                utiliza un apellido personal
+                como denominación comercial.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4 class="marca">Jordan</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                La marca toma su nombre
+                del apellido del jugador
+                de baloncesto Michael Jordan.
+                Es patronímico porque
+                utiliza directamente
+                el apellido de una persona
+                como identificador comercial.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4 class="marca">Vans</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su denominación deriva
+                del apellido Van Doren,
+                relacionado con los
+                fundadores de la empresa.
+                Se clasifica como patronímico
+                por su origen en un
+                apellido familiar, aunque
+                presenta una forma abreviada.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4 class="marca">Fila</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre procede del apellido
+                Fila, vinculado con la familia
+                fundadora de la empresa
+                italiana. Es patronímico
+                porque utiliza un apellido
+                como nombre de marca.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- ALTERACIÓN -->
+
+<section class="bloque">
+    <div class="bloque-cabecera">
+        <h3>04. Alteración</h3>
+        <span class="cantidad">2 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es alteración?</strong>
+        <p>
+            Es una denominación construida
+            mediante modificaciones,
+            recortes o combinaciones
+            de palabras o nombres existentes.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4 class="marca">Adidas</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre se formó a partir
+                de «Adi», diminutivo de
+                Adolf Dassler, y «Das»,
+                parte inicial de su apellido.
+                Es una alteración porque
+                combina y recorta elementos
+                de un nombre personal
+                para crear una nueva
+                denominación comercial.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4 class="marca">Skechers</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre se relaciona
+                con el término inglés
+                «sketchers», asociado
+                coloquialmente con personas
+                activas o inquietas.
+                Se clasifica como alteración
+                porque utiliza una forma
+                modificada de una palabra
+                existente para crear
+                un nombre distintivo.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<div class="nota">
+    <strong>Observación lingüística:</strong>
+    La clasificación se basa en el origen
+    principal de cada denominación.
+    Algunas marcas presentan características
+    de más de una tipología. Por ejemplo,
+    Adidas combina elementos de un nombre
+    personal, pero se ubica en alteración
+    por su procedimiento de formación.
+    Vans procede de un apellido familiar,
+    aunque su denominación es abreviada.
+</div>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        En las diez marcas de calzado se
+        identificaron cuatro tipologías
+        lingüísticas: evocativo, descriptivo,
+        patronímico y alteración.
+        Predomina el patronímico, presente
+        en cuatro marcas, seguido del
+        evocativo con tres y la alteración
+        con dos. La denominación descriptiva
+        aparece en una marca.
+        Estas estrategias permiten construir
+        nombres comerciales a partir
+        de apellidos, asociaciones simbólicas,
+        cualidades del producto y
+        modificaciones lingüísticas,
+        contribuyendo al reconocimiento
+        y diferenciación de las marcas.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · CALZADO · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

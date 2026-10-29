@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bancos | Signo escritural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+    border-top:1px solid rgba(197,160,96,.35);
+    margin-top:13px;
+    padding-top:12px;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:280px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas,.clasificaciones{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / BANCOS
+    </div>
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+    <p class="subtitulo">
+        La tipografía como elemento de identidad bancaria
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+    <h2>¿Cómo se representan los nombres bancarios?</h2>
+    <p>
+        El signo escritural analiza las características
+        tipográficas utilizadas en los nombres de marca.
+        En esta categoría se estudian diez instituciones
+        bancarias, considerando la clasificación de
+        sus letras, el peso visual, la inclinación,
+        el uso de mayúsculas y minúsculas,
+        y la personalización de sus logotipos.
+    </p>
+</section>
+
+<!-- 01. CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / CLASIFICACIONES TIPOGRÁFICAS</small>
+    <h2>Familias y estilos presentes</h2>
+</div>
+
+<section class="resumen">
+    <p class="resumen-intro">
+        En los identificadores bancarios analizados
+        predominan las letras sans serif, que
+        transmiten una apariencia limpia y contemporánea.
+        Se utilizan diferentes pesos tipográficos,
+        desde trazos ligeros hasta caracteres
+        gruesos de gran presencia visual.
+        Las mayúsculas y las modificaciones
+        particulares de las letras contribuyen
+        a diferenciar cada institución.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+            <h3>01. Sans serif</h3>
+            <p>
+                Caracteres sin remates que favorecen
+                una apariencia clara, moderna y legible.
+            </p>
+            <div class="ejemplos">
+                Banco Pichincha, Banco Guayaquil,
+                Banco del Pacífico, Produbanco,
+                Banco Internacional, JPMorgan Chase,
+                Bank of America, Santander, HSBC y BBVA.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>02. Geométrica</h3>
+            <p>
+                Letras construidas con formas
+                regulares, líneas rectas
+                y curvas de proporciones controladas.
+            </p>
+            <div class="ejemplos">
+                Banco Pichincha, Banco Guayaquil,
+                HSBC y BBVA.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>03. Humanista</h3>
+            <p>
+                Letras sans serif con proporciones
+                y aperturas que favorecen
+                una lectura natural y cercana.
+            </p>
+            <div class="ejemplos">
+                Banco del Pacífico, Produbanco,
+                Santander y JPMorgan Chase.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>04. Personalizada</h3>
+            <p>
+                Caracteres modificados en su forma,
+                proporción o disposición para
+                construir un identificador distintivo.
+            </p>
+            <div class="ejemplos">
+                Presente en distintos grados
+                en las diez marcas bancarias.
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Estilos tipográficos utilizados</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación escritural:</strong>
+        Las diez instituciones bancarias
+        utilizan principalmente letras
+        sans serif y composiciones
+        tipográficas de alta legibilidad.
+        Algunas emplean mayúsculas para
+        transmitir firmeza institucional,
+        mientras que otras combinan
+        mayúsculas y minúsculas para
+        comunicar cercanía. La variedad
+        de pesos y la personalización
+        de los caracteres permite
+        diferenciar las marcas.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        El signo escritural de las marcas
+        bancarias demuestra la importancia
+        de la tipografía en la identidad
+        corporativa. Banco Pichincha,
+        HSBC y BBVA utilizan letras
+        de fuerte presencia visual;
+        Banco Guayaquil y Banco del Pacífico
+        combinan distintos tamaños
+        tipográficos; mientras que
+        Produbanco, Santander y JPMorgan Chase
+        mantienen composiciones claras
+        y reconocibles. En conjunto,
+        la tipografía contribuye a
+        proyectar confianza, estabilidad
+        y profesionalismo.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · BANCOS · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  LOGOTIPOS:
+  Se buscan en la carpeta "imagenes"
+  con varias extensiones.
+*/
+
+const marcas = [
+
+{
+    nombre:"Banco Pichincha",
+    imagenes:["bancopichincha","banco_pichincha","pichincha"],
+    leyenda:"Sans serif geométrica y gruesa",
+    clasificacion:"Sans serif geométrica.",
+    peso:"Grueso en la denominación principal.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas.",
+    personalizacion:"Caracteres compactos en dos líneas, acompañados de un símbolo amarillo y azul."
+},
+
+{
+    nombre:"Banco Guayaquil",
+    imagenes:["bancoguayaquil","banco_guayaquil","guayaquil"],
+    leyenda:"Sans serif moderna",
+    clasificacion:"Sans serif geométrica.",
+    peso:"Regular a medio.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas.",
+    personalizacion:"Composición de letras azules en dos líneas, acompañada por un símbolo circular multicolor."
+},
+
+{
+    nombre:"Banco del Pacífico",
+    imagenes:["bancodelpacifico","banco_del_pacifico","pacifico","pacífico"],
+    leyenda:"Sans serif humanista",
+    clasificacion:"Sans serif de apariencia humanista.",
+    peso:"Regular a medio.",
+    inclinacion:"Recta.",
+    mayusculas:"Iniciales mayúsculas y letras restantes minúsculas.",
+    personalizacion:"Caracteres azules de apariencia limpia, acompañados por un símbolo geométrico celeste."
+},
+
+{
+    nombre:"Produbanco",
+    imagenes:["produbanco"],
+    leyenda:"Sans serif inclinada",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Medio a grueso.",
+    inclinacion:"Inclinación hacia la derecha.",
+    mayusculas:"Inicial mayúscula y letras restantes minúsculas.",
+    personalizacion:"El nombre presenta una inclinación visible y se complementa con una estrella verde."
+},
+
+{
+    nombre:"Banco Internacional",
+    imagenes:["bancointernacional","banco_internacional","internacional"],
+    leyenda:"Sans serif institucional",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Regular a medio.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas.",
+    personalizacion:"Composición compacta con la palabra BANCO sobre INTERNACIONAL y un símbolo de líneas anaranjadas."
+},
+
+{
+    nombre:"JPMorgan Chase",
+    imagenes:["jpmorganchase","jp_morgan_chase","jpmorgan","chase"],
+    leyenda:"Sans serif de gran legibilidad",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Combinación de mayúsculas y minúsculas.",
+    personalizacion:"Nombre compuesto con letras azules, de estructura compacta y presencia institucional."
+},
+
+{
+    nombre:"Bank of America",
+    imagenes:["bankofamerica","bank_of_america","america"],
+    leyenda:"Sans serif institucional",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas en la versión analizada.",
+    personalizacion:"Espaciado amplio entre caracteres, acompañado de un símbolo formado por franjas rojas y azules."
+},
+
+{
+    nombre:"Santander",
+    imagenes:["santander"],
+    leyenda:"Sans serif de formas suaves",
+    clasificacion:"Sans serif humanista.",
+    peso:"Regular a medio.",
+    inclinacion:"Recta.",
+    mayusculas:"Inicial mayúscula y letras restantes minúsculas.",
+    personalizacion:"Letras rojas de trazos suaves y proporciones equilibradas, acompañadas por el símbolo de una llama."
+},
+
+{
+    nombre:"HSBC",
+    imagenes:["hsbc"],
+    leyenda:"Sans serif geométrica",
+    clasificacion:"Sans serif geométrica.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas.",
+    personalizacion:"Caracteres negros compactos, acompañados de una figura geométrica roja formada por triángulos."
+},
+
+{
+    nombre:"BBVA",
+    imagenes:["bbva"],
+    leyenda:"Sans serif geométrica personalizada",
+    clasificacion:"Sans serif geométrica.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas.",
+    personalizacion:"Caracteres azules de construcción geométrica, con modificaciones en las formas de las letras."
+}
+
+];
+
+const zona=document.getElementById("tarjetas");
+
+/* CREAR CAMPOS */
+
+function dato(titulo,descripcion){
+
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+    return bloque;
+}
+
+/* BUSCAR LOGOTIPOS */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png","jpg","jpeg","webp","svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+/* GENERAR TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    contenido.append(
+        dato("Clasificación tipográfica",marca.clasificacion),
+        dato("Peso tipográfico",marca.peso),
+        dato("Inclinación",marca.inclinacion),
+        dato("Mayúsculas y minúsculas",marca.mayusculas),
+        dato("Personalización",marca.personalizacion)
+    );
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(imagen,marca.imagenes,marca.nombre);
+
+});
+
+</script>
+</body>
+</html>

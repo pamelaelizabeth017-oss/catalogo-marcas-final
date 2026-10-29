@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relojes | Signo lingüístico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+.introduccion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    padding:24px;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+/* GRUPOS */
+
+.grupo{
+    margin-bottom:32px;
+}
+
+.grupo-titulo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:17px 22px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    color:white;
+    border-radius:12px 12px 0 0;
+    border-bottom:3px solid var(--dorado);
+}
+
+.grupo-titulo h3{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    margin:0;
+}
+
+.grupo-titulo span{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.grupo-descripcion{
+    padding:17px 22px;
+    background:#E2F0E7;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    border:1px solid rgba(153,190,161,.38);
+}
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    padding-top:18px;
+}
+
+.tarjeta{
+    padding:25px;
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    box-shadow:0 9px 24px rgba(28,95,63,.07);
+}
+
+.tarjeta:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+
+.numero{
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.2px;
+}
+
+.tarjeta h4{
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    margin:12px 0;
+}
+
+.tarjeta p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.etiqueta{
+    display:inline-block;
+    margin-top:17px;
+    padding:7px 11px;
+    border-radius:6px;
+    background:#E2F0E7;
+    color:#17664A;
+    font-size:11px;
+    font-weight:800;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .grupo-titulo h3{font-size:21px}
+    .seccion h2{font-size:29px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / RELOJES
+    </div>
+
+    <h1 class="titulo">SIGNO LINGÜÍSTICO</h1>
+
+    <p class="subtitulo">
+        Origen, significado y construcción
+        de los nombres de diez marcas de relojes
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>¿Qué comunican los nombres de las marcas de relojes?</h2>
+
+    <p>
+        El signo lingüístico estudia
+        la construcción y el significado
+        de los nombres comerciales.
+        En la categoría de relojes
+        encontramos apellidos
+        de fundadores, palabras
+        de otros idiomas,
+        nombres inventados
+        y combinaciones verbales
+        que pueden sugerir
+        precisión, prestigio,
+        innovación y relación
+        con el tiempo.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN LINGÜÍSTICA</small>
+    <h2>Tipologías presentes en la categoría</h2>
+</div>
+
+<div class="introduccion">
+    Para este análisis se utiliza
+    una <strong>clasificación principal por marca</strong>.
+    Algunas denominaciones poseen más
+    de un rasgo lingüístico;
+    por ejemplo, TAG Heuer combina
+    una sigla con un apellido,
+    mientras que Swatch y Timex
+    se construyen mediante
+    combinaciones o modificaciones
+    de palabras.
+</div>
+
+<!-- PATRONÍMICO -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>01. Patronímico</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres comerciales derivados
+        del apellido de una persona
+        relacionada con el origen
+        o la historia de la marca.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4>Casio</h4>
+            <p>
+                El nombre Casio procede
+                de una adaptación del apellido
+                Kashio, correspondiente
+                a la familia fundadora
+                de la empresa japonesa.
+                Es una denominación patronímica
+                porque conserva la referencia
+                al apellido de sus creadores.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4>Tissot</h4>
+            <p>
+                La marca toma su nombre
+                del apellido de la familia
+                Tissot, vinculada con
+                la fundación de la empresa
+                relojera suiza.
+                El apellido funciona
+                como identificador
+                de su trayectoria histórica.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4>TAG Heuer</h4>
+            <p>
+                Es una denominación compuesta:
+                «Heuer» procede del apellido
+                del fundador de la empresa
+                relojera original,
+                mientras que «TAG»
+                corresponde a una sigla.
+                Se incluye en esta categoría
+                por su componente patronímico,
+                aunque también presenta
+                un elemento siglado.
+            </p>
+            <span class="etiqueta">PATRONÍMICO + SIGLA</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- EVOCATIVO -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>02. Evocativo</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones que sugieren
+        ideas, valores o cualidades
+        mediante palabras con significado,
+        sin describir literalmente
+        el funcionamiento del producto.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4>Omega</h4>
+            <p>
+                Omega es la última letra
+                del alfabeto griego.
+                Como nombre de marca,
+                puede evocar culminación,
+                excelencia y perfección,
+                valores relacionados
+                con la precisión relojera.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4>Citizen</h4>
+            <p>
+                «Citizen» significa
+                «ciudadano» en inglés.
+                La palabra puede sugerir
+                cercanía, universalidad
+                y accesibilidad,
+                al relacionar la marca
+                con las personas
+                que utilizan sus relojes.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4>Fossil</h4>
+            <p>
+                «Fossil» significa
+                «fósil» en inglés.
+                La palabra evoca
+                antigüedad, permanencia
+                y relación con el pasado,
+                aunque no describe
+                directamente un reloj.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- ALTERACIÓN -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>03. Alteración</h3>
+        <span>2 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres creados mediante
+        la modificación, reducción
+        o combinación de palabras
+        para formar una denominación
+        breve y distintiva.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4>Swatch</h4>
+            <p>
+                El nombre se relaciona
+                con la expresión
+                «second watch»,
+                asociada con la idea
+                de un segundo reloj.
+                Su construcción reúne
+                elementos lingüísticos
+                en una denominación
+                corta y fácil de recordar.
+            </p>
+            <span class="etiqueta">ALTERACIÓN</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4>Timex</h4>
+            <p>
+                Timex es una denominación
+                construida a partir
+                de una referencia verbal
+                al tiempo y una terminación
+                distintiva.
+                La modificación produce
+                un nombre breve
+                y de sonoridad comercial.
+            </p>
+            <span class="etiqueta">ALTERACIÓN</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- ABSTRACTO -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>04. Abstracto</h3>
+        <span>1 MARCA</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones que no describen
+        directamente el producto
+        y funcionan como nombres
+        distintivos dentro del mercado.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4>Rolex</h4>
+            <p>
+                Rolex es un nombre
+                creado para identificar
+                la marca relojera.
+                No describe literalmente
+                las características
+                de un reloj.
+                Su brevedad y sonoridad
+                contribuyen a construir
+                una identidad verbal
+                propia y reconocible.
+            </p>
+            <span class="etiqueta">ABSTRACTO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- DESCRIPTIVO / EVOCATIVO -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>05. Evocativo de origen lingüístico</h3>
+        <span>1 MARCA</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres procedentes
+        de una palabra existente
+        en otro idioma que aporta
+        una asociación conceptual
+        a la identidad comercial.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4>Seiko</h4>
+            <p>
+                Seiko es una denominación
+                japonesa que puede relacionarse
+                con ideas como precisión,
+                refinamiento o excelencia,
+                dependiendo de los caracteres
+                empleados en su interpretación.
+                En el contexto relojero,
+                el nombre evoca calidad
+                y exactitud.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación lingüística:</strong>
+        En las diez marcas de relojes
+        se identifican diferentes estrategias
+        de denominación. Casio,
+        Tissot y TAG Heuer
+        mantienen referencias
+        a apellidos relacionados
+        con su historia empresarial.
+        Omega, Citizen, Fossil
+        y Seiko utilizan nombres
+        que evocan conceptos
+        como excelencia,
+        universalidad,
+        permanencia o precisión.
+        Swatch y Timex presentan
+        denominaciones construidas
+        mediante modificaciones
+        lingüísticas, mientras que
+        Rolex se distingue
+        por utilizar un nombre
+        de carácter abstracto.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        El análisis lingüístico demuestra
+        que los nombres de las marcas
+        de relojes son elementos
+        fundamentales de su identidad.
+        Las denominaciones patronímicas
+        pueden reforzar la tradición
+        y la trayectoria histórica;
+        los nombres evocativos
+        permiten asociar las marcas
+        con determinados valores;
+        y las denominaciones
+        creadas o modificadas
+        favorecen la diferenciación.
+        En conjunto, estas estrategias
+        contribuyen al reconocimiento
+        de las marcas
+        dentro del sector relojero.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · RELOJES · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

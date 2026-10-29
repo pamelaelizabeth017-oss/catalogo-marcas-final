@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Electrodomésticos | Signo lingüístico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --verde: #063D2D;
+    --verde2: #17664A;
+    --dorado: #C5A060;
+    --texto: #587064;
+    --crema: #F8F4ED;
+    --salvia: #E2F0E7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", Arial, sans-serif;
+    color: var(--verde);
+
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95), transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28), transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21), transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15), transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF, #E0EDE4 46%, #F4F0E5);
+
+    background-attachment: fixed;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.8);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    width: 330px;
+    height: 330px;
+    right: -130px;
+    top: 150px;
+    background: radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after {
+    width: 220px;
+    height: 220px;
+    left: -105px;
+    bottom: 55px;
+    background: radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 0 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    text-align: center;
+    padding: 22px 12px 25px;
+    margin-bottom: 28px;
+}
+
+.ruta {
+    color: #A17B3D;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-family: "Bodoni MT", "Didot",
+        "Libre Bodoni", Georgia, serif;
+    font-size: clamp(38px, 5vw, 65px);
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+}
+
+.subtitulo {
+    color: #4F7160;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.encabezado::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 2px;
+    background: var(--dorado);
+    margin: 20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion {
+    padding: 34px 38px;
+    margin-bottom: 35px;
+    border-radius: 16px;
+    color: white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24), transparent 32%),
+        linear-gradient(115deg, #043626, #126348);
+    border: 1px solid rgba(207,174,109,.5);
+    box-shadow: 0 12px 30px rgba(4,54,38,.13);
+    position: relative;
+    overflow: hidden;
+}
+
+.presentacion::after {
+    content: "A";
+    position: absolute;
+    right: 25px;
+    bottom: -65px;
+    font: 175px "Libre Bodoni", Georgia, serif;
+    color: rgba(255,255,255,.06);
+}
+
+.codigo {
+    color: #E6C98D;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.presentacion h2 {
+    font: 500 32px "Libre Bodoni", Georgia, serif;
+    margin: 13px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.presentacion p {
+    color: #E6F2E9;
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 850px;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* SECCIONES */
+
+.seccion {
+    margin: 38px 0 22px;
+}
+
+.seccion small {
+    color: #A47B39;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.seccion h2 {
+    font: 500 34px "Libre Bodoni", Georgia, serif;
+    margin: 10px 0 0;
+}
+
+.introduccion {
+    background: rgba(255,255,255,.9);
+    border: 1px solid rgba(153,190,161,.38);
+    border-radius: 15px;
+    padding: 24px;
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+/* GRUPOS LINGÜÍSTICOS */
+
+.grupo {
+    margin-bottom: 32px;
+}
+
+.grupo-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 22px;
+    background: linear-gradient(110deg, #06402E, #17664A);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 3px solid var(--dorado);
+}
+
+.grupo-titulo h3 {
+    font: 500 25px "Libre Bodoni", Georgia, serif;
+    margin: 0;
+}
+
+.grupo-titulo span {
+    color: #E8C98C;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.grupo-descripcion {
+    padding: 17px 22px;
+    background: #E2F0E7;
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.85;
+    border: 1px solid rgba(153,190,161,.38);
+}
+
+/* TARJETAS */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 18px;
+    padding-top: 18px;
+}
+
+.tarjeta {
+    padding: 25px;
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(153,190,161,.38);
+    border-top: 3px solid var(--dorado);
+    border-radius: 13px;
+    box-shadow: 0 9px 24px rgba(28,95,63,.07);
+}
+
+.tarjeta:nth-child(even) {
+    background: rgba(226,240,231,.94);
+}
+
+.numero {
+    color: #AE853E;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.tarjeta h4 {
+    font: 500 27px "Libre Bodoni", Georgia, serif;
+    margin: 12px 0;
+}
+
+.tarjeta p {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 7px 11px;
+    border-radius: 6px;
+    background: #E2F0E7;
+    color: #17664A;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre {
+    margin-top: 30px;
+    padding: 28px 30px;
+    background: linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border: 1px solid rgba(197,160,96,.35);
+    border-left: 4px solid var(--dorado);
+    border-radius: 0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.95;
+    margin: 0;
+}
+
+.observacion strong {
+    color: var(--verde);
+}
+
+.cierre h3 {
+    font: 500 28px "Libre Bodoni", Georgia, serif;
+    margin: 0 0 12px;
+}
+
+.pie {
+    margin-top: 32px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(177,151,98,.45);
+    text-align: center;
+    color: #668073;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media(max-width:760px) {
+    .contenedor { width: 93%; }
+    .tarjetas { grid-template-columns: 1fr; }
+    .presentacion { padding: 25px 22px; }
+    .titulo { font-size: clamp(30px,7vw,44px); }
+    .grupo-titulo h3 { font-size: 21px; }
+    .seccion h2 { font-size: 29px; }
+    .observacion,.cierre { padding: 23px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / ELECTRODOMÉSTICOS
+    </div>
+
+    <h1 class="titulo">SIGNO LINGÜÍSTICO</h1>
+
+    <p class="subtitulo">
+        Origen, significado y construcción de los nombres
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>¿Qué comunican los nombres de los electrodomésticos?</h2>
+
+    <p>
+        El signo lingüístico analiza la denominación
+        verbal de una marca, considerando su origen,
+        significado y construcción. En el sector
+        de los electrodomésticos existen nombres
+        derivados de apellidos de fundadores,
+        iniciales, palabras existentes y
+        denominaciones creadas.
+    </p>
+</section>
+
+<!-- CLASIFICACIÓN -->
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN LINGÜÍSTICA</small>
+    <h2>Tipologías presentes en la categoría</h2>
+</div>
+
+<div class="introduccion">
+    Las diez marcas se organizan según
+    su tipología lingüística predominante.
+    Algunas denominaciones pueden presentar
+    más de una característica; por ello,
+    se explica el criterio utilizado
+    en cada caso.
+</div>
+
+<!-- GRUPO 1: PATRONÍMICOS -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>01. Patronímico</h3>
+        <span>4 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones originadas en nombres
+        o apellidos de personas vinculadas
+        con la fundación o historia
+        de una empresa.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4>Bosch</h4>
+            <p>
+                Su nombre procede del apellido
+                de Robert Bosch, fundador de
+                la empresa. La denominación
+                conserva una referencia
+                directa a su origen empresarial.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4>Oster</h4>
+            <p>
+                La marca utiliza el apellido
+                Oster, relacionado con
+                John Oster, fundador de
+                la empresa. El nombre
+                identifica la marca
+                mediante una referencia personal.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4>Black+Decker</h4>
+            <p>
+                Combina los apellidos
+                de S. Duncan Black
+                y Alonzo G. Decker,
+                fundadores de la empresa.
+                El signo «+» funciona
+                como elemento de unión
+                entre ambos apellidos.
+            </p>
+            <span class="etiqueta">PATRONÍMICO COMPUESTO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4>Philips</h4>
+            <p>
+                Procede del apellido
+                de la familia Philips,
+                vinculada con los orígenes
+                de la compañía. Su nombre
+                mantiene una denominación
+                basada en un apellido.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- GRUPO 2: SIGLAS -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>02. Sigla</h3>
+        <span>1 MARCA</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones formadas por
+        letras iniciales o abreviaciones
+        de expresiones más extensas.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4>LG</h4>
+            <p>
+                Las letras LG proceden
+                históricamente de
+                «Lucky» y «GoldStar»,
+                nombres asociados
+                con las empresas
+                que dieron origen
+                al grupo. Actualmente
+                funcionan como una
+                denominación breve
+                y reconocible.
+            </p>
+            <span class="etiqueta">SIGLA</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- GRUPO 3: EVOCATIVOS -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>03. Evocativo</h3>
+        <span>2 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres que utilizan palabras
+        o referencias capaces de
+        sugerir conceptos, cualidades
+        o sensaciones relacionadas
+        con la marca.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4>Whirlpool</h4>
+            <p>
+                Es una palabra inglesa
+                que significa «remolino».
+                Evoca el movimiento
+                giratorio del agua,
+                especialmente relacionado
+                con el funcionamiento
+                de equipos de lavado.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4>KitchenAid</h4>
+            <p>
+                Combina las palabras
+                inglesas «kitchen»
+                (cocina) y «aid»
+                (ayuda). Su significado
+                se aproxima a
+                «ayuda para la cocina»,
+                expresando directamente
+                la utilidad de
+                sus productos.
+            </p>
+            <span class="etiqueta">DESCRIPTIVO COMPUESTO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- GRUPO 4: NOMBRES CREADOS -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>04. Denominaciones creadas</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres comerciales construidos
+        o adaptados para distinguir
+        una empresa. Su interpretación
+        debe diferenciarse de una
+        etimología histórica comprobada.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4>Mabe</h4>
+            <p>
+                Su denominación se relaciona
+                con la combinación de
+                fragmentos de los apellidos
+                Mabardi y Berrondo,
+                vinculados con sus fundadores.
+                Se trata de un nombre
+                construido mediante
+                una contracción.
+            </p>
+            <span class="etiqueta">ACRÓNIMO DE APELLIDOS</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4>Electrolux</h4>
+            <p>
+                Su denominación combina
+                referencias a «Elektro»
+                y «Lux», nombres asociados
+                con la historia de la empresa.
+                La unión genera un nombre
+                comercial compuesto
+                y distintivo.
+            </p>
+            <span class="etiqueta">COMBINACIÓN DE NOMBRES</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4>Teka</h4>
+            <p>
+                Es una denominación
+                formada a partir
+                de referencias históricas
+                vinculadas con la empresa.
+                Su forma breve facilita
+                la pronunciación y
+                el reconocimiento comercial.
+            </p>
+            <span class="etiqueta">NOMBRE COMERCIAL CREADO</span>
+        </article>
+
+    </div>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación lingüística:</strong>
+        En la categoría de electrodomésticos
+        destacan los nombres patronímicos,
+        como Bosch, Oster, Black+Decker
+        y Philips, que conservan apellidos
+        vinculados con sus fundadores.
+        También se identifican
+        denominaciones abreviadas,
+        como LG, y nombres construidos
+        mediante combinaciones,
+        como Mabe y Electrolux.
+        Whirlpool y KitchenAid
+        comunican asociaciones
+        relacionadas con el movimiento
+        y la utilidad de los productos.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis lingüístico de las
+        diez marcas evidencia que
+        las empresas de electrodomésticos
+        utilizan diferentes estrategias
+        para construir sus nombres.
+        Los apellidos refuerzan
+        la continuidad histórica,
+        las siglas permiten crear
+        identificadores breves
+        y las denominaciones
+        evocativas o descriptivas
+        relacionan la marca
+        con sus productos.
+        En conjunto, estas
+        estrategias contribuyen
+        a diferenciar las empresas
+        y facilitar su reconocimiento.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · ELECTRODOMÉSTICOS · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

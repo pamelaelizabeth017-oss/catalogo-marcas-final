@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bebidas - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS MODALES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* LOGOTIPO AMPLIADO */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .tarjeta img {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>BEBIDAS</h1>
+    <p>Explora las marcas de bebidas y descubre su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOTIPOS -->
+<div class="modal" id="modal-logo"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Logotipo ampliado">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar imagen">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Información de la marca">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar información">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* LAS DIEZ MARCAS DE BEBIDAS */
+const marcas = [
+    {
+        nombre: "Coca-Cola",
+        imagen: "imagenes/cocacola.png",
+        descripcion: "Coca-Cola es una marca estadounidense de bebidas creada en 1886. Su identidad visual destaca por una tipografía manuscrita característica y el uso del rojo y blanco, que refuerzan su reconocimiento internacional."
+    },
+    {
+        nombre: "Pepsi",
+        imagen: "imagenes/pepsi.png",
+        descripcion: "Pepsi es una marca estadounidense de bebidas creada en 1893. Su identidad visual utiliza un símbolo circular con los colores rojo, blanco y azul, acompañado por el nombre de la marca."
+    },
+    {
+        nombre: "Sprite",
+        imagen: "imagenes/sprite.png",
+        descripcion: "Sprite es una marca de bebida gaseosa lanzada en 1961. Su identidad visual utiliza principalmente el verde, acompañado de una tipografía dinámica que transmite frescura."
+    },
+    {
+        nombre: "Fanta",
+        imagen: "imagenes/fanta.png",
+        descripcion: "Fanta es una marca de bebidas gaseosas originada en Alemania en 1940. Su identidad visual utiliza colores vivos, especialmente el naranja, y una tipografía de formas expresivas."
+    },
+    {
+        nombre: "Red Bull",
+        imagen: "imagenes/redbull.png",
+        descripcion: "Red Bull es una marca de bebida energética lanzada en Austria en 1987. Su logotipo muestra dos toros enfrentados frente a un círculo amarillo, acompañados del nombre de la marca."
+    },
+    {
+        nombre: "Monster Energy",
+        imagen: "imagenes/monster.png",
+        descripcion: "Monster Energy es una marca estadounidense de bebidas energéticas lanzada en 2002. Su identidad visual destaca por una letra M formada por tres marcas semejantes a rasguños, frecuentemente representada en verde."
+    },
+    {
+        nombre: "Gatorade",
+        imagen: "imagenes/gatorade.png",
+        descripcion: "Gatorade es una marca estadounidense de bebidas deportivas desarrollada en 1965. Su identidad visual utiliza la letra G acompañada de un rayo, relacionado con la energía y el rendimiento físico."
+    },
+    {
+        nombre: "Powerade",
+        imagen: "imagenes/powerade.png",
+        descripcion: "Powerade es una marca de bebidas deportivas lanzada en 1988. Su identidad visual destaca por una tipografía fuerte y moderna, con una presencia frecuente de tonos azules."
+    },
+    {
+        nombre: "Schweppes",
+        imagen: "imagenes/schweppes.png",
+        descripcion: "Schweppes es una marca de bebidas con origen en 1783. Su identidad visual utiliza el nombre de la marca en una composición característica, frecuentemente acompañada por el color amarillo."
+    },
+    {
+        nombre: "Nestea",
+        imagen: "imagenes/nestea.png",
+        descripcion: "Nestea es una marca de bebidas de té. Su identidad visual utiliza una tipografía de formas suaves y colores asociados con la frescura, especialmente el azul y el verde."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+let elementoAnterior = null;
+
+/* CREAR LAS TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.type = "button";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-logo .cerrar").focus();
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-info .cerrar").focus();
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+
+    document.getElementById("imagen-grande")
+        .removeAttribute("src");
+
+    if (elementoAnterior) {
+        elementoAnterior.focus();
+    }
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

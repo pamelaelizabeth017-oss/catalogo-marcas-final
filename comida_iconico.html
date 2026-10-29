@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signo icónico | Comida rápida</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Didot",
+        "Libre Bodoni",
+        Georgia,
+        serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:20px auto 0;
+    background:var(--dorado);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"D";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:14px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.resumen{
+    background:rgba(255,255,255,.85);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen>p{
+    color:var(--texto);
+    font-size:14px;
+    line-height:1.9;
+    margin:0 0 22px;
+}
+
+.niveles{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.nivel{
+    background:#F8FAF7;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+    border-radius:12px;
+    padding:22px;
+}
+
+.nivel:nth-child(even){
+    background:#E6F0E7;
+}
+
+.nivel h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.nivel p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.nivel .ejemplos{
+    margin-top:15px;
+    padding-top:12px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.94);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.14);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:19px 23px;
+    min-height:60px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera span{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    margin:0;
+    text-align:right;
+}
+
+.tarjeta-contenido{
+    padding:23px;
+}
+
+/* LOGOTIPOS */
+
+.logo-area{
+    height:185px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(130deg,#F8FAF7,#E4F0E8);
+    border:1px solid rgba(23,102,74,.13);
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.tarjeta:nth-child(even) .logo-area{
+    background:linear-gradient(130deg,#F8F5EF,#E4F0E8);
+}
+
+.logo-area img{
+    display:block;
+    width:100%;
+    max-width:270px;
+    height:140px;
+    object-fit:contain;
+}
+
+.logo-faltante{
+    font:500 26px "Libre Bodoni",Georgia,serif;
+    color:var(--verde);
+    text-align:center;
+}
+
+/* ANÁLISIS DE MARCAS */
+
+.simbolo{
+    color:#A97C39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    line-height:1.6;
+    margin:0 0 12px;
+}
+
+.etiqueta{
+    display:inline-block;
+    background:#E4F0E8;
+    color:#17664A;
+    border:1px solid rgba(23,102,74,.22);
+    border-radius:7px;
+    padding:10px 13px;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:17px;
+}
+
+.descripcion{
+    color:var(--texto);
+    font-size:14px;
+    line-height:1.9;
+    margin:0 0 17px;
+}
+
+.justificacion{
+    border-top:1px solid rgba(197,160,96,.38);
+    padding-top:15px;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+/* TABLA DE COMPARACIÓN GENERAL */
+
+.tabla-contenedor{
+    background:rgba(255,255,255,.90);
+    padding:13px;
+    border:1px solid rgba(153,190,161,.4);
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(28,95,63,.07);
+    overflow-x:auto;
+}
+
+.tabla-iconicidad{
+    width:100%;
+    border-collapse:collapse;
+    min-width:580px;
+    font-size:13px;
+}
+
+.tabla-iconicidad thead{
+    background:#063D2D;
+    color:white;
+}
+
+.tabla-iconicidad th{
+    text-align:left;
+    padding:17px 15px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.tabla-iconicidad td{
+    padding:16px 15px;
+    color:var(--texto);
+    line-height:1.6;
+    border-bottom:1px solid rgba(23,102,74,.12);
+}
+
+.tabla-iconicidad tbody tr:nth-child(even){
+    background:#EAF3EC;
+}
+
+.tabla-iconicidad tbody tr:last-child td{
+    border-bottom:none;
+}
+
+/* NOTA Y CONCLUSIÓN */
+
+.nota,
+.cierre{
+    margin-top:32px;
+    padding:28px 30px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.nota{
+    font-size:14px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.cierre p{
+    font-size:14px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:36px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+
+@media(max-width:760px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas,
+    .niveles{
+        grid-template-columns:1fr;
+    }
+
+    .presentacion{
+        padding:25px 22px;
+    }
+
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+
+    .seccion h2{
+        font-size:29px;
+    }
+
+    .resumen{
+        padding:19px;
+    }
+
+    .tarjeta-contenido{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / COMIDA RÁPIDA
+    </div>
+
+    <h1 class="titulo">
+        SIGNO ICÓNICO
+    </h1>
+
+    <p class="subtitulo">
+        El símbolo como elemento de identidad visual
+    </p>
+
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>
+        ¿Qué representan los símbolos de las marcas?
+    </h2>
+
+    <p>
+        El signo icónico analiza los elementos gráficos
+        que forman parte de la identidad visual de las marcas.
+        En la categoría Comida rápida se estudian diez
+        identificadores y se clasifican sus símbolos
+        según el nivel de iconicidad: figurativa realista,
+        figurativa no realista, abstracción figurativa
+        y abstracción no figurativa. Cuando una marca
+        utiliza únicamente un logotipo en la versión
+        seleccionada, se indica la ausencia
+        de un símbolo independiente.
+    </p>
+
+</section>
+
+<!-- 01: NIVELES -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="resumen">
+
+    <p>
+        Los símbolos de las marcas pueden representar
+        personas, objetos o formas abstractas.
+        Su nivel de iconicidad depende del grado
+        de semejanza que mantienen con aquello
+        que representan. En esta selección predominan
+        las figuras simplificadas y las ilustraciones
+        estilizadas.
+    </p>
+
+    <div class="niveles">
+
+        <article class="nivel">
+            <h3>01. Figurativa realista</h3>
+            <p>
+                Representación visual de personas,
+                animales u objetos que conserva
+                características y detalles próximos
+                a su apariencia real.
+            </p>
+            <div class="ejemplos">
+                No se identifica una representación
+                figurativa realista en esta selección.
+            </div>
+        </article>
+
+        <article class="nivel">
+            <h3>02. Figurativa no realista</h3>
+            <p>
+                Representación reconocible de una persona,
+                animal u objeto, pero con simplificaciones,
+                estilizaciones o modificaciones visuales.
+            </p>
+            <div class="ejemplos">
+                KFC, Wendy's y Little Caesars.
+            </div>
+        </article>
+
+        <article class="nivel">
+            <h3>03. Abstracción figurativa</h3>
+            <p>
+                Representación muy simplificada
+                que conserva una referencia reconocible
+                a una figura u objeto.
+            </p>
+            <div class="ejemplos">
+                Burger King, Domino's, Pizza Hut
+                y Taco Bell.
+            </div>
+        </article>
+
+        <article class="nivel">
+            <h3>04. Abstracción no figurativa</h3>
+            <p>
+                Símbolos construidos con líneas,
+                figuras geométricas, monogramas
+                y composiciones que no representan
+                directamente una figura natural.
+            </p>
+            <div class="ejemplos">
+                McDonald's, por su M estilizada.
+                Subway utiliza flechas integradas
+                al nombre, sin ícono independiente.
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- 02: ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- 03: COMPARACIÓN GENERAL -->
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+
+    <table class="tabla-iconicidad">
+
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablaMarcas"></tbody>
+
+    </table>
+
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<div class="nota">
+    <strong>Observación:</strong>
+    La clasificación se basa en las versiones
+    de los identificadores utilizadas en el catálogo.
+    Algunas marcas combinan un símbolo con su nombre,
+    mientras que otras incorporan recursos gráficos
+    directamente en las letras. Por ello, se distingue
+    entre un ícono independiente y un tratamiento
+    escritural. Las categorías de abstracción
+    pueden admitir interpretaciones diferentes
+    según el criterio de análisis.
+</div>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        En las diez marcas de comida rápida
+        se identifican diferentes estrategias
+        de representación icónica. KFC,
+        Wendy's y Little Caesars utilizan
+        personajes ilustrados, mientras
+        que Burger King, Domino's,
+        Pizza Hut y Taco Bell emplean
+        objetos simplificados. McDonald's
+        destaca por convertir una letra
+        en un símbolo gráfico, y Subway
+        integra flechas a su denominación.
+        En la versión seleccionada de Popeyes
+        predomina el logotipo.
+        Estas soluciones permiten construir
+        identidades reconocibles mediante
+        distintos niveles de abstracción
+        y representación.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · COMIDA RÁPIDA · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+    IMÁGENES
+
+    Se buscan en la carpeta:
+    imagenes/
+
+    Si alguna imagen no aparece,
+    sustituye el nombre de la imagen
+    por el nombre exacto del archivo.
+
+    No necesitas crear carpetas nuevas.
+*/
+
+const marcas = [
+
+    {
+        nombre:"McDonald's",
+        imagenes:["mcdonalds","mc_donalds","mc donalds"],
+        simbolo:"ARCOS DORADOS EN FORMA DE M",
+        identificador:"Arcos dorados o M estilizada",
+        nivel:"Abstracción no figurativa",
+        descripcion:
+            "El identificador presenta dos arcos curvos unidos visualmente, que forman una M estilizada. Esta figura funciona como símbolo independiente y permite reconocer la marca incluso sin su denominación.",
+        justificacion:
+            "Se clasifica como abstracción no figurativa porque funciona principalmente como un monograma gráfico, sin representar de manera directa una persona, animal u objeto natural."
+    },
+
+    {
+        nombre:"KFC",
+        imagenes:["kfc","kentucky fried chicken"],
+        simbolo:"RETRATO DEL CORONEL SANDERS",
+        identificador:"Retrato ilustrado del coronel Sanders",
+        nivel:"Figurativa no realista",
+        descripcion:
+            "El símbolo representa el rostro del coronel Harland Sanders mediante una ilustración de líneas simplificadas. Se reconocen sus gafas, cabello, barba y rasgos faciales.",
+        justificacion:
+            "Es figurativa no realista porque representa una persona identificable mediante un dibujo estilizado, sin reproducir todos los detalles de una fotografía."
+    },
+
+    {
+        nombre:"Burger King",
+        imagenes:["burgerking","burger_king","burger king"],
+        simbolo:"PAN DE HAMBURGUESA ESTILIZADO",
+        identificador:"Dos mitades de pan simplificadas",
+        nivel:"Abstracción figurativa",
+        descripcion:
+            "El identificador utiliza dos formas curvas de color cálido que representan las partes superior e inferior de un pan de hamburguesa. El nombre se encuentra entre ambas.",
+        justificacion:
+            "Es abstracción figurativa porque simplifica un objeto real, el pan, mediante formas geométricas que conservan una referencia visual reconocible."
+    },
+
+    {
+        nombre:"Subway",
+        imagenes:["subway"],
+        simbolo:"FLECHAS INTEGRADAS AL NOMBRE",
+        identificador:"Logotipo con flechas",
+        nivel:"Sin ícono independiente",
+        descripcion:
+            "El identificador está formado por la palabra SUBWAY. Sus letras incorporan flechas en los extremos, que aportan una sensación de dirección y movimiento.",
+        justificacion:
+            "No presenta un pictograma separado del nombre en la versión seleccionada. Las flechas son recursos gráficos integrados al logotipo y se analizan como parte de su tratamiento escritural."
+    },
+
+    {
+        nombre:"Wendy's",
+        imagenes:["wendys","wendy's","wendy"],
+        simbolo:"NIÑA PELIRROJA CON TRENZAS",
+        identificador:"Rostro ilustrado de una niña",
+        nivel:"Figurativa no realista",
+        descripcion:
+            "La marca presenta el rostro ilustrado de una niña pelirroja, con trenzas y rasgos faciales simplificados. El personaje se integra visualmente con la denominación Wendy's.",
+        justificacion:
+            "Es figurativa no realista porque la figura humana se reconoce claramente, aunque está representada mediante una ilustración estilizada."
+    },
+
+    {
+        nombre:"Domino's",
+        imagenes:["dominos","domino's","domino"],
+        simbolo:"FICHA DE DOMINÓ SIMPLIFICADA",
+        identificador:"Ficha de dominó con puntos",
+        nivel:"Abstracción figurativa",
+        descripcion:
+            "El símbolo presenta dos campos geométricos de colores rojo y azul, con puntos blancos que recuerdan la superficie de una ficha del juego de dominó.",
+        justificacion:
+            "Es abstracción figurativa porque conserva los rasgos esenciales de un objeto real, la ficha de dominó, pero elimina detalles y simplifica su forma."
+    },
+
+    {
+        nombre:"Pizza Hut",
+        imagenes:["pizzahut","pizza_hut","pizza hut"],
+        simbolo:"TECHO ROJO ESTILIZADO",
+        identificador:"Silueta de un techo rojo",
+        nivel:"Abstracción figurativa",
+        descripcion:
+            "El identificador presenta una forma roja que recuerda el techo de una construcción. Se ubica sobre la denominación Pizza Hut y funciona como símbolo distintivo.",
+        justificacion:
+            "Es abstracción figurativa porque representa de forma sintética un elemento arquitectónico reconocible, conservando únicamente su silueta característica."
+    },
+
+    {
+        nombre:"Taco Bell",
+        imagenes:["tacobell","taco_bell","taco bell"],
+        simbolo:"CAMPANA ESTILIZADA",
+        identificador:"Campana simplificada",
+        nivel:"Abstracción figurativa",
+        descripcion:
+            "El símbolo representa una campana mediante curvas y espacios negativos. Su composición elimina detalles del objeto y utiliza formas simplificadas.",
+        justificacion:
+            "Es abstracción figurativa porque mantiene suficientes características para reconocer una campana, aunque no reproduce su apariencia realista."
+    },
+
+    {
+        nombre:"Popeyes",
+        imagenes:["popeyes","popeyes louisiana kitchen"],
+        simbolo:"DENOMINACIÓN TIPOGRÁFICA POPEYES",
+        identificador:"Logotipo tipográfico",
+        nivel:"Sin ícono en la versión seleccionada",
+        descripcion:
+            "En la versión seleccionada para el catálogo, la identidad visual está representada principalmente por la palabra POPEYES en letras naranjas.",
+        justificacion:
+            "No se identifica un pictograma independiente en esta versión. El elemento principal es el nombre de la marca, por lo que corresponde al signo escritural."
+    },
+
+    {
+        nombre:"Little Caesars",
+        imagenes:["littlecaesars","little_caesars","little caesars"],
+        simbolo:"PERSONAJE ROMANO CARICATURIZADO",
+        identificador:"Personaje romano ilustrado",
+        nivel:"Figurativa no realista",
+        descripcion:
+            "El identificador incorpora un personaje inspirado en la antigua Roma, representado mediante un dibujo de rasgos simplificados y elementos de vestimenta característicos.",
+        justificacion:
+            "Es figurativa no realista porque representa una figura humana reconocible mediante una ilustración caricaturesca, en lugar de una imagen realista."
+    }
+
+];
+
+/* CONTENEDORES */
+
+const contenedor = document.getElementById("tarjetas");
+const tablaMarcas = document.getElementById("tablaMarcas");
+
+/* CARGAR IMÁGENES DE LA CARPETA EXISTENTE */
+
+function cargarImagen(img,nombres,nombreMarca){
+
+    const extensiones = ["png","jpg","jpeg","webp","svg"];
+    const rutas = [];
+
+    nombres.forEach(nombre => {
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/" + nombre);
+        } else {
+            extensiones.forEach(extension => {
+                rutas.push("imagenes/" + nombre + "." + extension);
+            });
+        }
+
+    });
+
+    let indice = 0;
+
+    function probar(){
+
+        if(indice >= rutas.length){
+
+            img.style.display = "none";
+
+            const aviso = document.createElement("div");
+            aviso.className = "logo-faltante";
+            aviso.textContent = nombreMarca;
+
+            img.parentNode.appendChild(aviso);
+            return;
+        }
+
+        img.src = rutas[indice];
+        indice++;
+    }
+
+    img.onerror = probar;
+    probar();
+}
+
+/* CREAR TARJETAS Y TABLA */
+
+marcas.forEach((marca,indice) => {
+
+    /* TARJETA */
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const cabecera = document.createElement("div");
+    cabecera.className = "tarjeta-cabecera";
+
+    const numero = document.createElement("span");
+    numero.textContent =
+        "MARCA " + String(indice+1).padStart(2,"0");
+
+    const nombre = document.createElement("h3");
+    nombre.textContent = marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido = document.createElement("div");
+    contenido.className = "tarjeta-contenido";
+
+    const logoArea = document.createElement("div");
+    logoArea.className = "logo-area";
+
+    const imagen = document.createElement("img");
+    imagen.alt = "Identificador visual de " + marca.nombre;
+
+    logoArea.appendChild(imagen);
+
+    const simbolo = document.createElement("div");
+    simbolo.className = "simbolo";
+    simbolo.textContent = marca.simbolo;
+
+    const etiqueta = document.createElement("div");
+    etiqueta.className = "etiqueta";
+    etiqueta.textContent = marca.nivel;
+
+    const descripcion = document.createElement("p");
+    descripcion.className = "descripcion";
+    descripcion.textContent = marca.descripcion;
+
+    const justificacion = document.createElement("p");
+    justificacion.className = "justificacion";
+    justificacion.textContent = marca.justificacion;
+
+    contenido.append(
+        logoArea,
+        simbolo,
+        etiqueta,
+        descripcion,
+        justificacion
+    );
+
+    tarjeta.append(cabecera,contenido);
+    contenedor.appendChild(tarjeta);
+
+    cargarImagen(imagen,marca.imagenes,marca.nombre);
+
+    /* FILA DE LA TABLA */
+
+    const fila = document.createElement("tr");
+
+    const celdaMarca = document.createElement("td");
+    celdaMarca.textContent = marca.nombre;
+
+    const celdaIdentificador = document.createElement("td");
+    celdaIdentificador.textContent = marca.identificador;
+
+    const celdaClasificacion = document.createElement("td");
+    celdaClasificacion.textContent = marca.nivel;
+
+    fila.append(
+        celdaMarca,
+        celdaIdentificador,
+        celdaClasificacion
+    );
+
+    tablaMarcas.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

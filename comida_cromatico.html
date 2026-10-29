@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo cromático | Comida rápida</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"C";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS */
+
+.seccion{
+    margin:30px 0 20px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+/* PALETA GENERAL */
+
+.panel-general{
+    background:rgba(255,255,255,.82);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.panel-general>p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.9;
+    margin:0 0 22px;
+}
+
+.paleta-general{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:13px;
+}
+
+/* MUESTRAS DE COLOR */
+
+.muestra{
+    padding:10px;
+    border-radius:11px;
+    background:rgba(242,248,243,.88);
+    border:1px solid rgba(23,102,74,.12);
+    text-align:center;
+    min-width:0;
+}
+
+.color{
+    width:100%;
+    height:88px;
+    border-radius:9px;
+    border:1px solid rgba(0,0,0,.09);
+    box-shadow:0 4px 10px rgba(0,0,0,.07);
+}
+
+.color-nombre{
+    font-size:11px;
+    font-weight:700;
+    color:#15533D;
+    margin-top:11px;
+}
+
+.color-hex{
+    color:#73857A;
+    font-size:10px;
+    margin-top:5px;
+    font-family:Arial,sans-serif;
+}
+
+/* TARJETAS POR MARCA */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:21px;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 9px 26px rgba(28,95,63,.08);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera span{
+    color:#E8C98C;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:16px;
+    margin:0;
+    text-align:right;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.tarjeta:nth-child(even) .tarjeta-contenido{
+    background:rgba(231,243,233,.6);
+}
+
+.etiqueta{
+    color:#AC803D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:13px;
+}
+
+.paleta-individual{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    margin-bottom:19px;
+}
+
+.paleta-individual .muestra{
+    padding:8px;
+}
+
+.paleta-individual .color{
+    height:85px;
+}
+
+.paleta-individual .color-nombre{
+    font-size:10px;
+}
+
+.paleta-individual .color-hex{
+    font-size:9px;
+    overflow-wrap:anywhere;
+}
+
+.descripcion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* NOTA Y CONCLUSIÓN */
+
+.nota,.cierre{
+    margin-top:28px;
+    padding:24px 27px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 13px 13px 0;
+}
+
+.nota{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+/* ADAPTACIÓN */
+
+@media(max-width:760px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+    }
+
+    .paleta-general{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .presentacion{
+        padding:23px 20px;
+    }
+
+    .titulo{
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+}
+
+@media(max-width:380px){
+    .paleta-individual{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / COMIDA RÁPIDA
+    </div>
+
+    <h1 class="titulo">
+        SIGNO CROMÁTICO
+    </h1>
+
+    <p class="subtitulo">
+        El color como elemento de identidad visual
+    </p>
+
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO C / ANÁLISIS CROMÁTICO
+    </div>
+
+    <h2>
+        ¿Qué colores identifican a las marcas?
+    </h2>
+
+    <p>
+        El signo cromático estudia los colores
+        presentes en la identidad visual de
+        las marcas. En la categoría Comida rápida
+        se identifican los tonos predominantes
+        y se presentan muestras cromáticas
+        individuales para observar
+        sus semejanzas y diferencias.
+        El análisis considera las versiones
+        de los identificadores seleccionadas
+        para este catálogo.
+    </p>
+
+</section>
+
+<!-- PALETA GENERAL -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Paleta cromática predominante</h2>
+</div>
+
+<section class="panel-general">
+
+    <p>
+        En los identificadores de las marcas
+        de comida rápida analizadas destaca
+        el uso del rojo y el amarillo,
+        especialmente en McDonald's,
+        Burger King, Wendy's y otras
+        identidades del sector.
+        También aparecen naranja,
+        verde y negro, utilizados
+        para crear contrastes
+        y diferenciar visualmente
+        a las empresas.
+    </p>
+
+    <div class="paleta-general" id="paleta-general"></div>
+
+</section>
+
+<!-- PALETAS INDIVIDUALES -->
+
+<div class="seccion">
+    <small>02 / PALETAS INDIVIDUALES</small>
+    <h2>Colores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<div class="nota">
+    <strong>Observación cromática:</strong>
+    Los códigos HEX presentados son
+    referencias visuales aproximadas
+    para reproducir los colores observados
+    en los logotipos seleccionados.
+    No deben interpretarse necesariamente
+    como valores oficiales de los manuales
+    de identidad corporativa.
+    Los colores pueden variar según
+    la versión del logotipo,
+    el soporte y su aplicación.
+</div>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        En las diez marcas de comida rápida
+        se observa una presencia importante
+        de colores cálidos, especialmente
+        rojo, amarillo y naranja.
+        Estos tonos permiten construir
+        identificadores de gran contraste
+        y presencia visual.
+        Otras marcas incorporan verde,
+        azul, morado o negro para
+        diferenciar su identidad.
+        El análisis demuestra que
+        cada empresa utiliza combinaciones
+        cromáticas particulares
+        para facilitar su reconocimiento
+        y mantener una identidad
+        visual consistente.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · COMIDA RÁPIDA · SIGNO CROMÁTICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  MUESTRAS DE REFERENCIA.
+  Los HEX son aproximaciones visuales,
+  no necesariamente colores oficiales.
+*/
+
+const paletaGeneral = [
+    {nombre:"Rojo",hex:"#DA1F26"},
+    {nombre:"Amarillo",hex:"#FFC72C"},
+    {nombre:"Naranja",hex:"#F58220"},
+    {nombre:"Verde",hex:"#008B4A"},
+    {nombre:"Negro",hex:"#111111"}
+];
+
+const marcas = [
+
+    {
+        nombre:"McDonald's",
+        colores:[
+            {nombre:"Rojo",hex:"#DA291C"},
+            {nombre:"Amarillo",hex:"#FFC72C"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "El rojo y el amarillo constituyen una combinación característica de McDonald's. El amarillo identifica los arcos dorados, mientras que el rojo aparece frecuentemente como fondo. El blanco se utiliza en determinadas versiones del nombre."
+    },
+
+    {
+        nombre:"KFC",
+        colores:[
+            {nombre:"Rojo",hex:"#C41230"},
+            {nombre:"Blanco",hex:"#FFFFFF"},
+            {nombre:"Negro",hex:"#111111"}
+        ],
+        descripcion:
+            "KFC utiliza una combinación de rojo, blanco y negro. El rojo aporta presencia visual, mientras que el negro permite representar el retrato del coronel Sanders y las iniciales. El blanco funciona como fondo y genera contraste."
+    },
+
+    {
+        nombre:"Burger King",
+        colores:[
+            {nombre:"Rojo",hex:"#D62300"},
+            {nombre:"Naranja",hex:"#FF8732"},
+            {nombre:"Crema",hex:"#F5EBDC"}
+        ],
+        descripcion:
+            "Burger King combina rojo con tonos cálidos anaranjados y crema. El rojo destaca en la denominación, mientras que los tonos cálidos representan las formas del pan. La combinación refuerza la relación visual con las hamburguesas."
+    },
+
+    {
+        nombre:"Subway",
+        colores:[
+            {nombre:"Verde",hex:"#008C45"},
+            {nombre:"Amarillo",hex:"#FFC600"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Subway se identifica mediante verde y amarillo. Estos colores se distribuyen entre las letras y sus terminaciones en forma de flecha. El blanco puede utilizarse como fondo para mantener la legibilidad y el contraste."
+    },
+
+    {
+        nombre:"Wendy's",
+        colores:[
+            {nombre:"Rojo",hex:"#E31837"},
+            {nombre:"Azul",hex:"#0072BC"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Wendy's destaca por el uso del rojo en el nombre y en detalles de la ilustración. El azul aparece en algunos elementos del retrato, mientras que el blanco permite equilibrar la composición y resaltar los colores principales."
+    },
+
+    {
+        nombre:"Domino's",
+        colores:[
+            {nombre:"Rojo",hex:"#E31837"},
+            {nombre:"Azul",hex:"#0078AE"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Domino's utiliza rojo y azul en las dos partes de su símbolo de dominó. Los puntos blancos generan contraste sobre ambos fondos. Esta combinación permite identificar la marca mediante un símbolo geométrico sencillo."
+    },
+
+    {
+        nombre:"Pizza Hut",
+        colores:[
+            {nombre:"Rojo",hex:"#EE1B24"},
+            {nombre:"Negro",hex:"#111111"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Pizza Hut utiliza el rojo para representar su característico techo, acompañado del negro en la denominación. El blanco funciona como fondo y permite destacar las formas del símbolo y la tipografía."
+    },
+
+    {
+        nombre:"Taco Bell",
+        colores:[
+            {nombre:"Morado",hex:"#682C87"},
+            {nombre:"Negro",hex:"#111111"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Taco Bell utiliza tonos morados en el símbolo de la campana, acompañados del negro en la denominación. El blanco aporta contraste y permite distinguir los elementos de la composición."
+    },
+
+    {
+        nombre:"Popeyes",
+        colores:[
+            {nombre:"Naranja",hex:"#F58220"},
+            {nombre:"Blanco",hex:"#FFFFFF"},
+            {nombre:"Rojo",hex:"#C8102E"}
+        ],
+        descripcion:
+            "Popeyes destaca por el naranja de su denominación principal. El blanco se utiliza como fondo para resaltar la tipografía. El rojo también aparece en algunas aplicaciones y versiones de su identidad visual."
+    },
+
+    {
+        nombre:"Little Caesars",
+        colores:[
+            {nombre:"Naranja",hex:"#F15A24"},
+            {nombre:"Negro",hex:"#111111"},
+            {nombre:"Blanco",hex:"#FFFFFF"}
+        ],
+        descripcion:
+            "Little Caesars utiliza naranja en su denominación y en detalles del personaje ilustrado. El negro define contornos y elementos gráficos, mientras que el blanco contribuye a la claridad y al contraste del identificador."
+    }
+
+];
+
+/* CREAR MUESTRA DE COLOR */
+
+function crearMuestra(dato){
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+
+    const color=document.createElement("div");
+    color.className="color";
+    color.style.backgroundColor=dato.hex;
+
+    const nombre=document.createElement("div");
+    nombre.className="color-nombre";
+    nombre.textContent=dato.nombre;
+
+    const hex=document.createElement("div");
+    hex.className="color-hex";
+    hex.textContent=dato.hex.toUpperCase();
+
+    muestra.append(color,nombre,hex);
+
+    return muestra;
+}
+
+/* PALETA GENERAL */
+
+const general=document.getElementById("paleta-general");
+
+paletaGeneral.forEach(dato=>{
+    general.appendChild(crearMuestra(dato));
+});
+
+/* TARJETAS DE LAS DIEZ MARCAS */
+
+const contenedor=document.getElementById("tarjetas");
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent="MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="etiqueta";
+    etiqueta.textContent="PALETA CROMÁTICA";
+
+    const paleta=document.createElement("div");
+    paleta.className="paleta-individual";
+
+    marca.colores.forEach(color=>{
+        paleta.appendChild(crearMuestra(color));
+    });
+
+    const descripcion=document.createElement("p");
+    descripcion.className="descripcion";
+    descripcion.textContent=marca.descripcion;
+
+    contenido.append(etiqueta,paleta,descripcion);
+    tarjeta.append(cabecera,contenido);
+
+    contenedor.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

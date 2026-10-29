@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Redes sociales y plataformas | Signo cromático</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"C";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* PALETA GENERAL */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.paleta-general{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:14px;
+}
+
+/* MUESTRAS */
+
+.color{
+    background:rgba(245,249,245,.85);
+    border:1px solid rgba(23,102,74,.12);
+    border-radius:11px;
+    padding:10px;
+    text-align:center;
+    min-width:0;
+}
+
+.muestra{
+    height:90px;
+    border-radius:9px;
+    border:1px solid rgba(0,0,0,.10);
+    box-shadow:0 4px 10px rgba(0,0,0,.07);
+    margin-bottom:12px;
+}
+
+.color strong{
+    display:block;
+    font-size:12px;
+    color:var(--verde);
+    margin-bottom:6px;
+}
+
+.color span{
+    display:block;
+    font-size:11px;
+    color:#6F8176;
+    overflow-wrap:anywhere;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.etiqueta{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.paleta-marca{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+    margin-bottom:19px;
+}
+
+.paleta-marca .muestra{
+    height:86px;
+}
+
+.explicacion{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.nota{
+    margin-top:15px;
+    padding-top:13px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#7A8B7F;
+    font-size:11px;
+    line-height:1.7;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas{grid-template-columns:1fr}
+    .paleta-general{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .tarjeta-contenido{padding:16px}
+    .paleta-marca{gap:8px}
+    .color{padding:7px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / REDES SOCIALES Y PLATAFORMAS
+    </div>
+
+    <h1 class="titulo">SIGNO CROMÁTICO</h1>
+
+    <p class="subtitulo">
+        El color como elemento de identidad digital
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO C / ANÁLISIS CROMÁTICO
+    </div>
+
+    <h2>¿Qué colores identifican a las plataformas?</h2>
+
+    <p>
+        El signo cromático estudia los colores que
+        forman parte de la identidad visual de las
+        redes sociales y plataformas digitales.
+        En esta sección se analizan diez marcas,
+        identificando sus colores principales,
+        sus combinaciones y su función dentro
+        de los identificadores visuales.
+    </p>
+</section>
+
+<!-- 01. ANÁLISIS GENERAL -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Paleta cromática predominante</h2>
+</div>
+
+<section class="resumen">
+    <p>
+        En las marcas analizadas destacan los tonos
+        azules, rojos, violetas, amarillos y verdes.
+        El azul identifica a Facebook y LinkedIn;
+        el rojo aparece en YouTube y Pinterest;
+        el violeta caracteriza a Twitch y Discord;
+        el amarillo distingue a Snapchat;
+        y el verde es el color principal de Spotify.
+        Instagram y TikTok emplean combinaciones
+        de varios colores para generar mayor
+        contraste visual.
+    </p>
+
+    <div class="paleta-general">
+
+        <div class="color">
+            <div class="muestra" style="background:#1877F2"></div>
+            <strong>Azul</strong>
+            <span>#1877F2</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#FF0033"></div>
+            <strong>Rojo</strong>
+            <span>#FF0033</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#9146FF"></div>
+            <strong>Violeta</strong>
+            <span>#9146FF</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#FFFC00"></div>
+            <strong>Amarillo</strong>
+            <span>#FFFC00</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra" style="background:#1ED760"></div>
+            <strong>Verde</strong>
+            <span>#1ED760</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- 02. PALETAS INDIVIDUALES -->
+
+<div class="seccion">
+    <small>02 / PALETAS INDIVIDUALES</small>
+    <h2>Colores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN CROMÁTICA -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación cromática:</strong>
+        Los colores utilizados por las redes sociales
+        y plataformas digitales presentan una amplia
+        variedad de tonalidades intensas y contrastantes.
+        Algunas marcas utilizan un solo color dominante,
+        como Snapchat, Spotify, Facebook y LinkedIn;
+        otras combinan varios tonos, como Instagram
+        y TikTok. Los códigos HEX mostrados son
+        referencias digitales aproximadas de los
+        identificadores analizados y pueden variar
+        según la versión oficial de cada marca.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis cromático de las diez marcas
+        demuestra que el color es un recurso
+        fundamental para diferenciar las
+        plataformas digitales. El azul puede
+        transmitir confianza y comunicación;
+        el rojo aporta energía y visibilidad;
+        el violeta se relaciona con creatividad;
+        el amarillo genera alto contraste;
+        y el verde refuerza la identificación
+        de Spotify. Las combinaciones cromáticas
+        permiten que cada marca mantenga una
+        presencia reconocible en aplicaciones,
+        páginas web y redes sociales.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · REDES SOCIALES Y PLATAFORMAS · SIGNO CROMÁTICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  PALETAS DE COLOR APROXIMADAS
+  DE LAS DIEZ MARCAS.
+*/
+
+const marcas = [
+
+{
+    nombre:"Instagram",
+    colores:[
+        ["Magenta","#E1306C"],
+        ["Naranja","#F77737"],
+        ["Violeta","#833AB4"]
+    ],
+    descripcion:
+        "Instagram utiliza un degradado que combina tonos magenta, naranja y violeta. Esta transición cromática aporta dinamismo y permite identificar rápidamente el símbolo de la cámara.",
+    nota:
+        "El degradado multicolor es uno de sus principales recursos visuales."
+},
+
+{
+    nombre:"TikTok",
+    colores:[
+        ["Negro","#010101"],
+        ["Cian","#25F4EE"],
+        ["Rosa","#FE2C55"]
+    ],
+    descripcion:
+        "TikTok combina un fondo oscuro con acentos cian y rosa en su símbolo musical. El contraste entre estos colores produce un efecto visual de superposición y movimiento.",
+    nota:
+        "El contraste entre negro, cian y rosa caracteriza su identificador."
+},
+
+{
+    nombre:"YouTube",
+    colores:[
+        ["Rojo","#FF0033"],
+        ["Blanco","#FFFFFF"],
+        ["Negro","#0F0F0F"]
+    ],
+    descripcion:
+        "YouTube utiliza rojo en el rectángulo de esquinas redondeadas, blanco en el triángulo de reproducción y negro en su denominación. La combinación genera una identidad clara y de alto contraste.",
+    nota:
+        "El rojo concentra la atención en el símbolo de reproducción."
+},
+
+{
+    nombre:"Facebook",
+    colores:[
+        ["Azul","#1877F2"],
+        ["Blanco","#FFFFFF"],
+        ["Azul oscuro","#0866FF"]
+    ],
+    descripcion:
+        "Facebook se identifica mediante el azul y el blanco. En la versión mostrada en el catálogo, la letra f blanca se encuentra sobre un recuadro azul, generando contraste y legibilidad.",
+    nota:
+        "El azul funciona como su color principal de reconocimiento."
+},
+
+{
+    nombre:"Pinterest",
+    colores:[
+        ["Rojo","#E60023"],
+        ["Blanco","#FFFFFF"],
+        ["Gris oscuro","#333333"]
+    ],
+    descripcion:
+        "Pinterest utiliza rojo en su símbolo y denominación. El blanco funciona como fondo de contraste, mientras que los tonos neutros pueden aparecer en aplicaciones complementarias.",
+    nota:
+        "El rojo destaca la identidad visual de la plataforma."
+},
+
+{
+    nombre:"Snapchat",
+    colores:[
+        ["Amarillo","#FFFC00"],
+        ["Blanco","#FFFFFF"],
+        ["Negro","#000000"]
+    ],
+    descripcion:
+        "Snapchat combina un fondo amarillo intenso con un fantasma blanco delineado en negro. Esta composición crea una identidad de gran visibilidad, especialmente en dispositivos móviles.",
+    nota:
+        "El amarillo es el principal elemento cromático de su aplicación."
+},
+
+{
+    nombre:"Spotify",
+    colores:[
+        ["Verde","#1ED760"],
+        ["Negro","#191414"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Spotify utiliza verde como color principal, acompañado de negro o blanco según la versión del identificador. En el catálogo se observa el símbolo circular y el nombre en verde.",
+    nota:
+        "El verde permite diferenciar a Spotify dentro de las plataformas digitales."
+},
+
+{
+    nombre:"Twitch",
+    colores:[
+        ["Violeta","#9146FF"],
+        ["Violeta oscuro","#6441A5"],
+        ["Blanco","#FFFFFF"]
+    ],
+    descripcion:
+        "Twitch emplea violeta en su símbolo de diálogo angular. El blanco puede utilizarse como fondo o en aplicaciones invertidas para mantener el contraste visual.",
+    nota:
+        "El violeta es su principal identificador cromático."
+},
+
+{
+    nombre:"LinkedIn",
+    colores:[
+        ["Azul","#0A66C2"],
+        ["Blanco","#FFFFFF"],
+        ["Azul oscuro","#004182"]
+    ],
+    descripcion:
+        "LinkedIn utiliza azul y blanco en su identificador. La abreviatura in aparece en blanco sobre una superficie azul, lo que facilita su reconocimiento en formatos pequeños.",
+    nota:
+        "El azul refuerza una apariencia visual sobria y profesional."
+},
+
+{
+    nombre:"Discord",
+    colores:[
+        ["Violeta","#5865F2"],
+        ["Blanco","#FFFFFF"],
+        ["Gris oscuro","#23272A"]
+    ],
+    descripcion:
+        "Discord utiliza un tono violeta azulado en su símbolo y denominación. El blanco y los tonos oscuros se emplean como colores de apoyo para asegurar contraste en diferentes interfaces.",
+    nota:
+        "El violeta azulado distingue su identidad dentro de las plataformas de comunicación."
+}
+
+];
+
+/* CONTENEDOR */
+
+const tarjetas=document.getElementById("tarjetas");
+
+/* CREAR UNA MUESTRA DE COLOR */
+
+function crearColor(nombre,hex){
+
+    const color=document.createElement("div");
+    color.className="color";
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+    muestra.style.backgroundColor=hex;
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=nombre;
+
+    const codigo=document.createElement("span");
+    codigo.textContent=hex;
+
+    color.append(muestra,etiqueta,codigo);
+
+    return color;
+}
+
+/* GENERAR TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.className="etiqueta";
+    etiqueta.textContent="PALETA CROMÁTICA";
+
+    const paleta=document.createElement("div");
+    paleta.className="paleta-marca";
+
+    marca.colores.forEach(color=>{
+        paleta.appendChild(
+            crearColor(color[0],color[1])
+        );
+    });
+
+    const descripcion=document.createElement("p");
+    descripcion.className="explicacion";
+    descripcion.textContent=marca.descripcion;
+
+    const nota=document.createElement("p");
+    nota.className="nota";
+    nota.textContent=marca.nota;
+
+    contenido.append(
+        etiqueta,
+        paleta,
+        descripcion,
+        nota
+    );
+
+    tarjeta.append(cabecera,contenido);
+    tarjetas.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

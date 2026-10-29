@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signo escritural | Automóviles</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:rgba(255,250,240,.94);
+    --salvia:rgba(225,241,230,.94);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+body::before{
+    width:330px;height:330px;right:-125px;top:130px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,transparent 80%);
+    box-shadow:inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+body::after{
+    width:220px;height:220px;left:-100px;bottom:50px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.9),rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,transparent 80%);
+}
+.contenedor{
+    width:86%;max-width:1050px;margin:auto;
+    padding:30px 0 45px;position:relative;z-index:1;
+}
+.encabezado{
+    text-align:center;padding:17px 12px 20px;margin-bottom:27px;
+}
+.ruta{
+    color:#A17B3D;font-size:10px;font-weight:700;
+    letter-spacing:2.2px;margin-bottom:18px;
+}
+.titulo{
+    font-family:"Bodoni MT","Bodoni 72","Didot",
+        "Libre Bodoni","Times New Roman",serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;letter-spacing:-2px;line-height:1.18;
+    text-transform:uppercase;margin:0 0 15px;
+}
+.subtitulo{
+    color:#4F7160;font-size:13px;line-height:1.7;margin:0;
+}
+.encabezado::after{
+    content:"";display:block;width:85px;height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(90deg,transparent,var(--dorado),transparent);
+}
+.presentacion{
+    padding:28px 32px;margin-bottom:30px;border-radius:16px;
+    color:white;
+    background:radial-gradient(circle at 92% 20%,
+        rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;overflow:hidden;
+}
+.presentacion::after{
+    content:"Aa";position:absolute;right:20px;bottom:-55px;
+    font:150px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);pointer-events:none;
+}
+.codigo{
+    color:#E6C98D;font-size:10px;font-weight:700;
+    letter-spacing:2px;position:relative;z-index:1;
+}
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;position:relative;z-index:1;
+}
+.presentacion p{
+    font-size:12px;line-height:1.9;color:#E6F2E9;
+    max-width:760px;margin:0;position:relative;z-index:1;
+}
+.seccion{margin:30px 0 20px}
+.seccion small{
+    color:#A47B39;font-size:10px;font-weight:700;letter-spacing:2px;
+}
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;margin:8px 0 0;
+}
+.clasificaciones{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;
+}
+.clase{
+    padding:23px;background:var(--crema);
+    border:1px solid rgba(197,160,96,.30);
+    border-top:3px solid var(--dorado);
+    border-radius:14px;box-shadow:0 8px 22px rgba(33,91,60,.06);
+}
+.clase:nth-child(even){background:var(--salvia)}
+.clase h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;margin:0 0 12px;
+}
+.clase p{
+    color:var(--texto);font-size:12px;line-height:1.85;margin:0 0 14px;
+}
+.clase .ejemplos{
+    border-top:1px solid rgba(197,160,96,.30);
+    padding-top:12px;font-size:11px;line-height:1.8;
+    font-weight:700;color:var(--verde2);
+}
+.fichas{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;
+}
+.ficha{
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;overflow:hidden;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+    transition:transform .25s,box-shadow .25s;
+}
+.ficha:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px rgba(19,88,56,.12);
+}
+.ficha-cabecera{
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+    padding:16px 20px;display:flex;
+    justify-content:space-between;align-items:center;gap:10px;
+}
+.ficha-cabecera span{
+    color:#E6C98D;font-size:10px;font-weight:700;letter-spacing:1.2px;
+}
+.ficha-cabecera strong{color:white;font-size:15px}
+.muestra{
+    min-height:180px;padding:24px;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:12px;
+    border-bottom:1px solid rgba(197,160,96,.22);
+    background:rgba(250,247,239,.94);
+}
+.ficha:nth-child(even) .muestra{
+    background:rgba(225,239,229,.94);
+}
+.muestra img{
+    display:block;width:100%;max-width:260px;
+    height:110px;object-fit:contain;
+}
+.sin-imagen{
+    display:none;text-align:center;font-size:12px;
+    color:#789184;line-height:1.8;
+}
+.etiqueta-muestra{
+    color:#A37C3C;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;text-align:center;
+}
+.ficha-contenido{padding:21px}
+.dato{margin-bottom:15px}
+.dato:last-child{margin-bottom:0}
+.dato strong{
+    display:block;color:#A37C3C;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;
+}
+.dato p{
+    color:var(--texto);font-size:12px;line-height:1.85;margin:0;
+}
+.nota{
+    padding:19px 22px;margin-top:20px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 12px 12px 0;
+    color:var(--texto);font-size:11px;line-height:1.9;
+}
+.nota strong{color:var(--verde)}
+.resumen{
+    overflow-x:auto;background:rgba(255,255,255,.83);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:14px;padding:12px;
+}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{
+    background:var(--verde);color:white;
+    padding:13px 11px;text-align:left;
+}
+td{
+    padding:12px 11px;color:var(--texto);
+    border-bottom:1px solid rgba(153,190,161,.25);
+    line-height:1.6;
+}
+tr:nth-child(even) td{background:rgba(225,241,230,.48)}
+.cierre{
+    margin-top:30px;padding:24px 27px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;margin:0 0 10px;
+}
+.cierre p{
+    font-size:12px;line-height:1.9;color:var(--texto);margin:0;
+}
+.pie{
+    margin-top:32px;padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;color:#668073;
+    font-size:10px;letter-spacing:1px;
+}
+@media(max-width:650px){
+    .contenedor{width:93%}
+    .clasificaciones,.fichas{grid-template-columns:1fr}
+    .presentacion{padding:23px 20px}
+    .titulo{
+        font-size:clamp(27px,7vw,42px);letter-spacing:-1px;
+    }
+    .ficha-contenido{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / AUTOMÓVILES</div>
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+    <p class="subtitulo">
+        Clasificaciones y estilos tipográficos de las marcas automotrices
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">APARTADO B / ANÁLISIS ESCRITURAL</div>
+    <h2>¿Cómo se representan los nombres?</h2>
+    <p>
+        El signo escritural analiza la representación gráfica
+        de los nombres de marca mediante la tipografía.
+        En esta categoría se identifican las clasificaciones
+        tipográficas y los estilos utilizados en diez marcas
+        automotrices, considerando peso, inclinación,
+        mayúsculas y minúsculas, proporciones y
+        modificaciones personalizadas.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIONES TIPOGRÁFICAS</small>
+    <h2>Familias y estilos presentes</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clase">
+        <h3>01. Sans serif</h3>
+        <p>
+            Letras sin remates o serifas. Su estructura puede
+            ser geométrica, humanista o de construcción
+            personalizada, y facilita la lectura.
+        </p>
+        <div class="ejemplos">
+            Toyota, Chevrolet, BMW, Mercedes-Benz,
+            Audi, Nissan, Hyundai, Kia y Volkswagen.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>02. Escritura cursiva</h3>
+        <p>
+            Letras conectadas o construidas con trazos
+            fluidos que recuerdan la escritura manual.
+            Pueden presentar inclinación y variaciones
+            en el grosor de los trazos.
+        </p>
+        <div class="ejemplos">
+            Ford, con su característico nombre
+            de apariencia manuscrita.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>03. Tipografía personalizada</h3>
+        <p>
+            Escritura con formas adaptadas o diseñadas
+            específicamente para distinguir una marca.
+            Puede incluir cortes, uniones o proporciones
+            especiales en las letras.
+        </p>
+        <div class="ejemplos">
+            Ford, Toyota, Nissan, Hyundai, Kia,
+            Chevrolet y Volkswagen, entre otras.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>04. Geométrica</h3>
+        <p>
+            Estilo de construcción basado en formas
+            regulares, curvas controladas y trazos
+            uniformes. Es una característica visual
+            que puede coexistir con la clasificación
+            sans serif.
+        </p>
+        <div class="ejemplos">
+            Audi, BMW, Mercedes-Benz, Nissan
+            y Volkswagen.
+        </div>
+    </article>
+
+</section>
+
+<div class="nota">
+    <strong>Observación tipográfica:</strong>
+    Sans serif y cursiva describen tipos de construcción
+    de las letras, mientras que personalizada y geométrica
+    son características adicionales del diseño.
+    El análisis se basa en las versiones de los
+    identificadores utilizadas en este catálogo.
+</div>
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Estilos tipográficos utilizados</h2>
+</div>
+
+<section class="fichas" id="fichas"></section>
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de características</h2>
+</div>
+
+<section class="resumen">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Clasificación</th>
+                <th>Peso</th>
+                <th>Inclinación</th>
+                <th>Uso de letras</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</section>
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En los identificadores automotrices analizados
+        predomina la tipografía sans serif, especialmente
+        en composiciones de trazos geométricos y
+        proporciones controladas. Ford se diferencia
+        mediante una escritura cursiva de apariencia
+        manuscrita. También se observan logotipos
+        personalizados, variaciones de peso y
+        un uso frecuente de letras mayúsculas.
+        Estas decisiones tipográficas permiten
+        reforzar la personalidad y el reconocimiento
+        visual de cada marca.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · AUTOMÓVILES · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+/*
+  Se utiliza la misma carpeta "imagenes".
+  Si alguna imagen no aparece, escribe aquí
+  el nombre exacto del archivo que ya tienes.
+*/
+
+const marcas=[
+{
+    nombre:"Toyota",
+    archivos:["toyota.png","Toyota.png","toyota.jpg","toyota.webp"],
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso, de apariencia sólida.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: TOYOTA.",
+    personalizacion:"Letras de trazos firmes y proporciones amplias. En la versión seleccionada, el nombre aparece debajo del emblema ovalado.",
+    resumen:"Sans serif",pesoCorto:"Grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Chevrolet",
+    archivos:["chevrolet.png","Chevrolet.png","chevrolet.jpg","chevrolet.webp"],
+    clasificacion:"Sans serif de apariencia geométrica.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: CHEVROLET, en la versión del catálogo.",
+    personalizacion:"La denominación utiliza una composición compacta de letras sin remates. El símbolo de corbatín dorado se analiza por separado en el signo icónico.",
+    resumen:"Sans serif",pesoCorto:"Grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Ford",
+    archivos:["ford.png","Ford.png","ford.jpg","ford.webp"],
+    clasificacion:"Tipografía cursiva o script personalizada.",
+    peso:"Variable, con contraste entre trazos.",
+    inclinacion:"Inclinación hacia la derecha.",
+    letras:"Inicial mayúscula y resto minúsculas: Ford.",
+    personalizacion:"El logotipo utiliza letras conectadas y trazos fluidos de apariencia manuscrita. La F inicial presenta un desarrollo ornamental característico.",
+    resumen:"Cursiva / script",pesoCorto:"Variable",inclinacionCorta:"Inclinada",letrasCortas:"Mixtas"
+},
+{
+    nombre:"BMW",
+    archivos:["bmw.png","BMW.png","bmw.jpg","bmw.webp"],
+    clasificacion:"Sans serif geométrica.",
+    peso:"Medio a grueso, según la versión.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: BMW.",
+    personalizacion:"Las iniciales se distribuyen en la parte superior del emblema circular. Su construcción es sencilla, legible y de trazos sin remates.",
+    resumen:"Sans serif",pesoCorto:"Medio",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Mercedes-Benz",
+    archivos:["mercedes.png","mercedesbenz.png","mercedes-benz.png","Mercedes.png","mercedes.jpg"],
+    clasificacion:"Sans serif en versiones contemporáneas; la escritura histórica incluye variantes con serif.",
+    peso:"Regular a medio.",
+    inclinacion:"Recta.",
+    letras:"Iniciales mayúsculas: Mercedes-Benz.",
+    personalizacion:"El nombre utiliza una composición sobria con separación clara entre palabras. En la imagen seleccionada predomina la estrella de tres puntas, por lo que la escritura puede no aparecer.",
+    resumen:"Sans serif / variantes",pesoCorto:"Regular",inclinacionCorta:"Recta",letrasCortas:"Mixtas"
+},
+{
+    nombre:"Audi",
+    archivos:["audi.png","Audi.png","audi.jpg","audi.webp"],
+    clasificacion:"Sans serif geométrica.",
+    peso:"Medio a grueso.",
+    inclinacion:"Recta.",
+    letras:"Inicial mayúscula y resto minúsculas: Audi.",
+    personalizacion:"La escritura utiliza caracteres simples y proporciones equilibradas. En el identificador mostrado en el catálogo aparecen únicamente los cuatro aros, sin denominación escrita.",
+    resumen:"Sans serif",pesoCorto:"Medio / grueso",inclinacionCorta:"Recta",letrasCortas:"Mixtas"
+},
+{
+    nombre:"Nissan",
+    archivos:["nissan.png","Nissan.png","nissan.jpg","nissan.webp"],
+    clasificacion:"Sans serif personalizada.",
+    peso:"Medio a grueso.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: NISSAN.",
+    personalizacion:"Letras espaciadas de formas geométricas. En el emblema seleccionado, la denominación se integra en la parte central de una figura circular.",
+    resumen:"Sans serif",pesoCorto:"Medio / grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Hyundai",
+    archivos:["hyundai.png","Hyundai.png","hyundai.jpg","hyundai.webp"],
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta en el nombre escrito.",
+    letras:"Mayúsculas: HYUNDAI.",
+    personalizacion:"Los caracteres presentan formas angulares y proporciones extendidas. La H inclinada del emblema es un elemento gráfico independiente del nombre.",
+    resumen:"Sans serif",pesoCorto:"Grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Kia",
+    archivos:["kia.png","Kia.png","kia.jpg","kia.webp"],
+    clasificacion:"Sans serif altamente personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta, con trazos diagonales internos.",
+    letras:"Mayúsculas estilizadas: KIA.",
+    personalizacion:"La versión actual presenta letras angulares conectadas visualmente, con formas continuas y ausencia de separaciones convencionales en algunos caracteres.",
+    resumen:"Sans serif personalizada",pesoCorto:"Grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+},
+{
+    nombre:"Volkswagen",
+    archivos:["volkswagen.png","Volkswagen.png","vw.png","volkswagen.jpg","volkswagen.webp"],
+    clasificacion:"Sans serif geométrica.",
+    peso:"Grueso en el monograma.",
+    inclinacion:"Recta.",
+    letras:"Mayúsculas: VW en el emblema.",
+    personalizacion:"El identificador seleccionado presenta las iniciales V y W superpuestas dentro de un círculo. Se trata de un monograma de construcción geométrica; no muestra el nombre completo.",
+    resumen:"Sans serif",pesoCorto:"Grueso",inclinacionCorta:"Recta",letrasCortas:"Mayúsculas"
+}
+];
+
+function cargarImagen(imagen,aviso,archivos,indice=0){
+    if(indice>=archivos.length){
+        imagen.style.display="none";
+        aviso.style.display="block";
+        return;
+    }
+    imagen.onerror=function(){
+        cargarImagen(imagen,aviso,archivos,indice+1);
+    };
+    imagen.onload=function(){
+        imagen.style.display="block";
+        aviso.style.display="none";
+    };
+    imagen.src="imagenes/"+archivos[indice];
+}
+
+const fichas=document.getElementById("fichas");
+const tabla=document.getElementById("tabla");
+
+marcas.forEach((marca,indice)=>{
+    const ficha=document.createElement("article");
+    ficha.className="ficha";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="ficha-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent="MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("strong");
+    nombre.textContent=marca.nombre.toUpperCase();
+    cabecera.append(numero,nombre);
+
+    const muestra=document.createElement("div");
+    muestra.className="muestra";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador de "+marca.nombre;
+
+    const aviso=document.createElement("div");
+    aviso.className="sin-imagen";
+    aviso.textContent="No se encontró la imagen en la carpeta imagenes.";
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="etiqueta-muestra";
+    etiqueta.textContent=marca.clasificacion;
+
+    muestra.append(imagen,aviso,etiqueta);
+    cargarImagen(imagen,aviso,marca.archivos);
+
+    const cuerpo=document.createElement("div");
+    cuerpo.className="ficha-contenido";
+
+    const datos=[
+        ["Clasificación tipográfica",marca.clasificacion],
+        ["Peso tipográfico",marca.peso],
+        ["Inclinación",marca.inclinacion],
+        ["Mayúsculas y minúsculas",marca.letras],
+        ["Personalización",marca.personalizacion]
+    ];
+
+    datos.forEach(([titulo,texto])=>{
+        const dato=document.createElement("div");
+        dato.className="dato";
+
+        const etiquetaDato=document.createElement("strong");
+        etiquetaDato.textContent=titulo;
+
+        const parrafo=document.createElement("p");
+        parrafo.textContent=texto;
+
+        dato.append(etiquetaDato,parrafo);
+        cuerpo.appendChild(dato);
+    });
+
+    ficha.append(cabecera,muestra,cuerpo);
+    fichas.appendChild(ficha);
+
+    const fila=document.createElement("tr");
+    [
+        marca.nombre,
+        marca.resumen,
+        marca.pesoCorto,
+        marca.inclinacionCorta,
+        marca.letrasCortas
+    ].forEach(valor=>{
+        const celda=document.createElement("td");
+        celda.textContent=valor;
+        fila.appendChild(celda);
+    });
+    tabla.appendChild(fila);
+});
+</script>
+
+</body>
+</html>

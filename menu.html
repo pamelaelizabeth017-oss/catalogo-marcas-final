@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Menú | Catálogo de Marcas</title>
+
+<style>
+:root{
+    --verde-fondo:#052F23;
+    --verde-medio:#194B3D;
+    --verde-transparente:rgba(255,255,255,0.09);
+    --dorado:#D8B16C;
+    --dorado-transparente:rgba(232,200,133,0.28);
+    --blanco:#FFFFFF;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    background:var(--verde-fondo);
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;
+}
+
+.menu{
+    min-height:100vh;
+    padding:20px 12px 35px;
+    background:linear-gradient(180deg,#052F23,#07382A);
+}
+
+/* LOGOTIPO DEL CATÁLOGO */
+
+.marca-catalogo{
+    text-align:center;
+    padding:14px 8px 25px;
+    border-bottom:1px solid rgba(216,177,108,.3);
+    margin-bottom:22px;
+}
+
+.monograma{
+    width:46px;
+    height:46px;
+    border:1px solid var(--dorado);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 12px;
+    color:var(--dorado);
+    font-family:Georgia,serif;
+    font-size:27px;
+}
+
+.marca-catalogo h1{
+    margin:0;
+    font-family:Georgia,serif;
+    font-size:21px;
+    line-height:1;
+}
+
+.marca-catalogo small{
+    display:block;
+    margin-top:14px;
+    color:var(--dorado);
+    font-size:9px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* INICIO Y CATEGORÍAS */
+
+.menu-item{
+    width:100%;
+    min-height:45px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    margin-bottom:5px;
+
+    border:1px solid transparent;
+    border-radius:10px;
+
+    background:transparent;
+    color:white;
+
+    font-family:inherit;
+    font-size:12px;
+    font-weight:bold;
+    text-align:left;
+    text-decoration:none;
+    cursor:pointer;
+
+    transition:
+        background .25s,
+        border-color .25s;
+}
+
+.menu-item:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.menu-item.activo{
+    background:var(--verde-transparente);
+    border:1px solid rgba(255,255,255,.22);
+}
+
+/* CATEGORÍA ABIERTA: VERDE TRANSPARENTE */
+
+.categoria.abierta > .menu-item{
+    background:var(--verde-transparente);
+    color:white;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;
+}
+
+.categoria.abierta > .menu-item:hover{
+    background:rgba(255,255,255,.14);
+}
+
+.icono{
+    width:19px;
+    flex-shrink:0;
+    text-align:center;
+    font-size:16px;
+    font-weight:normal;
+}
+
+.nombre{
+    flex:1;
+    line-height:1.35;
+}
+
+.flecha{
+    font-size:15px;
+    transition:transform .2s;
+}
+
+.categoria.abierta > .menu-item .flecha{
+    transform:rotate(90deg);
+}
+
+/* SUBMENÚ */
+
+.submenu{
+    display:none;
+    margin:3px 0 15px 20px;
+    padding-left:14px;
+    border-left:1px solid rgba(216,177,108,.4);
+}
+
+.categoria.abierta .submenu{
+    display:block;
+}
+
+.submenu a{
+    position:relative;
+    display:block;
+
+    padding:12px 10px;
+    margin:3px 0;
+
+    color:#E9F4EE;
+    font-size:11px;
+    line-height:1.45;
+    text-decoration:none;
+
+    border:1px solid transparent;
+    border-radius:8px;
+
+    transition:
+        background .2s,
+        border-color .2s,
+        color .2s;
+}
+
+.submenu a::before{
+    content:"";
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--dorado);
+    left:-18px;
+    top:17px;
+}
+
+.submenu a:hover{
+    background:rgba(232,200,133,.13);
+}
+
+/* SIGNO SELECCIONADO: DORADO TRANSPARENTE */
+
+.submenu a.activo{
+    background:var(--dorado-transparente);
+    border:1px solid #FFFFFF;
+    color:#FFFFFF;
+    font-weight:bold;
+    box-shadow:0 0 9px rgba(216,177,108,.10);
+}
+
+.submenu a.activo::before{
+    width:9px;
+    height:9px;
+    left:-19px;
+    background:#F2D69D;
+    border:1px solid white;
+}
+
+/* PIE DEL MENÚ */
+
+.menu-pie{
+    border-top:1px solid rgba(216,177,108,.3);
+    padding:22px 8px 0;
+    margin-top:28px;
+    text-align:center;
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#8FC2AC;
+}
+
+@media(prefers-reduced-motion:reduce){
+    .menu-item,
+    .submenu a,
+    .flecha{
+        transition:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="menu" aria-label="Navegación del catálogo">
+
+    <div class="marca-catalogo">
+        <div class="monograma">C</div>
+
+        <h1>
+            CATÁLOGO<br>
+            DE MARCAS
+        </h1>
+
+        <small>IDENTIDAD VISUAL</small>
+    </div>
+
+    <!-- INICIO -->
+
+    <a
+        class="menu-item"
+        href="inicio.html"
+        target="contenido"
+        id="enlace-inicio"
+    >
+        <span class="icono">⌂</span>
+        <span class="nombre">Inicio</span>
+    </a>
+
+    <!-- CATEGORÍAS -->
+
+    <div id="categorias"></div>
+
+    <div class="menu-pie">
+        ANÁLISIS DE IDENTIDAD VISUAL
+    </div>
+
+</nav>
+
+<script>
+
+/*
+  NOMBRES CORREGIDOS SEGÚN TUS CAPTURAS.
+
+  Cada categoría tiene:
+  nombre, icono y nombre base del archivo.
+
+  Ejemplo:
+  comida.html
+  comida_linguistico.html
+  comida_escritural.html
+  comida_cromatico.html
+  comida_iconico.html
+*/
+
+const categorias = [
+
+    {
+        nombre:"Tecnología",
+        icono:"▣",
+        base:"tecnologia"
+    },
+
+    {
+        nombre:"Ropa",
+        icono:"♧",
+        base:"ropa"
+    },
+
+    {
+        nombre:"Calzado",
+        icono:"⌁",
+        base:"calzado"
+    },
+
+    {
+        nombre:"Automóviles",
+        icono:"▱",
+        base:"automoviles"
+    },
+
+    {
+        nombre:"Comida rápida",
+        icono:"≋",
+        base:"comida"
+    },
+
+    {
+        nombre:"Bebidas",
+        icono:"♜",
+        base:"bebidas"
+    },
+
+    {
+        nombre:"Streaming y entretenimiento",
+        icono:"◎",
+        base:"streaming"
+    },
+
+    {
+        nombre:"Supermercados",
+        icono:"▤",
+        base:"supermercados"
+    },
+
+    {
+        nombre:"Bancos",
+        icono:"▥",
+        base:"bancos"
+    },
+
+    {
+        nombre:"Redes sociales y plataformas",
+        icono:"◉",
+        base:"redes"
+    },
+
+    {
+        nombre:"Electrodomésticos",
+        icono:"▣",
+        base:"electrodomesticos"
+    },
+
+    {
+        nombre:"Aerolíneas",
+        icono:"✈",
+        base:"aerolineas"
+    },
+
+    {
+        nombre:"Cuidado personal",
+        icono:"✧",
+        base:"cuidado"
+    },
+
+    {
+        nombre:"Relojes",
+        icono:"◷",
+        base:"relojes"
+    },
+
+    {
+        nombre:"Dulces y chocolates",
+        icono:"◇",
+        base:"dulces"
+    }
+
+];
+
+/* LOS CINCO APARTADOS DE CADA CATEGORÍA */
+
+const signos = [
+
+    {
+        nombre:"Ver todas las marcas",
+        sufijo:""
+    },
+
+    {
+        nombre:"Signo lingüístico",
+        sufijo:"_linguistico"
+    },
+
+    {
+        nombre:"Signo escritural",
+        sufijo:"_escritural"
+    },
+
+    {
+        nombre:"Signo cromático",
+        sufijo:"_cromatico"
+    },
+
+    {
+        nombre:"Signo icónico",
+        sufijo:"_iconico"
+    }
+
+];
+
+/* ELEMENTOS DEL MENÚ */
+
+const contenedor =
+    document.getElementById("categorias");
+
+const inicio =
+    document.getElementById("enlace-inicio");
+
+/* CERRAR CATEGORÍAS */
+
+function cerrarCategorias(){
+
+    document.querySelectorAll(".categoria")
+    .forEach(grupo=>{
+
+        grupo.classList.remove("abierta");
+
+        const boton =
+            grupo.querySelector("button");
+
+        if(boton){
+            boton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+
+    });
+
+}
+
+/* RESALTAR EL APARTADO SELECCIONADO */
+
+function marcarActivo(elemento){
+
+    document.querySelectorAll(
+        ".menu-item.activo,.submenu a.activo"
+    ).forEach(item=>{
+
+        item.classList.remove("activo");
+        item.removeAttribute("aria-current");
+
+    });
+
+    elemento.classList.add("activo");
+
+    elemento.setAttribute(
+        "aria-current",
+        "page"
+    );
+
+}
+
+/* CREAR LAS 15 CATEGORÍAS */
+
+categorias.forEach(categoria=>{
+
+    const grupo =
+        document.createElement("div");
+
+    grupo.className="categoria";
+
+    const boton =
+        document.createElement("button");
+
+    boton.type="button";
+    boton.className="menu-item";
+
+    boton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    const icono =
+        document.createElement("span");
+
+    icono.className="icono";
+    icono.textContent=categoria.icono;
+
+    const nombre =
+        document.createElement("span");
+
+    nombre.className="nombre";
+    nombre.textContent=categoria.nombre;
+
+    const flecha =
+        document.createElement("span");
+
+    flecha.className="flecha";
+    flecha.textContent="›";
+
+    boton.append(
+        icono,
+        nombre,
+        flecha
+    );
+
+    const submenu =
+        document.createElement("div");
+
+    submenu.className="submenu";
+
+    /* CREAR LOS ENLACES */
+
+    signos.forEach(signo=>{
+
+        const enlace =
+            document.createElement("a");
+
+        const archivo =
+            categoria.base +
+            signo.sufijo +
+            ".html";
+
+        enlace.textContent=signo.nombre;
+
+        enlace.href=archivo;
+
+        /*
+          El nombre "contenido" debe coincidir
+          con el marco principal de index.html.
+        */
+
+        enlace.target="contenido";
+
+        enlace.addEventListener(
+            "click",
+            ()=>{
+
+                marcarActivo(enlace);
+
+            }
+        );
+
+        submenu.appendChild(enlace);
+
+    });
+
+    /* ABRIR Y CERRAR CATEGORÍA */
+
+    boton.addEventListener("click",()=>{
+
+        const estabaAbierta =
+            grupo.classList.contains("abierta");
+
+        cerrarCategorias();
+
+        if(!estabaAbierta){
+
+            grupo.classList.add("abierta");
+
+            boton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+    });
+
+    grupo.append(
+        boton,
+        submenu
+    );
+
+    contenedor.appendChild(grupo);
+
+});
+
+/* COMPORTAMIENTO DEL BOTÓN INICIO */
+
+inicio.addEventListener("click",()=>{
+
+    marcarActivo(inicio);
+
+    cerrarCategorias();
+
+});
+
+/* IDENTIFICAR LA PÁGINA ABIERTA */
+
+function sincronizarPagina(){
+
+    try{
+
+        const marco =
+            parent.frames["contenido"];
+
+        if(!marco)return;
+
+        const archivo =
+            decodeURIComponent(
+                marco.location.pathname
+                .split("/")
+                .pop()
+            );
+
+        const enlaces =
+            document.querySelectorAll(
+                '.submenu a, #enlace-inicio'
+            );
+
+        for(const enlace of enlaces){
+
+            const destino =
+                enlace.getAttribute("href");
+
+            if(destino===archivo){
+
+                marcarActivo(enlace);
+
+                const grupo =
+                    enlace.closest(".categoria");
+
+                if(grupo){
+
+                    cerrarCategorias();
+
+                    grupo.classList.add("abierta");
+
+                    const boton =
+                        grupo.querySelector("button");
+
+                    if(boton){
+
+                        boton.setAttribute(
+                            "aria-expanded",
+                            "true"
+                        );
+
+                    }
+
+                }else{
+
+                    cerrarCategorias();
+
+                }
+
+                return;
+
+            }
+
+        }
+
+    }catch(error){
+
+        /* Mantener el menú funcionando. */
+
+    }
+
+}
+
+/* INICIALIZAR */
+
+marcarActivo(inicio);
+
+window.addEventListener(
+    "load",
+    sincronizarPagina
+);
+
+</script>
+
+</body>
+</html>

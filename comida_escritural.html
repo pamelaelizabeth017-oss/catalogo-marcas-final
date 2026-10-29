@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo escritural | Comida rápida</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS TRANSPARENTES */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:30px 0 20px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+/* RESUMEN DE CLASIFICACIONES */
+
+.resumen{
+    background:rgba(255,255,255,.8);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    padding:24px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.9;
+    margin:0 0 18px;
+}
+
+.tipos{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.tipo{
+    background:#F3F8F2;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+    border-radius:10px;
+    padding:15px;
+}
+
+.tipo h3{
+    font:500 20px "Libre Bodoni",Georgia,serif;
+    margin:0 0 8px;
+}
+
+.tipo p{
+    margin:0;
+    font-size:11px;
+    line-height:1.75;
+}
+
+/* TARJETAS EN DOS COLUMNAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:21px;
+}
+
+.tarjeta{
+    border:1px solid rgba(153,190,161,.4);
+    border-radius:15px;
+    overflow:hidden;
+    background:rgba(255,255,255,.92);
+    box-shadow:0 10px 27px rgba(25,86,58,.08);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(25,86,58,.13);
+}
+
+/* CABECERA VERDE */
+
+.tarjeta-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:17px 21px;
+    min-height:53px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera span{
+    color:#E8C98C;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:15px;
+    font-weight:700;
+    text-align:right;
+    margin:0;
+}
+
+/* ÁREA DEL LOGOTIPO */
+
+.logo-area{
+    height:190px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:13px;
+    padding:20px;
+    background:var(--crema);
+    border-bottom:1px solid rgba(197,160,96,.2);
+}
+
+.tarjeta:nth-child(even) .logo-area{
+    background:var(--salvia);
+}
+
+.logo-area img{
+    display:block;
+    width:100%;
+    max-width:240px;
+    height:115px;
+    object-fit:contain;
+    mix-blend-mode:multiply;
+}
+
+.logo-faltante{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:24px;
+    color:var(--verde);
+    text-align:center;
+    font-weight:600;
+}
+
+.logo-etiqueta{
+    color:#AE853E;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+/* ANÁLISIS TIPOGRÁFICO */
+
+.analisis{
+    padding:23px 22px 26px;
+}
+
+.campo{
+    margin-bottom:17px;
+}
+
+.campo:last-child{
+    margin-bottom:0;
+}
+
+.campo h4{
+    color:#AC803D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin:0 0 7px;
+    text-transform:uppercase;
+}
+
+.campo p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.nota,.cierre{
+    margin-top:28px;
+    padding:24px 27px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 13px 13px 0;
+}
+
+.nota{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:760px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+    }
+
+    .tipos{
+        grid-template-columns:1fr;
+    }
+
+    .presentacion{
+        padding:23px 20px;
+    }
+
+    .titulo{
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / COMIDA RÁPIDA
+    </div>
+
+    <h1 class="titulo">
+        SIGNO ESCRITURAL
+    </h1>
+
+    <p class="subtitulo">
+        La tipografía como elemento de identidad visual
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+
+    <h2>
+        ¿Cómo se representan los nombres?
+    </h2>
+
+    <p>
+        El signo escritural estudia la representación
+        gráfica de los nombres de marca mediante
+        sus características tipográficas.
+        En la categoría Comida rápida se analizan
+        las clasificaciones tipográficas presentes,
+        el peso de los trazos, la inclinación,
+        el uso de mayúsculas y minúsculas
+        y la personalización de las letras
+        en los diez identificadores visuales.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Clasificaciones tipográficas presentes</h2>
+</div>
+
+<section class="resumen">
+    <p>
+        En los identificadores de comida rápida
+        se observan principalmente letras
+        sans serif, composiciones decorativas
+        o display y tratamientos con rasgos serif.
+        Varias marcas combinan estas características
+        con lettering personalizado, diseñado
+        para reforzar su identidad visual.
+    </p>
+
+    <div class="tipos">
+
+        <article class="tipo">
+            <h3>Sans serif</h3>
+            <p>
+                Letras sin remates, con trazos
+                sencillos o redondeados.
+                Se observan en McDonald's,
+                Subway, Domino's y Taco Bell.
+            </p>
+        </article>
+
+        <article class="tipo">
+            <h3>Serif</h3>
+            <p>
+                Letras con remates o terminaciones
+                expresivas. Se identifican rasgos
+                de esta clasificación en las
+                versiones analizadas de KFC
+                y Pizza Hut.
+            </p>
+        </article>
+
+        <article class="tipo">
+            <h3>Display y personalizada</h3>
+            <p>
+                Letras adaptadas para destacar,
+                con formas distintivas.
+                Se aprecian en Burger King,
+                Wendy's, Popeyes
+                y Little Caesars.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Escritura de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<div class="nota">
+    <strong>Observación tipográfica:</strong>
+    Las clasificaciones se basan en las
+    características visibles de los logotipos
+    seleccionados para el catálogo.
+    Algunas marcas utilizan letras dibujadas
+    especialmente para su identidad,
+    por lo que no siempre es posible
+    asociarlas con una fuente comercial
+    específica. Además, los estilos pueden
+    variar entre distintas versiones
+    oficiales de una misma marca.
+</div>
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas de comida rápida
+        se identifican distintas soluciones
+        escriturales, entre las que destacan
+        las tipografías sans serif,
+        los tratamientos decorativos
+        y las letras personalizadas.
+        Predominan los pesos gruesos
+        y las composiciones de gran
+        presencia visual. Algunas marcas
+        utilizan únicamente mayúsculas,
+        mientras que otras combinan
+        mayúsculas y minúsculas.
+        La personalización de las letras,
+        las variaciones de inclinación
+        y la integración con los símbolos
+        gráficos permiten construir
+        identidades diferenciadas
+        y reconocibles.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · COMIDA RÁPIDA · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  Las imágenes se buscan en la misma
+  carpeta "imagenes" que ya tienes.
+
+  Si una imagen no aparece, escribe
+  aquí su nombre exacto, por ejemplo:
+
+  imagenes:["logo-mcdonalds.png"]
+
+  No necesitas crear carpetas nuevas.
+*/
+
+const marcas = [
+    {
+        nombre:"McDonald's",
+        imagenes:["mcdonalds","mc donalds","mc_donalds"],
+        clasificacion:"Sans serif, de construcción sencilla y legible.",
+        peso:"Grueso, con trazos de apariencia uniforme.",
+        inclinacion:"Recta, sin cursiva.",
+        mayusculas:"Mayúscula inicial M y D; las demás letras son minúsculas.",
+        personalizacion:"El nombre utiliza una composición clara que acompaña al símbolo de los arcos dorados. En la versión seleccionada aparece dentro del identificador rojo y amarillo."
+    },
+    {
+        nombre:"KFC",
+        imagenes:["kfc","kentucky fried chicken"],
+        clasificacion:"Serif con tratamiento display en la versión analizada.",
+        peso:"Grueso, con trazos de fuerte presencia visual.",
+        inclinacion:"Las letras presentan una ligera inclinación o dinamismo visual.",
+        mayusculas:"Uso exclusivo de mayúsculas: KFC.",
+        personalizacion:"Las iniciales presentan terminaciones expresivas y se integran debajo del retrato del coronel Sanders, formando una composición distintiva."
+    },
+    {
+        nombre:"Burger King",
+        imagenes:["burgerking","burger_king","burger king"],
+        clasificacion:"Sans serif personalizada, con características display.",
+        peso:"Extragrueso, con formas redondeadas.",
+        inclinacion:"Predominantemente recta, con adaptación a la composición del logotipo.",
+        mayusculas:"Uso de letras mayúsculas en las dos palabras.",
+        personalizacion:"Las letras se distribuyen en dos líneas y se adaptan a las formas que representan el pan de una hamburguesa, integrando tipografía y símbolo."
+    },
+    {
+        nombre:"Subway",
+        imagenes:["subway"],
+        clasificacion:"Sans serif personalizada.",
+        peso:"Grueso y compacto.",
+        inclinacion:"Recta, con terminaciones direccionales.",
+        mayusculas:"Uso de letras mayúsculas: SUBWAY.",
+        personalizacion:"Algunas terminaciones se convierten en flechas, un recurso distintivo que aporta sensación de dirección y movimiento."
+    },
+    {
+        nombre:"Wendy's",
+        imagenes:["wendys","wendy's","wendy"],
+        clasificacion:"Display de apariencia manuscrita o caligráfica.",
+        peso:"Medio a grueso, con variaciones en las formas.",
+        inclinacion:"Ligeramente inclinada, con trazos de apariencia fluida.",
+        mayusculas:"Mayúscula inicial W seguida de minúsculas.",
+        personalizacion:"El nombre tiene un aspecto gestual y cercano. Sus letras complementan la ilustración de la niña que forma parte de la identidad de la marca."
+    },
+    {
+        nombre:"Domino's",
+        imagenes:["dominos","domino's","domino"],
+        clasificacion:"Sans serif.",
+        peso:"Grueso, de apariencia sólida.",
+        inclinacion:"Recta, sin cursiva.",
+        mayusculas:"Mayúscula inicial D y el resto en minúsculas.",
+        personalizacion:"La denominación presenta una construcción clara y acompaña al símbolo del dominó, que es el elemento visual más destacado de la marca."
+    },
+    {
+        nombre:"Pizza Hut",
+        imagenes:["pizzahut","pizza_hut","pizza hut"],
+        clasificacion:"Display con rasgos serif en la versión seleccionada.",
+        peso:"Grueso, con variaciones en el grosor de los trazos.",
+        inclinacion:"Composición irregular, con letras de apariencia dinámica.",
+        mayusculas:"Mayúsculas iniciales P y H, combinadas con minúsculas.",
+        personalizacion:"Las palabras se distribuyen en dos líneas, con letras de formas expresivas. El tratamiento escritural se integra con el símbolo del techo rojo."
+    },
+    {
+        nombre:"Taco Bell",
+        imagenes:["tacobell","taco_bell","taco bell"],
+        clasificacion:"Sans serif de construcción geométrica.",
+        peso:"Grueso, con trazos compactos.",
+        inclinacion:"Recta, sin cursiva.",
+        mayusculas:"Uso exclusivo de letras mayúsculas.",
+        personalizacion:"El nombre se organiza en dos líneas con formas sólidas y sencillas, generando contraste con las curvas del símbolo de la campana."
+    },
+    {
+        nombre:"Popeyes",
+        imagenes:["popeyes","popeyes louisiana kitchen"],
+        clasificacion:"Sans serif con tratamiento display personalizado.",
+        peso:"Grueso, con letras redondeadas.",
+        inclinacion:"Recta, con pequeñas irregularidades propias del diseño.",
+        mayusculas:"Uso de letras mayúsculas en el identificador principal.",
+        personalizacion:"Las letras presentan proporciones y terminaciones particulares que generan un estilo compacto, expresivo y reconocible."
+    },
+    {
+        nombre:"Little Caesars",
+        imagenes:["littlecaesars","little_caesars","little caesars"],
+        clasificacion:"Display personalizada.",
+        peso:"Medio, con trazos expresivos.",
+        inclinacion:"Principalmente recta.",
+        mayusculas:"Mayúsculas iniciales L y C, acompañadas de minúsculas.",
+        personalizacion:"La denominación utiliza letras de carácter decorativo que complementan la ilustración del personaje romano presente en el identificador."
+    }
+];
+
+const contenedor = document.getElementById("tarjetas");
+
+function crearCampo(titulo,valor){
+    const campo=document.createElement("div");
+    campo.className="campo";
+
+    const subtitulo=document.createElement("h4");
+    subtitulo.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=valor;
+
+    campo.append(subtitulo,texto);
+    return campo;
+}
+
+function cargarImagen(img,nombres,alternativas){
+
+    const extensiones=["png","jpg","jpeg","webp","svg"];
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(extension=>{
+                rutas.push("imagenes/"+nombre+"."+extension);
+            });
+        }
+    });
+
+    let indice=0;
+
+    function probar(){
+        if(indice>=rutas.length){
+            img.style.display="none";
+
+            const aviso=document.createElement("div");
+            aviso.className="logo-faltante";
+            aviso.textContent=alternativas;
+
+            img.parentNode.insertBefore(aviso,img);
+            return;
+        }
+
+        img.src=rutas[indice];
+        indice++;
+    }
+
+    img.onerror=probar;
+    probar();
+}
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent="MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const logoArea=document.createElement("div");
+    logoArea.className="logo-area";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="logo-etiqueta";
+    etiqueta.textContent="IDENTIFICADOR TIPOGRÁFICO";
+
+    logoArea.append(imagen,etiqueta);
+
+    const analisis=document.createElement("div");
+    analisis.className="analisis";
+
+    analisis.append(
+        crearCampo("Clasificación tipográfica",marca.clasificacion),
+        crearCampo("Peso tipográfico",marca.peso),
+        crearCampo("Inclinación",marca.inclinacion),
+        crearCampo("Mayúsculas y minúsculas",marca.mayusculas),
+        crearCampo("Personalización",marca.personalizacion)
+    );
+
+    tarjeta.append(cabecera,logoArea,analisis);
+    contenedor.appendChild(tarjeta);
+
+    cargarImagen(imagen,marca.imagenes,marca.nombre);
+
+});
+
+</script>
+
+</body>
+</html>

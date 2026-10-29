@@ -1,0 +1,976 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dulces y chocolates | Signo icónico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS DECORATIVAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"D";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* TARJETAS DE MARCAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* LOGOTIPOS */
+
+.panel-logo{
+    min-height:195px;
+    padding:24px 18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    background:var(--crema);
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:var(--salvia);
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:285px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.6;
+    margin:0;
+}
+
+/* ANÁLISIS INDIVIDUAL */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* TABLA DE COMPARACIÓN */
+
+.tabla-contenedor{
+    padding:14px;
+    background:rgba(255,255,255,.91);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 9px 25px rgba(28,95,63,.08);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+    font-size:12px;
+}
+
+thead{
+    background:#063D2D;
+    color:white;
+}
+
+th{
+    padding:18px 14px;
+    text-align:left;
+    font-weight:800;
+}
+
+td{
+    padding:17px 14px;
+    color:#587064;
+    line-height:1.6;
+    border-bottom:1px solid rgba(23,102,74,.12);
+}
+
+tbody tr:nth-child(even){
+    background:#E8F2EC;
+}
+
+tbody tr:nth-child(odd){
+    background:#F9FBF9;
+}
+
+tbody tr:last-child td{
+    border-bottom:none;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas,
+    .clasificaciones{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / DULCES Y CHOCOLATES
+    </div>
+
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+
+    <p class="subtitulo">
+        Análisis de los símbolos y niveles de iconicidad
+        de diez marcas de dulces y chocolates
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué representan los símbolos de estas marcas?</h2>
+
+    <p>
+        El signo icónico estudia
+        los elementos visuales
+        que representan objetos,
+        figuras o conceptos
+        dentro de una identidad gráfica.
+        En las marcas de dulces
+        y chocolates encontramos
+        símbolos figurativos,
+        formas geométricas
+        y composiciones
+        basadas principalmente
+        en tipografía.
+        Es importante diferenciar
+        un símbolo icónico
+        de una letra decorada
+        o de un contenedor gráfico.
+    </p>
+</section>
+
+<!-- 01. CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="resumen">
+
+    <p class="resumen-intro">
+        Para este análisis se consideran
+        cuatro niveles de representación.
+        No todas las marcas presentan
+        un símbolo independiente:
+        cuando la identidad visual
+        está formada principalmente
+        por letras, se indica
+        que no existe
+        un ícono independiente.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+            <h3>01. Figurativa realista</h3>
+            <p>
+                Representación que conserva
+                numerosos detalles
+                y una apariencia cercana
+                a la realidad.
+                Permite reconocer
+                el objeto representado
+                por su semejanza visual.
+            </p>
+        </article>
+
+        <article class="clasificacion">
+            <h3>02. Figurativa no realista</h3>
+            <p>
+                Representación reconocible
+                de un objeto o figura,
+                pero simplificada,
+                estilizada o ilustrada,
+                sin reproducir
+                todos sus detalles reales.
+            </p>
+        </article>
+
+        <article class="clasificacion">
+            <h3>03. Abstracción figurativa</h3>
+            <p>
+                Símbolo que parte
+                de una figura reconocible,
+                pero reduce sus detalles
+                hasta conservar
+                únicamente algunos rasgos
+                esenciales de su forma.
+            </p>
+        </article>
+
+        <article class="clasificacion">
+            <h3>04. Abstracción no figurativa</h3>
+            <p>
+                Composición formada
+                por líneas, círculos,
+                manchas o figuras geométricas
+                que no representan
+                directamente
+                un objeto identificable
+                de la realidad.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Identificadores y representación icónica</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- 03. COMPARACIÓN GENERAL -->
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla-resumen"></tbody>
+    </table>
+
+</section>
+
+<!-- OBSERVACIÓN ICÓNICA -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación icónica:</strong>
+        En las diez marcas de dulces
+        y chocolates se observa
+        un predominio
+        de identificadores tipográficos.
+        KitKat, Oreo, M&amp;M's,
+        Snickers, Twix, Milka,
+        Hershey's y Kinder
+        se reconocen principalmente
+        por la forma de sus letras
+        y sus composiciones gráficas,
+        sin depender de un símbolo
+        figurativo independiente.
+        Ferrero Rocher incorpora
+        una representación gráfica
+        del producto en algunas versiones
+        de su identidad,
+        mientras que Toblerone
+        utiliza una montaña estilizada
+        como elemento icónico reconocible.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis icónico demuestra
+        que las marcas de dulces
+        y chocolates pueden construir
+        una identidad visual reconocible
+        tanto mediante símbolos
+        como mediante logotipos
+        exclusivamente tipográficos.
+        Los símbolos figurativos
+        permiten establecer
+        asociaciones visuales
+        con objetos o lugares,
+        mientras que las letras
+        personalizadas y los contenedores
+        geométricos contribuyen
+        al reconocimiento
+        sin constituir necesariamente
+        íconos independientes.
+        En esta categoría,
+        la tipografía tiene
+        un papel especialmente importante,
+        complementado por recursos
+        icónicos en marcas
+        como Toblerone.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · DULCES Y CHOCOLATES · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/* DATOS DE LAS DIEZ MARCAS */
+
+const marcas=[
+
+{
+    nombre:"KitKat",
+    imagenes:["kitkat","kit_kat","kit-kat"],
+    leyenda:"Logotipo sobre contenedor ovalado",
+    identificador:"Logotipo dentro de una forma ovalada",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "El identificador utiliza la denominación KitKat dentro de una composición ovalada. La forma exterior funciona como contenedor gráfico del nombre, pero no representa un objeto figurativo específico.",
+    interpretacion:
+        "El reconocimiento de la marca depende principalmente de las letras, la forma ovalada y la composición cromática."
+},
+
+{
+    nombre:"Oreo",
+    imagenes:["oreo"],
+    leyenda:"Logotipo con volumen y contornos",
+    identificador:"Logotipo tridimensional estilizado",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "El identificador está compuesto principalmente por la palabra OREO. Los contornos, sombras y efectos de volumen son recursos gráficos aplicados a las letras.",
+    interpretacion:
+        "La apariencia tridimensional fortalece el impacto visual, pero no constituye un símbolo figurativo independiente."
+},
+
+{
+    nombre:"M&M's",
+    imagenes:["mms","m&m","m_and_ms","mms_logo","mm"],
+    leyenda:"Identificador tipográfico",
+    identificador:"Logotipo con letras y símbolo &",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "La identidad mostrada se construye con las letras M, el signo & y la terminación 's. En esta versión no aparece una figura que represente un objeto.",
+    interpretacion:
+        "El signo & forma parte de la denominación escrita y no debe clasificarse como un ícono figurativo."
+},
+
+{
+    nombre:"Snickers",
+    imagenes:["snickers"],
+    leyenda:"Logotipo dentro de una composición geométrica",
+    identificador:"Logotipo con marco geométrico",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "El identificador está formado por la palabra SNICKERS dentro de una composición alargada con bordes y contornos de color.",
+    interpretacion:
+        "El marco contribuye a la diferenciación visual, pero funciona como soporte de la denominación y no como una representación figurativa."
+},
+
+{
+    nombre:"Twix",
+    imagenes:["twix"],
+    leyenda:"Logotipo de letras estilizadas",
+    identificador:"Logotipo personalizado",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "La marca se reconoce principalmente por su denominación escrita. Las letras y sus detalles gráficos forman una composición visual dinámica.",
+    interpretacion:
+        "La personalización tipográfica cumple la función identificadora principal, sin requerir un símbolo figurativo independiente."
+},
+
+{
+    nombre:"Milka",
+    imagenes:["milka"],
+    leyenda:"Logotipo manuscrito",
+    identificador:"Logotipo caligráfico",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "En la versión del catálogo, Milka utiliza una denominación de apariencia manuscrita. Sus curvas y uniones son características de la escritura.",
+    interpretacion:
+        "La marca puede utilizar ilustraciones de una vaca en otras aplicaciones, pero el logotipo analizado no contiene ese símbolo independiente."
+},
+
+{
+    nombre:"Ferrero Rocher",
+    imagenes:["ferrerorocher","ferrero_rocher","ferrero-rocher","ferrero"],
+    leyenda:"Emblema circular con representación del producto",
+    identificador:"Emblema circular con imagen del bombón",
+    clasificacion:"Figurativa no realista",
+    descripcion:
+        "La versión analizada presenta una composición circular que puede incorporar una representación ilustrada del bombón sobre la denominación de la marca.",
+    interpretacion:
+        "La imagen del producto es reconocible, pero se presenta de manera gráfica y estilizada. Por ello, cuando aparece ese elemento, corresponde a una representación figurativa no realista."
+},
+
+{
+    nombre:"Hershey's",
+    imagenes:["hersheys","hershey","hershey's","hersheys_logo"],
+    leyenda:"Logotipo tipográfico",
+    identificador:"Logotipo de letras condensadas",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "El identificador mostrado utiliza principalmente letras gruesas y compactas. No incorpora una figura que represente directamente un objeto.",
+    interpretacion:
+        "La tipografía y la composición del nombre son los elementos que permiten reconocer la marca."
+},
+
+{
+    nombre:"Kinder",
+    imagenes:["kinder"],
+    leyenda:"Logotipo tipográfico bicolor",
+    identificador:"Logotipo con diferenciación cromática",
+    clasificacion:"Sin ícono independiente",
+    descripcion:
+        "Kinder se presenta mediante letras de color negro y rojo. La composición visual se construye a partir de la palabra y sus características tipográficas.",
+    interpretacion:
+        "El contraste de colores favorece el reconocimiento, pero no existe un símbolo figurativo separado del nombre."
+},
+
+{
+    nombre:"Toblerone",
+    imagenes:["toblerone"],
+    leyenda:"Montaña estilizada",
+    identificador:"Símbolo de montaña",
+    clasificacion:"Abstracción figurativa",
+    descripcion:
+        "El identificador incorpora una montaña representada mediante una silueta simplificada. La forma conserva rasgos que permiten reconocer el relieve montañoso.",
+    interpretacion:
+        "La montaña funciona como un símbolo figurativo sintetizado. En algunas versiones también se integra la silueta de un oso dentro de la montaña."
+}
+
+];
+
+/* CREAR CAMPOS */
+
+function crearDato(titulo,descripcion){
+
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+
+    return bloque;
+}
+
+/* BUSCAR LOGOTIPOS EN LA CARPETA IMAGENES */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png","jpg","jpeg","webp","svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+/* GENERAR TARJETAS Y TABLA */
+
+const zona=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla-resumen");
+
+marcas.forEach((marca,indice)=>{
+
+    /* TARJETA */
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    contenido.append(
+        crearDato(
+            "Identificador",
+            marca.identificador
+        ),
+        crearDato(
+            "Clasificación icónica",
+            marca.clasificacion
+        ),
+        crearDato(
+            "Descripción",
+            marca.descripcion
+        ),
+        crearDato(
+            "Interpretación",
+            marca.interpretacion
+        )
+    );
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(
+        imagen,
+        marca.imagenes,
+        marca.nombre
+    );
+
+    /* FILA DE LA TABLA */
+
+    const fila=document.createElement("tr");
+
+    [
+        marca.nombre,
+        marca.identificador,
+        marca.clasificacion
+    ].forEach(valor=>{
+
+        const celda=document.createElement("td");
+        celda.textContent=valor;
+        fila.appendChild(celda);
+
+    });
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streaming y entretenimiento | Signo escritural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+      radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+      radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+      radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+      radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+      linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;height:330px;
+    right:-130px;top:150px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(151,218,181,.14) 40%,
+      transparent 80%);
+}
+
+body::after{
+    width:220px;height:220px;
+    left:-105px;bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(142,210,173,.17) 40%,
+      transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+      radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+      linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES GENERALES */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+    border-top:1px solid rgba(197,160,96,.35);
+    margin-top:13px;
+    padding-top:12px;
+}
+
+/* TARJETAS INDIVIDUALES */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera .numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:260px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(
+      110deg,
+      rgba(225,240,228,.95),
+      rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas,.clasificaciones{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / STREAMING Y ENTRETENIMIENTO
+    </div>
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+    <p class="subtitulo">
+        La tipografía como elemento de identidad visual
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+
+    <h2>¿Cómo se representan los nombres?</h2>
+
+    <p>
+        El signo escritural analiza la representación
+        gráfica de los nombres de marca mediante
+        sus características tipográficas.
+        En la categoría Streaming y entretenimiento
+        se identifican las clasificaciones tipográficas
+        presentes y los estilos utilizados:
+        peso, inclinación, uso de mayúsculas y minúsculas
+        y personalización de las letras.
+        El análisis se centra en los identificadores
+        visuales de diez plataformas.
+    </p>
+</section>
+
+<!-- 01. CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Clasificaciones tipográficas presentes</h2>
+</div>
+
+<section class="resumen">
+
+    <p class="resumen-intro">
+        En esta categoría predominan los logotipos
+        de construcción sans serif, aunque también
+        aparecen letras caligráficas, formas
+        geométricas y diseños personalizados.
+        La mayoría de las plataformas utiliza
+        letras de gran legibilidad y rasgos
+        distintivos para facilitar su reconocimiento
+        en interfaces y aplicaciones digitales.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+            <h3>01. Sans serif</h3>
+            <p>
+                Letras sin remates, con trazos limpios,
+                rectos o curvos y buena legibilidad.
+            </p>
+            <div class="ejemplos">
+                Netflix, HBO Max, Prime Video,
+                Hulu, Crunchyroll, Apple TV,
+                Peacock y MUBI.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>02. Caligráfica</h3>
+            <p>
+                Letras inspiradas en la escritura manual,
+                con curvas expresivas y variaciones
+                de grosor.
+            </p>
+            <div class="ejemplos">
+                Disney+.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>03. Script decorativa</h3>
+            <p>
+                Escritura estilizada con rasgos
+                ornamentales, curvas y conexiones
+                visuales entre caracteres.
+            </p>
+            <div class="ejemplos">
+                Paramount+.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>04. Personalizada</h3>
+            <p>
+                Letras modificadas o construidas
+                específicamente para la identidad
+                de una marca.
+            </p>
+            <div class="ejemplos">
+                Presente en distintos grados
+                en las diez marcas.
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- 02. MARCAS -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Estilos tipográficos utilizados</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación escritural:</strong>
+        Las clasificaciones corresponden a la apariencia
+        gráfica de los logotipos seleccionados.
+        Varias plataformas emplean lettering
+        personalizado en lugar de una fuente
+        tipográfica convencional.
+        El análisis distingue entre la familia
+        visual, el peso, la inclinación, el uso
+        de mayúsculas y minúsculas y las
+        modificaciones particulares de cada marca.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas de streaming y entretenimiento
+        predominan los logotipos sans serif,
+        especialmente los de peso medio y grueso.
+        Disney+ y Paramount+ destacan por
+        incorporar escrituras de apariencia
+        caligráfica, mientras que Netflix,
+        HBO Max, Hulu y MUBI utilizan
+        construcciones más geométricas.
+        La personalización de las letras,
+        el contraste de grosores y la
+        organización de los caracteres
+        permiten diferenciar visualmente
+        las plataformas y fortalecer
+        su reconocimiento.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · STREAMING Y ENTRETENIMIENTO ·
+    SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  Se utiliza la carpeta "imagenes" existente.
+  Si algún archivo tiene otro nombre,
+  modifica únicamente su lista "imagenes".
+*/
+
+const marcas = [
+{
+    nombre:"Netflix",
+    imagenes:["netflix"],
+    leyenda:"Sans serif condensada y personalizada.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso, con trazos de gran presencia visual.",
+    inclinacion:"Recta.",
+    mayusculas:"Mayúscula N en el símbolo mostrado; el logotipo completo utiliza NETFLIX en mayúsculas.",
+    personalizacion:"La letra N presenta superposición de trazos y efectos de profundidad. En el logotipo completo, los caracteres son compactos y de proporciones verticales."
+},
+{
+    nombre:"Disney+",
+    imagenes:["disney","disneyplus","disney_plus","disney+"],
+    leyenda:"Escritura caligráfica personalizada.",
+    clasificacion:"Caligráfica o script personalizada.",
+    peso:"Variable, con trazos gruesos y finos.",
+    inclinacion:"Irregular, con movimientos curvos propios del lettering.",
+    mayusculas:"Inicial D mayúscula y letras restantes minúsculas, acompañadas del signo +.",
+    personalizacion:"Caracteres inspirados en la firma de Disney, con curvas ornamentales y trazos particulares. El símbolo + y el arco completan la composición."
+},
+{
+    nombre:"HBO Max",
+    imagenes:["hbomax","hbo_max","hbo max"],
+    leyenda:"Sans serif geométrica de gran peso.",
+    clasificacion:"Sans serif geométrica personalizada.",
+    peso:"Grueso y compacto.",
+    inclinacion:"Recta.",
+    mayusculas:"HBO en mayúsculas y max en minúsculas, según la versión del catálogo.",
+    personalizacion:"La composición destaca las formas circulares de la O y de la palabra max, combinando caracteres geométricos de gran tamaño."
+},
+{
+    nombre:"Prime Video",
+    imagenes:["primevideo","prime_video","prime video","amazonprime"],
+    leyenda:"Sans serif de apariencia moderna.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Medio a grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Minúsculas en prime y video.",
+    personalizacion:"Caracteres redondeados y de fácil lectura. La palabra prime y la palabra video presentan un tratamiento cromático diferenciado, acompañado de una curva en forma de sonrisa."
+},
+{
+    nombre:"Paramount+",
+    imagenes:["paramount","paramountplus","paramount_plus","paramount+"],
+    leyenda:"Escritura script de carácter ornamental.",
+    clasificacion:"Script decorativa personalizada.",
+    peso:"Variable, con trazos finos y gruesos.",
+    inclinacion:"Inclinación hacia la derecha.",
+    mayusculas:"Inicial P mayúscula y letras restantes minúsculas, acompañadas del signo +.",
+    personalizacion:"La escritura presenta conexiones y prolongaciones curvas entre caracteres. Se integra con el símbolo de la montaña y el círculo de estrellas."
+},
+{
+    nombre:"Hulu",
+    imagenes:["hulu"],
+    leyenda:"Sans serif geométrica y redondeada.",
+    clasificacion:"Sans serif geométrica personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en minúsculas: hulu.",
+    personalizacion:"Caracteres de grosor uniforme, curvas redondeadas y composición horizontal compacta que refuerza su apariencia digital."
+},
+{
+    nombre:"Crunchyroll",
+    imagenes:["crunchyroll","crunchy_roll","crunchy roll"],
+    leyenda:"Sans serif redondeada y personalizada.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Inicial C mayúscula y letras restantes minúsculas.",
+    personalizacion:"Caracteres compactos y redondeados acompañados de un símbolo circular naranja. La tipografía transmite una apariencia contemporánea."
+},
+{
+    nombre:"Apple TV",
+    imagenes:["appletv","apple_tv","apple tv","appletvplus","apple_tv_plus"],
+    leyenda:"Sans serif de construcción limpia.",
+    clasificacion:"Sans serif contemporánea.",
+    peso:"Medio.",
+    inclinacion:"Recta.",
+    mayusculas:"Letras minúsculas en tv; el símbolo de Apple sustituye el nombre escrito de la marca matriz.",
+    personalizacion:"Tipografía sencilla y de proporciones equilibradas, integrada con el símbolo de Apple y el signo + de la plataforma."
+},
+{
+    nombre:"Peacock",
+    imagenes:["peacock"],
+    leyenda:"Sans serif redondeada y personalizada.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso, con curvas suaves.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en minúsculas: peacock.",
+    personalizacion:"Caracteres redondeados y compactos. Los puntos de colores al lado del nombre aportan un elemento gráfico distintivo."
+},
+{
+    nombre:"MUBI",
+    imagenes:["mubi"],
+    leyenda:"Sans serif geométrica de gran legibilidad.",
+    clasificacion:"Sans serif geométrica.",
+    peso:"Medio a grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Todas las letras en mayúsculas: MUBI.",
+    personalizacion:"Caracteres de construcción limpia y espaciado equilibrado. Se complementan con una composición de puntos circulares negros."
+}
+];
+
+const zona=document.getElementById("tarjetas");
+
+function dato(titulo,descripcion){
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+    return bloque;
+}
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=["png","jpg","jpeg","webp","svg"];
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+    });
+
+    let posicion=0;
+
+    function intentar(){
+        if(posicion>=rutas.length){
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre.toUpperCase();
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    contenido.append(
+        dato("Clasificación tipográfica",marca.clasificacion),
+        dato("Peso tipográfico",marca.peso),
+        dato("Inclinación",marca.inclinacion),
+        dato("Mayúsculas y minúsculas",marca.mayusculas),
+        dato("Personalización",marca.personalizacion)
+    );
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(imagen,marca.imagenes,marca.nombre);
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,827 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo icónico | Automóviles</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 9% 18%,rgba(255,255,255,.95),transparent 29%),
+        radial-gradient(circle at 92% 13%,rgba(61,157,111,.30),transparent 34%),
+        radial-gradient(circle at 5% 72%,rgba(93,194,153,.22),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(201,175,114,.18),transparent 35%),
+        linear-gradient(135deg,#F4F7F2,#E1EEE5 48%,#F3F0E6);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.8);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:125px;
+    background:radial-gradient(circle at 28% 25%,
+        rgba(255,255,255,.85),
+        rgba(178,230,200,.18) 40%,
+        rgba(50,138,99,.07) 70%,
+        transparent 85%);
+    box-shadow:
+        inset 14px 14px 30px rgba(255,255,255,.65),
+        inset -15px -15px 30px rgba(38,120,83,.10);
+}
+
+body::after{
+    width:230px;
+    height:230px;
+    left:-110px;
+    bottom:80px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,219,180,.18) 40%,
+        rgba(45,134,96,.08) 70%,
+        transparent 85%);
+}
+
+.contenedor{
+    width:88%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:28px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+.encabezado{
+    text-align:center;
+    padding:14px 10px 22px;
+    margin-bottom:25px;
+}
+
+.ruta{
+    font-size:10px;
+    font-weight:700;
+    color:#A17B3D;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Bodoni 72","Didot",
+        "Libre Bodoni",Georgia,serif;
+    font-size:clamp(31px,4.5vw,60px);
+    font-weight:400;
+    line-height:1.15;
+    letter-spacing:-2px;
+    color:var(--verde);
+    margin:0 0 13px;
+}
+
+.subtitulo{
+    color:#5C786A;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:2px;
+    margin:18px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+.presentacion{
+    position:relative;
+    overflow:hidden;
+    border-radius:16px;
+    padding:28px 32px;
+    margin-bottom:35px;
+    background:
+        radial-gradient(circle at 95% 12%,
+            rgba(131,213,168,.22),transparent 35%),
+        linear-gradient(110deg,#043727,#126448);
+    border:1px solid rgba(197,160,96,.55);
+    box-shadow:0 12px 28px rgba(9,74,48,.13);
+}
+
+.presentacion::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:35px;
+    top:-105px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.18);
+}
+
+.presentacion::after{
+    content:"◇";
+    position:absolute;
+    right:30px;
+    bottom:-75px;
+    font-size:195px;
+    color:rgba(255,255,255,.07);
+    pointer-events:none;
+}
+
+.codigo{
+    position:relative;
+    z-index:1;
+    color:#E3C385;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.7px;
+}
+
+.presentacion h2{
+    position:relative;
+    z-index:1;
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:clamp(23px,3vw,30px);
+    font-weight:500;
+    color:white;
+    margin:10px 0 13px;
+}
+
+.presentacion p{
+    position:relative;
+    z-index:1;
+    max-width:800px;
+    color:#E6F1E9;
+    font-size:12px;
+    line-height:1.9;
+    margin:0;
+}
+
+.seccion{
+    margin:33px 0 18px;
+    padding-left:3px;
+}
+
+.seccion small{
+    display:block;
+    color:#A57E3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:clamp(25px,3.2vw,33px);
+    font-weight:400;
+    margin:9px 0 0;
+    color:var(--verde);
+}
+
+/* CLASIFICACIONES */
+
+.niveles{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+
+.nivel{
+    padding:22px;
+    border-radius:13px;
+    border:1px solid rgba(170,204,178,.4);
+    border-top:3px solid var(--dorado);
+    background:rgba(255,255,255,.83);
+    box-shadow:0 8px 22px rgba(33,91,60,.05);
+}
+
+.nivel:nth-child(even){
+    background:rgba(230,243,232,.9);
+}
+
+.nivel h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:22px;
+    font-weight:500;
+    margin:0 0 10px;
+}
+
+.nivel p{
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.85;
+    margin:0;
+}
+
+.nivel .ejemplo{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid rgba(197,160,96,.3);
+    color:var(--verde2);
+    font-size:11px;
+    font-weight:700;
+    line-height:1.7;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+}
+
+.tarjeta{
+    overflow:hidden;
+    border-radius:15px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(170,204,178,.4);
+    box-shadow:0 8px 25px rgba(24,85,55,.08);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(24,85,55,.13);
+}
+
+.tarjeta-cabecera{
+    min-height:55px;
+    padding:15px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.tarjeta-cabecera span{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#E4C587;
+}
+
+.tarjeta-cabecera h3{
+    margin:0;
+    font-size:16px;
+    font-weight:700;
+    color:white;
+    text-align:right;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+/* IMÁGENES */
+
+.icono-visual{
+    height:165px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#F7FAF5,#E7F1E9);
+    border:1px solid rgba(170,204,178,.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    padding:15px;
+    margin-bottom:18px;
+}
+
+.icono-visual img{
+    max-width:100%;
+    max-height:115px;
+    object-fit:contain;
+}
+
+.sin-imagen{
+    display:none;
+    color:#758A7D;
+    font-size:11px;
+    text-align:center;
+    line-height:1.7;
+}
+
+.etiqueta{
+    font-size:10px;
+    color:#A68040;
+    font-weight:700;
+    letter-spacing:1.1px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.clasificacion{
+    display:inline-block;
+    padding:8px 12px;
+    margin-bottom:14px;
+    background:#E7F0E8;
+    border:1px solid rgba(25,104,71,.17);
+    border-radius:8px;
+    color:#0D553C;
+    font-size:11px;
+    font-weight:700;
+    line-height:1.5;
+}
+
+.descripcion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.detalle{
+    margin-top:14px;
+    padding-top:13px;
+    border-top:1px solid rgba(197,160,96,.25);
+    font-size:11px;
+    line-height:1.8;
+    color:#637A6D;
+}
+
+/* TABLA */
+
+.tabla-contenedor{
+    overflow-x:auto;
+    border-radius:13px;
+    background:rgba(255,255,255,.87);
+    border:1px solid rgba(170,204,178,.4);
+    padding:12px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+}
+
+th{
+    background:var(--verde);
+    color:white;
+    padding:13px 12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid rgba(170,204,178,.35);
+    color:var(--texto);
+    line-height:1.7;
+}
+
+tr:nth-child(even) td{
+    background:rgba(229,241,231,.6);
+}
+
+/* NOTA Y CONCLUSIÓN */
+
+.nota,.conclusion{
+    margin-top:28px;
+    padding:24px 27px;
+    border-radius:0 13px 13px 0;
+    border:1px solid rgba(197,160,96,.4);
+    border-left:4px solid var(--dorado);
+    background:linear-gradient(
+        110deg,rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+}
+
+.nota{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{color:var(--verde)}
+
+.conclusion h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    font-size:26px;
+    font-weight:500;
+    margin:0 0 12px;
+}
+
+.conclusion p{
+    font-size:12px;
+    line-height:1.95;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    text-align:center;
+    font-size:10px;
+    letter-spacing:1px;
+    color:#6D8377;
+    padding:21px 0;
+    margin-top:30px;
+    border-top:1px solid rgba(197,160,96,.45);
+}
+
+@media(max-width:750px){
+    .contenedor{width:92%}
+    .niveles,.tarjetas{grid-template-columns:1fr}
+}
+
+@media(max-width:430px){
+    .presentacion{padding:23px 19px}
+    .tarjeta-contenido{padding:17px}
+    .titulo{letter-spacing:-1px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / AUTOMÓVILES</div>
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+    <p class="subtitulo">
+        Representación visual y niveles de iconicidad
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">APARTADO D / ANÁLISIS ICÓNICO</div>
+    <h2>¿Qué representan los símbolos de las marcas?</h2>
+    <p>
+        El signo icónico estudia las representaciones
+        gráficas que forman parte de la identidad visual
+        de las marcas. En la categoría Automóviles se
+        analizan diez identificadores y se clasifican
+        según los niveles de iconicidad: figurativa
+        realista, figurativa no realista, abstracción
+        figurativa y abstracción no figurativa.
+        Cuando no existe un ícono independiente,
+        se indica expresamente.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="niveles">
+
+    <article class="nivel">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representación visual de personas, animales
+            u objetos que conserva características
+            y detalles próximos a su apariencia real.
+        </p>
+        <div class="ejemplo">
+            No se identifica una representación
+            figurativa realista en esta selección.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representación reconocible de una persona,
+            animal u objeto, pero con simplificaciones
+            o modificaciones visuales.
+        </p>
+        <div class="ejemplo">
+            No se identifica un caso inequívoco
+            de esta clasificación.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Representación muy simplificada que
+            conserva una referencia reconocible
+            a una figura u objeto.
+        </p>
+        <div class="ejemplo">
+            Hyundai, mediante la interpretación
+            de su símbolo como dos personas
+            estrechándose la mano.
+        </div>
+    </article>
+
+    <article class="nivel">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Símbolos construidos con líneas,
+            figuras geométricas, monogramas
+            y composiciones que no representan
+            directamente una figura natural.
+        </p>
+        <div class="ejemplo">
+            Toyota, Chevrolet, BMW, Mercedes-Benz,
+            Audi, Nissan y Volkswagen.
+        </div>
+    </article>
+
+</section>
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Elemento analizado</th>
+                <th>Nivel de iconicidad</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</section>
+
+<div class="nota">
+    <strong>Observación:</strong>
+    La clasificación se basa en los identificadores
+    seleccionados para el catálogo. Los monogramas
+    de BMW y Volkswagen, por ejemplo, incorporan
+    letras, pero también forman parte de una
+    composición gráfica. En Ford y Kia predomina
+    el logotipo tipográfico, por lo que no se
+    identifica un ícono independiente.
+    Algunas interpretaciones simbólicas pueden
+    variar según el criterio de análisis.
+</div>
+
+<section class="conclusion">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En los diez identificadores automotrices
+        analizados predomina la abstracción
+        no figurativa, presente en siete marcas.
+        Sus símbolos emplean óvalos, círculos,
+        estrellas, líneas y monogramas.
+        Hyundai se clasifica de forma interpretativa
+        como abstracción figurativa debido a la
+        referencia simbólica de su emblema.
+        Ford y Kia utilizan principalmente
+        logotipos tipográficos, sin un ícono
+        independiente en las versiones analizadas.
+        En conjunto, estas formas visuales
+        permiten distinguir y reconocer
+        las marcas mediante elementos gráficos
+        sintéticos y memorables.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · AUTOMÓVILES · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  SE UTILIZA LA MISMA CARPETA:
+  imagenes/
+
+  Si alguna imagen no aparece,
+  cambia el nombre del archivo
+  por el que tienes guardado.
+*/
+
+const marcas=[
+
+{
+    nombre:"Toyota",
+    archivos:["toyota.png","Toyota.png","toyota.jpg","toyota.webp"],
+    simbolo:"Tres óvalos entrelazados",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Toyota utiliza tres óvalos combinados que forman una estructura geométrica. Dos óvalos interiores se cruzan dentro de uno mayor. Aunque la marca atribuye significados simbólicos a esta composición, visualmente no representa de forma directa un objeto natural.",
+    detalle:"El emblema se reconoce por la superposición de formas ovaladas."
+},
+
+{
+    nombre:"Chevrolet",
+    archivos:["chevrolet.png","Chevrolet.png","chevrolet.jpg","chevrolet.webp"],
+    simbolo:"Corbatín geométrico",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Chevrolet utiliza una figura geométrica horizontal conocida como corbatín. Está construida mediante líneas rectas y ángulos, sin representar de forma realista una corbata u otro objeto natural.",
+    detalle:"La forma se mantiene reconocible incluso cuando cambia su acabado cromático."
+},
+
+{
+    nombre:"Ford",
+    archivos:["ford.png","Ford.png","ford.jpg","ford.webp"],
+    simbolo:"Óvalo con logotipo cursivo",
+    clasificacion:"Sin ícono independiente",
+    descripcion:"Ford presenta su nombre mediante una escritura cursiva personalizada dentro de un óvalo. La identidad se basa principalmente en el logotipo tipográfico, acompañado por una forma geométrica de contención.",
+    detalle:"El óvalo funciona como parte del identificador, pero no constituye una figura independiente con significado figurativo."
+},
+
+{
+    nombre:"BMW",
+    archivos:["bmw.png","BMW.png","bmw.jpg","bmw.webp"],
+    simbolo:"Emblema circular con cuadrantes",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"BMW utiliza un emblema circular con un anillo exterior y un campo interior dividido en cuatro cuadrantes. La composición es geométrica y no representa directamente una figura natural.",
+    detalle:"El emblema incorpora también las iniciales BMW en el anillo exterior."
+},
+
+{
+    nombre:"Mercedes-Benz",
+    archivos:["mercedes.png","mercedesbenz.png","mercedes-benz.png","Mercedes.png","mercedes.jpg"],
+    simbolo:"Estrella de tres puntas",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Mercedes-Benz utiliza una estrella de tres puntas inscrita en un círculo. Sus líneas geométricas forman un símbolo estilizado que no representa directamente una estrella astronómica de manera realista.",
+    detalle:"La estrella de tres puntas funciona como un identificador gráfico independiente del nombre."
+},
+
+{
+    nombre:"Audi",
+    archivos:["audi.png","Audi.png","audi.jpg","audi.webp"],
+    simbolo:"Cuatro aros entrelazados",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Audi utiliza cuatro anillos circulares entrelazados. La composición se construye con formas geométricas repetidas y representa simbólicamente la unión histórica de cuatro fabricantes, sin reproducir una figura natural.",
+    detalle:"Los cuatro aros pueden funcionar como símbolo independiente del nombre Audi."
+},
+
+{
+    nombre:"Nissan",
+    archivos:["nissan.png","Nissan.png","nissan.jpg","nissan.webp"],
+    simbolo:"Estructura circular abierta",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Nissan utiliza una estructura circular abierta que rodea la denominación de la marca. El identificador combina líneas curvas y una composición geométrica sencilla, sin representar directamente un objeto real.",
+    detalle:"El símbolo se integra con el nombre NISSAN en la versión seleccionada."
+},
+
+{
+    nombre:"Hyundai",
+    archivos:["hyundai.png","Hyundai.png","hyundai.jpg","hyundai.webp"],
+    simbolo:"H estilizada dentro de un óvalo",
+    clasificacion:"Abstracción figurativa (interpretativa)",
+    descripcion:"Hyundai utiliza una letra H inclinada dentro de un óvalo. La marca también interpreta esta forma como dos personas estrechándose la mano, lo que permite relacionarla simbólicamente con una figura humana muy simplificada.",
+    detalle:"Si se analiza únicamente la forma visible como letra H, también puede clasificarse como abstracción no figurativa."
+},
+
+{
+    nombre:"Kia",
+    archivos:["kia.png","Kia.png","kia.jpg","kia.webp"],
+    simbolo:"Logotipo KIA personalizado",
+    clasificacion:"Sin ícono independiente",
+    descripcion:"Kia utiliza un logotipo formado por letras mayúsculas de diseño angular y continuo. La identidad visual se concentra en la modificación gráfica del nombre, sin incorporar un símbolo separado en la versión seleccionada.",
+    detalle:"Las formas angulares pertenecen a la construcción tipográfica del logotipo."
+},
+
+{
+    nombre:"Volkswagen",
+    archivos:["volkswagen.png","Volkswagen.png","vw.png","volkswagen.jpg","volkswagen.webp"],
+    simbolo:"Monograma VW circular",
+    clasificacion:"Abstracción no figurativa",
+    descripcion:"Volkswagen utiliza las letras V y W superpuestas dentro de un círculo. El símbolo combina elementos alfabéticos con una estructura geométrica, sin representar una figura natural reconocible.",
+    detalle:"El monograma permite identificar la marca incluso sin escribir su nombre completo."
+}
+
+];
+
+function cargarImagen(imagen,aviso,archivos,indice=0){
+    if(indice>=archivos.length){
+        imagen.style.display="none";
+        aviso.style.display="block";
+        return;
+    }
+
+    imagen.onerror=function(){
+        cargarImagen(imagen,aviso,archivos,indice+1);
+    };
+
+    imagen.onload=function(){
+        imagen.style.display="block";
+        aviso.style.display="none";
+    };
+
+    imagen.src="imagenes/"+archivos[indice];
+}
+
+const tarjetas=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla");
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const visual=document.createElement("div");
+    visual.className="icono-visual";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador de "+marca.nombre;
+
+    const aviso=document.createElement("div");
+    aviso.className="sin-imagen";
+    aviso.textContent=
+        "No se encontró la imagen en la carpeta imagenes.";
+
+    visual.append(imagen,aviso);
+    cargarImagen(imagen,aviso,marca.archivos);
+
+    const etiqueta=document.createElement("div");
+    etiqueta.className="etiqueta";
+    etiqueta.textContent=marca.simbolo;
+
+    const clasificacion=document.createElement("div");
+    clasificacion.className="clasificacion";
+    clasificacion.textContent=marca.clasificacion;
+
+    const descripcion=document.createElement("p");
+    descripcion.className="descripcion";
+    descripcion.textContent=marca.descripcion;
+
+    const detalle=document.createElement("div");
+    detalle.className="detalle";
+    detalle.textContent=marca.detalle;
+
+    contenido.append(
+        visual,etiqueta,clasificacion,descripcion,detalle
+    );
+
+    tarjeta.append(cabecera,contenido);
+    tarjetas.appendChild(tarjeta);
+
+    const fila=document.createElement("tr");
+
+    [
+        marca.nombre,
+        marca.simbolo,
+        marca.clasificacion
+    ].forEach(texto=>{
+        const celda=document.createElement("td");
+        celda.textContent=texto;
+        fila.appendChild(celda);
+    });
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

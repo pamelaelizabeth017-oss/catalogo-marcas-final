@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bebidas | Signo icónico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+      radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+      radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+      radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+      radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+      linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;height:330px;
+    right:-130px;top:150px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(151,218,181,.14) 40%,
+      transparent 80%);
+}
+
+body::after{
+    width:220px;height:220px;
+    left:-105px;bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(142,210,173,.17) 40%,
+      transparent 80%);
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+      radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+      linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"D";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    padding:24px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.clasificacion:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    border-top:1px solid rgba(197,160,96,.4);
+    margin-top:15px;
+    padding-top:13px;
+    color:#17664A;
+    font-size:12px;
+    line-height:1.8;
+    font-weight:700;
+}
+
+/* TARJETAS INDIVIDUALES */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera .numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.panel-logo{
+    padding:23px 18px 19px;
+    min-height:190px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:260px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.tipo{
+    display:inline-block;
+    background:#E6F1E9;
+    color:#17664A;
+    border:1px solid #BDD6C4;
+    border-radius:7px;
+    padding:9px 12px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.tarjeta-contenido p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0 0 15px;
+}
+
+.detalle{
+    padding-top:14px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.85;
+}
+
+/* TABLA COMPARATIVA */
+
+.tabla-contenedor{
+    padding:13px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+thead{
+    background:#063D2D;
+    color:white;
+}
+
+th{
+    padding:16px 14px;
+    text-align:left;
+    font-weight:800;
+}
+
+td{
+    padding:15px 14px;
+    color:var(--texto);
+    line-height:1.7;
+    border-bottom:1px solid #D7E6DA;
+}
+
+tbody tr:nth-child(even){
+    background:rgba(226,240,231,.65);
+}
+
+tbody tr:last-child td{
+    border-bottom:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(
+      110deg,
+      rgba(225,240,228,.95),
+      rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .clasificaciones,.tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+    .seccion h2{font-size:29px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / BEBIDAS</div>
+    <h1 class="titulo">SIGNO ICÓNICO</h1>
+    <p class="subtitulo">
+        Los símbolos y su nivel de iconicidad
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué representan los símbolos?</h2>
+
+    <p>
+        El signo icónico analiza los elementos gráficos
+        que acompañan o identifican visualmente a las marcas.
+        En la categoría Bebidas se estudian diez identificadores
+        según su nivel de iconicidad: figurativa realista,
+        figurativa no realista, abstracción figurativa
+        y abstracción no figurativa.
+        Cuando el identificador está compuesto únicamente
+        por letras, se señala que no presenta un ícono
+        independiente.
+    </p>
+</section>
+
+<!-- 01. CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clasificacion">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representación visual de personas, animales
+            u objetos con características y detalles
+            cercanos a su apariencia real.
+        </p>
+        <div class="ejemplos">
+            No se identifica una representación plenamente
+            realista en los símbolos principales analizados.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representación reconocible de una figura real,
+            pero con simplificaciones, estilizaciones
+            o modificaciones visuales.
+        </p>
+        <div class="ejemplos">
+            Red Bull: dos toros estilizados.
+            Nestea: hojas simplificadas.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Representación simplificada que conserva
+            una referencia identificable a una figura,
+            un objeto o un fenómeno.
+        </p>
+        <div class="ejemplos">
+            Gatorade: rayo.
+            Monster Energy: marcas que evocan
+            arañazos de garras.
+        </div>
+    </article>
+
+    <article class="clasificacion">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Símbolos construidos mediante formas,
+            líneas o composiciones geométricas
+            que no reproducen directamente una figura real.
+        </p>
+        <div class="ejemplos">
+            Pepsi: composición circular.
+            Powerade: forma angular.
+        </div>
+    </article>
+
+</section>
+
+<!-- 02. TARJETAS -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Identificadores de las diez marcas</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- 03. TABLA -->
+
+<div class="seccion">
+    <small>03 / COMPARACIÓN GENERAL</small>
+    <h2>Resumen de iconicidad</h2>
+</div>
+
+<section class="tabla-contenedor">
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Identificador</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación icónica:</strong>
+        La clasificación se realiza a partir de los
+        identificadores visuales seleccionados para
+        este catálogo. Debe diferenciarse el símbolo
+        independiente del logotipo tipográfico.
+        Las letras modificadas o los fondos de color
+        no se consideran automáticamente íconos.
+        Una misma marca puede utilizar distintas
+        versiones de su identidad visual, por lo que
+        el análisis corresponde a las versiones mostradas.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas de bebidas se identifican
+        diferentes estrategias de representación icónica.
+        Red Bull y Nestea utilizan figuras reconocibles
+        y estilizadas; Gatorade y Monster Energy emplean
+        referencias simplificadas; Pepsi y Powerade
+        incorporan composiciones abstractas.
+        En Coca-Cola, Sprite, Fanta y Schweppes,
+        las versiones seleccionadas se apoyan
+        principalmente en sus nombres escritos,
+        sin presentar un ícono independiente claramente
+        diferenciable. Estas soluciones demuestran
+        que la identidad visual puede construirse
+        mediante símbolos, logotipos o combinaciones
+        de ambos recursos.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · BEBIDAS · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  Las imágenes se buscan dentro de la carpeta
+  "imagenes" que ya tienes.
+
+  Si un logotipo no aparece, revisa su nombre
+  exacto y agrégalo a la lista "imagenes".
+*/
+
+const marcas = [
+{
+    nombre:"Coca-Cola",
+    imagenes:["cocacola","coca_cola","coca-cola","coca cola"],
+    identificador:"Logotipo caligráfico",
+    tipo:"Sin ícono independiente",
+    leyenda:"LOGOTIPO CALIGRÁFICO",
+    descripcion:"El identificador seleccionado de Coca-Cola está compuesto principalmente por letras caligráficas personalizadas. Sus trazos ornamentales construyen la identidad visual sin representar un objeto independiente.",
+    detalle:"La escritura es el elemento principal; no corresponde asignarle un nivel de iconicidad figurativa."
+},
+{
+    nombre:"Pepsi",
+    imagenes:["pepsi"],
+    identificador:"Símbolo circular tricolor",
+    tipo:"Abstracción no figurativa",
+    leyenda:"COMPOSICIÓN CIRCULAR ABSTRACTA",
+    descripcion:"Pepsi presenta un símbolo circular compuesto por zonas de color y curvas internas. La figura funciona como un identificador geométrico sin representar literalmente un objeto natural.",
+    detalle:"La iconicidad se basa en la organización abstracta de formas y colores."
+},
+{
+    nombre:"Sprite",
+    imagenes:["sprite"],
+    identificador:"Logotipo estilizado",
+    tipo:"Sin ícono independiente",
+    leyenda:"LOGOTIPO ESTILIZADO",
+    descripcion:"En la versión seleccionada de Sprite predomina la palabra construida con letras angulares y dinámicas. Los recursos decorativos forman parte del tratamiento gráfico del nombre.",
+    detalle:"No se identifica un símbolo autónomo claramente separado del logotipo en esta versión."
+},
+{
+    nombre:"Fanta",
+    imagenes:["fanta"],
+    identificador:"Logotipo sobre composición cromática",
+    tipo:"Sin ícono independiente",
+    leyenda:"LOGOTIPO DECORATIVO",
+    descripcion:"La versión analizada de Fanta utiliza letras personalizadas acompañadas por una composición de color. El énfasis está en la denominación escrita y su presentación visual.",
+    detalle:"El fondo geométrico se considera un recurso compositivo; no se clasifica aquí como ícono independiente."
+},
+{
+    nombre:"Red Bull",
+    imagenes:["redbull","red_bull","red bull"],
+    identificador:"Dos toros enfrentados",
+    tipo:"Figurativa no realista",
+    leyenda:"TOROS ESTILIZADOS",
+    descripcion:"Red Bull utiliza dos toros rojos enfrentados frente a un círculo amarillo. Los animales son reconocibles, pero están representados mediante siluetas simplificadas y estilizadas.",
+    detalle:"Conserva la forma general de animales reales sin reproducir todos sus detalles anatómicos."
+},
+{
+    nombre:"Monster Energy",
+    imagenes:["monster","monsterenergy","monster_energy","monster energy"],
+    identificador:"Tres marcas que evocan garras",
+    tipo:"Abstracción figurativa",
+    leyenda:"MARCAS DE GARRAS ESTILIZADAS",
+    descripcion:"Monster Energy utiliza tres trazos verticales irregulares que evocan arañazos de garras y, al mismo tiempo, sugieren una letra M. El símbolo reduce la referencia a formas simples y expresivas.",
+    detalle:"Se interpreta como abstracción figurativa por su asociación visual con marcas de garras."
+},
+{
+    nombre:"Gatorade",
+    imagenes:["gatorade"],
+    identificador:"Rayo",
+    tipo:"Abstracción figurativa",
+    leyenda:"RAYO GEOMÉTRICO",
+    descripcion:"Gatorade incorpora un rayo dentro de su identificador. La figura simplifica un fenómeno natural mediante líneas quebradas y ángulos pronunciados.",
+    detalle:"El rayo es reconocible por su silueta convencional, aunque no representa de manera realista una descarga eléctrica."
+},
+{
+    nombre:"Powerade",
+    imagenes:["powerade"],
+    identificador:"Forma angular",
+    tipo:"Abstracción no figurativa",
+    leyenda:"FORMA ANGULAR ABSTRACTA",
+    descripcion:"En la versión seleccionada de Powerade aparece una forma angular asociada a la composición del logotipo. Su construcción geométrica comunica movimiento sin reproducir claramente una figura natural.",
+    detalle:"La clasificación se centra en la forma abstracta que acompaña al nombre."
+},
+{
+    nombre:"Schweppes",
+    imagenes:["schweppes"],
+    identificador:"Logotipo sobre franja diagonal",
+    tipo:"Sin ícono independiente",
+    leyenda:"LOGOTIPO SOBRE BANDA DIAGONAL",
+    descripcion:"Schweppes presenta el nombre escrito sobre una banda amarilla inclinada. La banda organiza y destaca la composición, pero no representa por sí misma una figura reconocible.",
+    detalle:"En la versión analizada, la identidad se apoya principalmente en la tipografía y la composición cromática."
+},
+{
+    nombre:"Nestea",
+    imagenes:["nestea"],
+    identificador:"Hojas estilizadas",
+    tipo:"Figurativa no realista",
+    leyenda:"HOJAS VEGETALES SIMPLIFICADAS",
+    descripcion:"Nestea incorpora elementos gráficos verdes que representan hojas. Aunque sus formas están simplificadas, mantienen características suficientes para reconocer su referencia vegetal.",
+    detalle:"La representación es figurativa no realista porque conserva una figura natural identificable con un tratamiento estilizado."
+}
+];
+
+const zona=document.getElementById("tarjetas");
+const tabla=document.getElementById("tabla");
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=["png","jpg","jpeg","webp","svg"];
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+    });
+
+    let posicion=0;
+
+    function intentar(){
+        if(posicion>=rutas.length){
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+marcas.forEach((marca,indice)=>{
+
+    /* TARJETA */
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Identificador visual de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    const tipo=document.createElement("span");
+    tipo.className="tipo";
+    tipo.textContent=marca.tipo;
+
+    const descripcion=document.createElement("p");
+    descripcion.textContent=marca.descripcion;
+
+    const detalle=document.createElement("div");
+    detalle.className="detalle";
+    detalle.textContent=marca.detalle;
+
+    contenido.append(tipo,descripcion,detalle);
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(imagen,marca.imagenes,marca.nombre);
+
+    /* FILA DE LA TABLA */
+
+    const fila=document.createElement("tr");
+
+    const celdaMarca=document.createElement("td");
+    celdaMarca.textContent=marca.nombre;
+
+    const celdaIdentificador=document.createElement("td");
+    celdaIdentificador.textContent=marca.identificador;
+
+    const celdaTipo=document.createElement("td");
+    celdaTipo.textContent=marca.tipo;
+
+    fila.append(
+        celdaMarca,
+        celdaIdentificador,
+        celdaTipo
+    );
+
+    tabla.appendChild(fila);
+
+});
+
+</script>
+
+</body>
+</html>

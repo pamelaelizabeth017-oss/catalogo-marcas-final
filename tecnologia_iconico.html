@@ -1,0 +1,1007 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo icónico | Tecnología</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+
+/* PALETA GENERAL */
+
+:root {
+    --verde: #063D2D;
+    --verde-medio: #17664A;
+    --dorado: #C5A060;
+    --texto: #4D665A;
+    --crema: rgba(255,250,240,.93);
+    --salvia: rgba(225,241,230,.93);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", Arial, sans-serif;
+    color: var(--verde);
+
+    background-color: #E8F0E9;
+
+    background-image:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.30) 12%,
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(62,148,111,.28),
+            rgba(151,206,173,.15) 19%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 5% 65%,
+            rgba(74,170,134,.21),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(198,160,96,.15),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #F2F6EF,
+            #E0EDE4 46%,
+            #F4F0E5
+        );
+
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* BURBUJAS TRANSPARENTES */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+body::before {
+    width: 330px;
+    height: 330px;
+    right: -125px;
+    top: 130px;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        rgba(255,255,255,.40) 78%,
+        transparent 80%
+    );
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12),
+        0 12px 35px rgba(30,105,73,.06);
+}
+
+body::after {
+    width: 220px;
+    height: 220px;
+    left: -100px;
+    bottom: 50px;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%
+    );
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        inset 8px 8px 20px rgba(255,255,255,.7),
+        inset -12px -12px 22px rgba(36,117,78,.1);
+}
+
+/* CONTENEDOR */
+
+.contenedor {
+    width: 86%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 0 45px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 27px;
+    padding: 17px 12px 20px;
+}
+
+.ruta {
+    color: #A17B3D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    margin-bottom: 18px;
+}
+
+.titulo {
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(30px, 4.6vw, 61px);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: #063D2D;
+    margin: 0 0 15px;
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+}
+
+.subtitulo {
+    color: #4F7160;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.encabezado::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 2px;
+    margin: 19px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+}
+
+/* INTRODUCCIÓN */
+
+.presentacion {
+    background:
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(143,219,172,.24),
+            transparent 32%
+        ),
+        linear-gradient(
+            115deg,
+            #043626,
+            #126348
+        );
+
+    color: white;
+    padding: 28px 32px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(207,174,109,.5);
+    box-shadow: 0 12px 30px rgba(4,54,38,.13);
+}
+
+.presentacion::after {
+    content: "◈";
+    position: absolute;
+    right: 20px;
+    bottom: -60px;
+    font-size: 180px;
+    color: rgba(255,255,255,.06);
+    pointer-events: none;
+}
+
+.codigo {
+    color: #E6C98D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.presentacion h2 {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 11px 0;
+}
+
+.presentacion p {
+    color: #E6F2E9;
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* SECCIONES */
+
+.seccion {
+    margin: 30px 0 20px;
+}
+
+.seccion small {
+    color: #A47B39;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.seccion h2 {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 29px;
+    font-weight: 500;
+    margin: 8px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.clasificaciones {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 17px;
+}
+
+.clase {
+    background: var(--crema);
+    border: 1px solid rgba(197,160,96,.30);
+    border-top: 3px solid var(--dorado);
+    border-radius: 14px;
+    padding: 23px;
+    box-shadow: 0 8px 22px rgba(33,91,60,.06);
+}
+
+.clase:nth-child(even) {
+    background: var(--salvia);
+}
+
+.clase h3 {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 23px;
+    font-weight: 500;
+    margin: 0 0 12px;
+}
+
+.clase p {
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.85;
+    margin: 0 0 14px;
+}
+
+.clase .ejemplos {
+    padding-top: 12px;
+    border-top: 1px solid rgba(197,160,96,.30);
+    color: var(--verde-medio);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+/* AVISO */
+
+.aviso {
+    margin-top: 18px;
+    padding: 19px 22px;
+    background: linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95)
+    );
+    border: 1px solid rgba(197,160,96,.35);
+    border-left: 4px solid var(--dorado);
+    border-radius: 0 12px 12px 0;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--texto);
+}
+
+.aviso strong {
+    color: var(--verde);
+}
+
+/* FICHAS */
+
+.fichas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 20px;
+}
+
+.ficha {
+    border: 1px solid rgba(153,190,161,.38);
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(28,95,63,.07);
+    transition: transform .25s, box-shadow .25s;
+}
+
+.ficha:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(19,88,56,.12);
+}
+
+.ficha-cabecera {
+    background: linear-gradient(
+        110deg,
+        #06402E,
+        #17664A
+    );
+    border-bottom: 2px solid var(--dorado);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.ficha-cabecera span {
+    color: #E6C98D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.ficha-cabecera strong {
+    color: white;
+    font-size: 15px;
+}
+
+/* ÁREA DE IMAGEN */
+
+.visual {
+    min-height: 185px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,255,255,.8),
+            transparent 35%
+        ),
+        rgba(250,247,239,.94);
+
+    border-bottom: 1px solid rgba(197,160,96,.22);
+}
+
+.ficha:nth-child(even) .visual {
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,255,255,.8),
+            transparent 35%
+        ),
+        rgba(225,239,229,.94);
+}
+
+.visual img {
+    width: 100%;
+    max-width: 250px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.sin-imagen {
+    display: none;
+    font-size: 12px;
+    color: #789184;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.tipo-etiqueta {
+    font-size: 10px;
+    font-weight: 700;
+    color: #A37C3C;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* INFORMACIÓN */
+
+.ficha-contenido {
+    padding: 21px;
+}
+
+.dato {
+    margin-bottom: 15px;
+}
+
+.dato:last-child {
+    margin-bottom: 0;
+}
+
+.dato strong {
+    display: block;
+    color: #A37C3C;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.dato p {
+    margin: 0;
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.85;
+}
+
+/* CONCLUSIÓN */
+
+.cierre {
+    margin-top: 30px;
+    padding: 24px 27px;
+    background: linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95)
+    );
+    border: 1px solid rgba(197,160,96,.35);
+    border-left: 4px solid var(--dorado);
+    border-radius: 0 14px 14px 0;
+}
+
+.cierre h3 {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.cierre p {
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--texto);
+    margin: 0;
+}
+
+/* PIE */
+
+.pie {
+    margin-top: 32px;
+    padding-top: 19px;
+    border-top: 1px solid rgba(177,151,98,.45);
+    text-align: center;
+    color: #668073;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+@media(max-width:650px) {
+    .contenedor {
+        width: 93%;
+    }
+
+    .clasificaciones,
+    .fichas {
+        grid-template-columns: 1fr;
+    }
+
+    .presentacion {
+        padding: 23px 20px;
+    }
+
+    .titulo {
+        font-size: clamp(27px,7vw,42px);
+        letter-spacing: -1px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / TECNOLOGÍA
+    </div>
+
+    <h1 class="titulo">
+        SIGNO ICÓNICO
+    </h1>
+
+    <p class="subtitulo">
+        Clasificación de los identificadores
+        según su nivel de iconicidad
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO D / ANÁLISIS ICÓNICO
+    </div>
+
+    <h2>¿Qué nivel de iconicidad presentan las marcas?</h2>
+
+    <p>
+        El signo icónico analiza el grado de semejanza
+        entre los símbolos gráficos de las marcas
+        y los objetos o conceptos que representan.
+        En la categoría Tecnología se estudian
+        diez marcas mediante cuatro niveles:
+        figurativa realista, figurativa no realista,
+        abstracción figurativa y abstracción
+        no figurativa. Cuando una marca utiliza
+        únicamente un logotipo, se indica
+        que no posee un ícono independiente.
+    </p>
+
+</section>
+
+<!-- CLASIFICACIÓN -->
+
+<div class="seccion">
+    <small>01 / NIVELES DE ICONICIDAD</small>
+    <h2>Clasificaciones del signo icónico</h2>
+</div>
+
+<section class="clasificaciones">
+
+    <article class="clase">
+        <h3>01. Figurativa realista</h3>
+        <p>
+            Representación gráfica que conserva
+            un alto grado de semejanza con
+            un objeto, persona o elemento real.
+            Incluye detalles, proporciones
+            y características visuales reconocibles.
+        </p>
+        <div class="ejemplos">
+            En las versiones principales analizadas
+            no se identifica un ejemplo claramente
+            figurativo realista.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>02. Figurativa no realista</h3>
+        <p>
+            Representación de un objeto reconocible,
+            pero mediante una interpretación
+            simplificada o estilizada.
+            Conserva los rasgos esenciales
+            sin reproducir todos los detalles reales.
+        </p>
+        <div class="ejemplos">
+            Marca: Apple.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>03. Abstracción figurativa</h3>
+        <p>
+            Representación que parte de una figura
+            reconocible y la transforma mediante
+            formas simplificadas, geométricas
+            o estilizadas, conservando una
+            asociación con su referente.
+        </p>
+        <div class="ejemplos">
+            Marca: Huawei.
+        </div>
+    </article>
+
+    <article class="clase">
+        <h3>04. Abstracción no figurativa</h3>
+        <p>
+            Representación construida mediante
+            formas abstractas que no reproducen
+            directamente un objeto real.
+            Su significado depende de la
+            identidad y el reconocimiento
+            de la marca.
+        </p>
+        <div class="ejemplos">
+            Marca: Xiaomi, considerando
+            su símbolo MI como una
+            composición geométrica abstracta.
+        </div>
+    </article>
+
+</section>
+
+<div class="aviso">
+    <strong>Marcas sin ícono independiente:</strong>
+    Samsung, Sony, HP, Dell, Lenovo, ASUS y Acer
+    se identifican principalmente mediante
+    nombres escritos, letras personalizadas
+    o monogramas. Por ello, no se les asigna
+    de manera forzada un nivel de iconicidad
+    figurativa.
+</div>
+
+<!-- ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS INDIVIDUAL</small>
+    <h2>Nivel de iconicidad de las diez marcas</h2>
+</div>
+
+<section class="fichas" id="fichas"></section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis del signo icónico de las diez
+        marcas tecnológicas permite identificar
+        diferentes niveles de representación
+        gráfica. Apple utiliza una figura
+        reconocible y simplificada, por lo
+        que se clasifica como figurativa
+        no realista. Huawei presenta una
+        abstracción figurativa mediante
+        un símbolo radial asociado con
+        formas florales. Xiaomi utiliza
+        un símbolo geométrico basado en
+        letras estilizadas, interpretado
+        en este análisis como abstracción
+        no figurativa. Las demás marcas
+        se identifican principalmente
+        mediante logotipos o monogramas,
+        sin un ícono figurativo independiente.
+        No se encontró un caso claramente
+        figurativo realista en las versiones
+        principales estudiadas.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · TECNOLOGÍA · SIGNO ICÓNICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  SE UTILIZA LA CARPETA EXISTENTE:
+  imagenes
+
+  Si alguna imagen no aparece,
+  revisa el nombre exacto del archivo.
+*/
+
+const marcas = [
+
+    {
+        nombre: "Apple",
+        archivos: [
+            "apple.png",
+            "Apple.png",
+            "apple.jpg",
+            "apple.webp",
+            "logo_apple.png"
+        ],
+        tipo: "Figurativa no realista",
+        clasificacion:
+            "Figurativa no realista.",
+        descripcion:
+            "El ícono representa la silueta de una manzana con una mordida lateral y una hoja en la parte superior. Su forma es reconocible, aunque carece de detalles realistas.",
+        justificacion:
+            "Se clasifica como figurativa no realista porque representa un objeto existente mediante una silueta simplificada, conservando sus características esenciales."
+    },
+
+    {
+        nombre: "Samsung",
+        archivos: [
+            "samsung.png",
+            "Samsung.png",
+            "samsung.jpg",
+            "samsung.webp",
+            "logo_samsung.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono independiente en su identificador principal actual.",
+        descripcion:
+            "La identidad principal está formada por el nombre SAMSUNG escrito con letras mayúsculas personalizadas.",
+        justificacion:
+            "Al utilizar principalmente un logotipo tipográfico, no corresponde asignarle uno de los cuatro niveles de iconicidad solicitados."
+    },
+
+    {
+        nombre: "Xiaomi",
+        archivos: [
+            "xiaomi.png",
+            "Xiaomi.png",
+            "xiaomi.jpg",
+            "xiaomi.webp",
+            "logo_xiaomi.png"
+        ],
+        tipo: "Abstracción no figurativa",
+        clasificacion:
+            "Abstracción no figurativa, como interpretación del símbolo MI.",
+        descripcion:
+            "El símbolo MI está formado por trazos geométricos estilizados, habitualmente contenidos en una figura de esquinas redondeadas.",
+        justificacion:
+            "Se considera una abstracción no figurativa porque sus formas no reproducen un objeto natural o realista. Sin embargo, también puede analizarse como un monograma debido a su origen en letras."
+    },
+
+    {
+        nombre: "Sony",
+        archivos: [
+            "sony.png",
+            "Sony.png",
+            "sony.jpg",
+            "sony.webp",
+            "logo_sony.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono independiente.",
+        descripcion:
+            "El identificador corporativo está formado por la palabra SONY, escrita en mayúsculas con una tipografía serif personalizada.",
+        justificacion:
+            "El reconocimiento visual depende de las letras del nombre, por lo que no corresponde clasificarlo dentro de los niveles de iconicidad figurativa."
+    },
+
+    {
+        nombre: "HP",
+        archivos: [
+            "hp.png",
+            "HP.png",
+            "hp.jpg",
+            "hp.webp",
+            "logo_hp.png"
+        ],
+        tipo: "Monograma, sin ícono figurativo",
+        clasificacion:
+            "No presenta un ícono figurativo independiente en la versión analizada.",
+        descripcion:
+            "Su identificador habitual integra las letras minúsculas h y p, de trazos inclinados y simplificados, dentro de una forma circular.",
+        justificacion:
+            "La representación corresponde a iniciales estilizadas, no a un objeto figurativo. Por ello, se identifica como monograma y no se fuerza una clasificación de iconicidad."
+    },
+
+    {
+        nombre: "Dell",
+        archivos: [
+            "dell.png",
+            "Dell.png",
+            "dell.jpg",
+            "dell.webp",
+            "logo_dell.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono figurativo independiente en la versión analizada.",
+        descripcion:
+            "La identidad se basa en el nombre DELL, compuesto por letras geométricas. Destaca la inclinación característica de la letra E.",
+        justificacion:
+            "El nombre escrito es el principal elemento de identificación. El círculo que aparece en ciertas versiones funciona como recurso de composición, no como representación figurativa."
+    },
+
+    {
+        nombre: "Lenovo",
+        archivos: [
+            "lenovo.png",
+            "Lenovo.png",
+            "lenovo.jpg",
+            "lenovo.webp",
+            "logo_lenovo.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono independiente.",
+        descripcion:
+            "Su identificador está formado por el nombre Lenovo, habitualmente en letras blancas dentro de un rectángulo rojo.",
+        justificacion:
+            "El rectángulo actúa como soporte gráfico del logotipo, pero no representa un objeto ni constituye un símbolo figurativo independiente."
+    },
+
+    {
+        nombre: "ASUS",
+        archivos: [
+            "asus.png",
+            "ASUS.png",
+            "asus.jpg",
+            "asus.webp",
+            "logo_asus.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono independiente en su logotipo corporativo habitual.",
+        descripcion:
+            "El nombre ASUS se representa mediante letras mayúsculas con cortes y espacios internos que producen una apariencia geométrica.",
+        justificacion:
+            "La identidad visual se construye a partir de letras personalizadas, sin una figura independiente que pueda clasificarse por su semejanza con un objeto."
+    },
+
+    {
+        nombre: "Acer",
+        archivos: [
+            "acer.png",
+            "Acer.png",
+            "acer.jpg",
+            "acer.webp",
+            "logo_acer.png"
+        ],
+        tipo: "Sin ícono independiente",
+        clasificacion:
+            "No presenta un ícono independiente.",
+        descripcion:
+            "El identificador principal utiliza la palabra acer escrita en minúsculas, con curvas y terminaciones personalizadas.",
+        justificacion:
+            "El elemento principal de reconocimiento es el nombre de la marca, por lo que no corresponde atribuirle un nivel de iconicidad figurativa."
+    },
+
+    {
+        nombre: "Huawei",
+        archivos: [
+            "huawei.png",
+            "Huawei.png",
+            "huawei.jpg",
+            "huawei.webp",
+            "logo_huawei.png"
+        ],
+        tipo: "Abstracción figurativa",
+        clasificacion:
+            "Abstracción figurativa.",
+        descripcion:
+            "Su símbolo está formado por elementos curvos organizados radialmente, que recuerdan pétalos o segmentos de una flor estilizada.",
+        justificacion:
+            "Se clasifica como abstracción figurativa porque conserva una asociación con una forma natural, pero la transforma mediante una composición geométrica simplificada."
+    }
+
+];
+
+/* BUSCAR IMÁGENES EN TU CARPETA */
+
+function cargarImagen(imagen, aviso, archivos, indice = 0) {
+
+    if (indice >= archivos.length) {
+        imagen.style.display = "none";
+        aviso.style.display = "block";
+        return;
+    }
+
+    imagen.onerror = function() {
+        cargarImagen(imagen, aviso, archivos, indice + 1);
+    };
+
+    imagen.onload = function() {
+        imagen.style.display = "block";
+        aviso.style.display = "none";
+    };
+
+    imagen.src = "imagenes/" + archivos[indice];
+}
+
+/* CREAR LAS TARJETAS */
+
+const contenedor = document.getElementById("fichas");
+
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "ficha";
+
+    const cabecera = document.createElement("div");
+    cabecera.className = "ficha-cabecera";
+
+    const numero = document.createElement("span");
+    numero.textContent =
+        "MARCA " + String(indice + 1).padStart(2, "0");
+
+    const nombre = document.createElement("strong");
+    nombre.textContent = marca.nombre.toUpperCase();
+
+    cabecera.append(numero, nombre);
+
+    const visual = document.createElement("div");
+    visual.className = "visual";
+
+    const imagen = document.createElement("img");
+    imagen.alt = "Identificador de " + marca.nombre;
+
+    const aviso = document.createElement("div");
+    aviso.className = "sin-imagen";
+    aviso.textContent =
+        "No se encontró la imagen de " +
+        marca.nombre +
+        " en la carpeta imagenes.";
+
+    const tipo = document.createElement("div");
+    tipo.className = "tipo-etiqueta";
+    tipo.textContent = marca.tipo;
+
+    visual.append(imagen, aviso, tipo);
+
+    cargarImagen(imagen, aviso, marca.archivos);
+
+    const cuerpo = document.createElement("div");
+    cuerpo.className = "ficha-contenido";
+
+    const datos = [
+        ["Clasificación", marca.clasificacion],
+        ["Descripción visual", marca.descripcion],
+        ["Justificación", marca.justificacion]
+    ];
+
+    datos.forEach(([titulo, texto]) => {
+
+        const dato = document.createElement("div");
+        dato.className = "dato";
+
+        const etiqueta = document.createElement("strong");
+        etiqueta.textContent = titulo;
+
+        const parrafo = document.createElement("p");
+        parrafo.textContent = texto;
+
+        dato.append(etiqueta, parrafo);
+        cuerpo.appendChild(dato);
+
+    });
+
+    tarjeta.append(cabecera, visual, cuerpo);
+    contenedor.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

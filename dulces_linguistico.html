@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dulces y chocolates | Signo lingüístico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS DECORATIVAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+.introduccion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    padding:24px;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+/* GRUPOS LINGÜÍSTICOS */
+
+.grupo{
+    margin-bottom:32px;
+}
+
+.grupo-titulo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:17px 22px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    color:white;
+    border-radius:12px 12px 0 0;
+    border-bottom:3px solid var(--dorado);
+}
+
+.grupo-titulo h3{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    margin:0;
+}
+
+.grupo-titulo span{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.grupo-descripcion{
+    padding:17px 22px;
+    background:#E2F0E7;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    border:1px solid rgba(153,190,161,.38);
+}
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    padding-top:18px;
+}
+
+.tarjeta{
+    padding:25px;
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    box-shadow:0 9px 24px rgba(28,95,63,.07);
+}
+
+.tarjeta:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+
+.numero{
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.2px;
+}
+
+.tarjeta h4{
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    margin:12px 0;
+}
+
+.tarjeta p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.etiqueta{
+    display:inline-block;
+    margin-top:17px;
+    padding:7px 11px;
+    border-radius:6px;
+    background:#E2F0E7;
+    color:#17664A;
+    font-size:11px;
+    font-weight:800;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .grupo-titulo h3{font-size:21px}
+    .seccion h2{font-size:29px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / DULCES Y CHOCOLATES
+    </div>
+
+    <h1 class="titulo">SIGNO LINGÜÍSTICO</h1>
+
+    <p class="subtitulo">
+        Origen, significado y construcción
+        de los nombres de diez marcas de dulces y chocolates
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>¿Qué comunican los nombres de las marcas de dulces?</h2>
+
+    <p>
+        El signo lingüístico analiza
+        el origen, la construcción
+        y el significado de los nombres
+        comerciales. En la categoría
+        de dulces y chocolates
+        encontramos apellidos de fundadores,
+        palabras existentes en otros idiomas,
+        denominaciones inventadas
+        y combinaciones lingüísticas.
+        Estos recursos permiten construir
+        nombres memorables
+        y diferenciarlos
+        dentro del mercado.
+    </p>
+</section>
+
+<!-- CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN LINGÜÍSTICA</small>
+    <h2>Tipologías presentes en la categoría</h2>
+</div>
+
+<div class="introduccion">
+    Para organizar el análisis,
+    se asigna una
+    <strong>tipología lingüística principal</strong>
+    a cada marca. Algunas denominaciones
+    combinan varios recursos;
+    por ejemplo, Ferrero Rocher
+    reúne un apellido y un término
+    de carácter evocativo.
+</div>
+
+<!-- PATRONÍMICO -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>01. Patronímico</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones construidas
+        a partir del nombre o apellido
+        de personas relacionadas
+        con la creación
+        o la historia de la marca.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4>M&amp;M's</h4>
+            <p>
+                M&amp;M's se relaciona
+                con los apellidos Mars
+                y Murrie, vinculados
+                con el origen
+                de la marca.
+                Las iniciales representan
+                una denominación
+                de carácter patronímico
+                expresada mediante letras.
+            </p>
+            <span class="etiqueta">PATRONÍMICO + INICIALES</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4>Ferrero Rocher</h4>
+            <p>
+                «Ferrero» corresponde
+                al apellido de la familia
+                vinculada con la empresa
+                italiana. «Rocher»
+                es una palabra francesa
+                que significa «roca»
+                y aporta una referencia
+                evocativa al nombre.
+            </p>
+            <span class="etiqueta">PATRONÍMICO + EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4>Hershey's</h4>
+            <p>
+                Hershey's procede
+                del apellido de Milton Hershey,
+                fundador de la empresa
+                chocolatera.
+                El uso del apellido
+                permite relacionar
+                la marca con su origen
+                y trayectoria empresarial.
+            </p>
+            <span class="etiqueta">PATRONÍMICO</span>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- EVOCATIVO -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>02. Evocativo</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres que sugieren ideas,
+        sensaciones o características
+        mediante palabras
+        que poseen significado,
+        sin describir literalmente
+        todos los atributos del producto.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4>Snickers</h4>
+            <p>
+                Snickers es una denominación
+                que coincide con una palabra
+                inglesa relacionada
+                con una risa contenida
+                o una risita.
+                Su sonoridad puede evocar
+                diversión y una personalidad
+                juvenil, aunque el nombre
+                no describe el chocolate.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4>Kinder</h4>
+            <p>
+                «Kinder» significa
+                «niños» en alemán.
+                El nombre establece
+                una asociación directa
+                con la infancia
+                y puede evocar
+                cercanía, alegría
+                y un público familiar.
+            </p>
+            <span class="etiqueta">EVOCATIVO</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4>KitKat</h4>
+            <p>
+                KitKat es una denominación
+                breve y rítmica,
+                asociada históricamente
+                con el nombre Kit-Cat.
+                Su repetición sonora
+                facilita la recordación
+                y contribuye
+                a una identidad verbal
+                distintiva.
+            </p>
+            <span class="etiqueta">EVOCATIVO / NOMBRE HISTÓRICO</span>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ALTERACIÓN -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>03. Alteración</h3>
+        <span>3 MARCAS</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Nombres creados mediante
+        la combinación, reducción
+        o modificación de palabras
+        para producir una denominación
+        breve y reconocible.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4>Twix</h4>
+            <p>
+                Twix es un nombre
+                construido mediante
+                una combinación lingüística
+                que se ha relacionado
+                con las ideas
+                de «twin» y «sticks»,
+                en referencia
+                a las dos barras
+                del producto.
+            </p>
+            <span class="etiqueta">ALTERACIÓN</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4>Milka</h4>
+            <p>
+                Milka se forma
+                a partir de la combinación
+                de palabras alemanas
+                asociadas con leche
+                («Milch») y cacao
+                («Kakao»).
+                Esta unión produce
+                un nombre breve
+                que relaciona la marca
+                con sus ingredientes.
+            </p>
+            <span class="etiqueta">ALTERACIÓN</span>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4>Toblerone</h4>
+            <p>
+                Toblerone combina
+                el apellido «Tobler»
+                con una referencia
+                a «torrone»,
+                un dulce de tipo turrón.
+                La unión de ambos términos
+                produce una denominación
+                distintiva.
+            </p>
+            <span class="etiqueta">ALTERACIÓN + PATRONÍMICO</span>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ABSTRACTO -->
+
+<section class="grupo">
+
+    <div class="grupo-titulo">
+        <h3>04. Abstracto</h3>
+        <span>1 MARCA</span>
+    </div>
+
+    <div class="grupo-descripcion">
+        Denominaciones cuyo significado
+        no describe de forma directa
+        el producto y que funcionan
+        principalmente como
+        identificadores comerciales.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4>Oreo</h4>
+            <p>
+                Oreo es un nombre
+                breve cuya etimología
+                exacta no está
+                establecida de manera
+                concluyente.
+                En el uso comercial,
+                funciona como
+                una denominación abstracta
+                que identifica
+                a la marca de galletas.
+            </p>
+            <span class="etiqueta">ABSTRACTO</span>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- OBSERVACIÓN LINGÜÍSTICA -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación lingüística:</strong>
+        En las diez marcas de dulces
+        y chocolates se identifican
+        distintas estrategias
+        para construir nombres
+        comerciales. M&amp;M's,
+        Ferrero Rocher y Hershey's
+        incorporan referencias
+        a apellidos relacionados
+        con su historia.
+        Snickers y Kinder
+        utilizan palabras
+        con asociaciones conceptuales,
+        mientras que KitKat
+        destaca por su sonoridad
+        y origen histórico.
+        Twix, Milka y Toblerone
+        presentan combinaciones
+        lingüísticas.
+        Oreo se distingue
+        por utilizar una denominación
+        de carácter abstracto.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis lingüístico demuestra
+        que los nombres de las marcas
+        de dulces y chocolates
+        cumplen una función esencial
+        en su identidad comercial.
+        Los nombres patronímicos
+        pueden reforzar
+        la historia y tradición;
+        los evocativos permiten
+        relacionar las marcas
+        con sensaciones o ideas;
+        y las denominaciones
+        creadas mediante alteraciones
+        lingüísticas favorecen
+        la diferenciación
+        y la recordación.
+        En conjunto,
+        estas estrategias contribuyen
+        a que cada marca
+        construya una personalidad
+        verbal reconocible.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · DULCES Y CHOCOLATES · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Streaming y entretenimiento - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS MODALES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* LOGOTIPO AMPLIADO */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .tarjeta img {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>STREAMING Y ENTRETENIMIENTO</h1>
+    <p>Explora las plataformas de streaming y descubre su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOTIPOS -->
+<div class="modal" id="modal-logo"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Logotipo ampliado">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar imagen">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Información de la marca">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar información">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* LAS DIEZ MARCAS DE STREAMING */
+const marcas = [
+    {
+        nombre: "Netflix",
+        imagen: "imagenes/netflix.png",
+        descripcion: "Netflix es una empresa estadounidense fundada en 1997 que ofrece entretenimiento audiovisual por streaming. Su identidad visual destaca por el uso del color rojo y una tipografía sencilla y reconocible."
+    },
+    {
+        nombre: "Disney+",
+        imagen: "imagenes/disneyplus.png",
+        descripcion: "Disney+ es una plataforma de streaming lanzada en 2019. Su identidad visual combina la reconocida escritura de Disney con el símbolo + y un arco que refuerza la composición del logotipo."
+    },
+    {
+        nombre: "HBO Max",
+        imagen: "imagenes/max.png",
+        descripcion: "HBO Max es una marca de plataforma de entretenimiento por streaming. Su identidad visual utiliza un logotipo tipográfico y ha empleado diferentes combinaciones cromáticas a lo largo de su evolución."
+    },
+    {
+        nombre: "Prime Video",
+        imagen: "imagenes/primevideo.png",
+        descripcion: "Prime Video es un servicio de streaming de Amazon. Su identidad visual incluye el nombre de la plataforma y la característica sonrisa o flecha curva asociada con la identidad de Amazon."
+    },
+    {
+        nombre: "Paramount+",
+        imagen: "imagenes/paramountplus.png",
+        descripcion: "Paramount+ es una plataforma de streaming lanzada en 2021. Su identidad visual incorpora la montaña característica de Paramount, acompañada por el nombre y el símbolo +."
+    },
+    {
+        nombre: "Hulu",
+        imagen: "imagenes/hulu.png",
+        descripcion: "Hulu es una plataforma de streaming estadounidense lanzada en 2007. Su identidad visual destaca por un logotipo tipográfico de formas redondeadas y el uso característico del color verde."
+    },
+    {
+        nombre: "Crunchyroll",
+        imagen: "imagenes/crunchyroll.png",
+        descripcion: "Crunchyroll es una plataforma de entretenimiento especializada en anime. Su identidad visual utiliza un símbolo circular de formas curvas y el color naranja como uno de sus principales elementos."
+    },
+    {
+        nombre: "Apple TV",
+        imagen: "imagenes/appletvplus.png",
+        descripcion: "Apple TV es una marca de servicios y dispositivos de entretenimiento de Apple. Su identidad visual combina el símbolo de la manzana mordida con las letras TV, manteniendo una apariencia minimalista."
+    },
+    {
+        nombre: "Peacock",
+        imagen: "imagenes/peacock.png",
+        descripcion: "Peacock es una plataforma de streaming estadounidense lanzada en 2020. Su identidad visual utiliza un logotipo tipográfico acompañado por pequeños círculos de distintos colores, relacionados con la identidad de NBC."
+    },
+    {
+        nombre: "MUBI",
+        imagen: "imagenes/mubi.png",
+        descripcion: "MUBI es una plataforma de streaming centrada en el cine de autor y películas seleccionadas. Su identidad visual utiliza letras mayúsculas y una composición gráfica minimalista."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+let elementoAnterior = null;
+
+/* CREAR LAS TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.type = "button";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-logo .cerrar").focus();
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-info .cerrar").focus();
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+
+    document.getElementById("imagen-grande")
+        .removeAttribute("src");
+
+    if (elementoAnterior) {
+        elementoAnterior.focus();
+    }
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

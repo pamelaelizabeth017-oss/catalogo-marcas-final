@@ -1,0 +1,1326 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inicio | Catálogo de Marcas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --verde3:#278666;
+    --dorado:#C39A50;
+    --dorado-claro:#E7C98C;
+    --crema:#FAF7F0;
+    --texto:#587064;
+    --blanco:#FFFFFF;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(221,189,119,.17),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 12% 75%,
+            rgba(87,172,127,.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #FFFCF6,
+            #F2F5ED 55%,
+            #F8F2E7
+        );
+
+    min-height:100vh;
+}
+
+.contenedor{
+    width:92%;
+    max-width:1180px;
+    margin:auto;
+    padding:28px 0 55px;
+}
+
+.etiqueta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#A47D3E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+}
+
+.etiqueta::before{
+    content:"";
+    width:26px;
+    height:1px;
+    background:var(--dorado);
+}
+
+h1,h2,h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+}
+
+/* PORTADA */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(106,197,147,.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 18% 85%,
+            rgba(198,160,96,.15),
+            transparent 40%
+        ),
+        linear-gradient(
+            125deg,
+            #043224,
+            #0A4B36 60%,
+            #126C4E
+        );
+
+    min-height:485px;
+    padding:55px 55px 40px;
+    color:white;
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:20px;
+
+    border:1px solid rgba(211,177,111,.7);
+
+    box-shadow:
+        0 20px 45px rgba(3,52,37,.18);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:50%;
+    right:-160px;
+    top:-160px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:270px;
+    height:270px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:50%;
+    left:-150px;
+    bottom:-180px;
+}
+
+.hero-texto,
+.hero-arte{
+    position:relative;
+    z-index:1;
+}
+
+.hero .etiqueta{
+    color:var(--dorado-claro);
+}
+
+.hero h1{
+    font-size:clamp(45px,5.6vw,78px);
+    line-height:1.02;
+    font-weight:500;
+    letter-spacing:-2.8px;
+    margin:23px 0 20px;
+}
+
+.hero h1 span{
+    display:block;
+    color:var(--dorado-claro);
+}
+
+.hero-descripcion{
+    color:#D7EDE0;
+    font-size:13px;
+    line-height:1.9;
+    max-width:460px;
+    margin-bottom:27px;
+}
+
+.hero-botones{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.boton{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:13px 18px;
+    border-radius:9px;
+    text-decoration:none;
+    font-weight:800;
+    font-size:12px;
+    transition:transform .2s;
+}
+
+.boton:hover{
+    transform:translateY(-3px);
+}
+
+.boton-oro{
+    background:var(--dorado-claro);
+    color:#173B2B;
+}
+
+.boton-contorno{
+    color:white;
+    border:1px solid rgba(255,255,255,.45);
+    background:rgba(255,255,255,.07);
+}
+
+/* CÍRCULO ANIMADO */
+
+.hero-arte{
+    min-height:335px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.anillo{
+    width:min(310px,100%);
+    aspect-ratio:1;
+    border:1px solid rgba(230,195,126,.75);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    animation:flotar 6s ease-in-out infinite;
+}
+
+.anillo::before{
+    content:"✦";
+    position:absolute;
+    left:-13px;
+    top:30px;
+    font-size:34px;
+    color:var(--dorado-claro);
+}
+
+.anillo::after{
+    content:"✧";
+    position:absolute;
+    right:-18px;
+    bottom:45px;
+    font-size:43px;
+    color:var(--dorado-claro);
+}
+
+.orbe{
+    width:85%;
+    aspect-ratio:1;
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 33% 25%,
+            rgba(221,255,228,.8),
+            transparent 18%
+        ),
+        conic-gradient(
+            from 30deg,
+            #063B2A,
+            #2C9970,
+            #B0DCC0,
+            #12573E,
+            #083A2B,
+            #79B999,
+            #063B2A
+        );
+
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,.2),
+        0 18px 32px rgba(0,0,0,.22);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.orbe-interior{
+    width:75%;
+    aspect-ratio:1;
+    border:2px solid rgba(245,255,247,.7);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font:italic 155px "Libre Bodoni",Georgia,serif;
+    color:#F2F7E9;
+
+    text-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+}
+
+@keyframes flotar{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.hero-pie{
+    position:absolute;
+    right:32px;
+    bottom:20px;
+    color:#D7C398;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+/* ESTADÍSTICAS */
+
+.estadisticas{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:22px;
+}
+
+.estadistica{
+    display:flex;
+    align-items:center;
+    gap:17px;
+    background:rgba(255,255,255,.88);
+    padding:21px 25px;
+    border-radius:15px;
+    border:1px solid rgba(197,160,96,.28);
+    box-shadow:0 7px 20px rgba(12,74,48,.06);
+}
+
+.estadistica-icono{
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    background:#E4F0E6;
+    color:var(--verde);
+    font-size:23px;
+}
+
+.estadistica strong{
+    display:block;
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    line-height:1;
+}
+
+.estadistica span{
+    display:block;
+    color:var(--texto);
+    font-size:10px;
+    letter-spacing:1.3px;
+    margin-top:7px;
+    font-weight:700;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin-top:55px;
+}
+
+.seccion-cabecera{
+    margin-bottom:23px;
+}
+
+.seccion h2{
+    font-size:clamp(29px,3.5vw,42px);
+    font-weight:500;
+    margin:10px 0 9px;
+    line-height:1.2;
+}
+
+.seccion-descripcion{
+    font-size:13px;
+    line-height:1.8;
+    color:var(--texto);
+    max-width:800px;
+    margin:0;
+}
+
+/* INFORMACIÓN ACADÉMICA */
+
+.academica{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:25px;
+    padding:28px;
+    border-radius:17px;
+    background:linear-gradient(115deg,#E3EFE5,#FAF5E8);
+    border:1px solid rgba(197,160,96,.38);
+}
+
+.academica-presentacion{
+    background:var(--verde);
+    border-radius:13px;
+    color:white;
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.academica-presentacion small{
+    color:var(--dorado-claro);
+    letter-spacing:2px;
+    font-size:10px;
+}
+
+.academica-presentacion h3{
+    font-size:29px;
+    font-weight:500;
+    margin:13px 0;
+}
+
+.academica-presentacion p{
+    color:#CDE6D5;
+    font-size:12px;
+    line-height:1.8;
+    margin:0;
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.dato{
+    background:rgba(255,255,255,.85);
+    border:1px solid #E5DCC7;
+    border-radius:11px;
+    padding:17px;
+}
+
+.dato:first-child{
+    grid-column:1/-1;
+}
+
+.dato strong{
+    display:block;
+    font-size:10px;
+    letter-spacing:1.1px;
+    color:#A47D3E;
+    margin-bottom:9px;
+}
+
+.dato span{
+    display:block;
+    font-size:13px;
+    line-height:1.5;
+    font-weight:800;
+    overflow-wrap:anywhere;
+}
+
+/* CUATRO SIGNOS */
+
+.signos{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+}
+
+.signo{
+    min-height:205px;
+    padding:23px 20px;
+    border-radius:15px;
+    border:1px solid white;
+    border-bottom:3px solid var(--dorado);
+    background:#EDE8DB;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 8px 18px rgba(18,73,49,.07);
+}
+
+.signo:nth-child(2){
+    background:#E8E0D0;
+}
+
+.signo:nth-child(3){
+    background:#DCEBE1;
+}
+
+.signo:nth-child(4){
+    background:#E4E9D9;
+}
+
+.signo::after{
+    content:attr(data-letra);
+    position:absolute;
+    font:120px "Libre Bodoni",Georgia,serif;
+    right:-6px;
+    bottom:-43px;
+    color:rgba(6,61,45,.09);
+}
+
+.signo-icono{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--verde);
+    color:white;
+    font:20px "Libre Bodoni",Georgia,serif;
+    margin-bottom:15px;
+}
+
+.signo small{
+    font-size:10px;
+    color:#A47D3E;
+    font-weight:800;
+}
+
+.signo h3{
+    font-size:24px;
+    font-weight:500;
+    margin:6px 0 10px;
+}
+
+.signo p{
+    font-size:12px;
+    line-height:1.7;
+    color:var(--texto);
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* ÍNDICE */
+
+.indice{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.indice-item{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:17px;
+    min-height:91px;
+    border-radius:13px;
+
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(197,160,96,.27);
+    border-bottom:2px solid var(--dorado);
+
+    text-decoration:none;
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        background .2s;
+}
+
+.indice-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(6,61,45,.11);
+    background:#E7F1E9;
+}
+
+.indice-numero{
+    width:42px;
+    height:42px;
+    flex-shrink:0;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#E6EFE6;
+    color:var(--verde);
+    font:24px "Libre Bodoni",Georgia,serif;
+}
+
+.indice-texto{
+    flex:1;
+    min-width:0;
+}
+
+.indice-texto strong{
+    display:block;
+    font-size:13px;
+    color:var(--verde);
+    line-height:1.4;
+}
+
+.indice-texto small{
+    display:block;
+    font-size:10px;
+    color:var(--texto);
+    margin-top:6px;
+}
+
+.indice-flecha{
+    color:var(--dorado);
+    font-size:22px;
+}
+
+.nota{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#E8F0E8;
+    border-left:3px solid var(--dorado);
+    border-radius:0 10px 10px 0;
+    color:var(--texto);
+    font-size:12px;
+    line-height:1.8;
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+/* CIERRE */
+
+.cierre{
+    margin-top:50px;
+    padding:35px;
+    text-align:center;
+    color:white;
+    background:linear-gradient(110deg,#063D2D,#17664A);
+    border-radius:17px;
+    border:1px solid rgba(197,160,96,.6);
+}
+
+.cierre h2{
+    font:500 33px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    color:#D6E9DA;
+    font-size:13px;
+    line-height:1.8;
+    max-width:670px;
+    margin:0 auto;
+}
+
+footer{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:25px;
+    padding-top:19px;
+    border-top:1px solid #DCC9A4;
+    font-size:10px;
+    color:#8E7954;
+    letter-spacing:1.2px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+        padding:38px 30px 45px;
+    }
+
+    .hero-arte{
+        min-height:240px;
+    }
+
+    .anillo{
+        width:225px;
+    }
+
+    .orbe-interior{
+        font-size:110px;
+    }
+
+    .academica{
+        grid-template-columns:1fr;
+    }
+
+    .signos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .indice{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .contenedor{
+        width:94%;
+    }
+
+    .hero h1{
+        font-size:46px;
+    }
+
+    .estadisticas{
+        grid-template-columns:1fr;
+    }
+
+    .signos,
+    .indice,
+    .datos{
+        grid-template-columns:1fr;
+    }
+
+    .dato:first-child{
+        grid-column:auto;
+    }
+
+    .academica{
+        padding:15px;
+    }
+
+    .hero-arte{
+        min-height:205px;
+    }
+
+    .anillo{
+        width:190px;
+    }
+
+    .orbe-interior{
+        font-size:95px;
+    }
+
+    footer{
+        flex-direction:column;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    .anillo{
+        animation:none;
+    }
+
+    html{
+        scroll-behavior:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- PORTADA -->
+
+<section class="hero">
+
+    <div class="hero-texto">
+
+        <div class="etiqueta">
+            CATÁLOGO DIGITAL · IDENTIDAD CORPORATIVA
+        </div>
+
+        <h1>
+            CATÁLOGO
+            <span>DE MARCAS</span>
+        </h1>
+
+        <p class="hero-descripcion">
+            Un recorrido visual por 150 marcas de diferentes
+            sectores, descubriendo el significado de sus nombres,
+            el diseño de sus letras, sus colores y sus símbolos.
+        </p>
+
+        <div class="hero-botones">
+
+            <a class="boton boton-oro" href="#indice">
+                EXPLORAR CATEGORÍAS ↓
+            </a>
+
+            <a class="boton boton-contorno" href="#academica">
+                VER DATOS ACADÉMICOS
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-arte">
+
+        <div class="anillo">
+
+            <div class="orbe">
+
+                <div class="orbe-interior">
+                    C
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-pie">
+        FORMA · COLOR · IDENTIDAD
+    </div>
+
+</section>
+
+<!-- ESTADÍSTICAS -->
+
+<section class="estadisticas">
+
+    <div class="estadistica">
+
+        <div class="estadistica-icono">▦</div>
+
+        <div>
+            <strong>15</strong>
+            <span>CATEGORÍAS</span>
+        </div>
+
+    </div>
+
+    <div class="estadistica">
+
+        <div class="estadistica-icono">◇</div>
+
+        <div>
+            <strong>150</strong>
+            <span>MARCAS ANALIZADAS</span>
+        </div>
+
+    </div>
+
+    <div class="estadistica">
+
+        <div class="estadistica-icono">✧</div>
+
+        <div>
+            <strong>04</strong>
+            <span>SIGNOS VISUALES</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INFORMACIÓN ACADÉMICA -->
+
+<section class="seccion" id="academica">
+
+    <div class="seccion-cabecera">
+
+        <div class="etiqueta">
+            PRESENTACIÓN DEL PROYECTO
+        </div>
+
+        <h2>Información académica</h2>
+
+    </div>
+
+    <div class="academica">
+
+        <div class="academica-presentacion">
+
+            <small>PROYECTO ACADÉMICO</small>
+
+            <h3>Identidad visual de las marcas</h3>
+
+            <p>
+                Catálogo digital desarrollado para analizar
+                los signos lingüístico, escritural,
+                cromático e icónico de 150 marcas.
+            </p>
+
+        </div>
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>ESTUDIANTE</strong>
+                <span>PAMELA ELIZABETH TUBON ANDACHI</span>
+            </div>
+
+            <div class="dato">
+                <strong>ASIGNATURA</strong>
+                <span>IDENTIDAD CORPORATIVA</span>
+            </div>
+
+            <div class="dato">
+                <strong>PARALELO</strong>
+                <span>PAO 4</span>
+            </div>
+
+            <div class="dato">
+                <strong>FECHA</strong>
+                <span>29/10/2026</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LOS CUATRO SIGNOS -->
+
+<section class="seccion">
+
+    <div class="seccion-cabecera">
+
+        <div class="etiqueta">
+            EL LENGUAJE DE LAS MARCAS
+        </div>
+
+        <h2>Explora los cuatro signos</h2>
+
+        <p class="seccion-descripcion">
+            Cada marca se estudia desde cuatro dimensiones
+            que permiten comprender su identidad visual.
+        </p>
+
+    </div>
+
+    <div class="signos">
+
+        <article class="signo" data-letra="Aa">
+
+            <div class="signo-icono">Aa</div>
+
+            <small>01 / SIGNO</small>
+
+            <h3>Lingüístico</h3>
+
+            <p>
+                Analiza el origen, significado y construcción
+                de los nombres de las marcas.
+            </p>
+
+        </article>
+
+        <article class="signo" data-letra="T">
+
+            <div class="signo-icono">T</div>
+
+            <small>02 / SIGNO</small>
+
+            <h3>Escritural</h3>
+
+            <p>
+                Estudia la tipografía, el peso, la inclinación
+                y la personalización de las letras.
+            </p>
+
+        </article>
+
+        <article class="signo" data-letra="◉">
+
+            <div class="signo-icono">◉</div>
+
+            <small>03 / SIGNO</small>
+
+            <h3>Cromático</h3>
+
+            <p>
+                Identifica las paletas de colores
+                y sus asociaciones visuales.
+            </p>
+
+        </article>
+
+        <article class="signo" data-letra="◇">
+
+            <div class="signo-icono">◇</div>
+
+            <small>04 / SIGNO</small>
+
+            <h3>Icónico</h3>
+
+            <p>
+                Analiza los símbolos, las formas
+                y los niveles de iconicidad.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ÍNDICE CORREGIDO -->
+
+<section class="seccion" id="indice">
+
+    <div class="seccion-cabecera">
+
+        <div class="etiqueta">
+            NAVEGA POR EL CATÁLOGO
+        </div>
+
+        <h2>Índice de categorías</h2>
+
+        <p class="seccion-descripcion">
+            Descubre las quince categorías que forman parte
+            del catálogo. Cada una contiene diez marcas
+            y sus cuatro análisis de identidad visual.
+        </p>
+
+    </div>
+
+    <div class="indice">
+
+        <!-- 01 TECNOLOGÍA -->
+
+        <a class="indice-item"
+           href="tecnologia.html">
+
+            <span class="indice-numero">01</span>
+
+            <span class="indice-texto">
+                <strong>Tecnología</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 02 ROPA -->
+
+        <a class="indice-item"
+           href="ropa.html">
+
+            <span class="indice-numero">02</span>
+
+            <span class="indice-texto">
+                <strong>Ropa</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 03 CALZADO -->
+
+        <a class="indice-item"
+           href="calzado.html">
+
+            <span class="indice-numero">03</span>
+
+            <span class="indice-texto">
+                <strong>Calzado</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 04 AUTOMÓVILES -->
+
+        <a class="indice-item"
+           href="automoviles.html">
+
+            <span class="indice-numero">04</span>
+
+            <span class="indice-texto">
+                <strong>Automóviles</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 05 COMIDA RÁPIDA: CORREGIDO -->
+
+        <a class="indice-item"
+           href="comida.html">
+
+            <span class="indice-numero">05</span>
+
+            <span class="indice-texto">
+                <strong>Comida rápida</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 06 BEBIDAS -->
+
+        <a class="indice-item"
+           href="bebidas.html">
+
+            <span class="indice-numero">06</span>
+
+            <span class="indice-texto">
+                <strong>Bebidas</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 07 STREAMING -->
+
+        <a class="indice-item"
+           href="streaming.html">
+
+            <span class="indice-numero">07</span>
+
+            <span class="indice-texto">
+                <strong>Streaming y entretenimiento</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 08 SUPERMERCADOS -->
+
+        <a class="indice-item"
+           href="supermercados.html">
+
+            <span class="indice-numero">08</span>
+
+            <span class="indice-texto">
+                <strong>Supermercados</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 09 BANCOS -->
+
+        <a class="indice-item"
+           href="bancos.html">
+
+            <span class="indice-numero">09</span>
+
+            <span class="indice-texto">
+                <strong>Bancos</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 10 REDES SOCIALES: CORREGIDO -->
+
+        <a class="indice-item"
+           href="redes.html">
+
+            <span class="indice-numero">10</span>
+
+            <span class="indice-texto">
+                <strong>Redes sociales y plataformas</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 11 ELECTRODOMÉSTICOS -->
+
+        <a class="indice-item"
+           href="electrodomesticos.html">
+
+            <span class="indice-numero">11</span>
+
+            <span class="indice-texto">
+                <strong>Electrodomésticos</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 12 AEROLÍNEAS -->
+
+        <a class="indice-item"
+           href="aerolineas.html">
+
+            <span class="indice-numero">12</span>
+
+            <span class="indice-texto">
+                <strong>Aerolíneas</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 13 CUIDADO PERSONAL: CORREGIDO -->
+
+        <a class="indice-item"
+           href="cuidado.html">
+
+            <span class="indice-numero">13</span>
+
+            <span class="indice-texto">
+                <strong>Cuidado personal</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 14 RELOJES -->
+
+        <a class="indice-item"
+           href="relojes.html">
+
+            <span class="indice-numero">14</span>
+
+            <span class="indice-texto">
+                <strong>Relojes</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+        <!-- 15 DULCES Y CHOCOLATES -->
+
+        <a class="indice-item"
+           href="dulces.html">
+
+            <span class="indice-numero">15</span>
+
+            <span class="indice-texto">
+                <strong>Dulces y chocolates</strong>
+                <small>10 marcas · 4 signos</small>
+            </span>
+
+            <span class="indice-flecha">›</span>
+
+        </a>
+
+    </div>
+
+    <div class="nota">
+
+        <strong>Sobre la numeración:</strong>
+
+        Los números 01 al 15 corresponden al orden
+        de las categorías en el catálogo digital.
+        No son números de página.
+
+    </div>
+
+</section>
+
+<!-- MENSAJE FINAL -->
+
+<section class="cierre">
+
+    <h2>150 marcas, infinitas historias</h2>
+
+    <p>
+        Detrás de cada nombre, tipografía, color y símbolo
+        existe una identidad que comunica, representa
+        y diferencia a una marca.
+    </p>
+
+</section>
+
+<footer>
+
+    <span>
+        IDENTIDAD CORPORATIVA · PAO 4
+    </span>
+
+    <span>
+        PAMELA ELIZABETH TUBON ANDACHI · 2026
+    </span>
+
+</footer>
+
+</main>
+
+<!--
+  CORRECCIÓN DE NAVEGACIÓN
+
+  Si inicio.html se abre dentro del marco "contenido",
+  los enlaces del índice deben navegar en ese mismo marco.
+-->
+
+<script>
+
+document.querySelectorAll(".indice-item")
+.forEach(enlace=>{
+
+    enlace.setAttribute("target","contenido");
+
+});
+
+</script>
+
+</body>
+</html>

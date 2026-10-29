@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tecnología | Signo escritural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS DECORATIVAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%);
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES TIPOGRÁFICAS */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+    border-top:1px solid rgba(197,160,96,.35);
+    margin-top:13px;
+    padding-top:12px;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* LOGOTIPOS */
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:280px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+/* ANÁLISIS INDIVIDUAL */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas,
+    .clasificaciones{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:clamp(30px,7vw,44px)}
+    .seccion h2{font-size:29px}
+    .resumen{padding:18px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / TECNOLOGÍA
+    </div>
+
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+
+    <p class="subtitulo">
+        Análisis tipográfico de diez marcas de tecnología
+    </p>
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+
+    <h2>¿Cómo se representan gráficamente los nombres tecnológicos?</h2>
+
+    <p>
+        El signo escritural analiza
+        la forma visual de las letras
+        utilizadas en los identificadores
+        de las marcas.
+        En el sector tecnológico
+        predominan las tipografías
+        sin remates, los caracteres
+        geométricos y las composiciones
+        personalizadas. Estos recursos
+        permiten construir identidades
+        asociadas visualmente
+        con innovación, precisión,
+        modernidad y funcionalidad.
+        Cuando una marca utiliza
+        un símbolo sin letras,
+        se distingue el isotipo
+        de su denominación escrita.
+    </p>
+</section>
+
+<!-- 01. CLASIFICACIONES -->
+
+<div class="seccion">
+    <small>01 / CLASIFICACIONES TIPOGRÁFICAS</small>
+    <h2>Familias y estilos presentes</h2>
+</div>
+
+<section class="resumen">
+
+    <p class="resumen-intro">
+        Las marcas tecnológicas analizadas
+        presentan principalmente
+        tipografías sans serif,
+        caracteres geométricos,
+        estilos condensados
+        y letras modificadas.
+        Sony se diferencia
+        por utilizar un logotipo
+        con remates.
+        En el caso de Apple,
+        la imagen seleccionada
+        corresponde a un símbolo
+        y no a un logotipo escrito.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+            <h3>01. Sans serif</h3>
+            <p>
+                Letras sin remates
+                en sus terminaciones.
+                Su apariencia puede
+                ser geométrica,
+                redondeada o compacta.
+                Es frecuente en marcas
+                que buscan una imagen
+                limpia y contemporánea.
+            </p>
+            <div class="ejemplos">
+                Samsung, Xiaomi, HP,
+                Dell, Lenovo, ASUS,
+                Acer y Huawei.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>02. Serif</h3>
+            <p>
+                Tipografías que presentan
+                remates o terminaciones
+                decorativas en los caracteres.
+                Pueden comunicar
+                estabilidad, tradición
+                y una apariencia clásica.
+            </p>
+            <div class="ejemplos">
+                Sony.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>03. Geométrica</h3>
+            <p>
+                Caracteres construidos
+                a partir de círculos,
+                líneas rectas,
+                ángulos y proporciones
+                visualmente controladas.
+                Pueden pertenecer
+                a familias sans serif
+                o a logotipos modificados.
+            </p>
+            <div class="ejemplos">
+                Xiaomi, HP, Dell,
+                Lenovo y ASUS.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>04. Personalizada</h3>
+            <p>
+                Letras que presentan
+                modificaciones propias
+                en su estructura,
+                proporciones,
+                uniones o inclinación.
+                Estas adaptaciones
+                permiten diferenciar
+                visualmente una marca.
+            </p>
+            <div class="ejemplos">
+                Samsung, Xiaomi, Sony,
+                HP, Dell, Lenovo,
+                ASUS, Acer y Huawei.
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Características tipográficas de los logotipos</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación escritural:</strong>
+        En las diez marcas de tecnología
+        se observa un predominio
+        de letras sin remates,
+        formas geométricas
+        y composiciones tipográficas
+        personalizadas.
+        Samsung, Xiaomi, HP,
+        Dell, Lenovo, ASUS,
+        Acer y Huawei presentan
+        estilos de apariencia moderna.
+        Sony se diferencia
+        por conservar letras
+        con remates.
+        Apple, en la versión
+        seleccionada para el catálogo,
+        se identifica mediante
+        su símbolo de la manzana,
+        por lo que no corresponde
+        analizar características
+        tipográficas de una palabra
+        que no aparece en la imagen.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        El análisis escritural demuestra
+        que la tipografía contribuye
+        a construir una identidad visual
+        diferenciada dentro
+        del sector tecnológico.
+        Las letras sans serif
+        pueden transmitir claridad
+        y modernidad;
+        los caracteres geométricos
+        pueden sugerir precisión;
+        y la personalización
+        de las letras favorece
+        el reconocimiento de cada marca.
+        Sony demuestra que una tipografía
+        con remates también puede
+        consolidar una identidad
+        tecnológica reconocible.
+        En Apple, el símbolo
+        independiente cumple
+        la función identificadora
+        en la versión estudiada.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · TECNOLOGÍA · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/* DATOS DE LAS DIEZ MARCAS */
+
+const marcas=[
+
+{
+    nombre:"Apple",
+    imagenes:["apple","apple_logo","logo_apple"],
+    leyenda:"Isotipo de la manzana",
+    clasificacion:
+        "No aplica a la versión seleccionada. El identificador mostrado es un isotipo y no contiene letras. En aplicaciones escritas de la marca se utiliza una denominación tipográfica independiente.",
+    peso:
+        "No aplica al isotipo mostrado.",
+    inclinacion:
+        "No aplica. La figura de la manzana no es un carácter tipográfico.",
+    mayusculas:
+        "No aparecen letras en la versión analizada. El nombre escrito de la marca es Apple.",
+    personalizacion:
+        "La identidad se reconoce mediante la silueta de una manzana mordida y una hoja. Su análisis principal corresponde al signo icónico."
+},
+
+{
+    nombre:"Samsung",
+    imagenes:["samsung","samsung_logo"],
+    leyenda:"Sans serif mayúscula y compacta",
+    clasificacion:
+        "Sans serif personalizada. Las letras presentan una estructura compacta y terminaciones limpias, sin remates.",
+    peso:
+        "Grueso o negrita.",
+    inclinacion:
+        "Recta, con una composición horizontal.",
+    mayusculas:
+        "Todas las letras se presentan en mayúsculas: SAMSUNG.",
+    personalizacion:
+        "Los caracteres tienen proporciones controladas y un espaciado que favorece la lectura y el reconocimiento de la marca."
+},
+
+{
+    nombre:"Xiaomi",
+    imagenes:["xiaomi","xiaomi_logo","mi"],
+    leyenda:"Sans serif geométrica y redondeada",
+    clasificacion:
+        "La denominación Xiaomi utiliza una tipografía de apariencia sans serif, con formas redondeadas. El símbolo mi está construido mediante caracteres estilizados.",
+    peso:
+        "Medio a grueso, según el elemento del identificador.",
+    inclinacion:
+        "Recta.",
+    mayusculas:
+        "La denominación Xiaomi utiliza mayúscula inicial y minúsculas. El símbolo mi emplea caracteres minúsculos estilizados.",
+    personalizacion:
+        "El monograma mi integra las letras en una estructura geométrica dentro de un contenedor de esquinas redondeadas."
+},
+
+{
+    nombre:"Sony",
+    imagenes:["sony","sony_logo"],
+    leyenda:"Serif clásica en mayúsculas",
+    clasificacion:
+        "Tipografía serif personalizada, con remates visibles y una estructura de apariencia clásica.",
+    peso:
+        "Medio a grueso.",
+    inclinacion:
+        "Recta.",
+    mayusculas:
+        "Todas las letras aparecen en mayúsculas: SONY.",
+    personalizacion:
+        "Las letras mantienen proporciones y remates característicos, con un tratamiento visual que diferencia el nombre de otras marcas tecnológicas."
+},
+
+{
+    nombre:"HP",
+    imagenes:["hp","hp_logo","hewlett_packard"],
+    leyenda:"Monograma de letras estilizadas",
+    clasificacion:
+        "Monograma de apariencia sans serif geométrica, construido mediante las letras h y p estilizadas.",
+    peso:
+        "Grueso, con trazos de presencia visual marcada.",
+    inclinacion:
+        "Las letras presentan una inclinación visual hacia la derecha.",
+    mayusculas:
+        "El símbolo utiliza formas estilizadas que corresponden a las iniciales h y p.",
+    personalizacion:
+        "Las letras se integran dentro de un círculo y se construyen con trazos simplificados que producen un identificador compacto."
+},
+
+{
+    nombre:"Dell",
+    imagenes:["dell","dell_logo"],
+    leyenda:"Sans serif geométrica personalizada",
+    clasificacion:
+        "Sans serif personalizada, con letras geométricas y una composición compacta.",
+    peso:
+        "Grueso o negrita.",
+    inclinacion:
+        "Predominantemente recta, con la letra E girada.",
+    mayusculas:
+        "Todas las letras aparecen en mayúsculas: DELL.",
+    personalizacion:
+        "La letra E inclinada es el rasgo más distintivo del logotipo. En la versión seleccionada, la palabra se encuentra dentro de un círculo."
+},
+
+{
+    nombre:"Lenovo",
+    imagenes:["lenovo","lenovo_logo"],
+    leyenda:"Sans serif redondeada",
+    clasificacion:
+        "Sans serif personalizada, con letras de formas redondeadas y estructura de apariencia contemporánea.",
+    peso:
+        "Grueso o negrita.",
+    inclinacion:
+        "Recta.",
+    mayusculas:
+        "En la versión seleccionada, el nombre aparece con letras minúsculas: lenovo.",
+    personalizacion:
+        "La forma de las letras y su espaciado generan una composición compacta y fácilmente reconocible."
+},
+
+{
+    nombre:"ASUS",
+    imagenes:["asus","asus_logo"],
+    leyenda:"Lettering geométrico y futurista",
+    clasificacion:
+        "Lettering sans serif personalizado, construido mediante trazos geométricos, cortes y espacios internos.",
+    peso:
+        "Grueso o negrita.",
+    inclinacion:
+        "Presenta una inclinación visual hacia la derecha.",
+    mayusculas:
+        "Todas las letras se presentan en mayúsculas: ASUS.",
+    personalizacion:
+        "Los cortes internos y las uniones entre los trazos producen una apariencia tecnológica y diferenciada."
+},
+
+{
+    nombre:"Acer",
+    imagenes:["acer","acer_logo"],
+    leyenda:"Sans serif personalizada e inclinada",
+    clasificacion:
+        "Sans serif personalizada, con letras de apariencia dinámica y terminaciones suaves.",
+    peso:
+        "Medio a grueso.",
+    inclinacion:
+        "Presenta una inclinación visual hacia la derecha.",
+    mayusculas:
+        "Todas las letras se presentan en minúsculas: acer.",
+    personalizacion:
+        "Los caracteres tienen un diseño propio, con curvas y uniones que aportan continuidad visual a la palabra."
+},
+
+{
+    nombre:"Huawei",
+    imagenes:["huawei","huawei_logo"],
+    leyenda:"Sans serif mayúscula",
+    clasificacion:
+        "Sans serif de apariencia geométrica, con letras de trazos uniformes y terminaciones limpias.",
+    peso:
+        "Medio a grueso.",
+    inclinacion:
+        "Recta.",
+    mayusculas:
+        "Todas las letras aparecen en mayúsculas: HUAWEI.",
+    personalizacion:
+        "La denominación se organiza debajo del símbolo de pétalos estilizados. El espaciado entre caracteres contribuye a una composición equilibrada."
+}
+
+];
+
+/* CONTENEDOR DE TARJETAS */
+
+const zona=document.getElementById("tarjetas");
+
+/* FUNCIÓN PARA CREAR LOS CINCO CAMPOS */
+
+function crearDato(titulo,descripcion){
+
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+
+    return bloque;
+}
+
+/* BUSCAR LOGOTIPOS EN LA CARPETA IMAGENES */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png","jpg","jpeg","webp","svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+/* GENERAR TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    contenido.append(
+        crearDato(
+            "Clasificación tipográfica",
+            marca.clasificacion
+        ),
+        crearDato(
+            "Peso tipográfico",
+            marca.peso
+        ),
+        crearDato(
+            "Inclinación",
+            marca.inclinacion
+        ),
+        crearDato(
+            "Mayúsculas y minúsculas",
+            marca.mayusculas
+        ),
+        crearDato(
+            "Personalización",
+            marca.personalizacion
+        )
+    );
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(
+        imagen,
+        marca.imagenes,
+        marca.nombre
+    );
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo lingüístico | Ropa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+
+/* PALETA DE COLORES */
+
+:root {
+    --verde: #063D2D;
+    --verde-medio: #17664A;
+    --dorado: #C5A060;
+    --crema: rgba(255,250,240,.94);
+    --salvia: rgba(225,241,230,.94);
+    --texto: #4D665A;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", Arial, sans-serif;
+    color: var(--verde);
+
+    background-color: #E8F0E9;
+
+    background-image:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.30) 12%,
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(62,148,111,.28),
+            rgba(151,206,173,.15) 19%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 5% 65%,
+            rgba(74,170,134,.21),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(198,160,96,.15),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #F2F6EF,
+            #E0EDE4 46%,
+            #F4F0E5
+        );
+
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* BURBUJAS TRANSPARENTES */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+body::before {
+    width: 330px;
+    height: 330px;
+    right: -125px;
+    top: 130px;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        rgba(255,255,255,.40) 78%,
+        transparent 80%
+    );
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12),
+        0 12px 35px rgba(30,105,73,.06);
+}
+
+body::after {
+    width: 220px;
+    height: 220px;
+    left: -100px;
+    bottom: 50px;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%
+    );
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        inset 8px 8px 20px rgba(255,255,255,.7),
+        inset -12px -12px 22px rgba(36,117,78,.1);
+}
+
+/* CONTENEDOR */
+
+.contenedor {
+    width: 86%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 0 45px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 27px;
+    padding: 17px 12px 20px;
+}
+
+.ruta {
+    color: #A17B3D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    margin-bottom: 18px;
+}
+
+/* TIPOGRAFÍA ESTILO DIOR */
+
+.titulo {
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(30px, 4.6vw, 61px);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: #063D2D;
+    text-align: center;
+    margin: 0 0 15px;
+
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+}
+
+.subtitulo {
+    color: #4F7160;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.encabezado::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 2px;
+    margin: 19px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+}
+
+/* PRESENTACIÓN */
+
+.presentacion {
+    background:
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(143,219,172,.24),
+            transparent 32%
+        ),
+        linear-gradient(
+            115deg,
+            #043626,
+            #126348
+        );
+
+    color: white;
+    padding: 28px 32px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(207,174,109,.5);
+
+    box-shadow:
+        0 12px 30px rgba(4,54,38,.13),
+        inset 0 1px 0 rgba(255,255,255,.15);
+}
+
+.presentacion::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    right: 35px;
+    top: -90px;
+
+    background: radial-gradient(
+        circle at 35% 30%,
+        rgba(255,255,255,.30),
+        rgba(153,222,176,.08) 60%,
+        transparent 75%
+    );
+
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.presentacion::after {
+    content: "◈";
+    position: absolute;
+    right: 25px;
+    bottom: -65px;
+    font-size: 180px;
+    color: rgba(255,255,255,.06);
+    pointer-events: none;
+}
+
+.codigo {
+    color: #E6C98D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.presentacion h2 {
+    margin: 11px 0;
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.presentacion p {
+    margin: 0;
+    color: #E6F2E9;
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion {
+    margin: 30px 0 20px;
+    padding-left: 3px;
+}
+
+.seccion small {
+    color: #A47B39;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.seccion h2 {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 29px;
+    font-weight: 500;
+    color: #063D2D;
+    margin: 8px 0 0;
+}
+
+/* BLOQUES DE CLASIFICACIÓN */
+
+.bloque {
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(153,190,161,.38);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+
+    box-shadow: 0 9px 25px rgba(28,95,63,.07);
+}
+
+.bloque-cabecera {
+    background: linear-gradient(
+        110deg,
+        #06402E,
+        #17664A
+    );
+
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    border-bottom: 2px solid var(--dorado);
+}
+
+.bloque-cabecera h3 {
+    margin: 0;
+    color: white;
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.cantidad {
+    color: #E6C98D;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    white-space: nowrap;
+}
+
+/* DEFINICIONES */
+
+.definicion {
+    padding: 21px 25px;
+    background: linear-gradient(
+        110deg,
+        rgba(230,241,229,.94),
+        rgba(251,248,237,.94)
+    );
+
+    border-bottom: 1px solid rgba(197,160,96,.25);
+}
+
+.definicion strong {
+    color: #A17B3D;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.definicion p {
+    margin: 8px 0 0;
+    color: #4E655A;
+    font-size: 12px;
+    line-height: 1.85;
+}
+
+/* TARJETAS DE MARCAS */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 17px;
+    padding: 22px;
+}
+
+.tarjeta {
+    background: var(--crema);
+    border: 1px solid rgba(197,160,96,.25);
+    border-left: 4px solid var(--dorado);
+    border-radius: 0 13px 13px 0;
+    padding: 23px;
+
+    box-shadow: 0 7px 18px rgba(33,91,60,.05);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.tarjeta:nth-child(even) {
+    background: var(--salvia);
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(19,88,56,.12);
+}
+
+.numero {
+    color: #A37C3C;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    margin-bottom: 13px;
+}
+
+.marca {
+    margin: 0;
+    color: #063D2D;
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.linea {
+    width: 48px;
+    height: 2px;
+    background: var(--dorado);
+    margin: 13px 0 15px;
+}
+
+.explicacion {
+    margin: 0;
+    color: #4E655A;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+/* RESUMEN */
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 16px;
+}
+
+.resumen-item {
+    background: rgba(255,250,240,.9);
+    border: 1px solid rgba(197,160,96,.3);
+    border-top: 3px solid var(--dorado);
+    border-radius: 13px;
+    padding: 20px;
+    text-align: center;
+}
+
+.resumen-item:nth-child(even) {
+    background: rgba(225,241,230,.9);
+}
+
+.resumen-numero {
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 40px;
+    color: #063D2D;
+    line-height: 1.1;
+}
+
+.resumen-nombre {
+    color: #A37C3C;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+.resumen-detalle {
+    color: #587065;
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 9px;
+}
+
+/* CONCLUSIÓN */
+
+.cierre {
+    background:
+        radial-gradient(
+            circle at 95% 15%,
+            rgba(255,255,255,.8),
+            transparent 32%
+        ),
+        linear-gradient(
+            110deg,
+            rgba(225,240,228,.95),
+            rgba(250,243,227,.95)
+        );
+
+    border: 1px solid rgba(197,160,96,.35);
+    border-left: 4px solid var(--dorado);
+    border-radius: 0 14px 14px 0;
+
+    padding: 24px 27px;
+    margin-top: 30px;
+
+    box-shadow: 0 8px 22px rgba(33,91,60,.06);
+}
+
+.cierre h3 {
+    margin: 0 0 10px;
+    font-family: "Libre Bodoni", Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #063D2D;
+}
+
+.cierre p {
+    margin: 0;
+    color: #52695D;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+/* PIE */
+
+.pie {
+    margin-top: 32px;
+    padding-top: 19px;
+
+    border-top: 1px solid rgba(177,151,98,.45);
+
+    text-align: center;
+    color: #668073;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* PANTALLAS PEQUEÑAS */
+
+@media (max-width: 650px) {
+
+    .contenedor {
+        width: 93%;
+        padding-top: 20px;
+    }
+
+    .titulo {
+        font-size: clamp(27px,7vw,42px);
+        letter-spacing: -1px;
+    }
+
+    .tarjetas,
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .presentacion {
+        padding: 23px 20px;
+    }
+
+    .bloque-cabecera {
+        padding: 17px 18px;
+    }
+
+    .bloque-cabecera h3 {
+        font-size: 22px;
+    }
+
+    .tarjetas {
+        padding: 15px;
+    }
+
+    .tarjeta {
+        padding: 19px;
+    }
+
+    .definicion {
+        padding: 19px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+        <div class="ruta">
+            CATÁLOGO DE MARCAS / ROPA
+        </div>
+
+        <h1 class="titulo">
+            SIGNO LINGÜÍSTICO
+        </h1>
+
+        <p class="subtitulo">
+            El nombre como elemento de identidad de marca
+        </p>
+
+    </header>
+
+    <!-- PRESENTACIÓN -->
+
+    <section class="presentacion">
+
+        <div class="codigo">
+            APARTADO A / ANÁLISIS LINGÜÍSTICO
+        </div>
+
+        <h2>
+            ¿Cómo se construyen los nombres?
+        </h2>
+
+        <p>
+            El signo lingüístico corresponde a la
+            denominación verbal de una marca.
+            En la categoría Ropa se analizan diez
+            marcas y se identifican tres tipologías:
+            patronímico, sigla y alteración.
+            Cada marca se presenta dentro de su
+            clasificación, acompañada de una
+            justificación que explica el origen
+            y la construcción de su nombre.
+        </p>
+
+    </section>
+
+    <!-- TÍTULO DE CLASIFICACIONES -->
+
+    <div class="seccion">
+
+        <small>
+            01 / CLASIFICACIÓN DE NOMBRES
+        </small>
+
+        <h2>
+            Tipologías identificadas
+        </h2>
+
+    </div>
+
+    <!-- PATRONÍMICO -->
+
+    <section class="bloque">
+
+        <div class="bloque-cabecera">
+
+            <h3>01. Patronímico</h3>
+
+            <span class="cantidad">
+                8 marcas
+            </span>
+
+        </div>
+
+        <div class="definicion">
+
+            <strong>
+                ¿Por qué es patronímico?
+            </strong>
+
+            <p>
+                Es una denominación comercial que
+                proviene del nombre o apellido de
+                una persona, generalmente su fundador.
+                En la industria de la moda, esta
+                estrategia permite vincular la marca
+                con la identidad de su creador.
+            </p>
+
+        </div>
+
+        <div class="tarjetas">
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 01</div>
+
+                <h4 class="marca">Levi's</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Su nombre se relaciona con
+                    Levi Strauss, fundador de la
+                    empresa. Es patronímico porque
+                    utiliza el nombre personal
+                    del fundador como base de su
+                    denominación comercial.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 02</div>
+
+                <h4 class="marca">Gucci</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Proviene del apellido de
+                    Guccio Gucci, fundador de
+                    la casa de moda italiana.
+                    Es patronímico porque utiliza
+                    directamente un apellido
+                    familiar como nombre comercial.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 03</div>
+
+                <h4 class="marca">Chanel</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Su denominación procede del
+                    apellido de Gabrielle
+                    «Coco» Chanel, fundadora
+                    de la firma francesa.
+                    Es patronímico porque adopta
+                    el apellido de su creadora
+                    como identidad verbal.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 04</div>
+
+                <h4 class="marca">Prada</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Utiliza el apellido de
+                    Mario Prada, uno de los
+                    fundadores de la empresa.
+                    Se clasifica como patronímico
+                    porque la marca se identifica
+                    mediante un apellido personal.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 05</div>
+
+                <h4 class="marca">Louis Vuitton</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Corresponde al nombre y
+                    apellido de Louis Vuitton,
+                    fundador de la casa de moda.
+                    Es patronímico porque utiliza
+                    una denominación personal
+                    completa para identificar
+                    la marca.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 06</div>
+
+                <h4 class="marca">Dior</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Proviene del apellido de
+                    Christian Dior, diseñador
+                    y fundador de la firma.
+                    Es patronímico porque adopta
+                    directamente el apellido
+                    de su creador.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 07</div>
+
+                <h4 class="marca">Versace</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Su nombre procede del
+                    apellido de Gianni Versace,
+                    fundador de la casa de moda.
+                    Se clasifica como patronímico
+                    porque emplea el apellido
+                    del diseñador como
+                    denominación comercial.
+                </p>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 08</div>
+
+                <h4 class="marca">Burberry</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Proviene del apellido de
+                    Thomas Burberry, fundador
+                    de la empresa británica.
+                    Es patronímico porque
+                    utiliza un apellido
+                    personal como nombre
+                    de marca.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- SIGLA -->
+
+    <section class="bloque">
+
+        <div class="bloque-cabecera">
+
+            <h3>02. Sigla</h3>
+
+            <span class="cantidad">
+                1 marca
+            </span>
+
+        </div>
+
+        <div class="definicion">
+
+            <strong>
+                ¿Por qué es una sigla?
+            </strong>
+
+            <p>
+                Es una denominación formada
+                mediante las letras iniciales
+                de otras palabras o nombres.
+                Permite crear una identidad
+                verbal breve y fácil
+                de reconocer.
+            </p>
+
+        </div>
+
+        <div class="tarjetas">
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 09</div>
+
+                <h4 class="marca">H&amp;M</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    Sus letras corresponden
+                    a las iniciales de
+                    «Hennes» y «Mauritz»,
+                    términos que forman
+                    parte del nombre
+                    Hennes &amp; Mauritz.
+                    Se clasifica como sigla
+                    porque utiliza las
+                    iniciales de ambos nombres
+                    para construir una
+                    denominación abreviada.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ALTERACIÓN -->
+
+    <section class="bloque">
+
+        <div class="bloque-cabecera">
+
+            <h3>03. Alteración</h3>
+
+            <span class="cantidad">
+                1 marca
+            </span>
+
+        </div>
+
+        <div class="definicion">
+
+            <strong>
+                ¿Por qué es una alteración?
+            </strong>
+
+            <p>
+                Es una denominación creada
+                mediante la modificación,
+                adaptación o transformación
+                de una palabra o nombre
+                previamente existente.
+            </p>
+
+        </div>
+
+        <div class="tarjetas">
+
+            <article class="tarjeta">
+
+                <div class="numero">MARCA 10</div>
+
+                <h4 class="marca">Zara</h4>
+
+                <div class="linea"></div>
+
+                <p class="explicacion">
+                    El nombre Zara surgió
+                    después de modificar
+                    la denominación
+                    «Zorba», que se había
+                    considerado inicialmente
+                    para la tienda.
+                    Se clasifica como
+                    alteración porque
+                    el nombre definitivo
+                    resultó de adaptar
+                    una denominación previa
+                    hasta formar una
+                    palabra distintiva.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- RESUMEN -->
+
+    <div class="seccion">
+
+        <small>
+            02 / RESULTADOS DEL ANÁLISIS
+        </small>
+
+        <h2>
+            Distribución de tipologías
+        </h2>
+
+    </div>
+
+    <section class="resumen">
+
+        <article class="resumen-item">
+
+            <div class="resumen-numero">8</div>
+
+            <div class="resumen-nombre">
+                Patronímico
+            </div>
+
+            <div class="resumen-detalle">
+                Levi's, Gucci, Chanel, Prada,
+                Louis Vuitton, Dior,
+                Versace y Burberry
+            </div>
+
+        </article>
+
+        <article class="resumen-item">
+
+            <div class="resumen-numero">1</div>
+
+            <div class="resumen-nombre">
+                Sigla
+            </div>
+
+            <div class="resumen-detalle">
+                H&amp;M
+            </div>
+
+        </article>
+
+        <article class="resumen-item">
+
+            <div class="resumen-numero">1</div>
+
+            <div class="resumen-nombre">
+                Alteración
+            </div>
+
+            <div class="resumen-detalle">
+                Zara
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- CONCLUSIÓN -->
+
+    <section class="cierre">
+
+        <h3>
+            Conclusión del análisis
+        </h3>
+
+        <p>
+            En las diez marcas de ropa
+            analizadas se identificaron
+            tres tipologías lingüísticas:
+            patronímico, sigla y alteración.
+            Predomina la denominación
+            patronímica, presente en ocho
+            marcas, lo que evidencia
+            la importancia del nombre
+            o apellido del fundador
+            en la construcción de
+            identidades dentro de la moda.
+            H&amp;M utiliza una sigla
+            formada por iniciales,
+            mientras que Zara presenta
+            una denominación originada
+            mediante la modificación
+            de un nombre anterior.
+            Estas estrategias permiten
+            construir nombres distintivos
+            y reconocibles en el mercado.
+        </p>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer class="pie">
+        CATÁLOGO DE MARCAS · ROPA · SIGNO LINGÜÍSTICO
+    </footer>
+
+</main>
+
+</body>
+</html>

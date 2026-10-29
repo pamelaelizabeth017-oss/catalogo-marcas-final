@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cuidado personal - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS MODALES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    padding-right: 35px;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* LOGOTIPO AMPLIADO */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .tarjeta img {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>CUIDADO PERSONAL</h1>
+    <p>Explora las marcas de cuidado personal y descubre su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOTIPOS -->
+<div class="modal" id="modal-logo"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Logotipo ampliado">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar imagen">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Información de la marca">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar información">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* LAS 10 MARCAS DE CUIDADO PERSONAL */
+const marcas = [
+    {
+        nombre: "Dove",
+        imagen: "imagenes/dove.png",
+        descripcion: "Dove es una marca de cuidado personal lanzada en 1957. Su identidad visual destaca por una tipografía elegante y un símbolo de paloma, asociado con la suavidad y el cuidado de la piel."
+    },
+    {
+        nombre: "Nivea",
+        imagen: "imagenes/nivea.png",
+        descripcion: "Nivea es una marca alemana de cuidado de la piel fundada en 1911. Su identidad visual utiliza un círculo azul con el nombre NIVEA en letras blancas, creando una imagen sencilla y reconocible."
+    },
+    {
+        nombre: "Colgate",
+        imagen: "imagenes/colgate.png",
+        descripcion: "Colgate es una marca de productos de higiene bucal con origen en 1806. Su identidad visual utiliza principalmente el rojo y blanco, acompañados de una tipografía de formas suaves."
+    },
+    {
+        nombre: "Oral-B",
+        imagen: "imagenes/oralb.png",
+        descripcion: "Oral-B es una marca de productos de higiene bucal creada en 1950. Su identidad visual destaca por el uso del azul y una tipografía sencilla, que transmite limpieza y confianza."
+    },
+    {
+        nombre: "Rexona",
+        imagen: "imagenes/rexona.png",
+        descripcion: "Rexona es una marca de desodorantes y antitranspirantes. Su identidad visual utiliza un símbolo de verificación o visto bueno, asociado con la protección y la seguridad."
+    },
+    {
+        nombre: "Gillette",
+        imagen: "imagenes/gillette.png",
+        descripcion: "Gillette es una marca estadounidense fundada en 1901, especializada en productos para el afeitado. Su identidad visual utiliza un logotipo tipográfico de letras inclinadas y formas precisas."
+    },
+    {
+        nombre: "Pantene",
+        imagen: "imagenes/pantene.png",
+        descripcion: "Pantene es una marca de productos para el cuidado del cabello lanzada en 1945. Su identidad visual utiliza un logotipo tipográfico elegante, asociado con la belleza y el cuidado capilar."
+    },
+    {
+        nombre: "Head & Shoulders",
+        imagen: "imagenes/headandshoulders.png",
+        descripcion: "Head & Shoulders es una marca de productos para el cuidado del cabello lanzada en 1961. Su identidad visual utiliza una tipografía moderna y colores asociados con la frescura y la limpieza."
+    },
+    {
+        nombre: "Garnier",
+        imagen: "imagenes/garnier.png",
+        descripcion: "Garnier es una marca francesa de productos de belleza fundada en 1904. Su identidad visual destaca por el uso del verde y elementos gráficos relacionados con la naturaleza."
+    },
+    {
+        nombre: "Neutrogena",
+        imagen: "imagenes/neutrogena.png",
+        descripcion: "Neutrogena es una marca estadounidense de productos para el cuidado de la piel fundada en 1930. Su identidad visual utiliza una tipografía sencilla que comunica una imagen de limpieza y cuidado."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+let elementoAnterior = null;
+
+/* CREAR LAS TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.type = "button";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-logo .cerrar").focus();
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-info .cerrar").focus();
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+
+    document.getElementById("imagen-grande")
+        .removeAttribute("src");
+
+    if (elementoAnterior) {
+        elementoAnterior.focus();
+    }
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

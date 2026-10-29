@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signo lingüístico | Automóviles</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Bodoni:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:rgba(255,250,240,.94);
+    --salvia:rgba(225,241,230,.94);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(255,255,255,.95),transparent 26%),
+        radial-gradient(circle at 92% 18%,
+            rgba(62,148,111,.28),transparent 35%),
+        radial-gradient(circle at 5% 65%,
+            rgba(74,170,134,.21),transparent 35%),
+        radial-gradient(circle at 90% 85%,
+            rgba(198,160,96,.15),transparent 32%),
+        linear-gradient(145deg,
+            #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+/* BURBUJAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    border:1px solid rgba(255,255,255,.75);
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-125px;
+    top:130px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.15) 35%,
+        rgba(29,126,88,.08) 65%,
+        transparent 80%);
+    box-shadow:
+        inset 12px 12px 25px rgba(255,255,255,.65),
+        inset -15px -15px 28px rgba(31,116,81,.12);
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-100px;
+    bottom:50px;
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.9),
+        rgba(142,210,173,.16) 40%,
+        rgba(33,125,86,.08) 70%,
+        transparent 80%);
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+    padding:30px 0 45px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:17px 12px 20px;
+    margin-bottom:27px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2.2px;
+    margin-bottom:18px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Bodoni 72",
+        "Didot",
+        "Libre Bodoni",
+        "Times New Roman",
+        serif;
+    font-size:clamp(30px,4.6vw,61px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.18;
+    text-transform:uppercase;
+    margin:0 0 15px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:13px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    margin:19px auto 0;
+    background:linear-gradient(
+        90deg,transparent,var(--dorado),transparent);
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:28px 32px;
+    margin-bottom:30px;
+    border-radius:16px;
+    color:white;
+    background:
+        radial-gradient(circle at 92% 20%,
+            rgba(143,219,172,.24),transparent 32%),
+        linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",serif;
+    color:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:11px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    font-size:12px;
+    line-height:1.9;
+    color:#E6F2E9;
+    max-width:760px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:30px 0 20px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 29px "Libre Bodoni",Georgia,serif;
+    margin:8px 0 0;
+}
+
+/* BLOQUES */
+
+.bloque{
+    margin-bottom:25px;
+    background:rgba(255,255,255,.78);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(28,95,63,.07);
+}
+
+.bloque-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:17px 23px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.bloque-cabecera h3{
+    font-family:"Libre Bodoni",Georgia,serif;
+    color:white;
+    font-size:24px;
+    font-weight:500;
+    margin:0;
+}
+
+.cantidad{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+}
+
+.definicion{
+    padding:19px 23px;
+    background:rgba(235,244,236,.75);
+    border-bottom:1px solid rgba(153,190,161,.3);
+}
+
+.definicion strong{
+    display:block;
+    color:#A47B39;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.definicion p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* TARJETAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+    padding:20px;
+}
+
+.tarjeta{
+    padding:21px;
+    border-radius:12px;
+    border:1px solid rgba(197,160,96,.26);
+    border-left:3px solid var(--dorado);
+    background:var(--crema);
+    box-shadow:0 5px 16px rgba(26,80,55,.04);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:nth-child(even){
+    background:var(--salvia);
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(26,80,55,.1);
+}
+
+.numero{
+    color:#A47B39;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    margin-bottom:11px;
+}
+
+.marca{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    color:var(--verde);
+    margin:0;
+}
+
+.linea{
+    width:45px;
+    height:2px;
+    background:var(--dorado);
+    margin:13px 0;
+}
+
+.explicacion{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+/* NOTA */
+
+.nota{
+    margin-top:23px;
+    padding:21px 25px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 13px 13px 0;
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+}
+
+.nota strong{
+    color:var(--verde);
+}
+
+/* CONCLUSIÓN */
+
+.cierre{
+    margin-top:30px;
+    padding:24px 27px;
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.cierre h3{
+    font:500 24px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.cierre p{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--texto);
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:19px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+@media(max-width:650px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+        padding:14px;
+    }
+
+    .presentacion{
+        padding:23px 20px;
+    }
+
+    .titulo{
+        font-size:clamp(27px,7vw,42px);
+        letter-spacing:-1px;
+    }
+
+    .bloque-cabecera{
+        padding:15px 17px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="ruta">
+        CATÁLOGO DE MARCAS / AUTOMÓVILES
+    </div>
+
+    <h1 class="titulo">
+        SIGNO LINGÜÍSTICO
+    </h1>
+
+    <p class="subtitulo">
+        El nombre como elemento de identidad de marca
+    </p>
+</header>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO A / ANÁLISIS LINGÜÍSTICO
+    </div>
+
+    <h2>
+        ¿Cómo se construyen los nombres?
+    </h2>
+
+    <p>
+        El signo lingüístico corresponde
+        a la denominación verbal de una marca.
+        En la categoría Automóviles se
+        analizan diez marcas y se identifican
+        cinco tipologías: patronímico,
+        sigla, acrónimo, descriptivo
+        y evocativo. Cada nombre se presenta
+        dentro de su clasificación,
+        acompañado de una justificación
+        relacionada con su origen
+        o significado.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN DE NOMBRES</small>
+    <h2>Tipologías identificadas</h2>
+</div>
+
+<!-- PATRONÍMICO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>01. Patronímico</h3>
+        <span class="cantidad">5 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es patronímico?</strong>
+        <p>
+            Es una denominación comercial
+            que proviene del nombre
+            o apellido de una persona,
+            generalmente un fundador
+            o una figura relacionada
+            con el origen de la marca.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4 class="marca">Toyota</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre deriva del apellido
+                Toyoda, correspondiente
+                a la familia fundadora.
+                Es patronímico porque
+                mantiene su origen
+                en un apellido personal,
+                aunque fue modificado
+                de Toyoda a Toyota.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4 class="marca">Chevrolet</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Proviene del apellido
+                de Louis Chevrolet,
+                piloto y cofundador
+                de la empresa.
+                Es patronímico porque
+                utiliza directamente
+                un apellido como
+                nombre comercial.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4 class="marca">Ford</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Proviene del apellido
+                de Henry Ford,
+                fundador de la empresa.
+                Es patronímico porque
+                emplea directamente
+                el apellido del fundador
+                como denominación
+                de la marca.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4 class="marca">Mercedes-Benz</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Combina Mercedes,
+                nombre de la hija
+                de Emil Jellinek,
+                con Benz, apellido
+                de Carl Benz.
+                Es patronímico porque
+                su denominación se
+                construye a partir
+                de nombres personales.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4 class="marca">Audi</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre proviene
+                de la traducción
+                al latín del apellido
+                Horch, vinculado
+                con su fundador
+                August Horch.
+                Se clasifica como
+                patronímico por
+                su origen en un
+                apellido personal,
+                aunque la denominación
+                final está traducida.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- SIGLA -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>02. Sigla</h3>
+        <span class="cantidad">1 marca</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es sigla?</strong>
+        <p>
+            Es una denominación
+            formada por las letras
+            iniciales de varias
+            palabras que integran
+            el nombre original
+            de una organización
+            o empresa.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4 class="marca">BMW</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Corresponde a las
+                iniciales de
+                Bayerische Motoren Werke,
+                denominación alemana
+                relacionada con
+                fábricas bávaras
+                de motores.
+                Es una sigla porque
+                utiliza las letras
+                iniciales de las
+                palabras del nombre.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- ACRÓNIMO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>03. Acrónimo</h3>
+        <span class="cantidad">1 marca</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es acrónimo?</strong>
+        <p>
+            Es una denominación
+            formada mediante
+            la unión o reducción
+            de elementos de
+            varias palabras,
+            creando una nueva
+            expresión pronunciable.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4 class="marca">Nissan</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre deriva
+                de una forma abreviada
+                de Nihon Sangyo,
+                denominación empresarial
+                japonesa.
+                Se clasifica como
+                acrónimo porque
+                combina partes
+                de dos palabras
+                para formar una
+                denominación breve
+                y pronunciable.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- DESCRIPTIVO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>04. Descriptivo</h3>
+        <span class="cantidad">1 marca</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es descriptivo?</strong>
+        <p>
+            Es una denominación
+            que expresa de forma
+            directa una característica,
+            finalidad, público
+            o concepto relacionado
+            con el producto.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4 class="marca">Volkswagen</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre significa
+                «automóvil del pueblo»
+                en alemán.
+                Es descriptivo porque
+                expresa directamente
+                la idea de un vehículo
+                destinado al público
+                general y comunica
+                la finalidad original
+                de la marca.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- EVOCATIVO -->
+
+<section class="bloque">
+
+    <div class="bloque-cabecera">
+        <h3>05. Evocativo</h3>
+        <span class="cantidad">2 marcas</span>
+    </div>
+
+    <div class="definicion">
+        <strong>¿Por qué es evocativo?</strong>
+        <p>
+            Es un nombre que
+            sugiere conceptos,
+            cualidades o asociaciones
+            simbólicas sin describir
+            directamente el producto
+            o servicio.
+        </p>
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4 class="marca">Hyundai</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre procede
+                de una palabra coreana
+                relacionada con
+                «modernidad» o
+                «tiempos modernos».
+                Es evocativo porque
+                comunica una idea
+                de innovación
+                y progreso sin
+                describir directamente
+                un automóvil.
+            </p>
+        </article>
+
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4 class="marca">Kia</h4>
+            <div class="linea"></div>
+            <p class="explicacion">
+                Su nombre se interpreta
+                habitualmente como
+                una referencia a
+                «surgir de Asia».
+                Es evocativo porque
+                transmite una asociación
+                simbólica con el origen
+                y el crecimiento,
+                sin nombrar directamente
+                un producto automotriz.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- NOTA -->
+
+<div class="nota">
+    <strong>Observación lingüística:</strong>
+    Algunas denominaciones presentan
+    características de más de una
+    tipología. Toyota procede de
+    un apellido modificado y Audi
+    de una traducción lingüística
+    de un apellido. Nissan también
+    puede analizarse como una
+    contracción o alteración.
+    En este catálogo se ha
+    seleccionado una clasificación
+    principal para cada marca
+    según el criterio de origen
+    y construcción del nombre.
+</div>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>Conclusión del análisis</h3>
+
+    <p>
+        En las diez marcas de automóviles
+        se identificaron cinco tipologías
+        lingüísticas: patronímico,
+        sigla, acrónimo, descriptivo
+        y evocativo. Predomina la
+        denominación patronímica,
+        presente en cinco marcas,
+        seguida de la evocativa
+        con dos. La sigla,
+        el acrónimo y la denominación
+        descriptiva aparecen en
+        una marca cada una.
+        Estas estrategias demuestran
+        cómo los nombres comerciales
+        pueden originarse en apellidos,
+        abreviaciones, significados
+        culturales y referencias
+        al producto, contribuyendo
+        al reconocimiento y
+        diferenciación de las
+        marcas automotrices.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · AUTOMÓVILES · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+
+</body>
+</html>

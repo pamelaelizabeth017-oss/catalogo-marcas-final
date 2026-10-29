@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streaming y entretenimiento | Signo cromático</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+      radial-gradient(circle at 8% 12%,
+        rgba(255,255,255,.95),transparent 26%),
+      radial-gradient(circle at 92% 18%,
+        rgba(62,148,111,.28),transparent 35%),
+      radial-gradient(circle at 5% 65%,
+        rgba(74,170,134,.21),transparent 35%),
+      radial-gradient(circle at 90% 85%,
+        rgba(198,160,96,.15),transparent 32%),
+      linear-gradient(145deg,
+        #F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(151,218,181,.14) 40%,
+      transparent 80%
+    );
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(142,210,173,.17) 40%,
+      transparent 80%
+    );
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:
+      "Bodoni MT","Didot",
+      "Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+      radial-gradient(circle at 92% 20%,
+        rgba(143,219,172,.24),transparent 32%),
+      linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"C";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* PALETA GENERAL */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.paleta-general{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:14px;
+}
+
+/* MUESTRAS DE COLOR */
+
+.color{
+    background:rgba(245,249,245,.85);
+    border:1px solid rgba(23,102,74,.12);
+    border-radius:11px;
+    padding:10px;
+    text-align:center;
+    min-width:0;
+}
+
+.muestra{
+    height:90px;
+    border-radius:9px;
+    border:1px solid rgba(0,0,0,.10);
+    box-shadow:0 4px 10px rgba(0,0,0,.07);
+    margin-bottom:12px;
+}
+
+.color strong{
+    display:block;
+    font-size:12px;
+    color:var(--verde);
+    margin-bottom:6px;
+}
+
+.color span{
+    display:block;
+    font-size:11px;
+    color:#6F8176;
+    overflow-wrap:anywhere;
+}
+
+/* TARJETAS DE LAS DIEZ MARCAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(
+      110deg,#06402E,#17664A
+    );
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.etiqueta{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.paleta-marca{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+    margin-bottom:19px;
+}
+
+.paleta-marca .muestra{
+    height:86px;
+}
+
+.explicacion{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.nota{
+    margin-top:15px;
+    padding-top:13px;
+    border-top:1px solid rgba(197,160,96,.35);
+    color:#7A8B7F;
+    font-size:11px;
+    line-height:1.7;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(
+      110deg,
+      rgba(225,240,228,.95),
+      rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+
+@media(max-width:760px){
+
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas{
+        grid-template-columns:1fr;
+    }
+
+    .paleta-general{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .presentacion{
+        padding:25px 22px;
+    }
+
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+
+    .seccion h2{
+        font-size:29px;
+    }
+
+    .resumen{
+        padding:17px;
+    }
+
+    .tarjeta-contenido{
+        padding:16px;
+    }
+
+    .paleta-marca{
+        gap:8px;
+    }
+
+    .color{
+        padding:7px;
+    }
+
+    .observacion,
+    .cierre{
+        padding:23px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+
+    <div class="ruta">
+        CATÁLOGO DE MARCAS /
+        STREAMING Y ENTRETENIMIENTO
+    </div>
+
+    <h1 class="titulo">
+        SIGNO CROMÁTICO
+    </h1>
+
+    <p class="subtitulo">
+        El color como elemento de identidad visual
+    </p>
+
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO C / ANÁLISIS CROMÁTICO
+    </div>
+
+    <h2>
+        ¿Qué colores identifican a las marcas?
+    </h2>
+
+    <p>
+        El signo cromático estudia los colores
+        presentes en la identidad visual de las
+        marcas. En esta categoría se identifican
+        los tonos predominantes y se presentan
+        muestras cromáticas individuales para
+        observar sus semejanzas y diferencias.
+        Se consideran los colores visibles en
+        las versiones de los identificadores
+        analizados en el catálogo.
+    </p>
+
+</section>
+
+<!-- 01. PALETA CROMÁTICA PREDOMINANTE -->
+
+<div class="seccion">
+
+    <small>
+        01 / ANÁLISIS DE LA CATEGORÍA
+    </small>
+
+    <h2>
+        Paleta cromática predominante
+    </h2>
+
+</div>
+
+<section class="resumen">
+
+    <p>
+        En las identidades visuales de las
+        plataformas analizadas destacan el
+        negro y el blanco, utilizados para
+        aportar contraste y legibilidad.
+        También se observa la presencia
+        del rojo, azul y verde en marcas
+        específicas. Algunas plataformas
+        incorporan colores intensos como
+        el naranja y el violeta, mientras
+        que Peacock utiliza una composición
+        multicolor.
+    </p>
+
+    <div class="paleta-general">
+
+        <div class="color">
+            <div class="muestra"
+                 style="background:#000000">
+            </div>
+            <strong>Negro</strong>
+            <span>#000000</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra"
+                 style="background:#FFFFFF">
+            </div>
+            <strong>Blanco</strong>
+            <span>#FFFFFF</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra"
+                 style="background:#E50914">
+            </div>
+            <strong>Rojo</strong>
+            <span>#E50914</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra"
+                 style="background:#0064FF">
+            </div>
+            <strong>Azul</strong>
+            <span>#0064FF</span>
+        </div>
+
+        <div class="color">
+            <div class="muestra"
+                 style="background:#1CE783">
+            </div>
+            <strong>Verde</strong>
+            <span>#1CE783</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- 02. COLORES DE LAS DIEZ MARCAS -->
+
+<div class="seccion">
+
+    <small>
+        02 / PALETAS INDIVIDUALES
+    </small>
+
+    <h2>
+        Colores de las diez marcas
+    </h2>
+
+</div>
+
+<section class="tarjetas" id="tarjetas">
+</section>
+
+<!-- OBSERVACIÓN CROMÁTICA -->
+
+<section class="observacion">
+
+    <p>
+        <strong>Observación cromática:</strong>
+        Los códigos HEX presentados son
+        referencias digitales aproximadas
+        de los tonos utilizados en las
+        versiones visuales analizadas.
+        No todos corresponden necesariamente
+        a especificaciones oficiales de
+        los manuales de identidad.
+        Una misma marca puede utilizar
+        versiones monocromáticas, negativas
+        o alternativas dependiendo del
+        soporte y del fondo.
+    </p>
+
+</section>
+
+<!-- CONCLUSIÓN DEL ANÁLISIS -->
+
+<section class="cierre">
+
+    <h3>
+        Conclusión del análisis
+    </h3>
+
+    <p>
+        En las diez marcas de streaming
+        y entretenimiento se identifican
+        estrategias cromáticas diversas.
+        Netflix utiliza un rojo intenso;
+        Hulu destaca por su verde brillante;
+        Disney+ y Paramount+ emplean
+        tonalidades azules; y Crunchyroll
+        se reconoce por su naranja.
+        Otras plataformas, como HBO Max,
+        Apple TV y MUBI, utilizan
+        composiciones de alto contraste.
+        Peacock se diferencia por integrar
+        varios colores en su identificador.
+        Estas elecciones contribuyen a
+        distinguir las marcas y fortalecer
+        su reconocimiento en entornos digitales.
+    </p>
+
+</section>
+
+<!-- PIE DE PÁGINA -->
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS ·
+    STREAMING Y ENTRETENIMIENTO ·
+    SIGNO CROMÁTICO
+</footer>
+
+</main>
+
+<script>
+
+/*
+  DATOS CROMÁTICOS DE LAS DIEZ MARCAS
+
+  Los valores HEX son referencias visuales.
+  Las tarjetas se crean automáticamente.
+*/
+
+const marcas = [
+
+{
+    nombre:"Netflix",
+
+    colores:[
+        ["Rojo","#E50914"],
+        ["Negro","#000000"],
+        ["Blanco","#FFFFFF"]
+    ],
+
+    descripcion:
+    "El rojo es el color distintivo de Netflix y genera un contraste intenso sobre fondos negros. El blanco se utiliza como alternativa en determinadas aplicaciones.",
+
+    nota:
+    "La identidad combina principalmente rojo y negro."
+},
+
+{
+    nombre:"Disney+",
+
+    colores:[
+        ["Azul oscuro","#0B1F70"],
+        ["Azul brillante","#00C7E8"],
+        ["Blanco","#FFFFFF"]
+    ],
+
+    descripcion:
+    "La versión azul de Disney+ combina tonos oscuros y brillantes, especialmente en el arco que acompaña al logotipo. El blanco facilita su reproducción sobre fondos oscuros.",
+
+    nota:
+    "Los tonos pueden variar entre versiones históricas y actuales de la plataforma."
+},
+
+{
+    nombre:"HBO Max",
+
+    colores:[
+        ["Negro","#000000"],
+        ["Blanco","#FFFFFF"],
+        ["Violeta","#6B3FA0"]
+    ],
+
+    descripcion:
+    "En la versión negra del catálogo, HBO Max utiliza un logotipo monocromático. El violeta también se asocia con otras etapas de la identidad de la plataforma.",
+
+    nota:
+    "Se distingue la versión mostrada de otras identidades cromáticas utilizadas por HBO Max."
+},
+
+{
+    nombre:"Prime Video",
+
+    colores:[
+        ["Azul claro","#00A8E1"],
+        ["Azul oscuro","#232F3E"],
+        ["Blanco","#FFFFFF"]
+    ],
+
+    descripcion:
+    "Prime Video utiliza azul claro y azul oscuro en su denominación y en la curva que acompaña al logotipo. El blanco aparece en aplicaciones sobre fondos de color.",
+
+    nota:
+    "El contraste entre los dos azules ayuda a separar visualmente las palabras."
+},
+
+{
+    nombre:"Paramount+",
+
+    colores:[
+        ["Azul","#0064FF"],
+        ["Blanco","#FFFFFF"],
+        ["Azul oscuro","#003087"]
+    ],
+
+    descripcion:
+    "El azul identifica visualmente a Paramount+ y se utiliza en el logotipo, la montaña y las estrellas. El blanco permite desarrollar versiones negativas del identificador.",
+
+    nota:
+    "La identidad se reconoce principalmente por el azul y el blanco."
+},
+
+{
+    nombre:"Hulu",
+
+    colores:[
+        ["Verde","#1CE783"],
+        ["Negro","#000000"],
+        ["Blanco","#FFFFFF"]
+    ],
+
+    descripcion:
+    "Hulu se distingue por un verde brillante de alta visibilidad. El negro proporciona contraste y el blanco se utiliza en aplicaciones alternativas.",
+
+    nota:
+    "El verde es el rasgo cromático más reconocible de la marca."
+},
+
+{
+    nombre:"Crunchyroll",
+
+    colores:[
+        ["Naranja","#F47521"],
+        ["Blanco","#FFFFFF"],
+        ["Negro","#000000"]
+    ],
+
+    descripcion:
+    "El naranja es el color característico de Crunchyroll y se utiliza tanto en el símbolo como en su denominación. El blanco y el negro permiten diferentes aplicaciones.",
+
+    nota:
+    "El naranja diferencia a la plataforma dentro de la categoría."
+},
+
+{
+    nombre:"Apple TV",
+
+    colores:[
+        ["Negro","#000000"],
+        ["Blanco","#FFFFFF"],
+        ["Gris","#A6A6A6"]
+    ],
+
+    descripcion:
+    "La identidad de Apple TV utiliza principalmente negro y blanco. El gris puede aparecer en representaciones secundarias o aplicaciones sobre diferentes fondos.",
+
+    nota:
+    "Su sistema cromático es predominantemente monocromático."
+},
+
+{
+    nombre:"Peacock",
+
+    colores:[
+        ["Negro","#000000"],
+        ["Violeta","#7B2CBF"],
+        ["Verde","#00A651"],
+        ["Amarillo","#FFD100"],
+        ["Naranja","#F7941D"],
+        ["Rojo","#E31837"]
+    ],
+
+    descripcion:
+    "Peacock combina una denominación negra con puntos de diferentes colores. Esta variedad cromática remite al motivo multicolor asociado históricamente con NBC.",
+
+    nota:
+    "Es la marca con mayor diversidad de colores dentro de esta selección."
+},
+
+{
+    nombre:"MUBI",
+
+    colores:[
+        ["Negro","#000000"],
+        ["Blanco","#FFFFFF"],
+        ["Gris","#808080"]
+    ],
+
+    descripcion:
+    "MUBI utiliza una identidad predominantemente monocromática, con letras y círculos negros sobre fondo blanco. El gris representa una alternativa tonal de referencia.",
+
+    nota:
+    "Predominan las formas negras y el contraste con el fondo blanco."
+}
+
+];
+
+/* CONTENEDOR DE TARJETAS */
+
+const tarjetas =
+    document.getElementById("tarjetas");
+
+/* FUNCIÓN PARA CREAR CADA MUESTRA */
+
+function crearColor(nombre,hex){
+
+    const color =
+        document.createElement("div");
+
+    color.className="color";
+
+    const muestra =
+        document.createElement("div");
+
+    muestra.className="muestra";
+    muestra.style.backgroundColor=hex;
+
+    const etiqueta =
+        document.createElement("strong");
+
+    etiqueta.textContent=nombre;
+
+    const codigo =
+        document.createElement("span");
+
+    codigo.textContent=hex;
+
+    color.append(
+        muestra,
+        etiqueta,
+        codigo
+    );
+
+    return color;
+}
+
+/* GENERAR LAS DIEZ TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta =
+        document.createElement("article");
+
+    tarjeta.className="tarjeta";
+
+    const cabecera =
+        document.createElement("div");
+
+    cabecera.className="tarjeta-cabecera";
+
+    const numero =
+        document.createElement("span");
+
+    numero.className="numero";
+
+    numero.textContent=
+        "MARCA "+
+        String(indice+1).padStart(2,"0");
+
+    const nombre =
+        document.createElement("h3");
+
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(
+        numero,
+        nombre
+    );
+
+    const contenido =
+        document.createElement("div");
+
+    contenido.className="tarjeta-contenido";
+
+    const etiqueta =
+        document.createElement("strong");
+
+    etiqueta.className="etiqueta";
+
+    etiqueta.textContent=
+        "PALETA CROMÁTICA";
+
+    const paleta =
+        document.createElement("div");
+
+    paleta.className="paleta-marca";
+
+    marca.colores.forEach(color=>{
+
+        paleta.appendChild(
+            crearColor(
+                color[0],
+                color[1]
+            )
+        );
+
+    });
+
+    const descripcion =
+        document.createElement("p");
+
+    descripcion.className="explicacion";
+    descripcion.textContent=marca.descripcion;
+
+    const nota =
+        document.createElement("p");
+
+    nota.className="nota";
+    nota.textContent=marca.nota;
+
+    contenido.append(
+        etiqueta,
+        paleta,
+        descripcion,
+        nota
+    );
+
+    tarjeta.append(
+        cabecera,
+        contenido
+    );
+
+    tarjetas.appendChild(tarjeta);
+
+});
+
+</script>
+
+</body>
+</html>

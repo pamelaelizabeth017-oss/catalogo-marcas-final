@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ropa - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    background: white;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    position: relative;
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: white;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* IMAGEN AMPLIADA */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>ROPA</h1>
+    <p>Descubre las marcas de moda y su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOS -->
+<div class="modal" id="modal-logo">
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModales()">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info">
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModales()">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* LAS DIEZ MARCAS DE ROPA */
+const marcas = [
+    {
+        nombre: "Zara",
+        imagen: "imagenes/zara.png",
+        descripcion: "Zara es una marca española de moda fundada en 1975. Su identidad visual destaca por un logotipo tipográfico de letras con serifas, asociado con una imagen elegante y contemporánea."
+    },
+    {
+        nombre: "H&M",
+        imagen: "imagenes/hm.png",
+        descripcion: "H&M es una marca sueca de moda fundada en 1947. Su logotipo utiliza letras rojas de apariencia manuscrita, que transmiten dinamismo y cercanía."
+    },
+    {
+        nombre: "Levi's",
+        imagen: "imagenes/levis.png",
+        descripcion: "Levi's es una marca estadounidense fundada en 1853. Su identidad visual destaca por el logotipo rojo con forma característica de etiqueta y letras blancas."
+    },
+    {
+        nombre: "Gucci",
+        imagen: "imagenes/gucci.png",
+        descripcion: "Gucci es una casa de moda italiana fundada en 1921. Su identidad visual utiliza el nombre GUCCI y el monograma de las dos letras G entrelazadas, asociado con el lujo y la tradición."
+    },
+    {
+        nombre: "Chanel",
+        imagen: "imagenes/chanel.png",
+        descripcion: "Chanel es una casa de moda francesa fundada en 1910. Su identidad visual destaca por las dos letras C entrelazadas y una tipografía elegante, generalmente en blanco y negro."
+    },
+    {
+        nombre: "Prada",
+        imagen: "imagenes/prada.png",
+        descripcion: "Prada es una marca italiana de lujo fundada en 1913. Su logotipo utiliza letras mayúsculas con serifas, que comunican elegancia, tradición y exclusividad."
+    },
+    {
+        nombre: "Louis Vuitton",
+        imagen: "imagenes/louisvuitton.png",
+        descripcion: "Louis Vuitton es una casa de moda francesa fundada en 1854. Su identidad visual incluye el monograma LV y el nombre de la marca, elementos asociados con el lujo y la artesanía."
+    },
+    {
+        nombre: "Dior",
+        imagen: "imagenes/dior.png",
+        descripcion: "Dior es una casa de moda francesa fundada en 1946. Su logotipo utiliza una tipografía con serifas, reconocida por su elegancia y estilo clásico."
+    },
+    {
+        nombre: "Versace",
+        imagen: "imagenes/versace.png",
+        descripcion: "Versace es una marca italiana fundada en 1978. Su identidad visual incorpora la cabeza de Medusa como símbolo característico, acompañada por el nombre VERSACE."
+    },
+    {
+        nombre: "Burberry",
+        imagen: "imagenes/burberry.png",
+        descripcion: "Burberry es una marca británica fundada en 1856. Su identidad visual incluye el caballero ecuestre y el nombre BURBERRY, relacionados con su herencia y tradición."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+
+/* CREAR TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

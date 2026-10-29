@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Redes sociales - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS MODALES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    padding-right: 35px;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* LOGOTIPO AMPLIADO */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .tarjeta img {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>REDES SOCIALES Y PLATAFORMAS</h1>
+    <p>Explora las marcas digitales y descubre su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOTIPOS -->
+<div class="modal" id="modal-logo"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Logotipo ampliado">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar imagen">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Información de la marca">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar información">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* =====================================
+   LAS 10 MARCAS DE REDES SOCIALES
+   NOMBRES EXACTOS DE TUS IMÁGENES
+   ===================================== */
+
+const marcas = [
+    {
+        nombre: "Instagram",
+        imagen: "imagenes/instagram.png",
+        descripcion: "Instagram es una red social lanzada en 2010, enfocada en compartir fotografías y videos. Su identidad visual utiliza un símbolo de cámara estilizada y un degradado de colores que combina tonos morados, rosados, naranjas y amarillos."
+    },
+    {
+        nombre: "TikTok",
+        imagen: "imagenes/tiktok.png",
+        descripcion: "TikTok es una plataforma de videos cortos lanzada internacionalmente en 2017. Su identidad visual destaca por una nota musical estilizada que combina negro, blanco, cian y rosa, transmitiendo dinamismo y entretenimiento."
+    },
+    {
+        nombre: "YouTube",
+        imagen: "imagenes/youtube.png",
+        descripcion: "YouTube es una plataforma de videos fundada en 2005. Su identidad visual utiliza un rectángulo rojo con esquinas redondeadas y un triángulo blanco que representa el botón de reproducción."
+    },
+    {
+        nombre: "Facebook",
+        imagen: "imagenes/facebook.png",
+        descripcion: "Facebook es una red social fundada en 2004. Su identidad visual utiliza una letra f minúscula de color blanco sobre un fondo azul, creando un símbolo sencillo y fácilmente reconocible."
+    },
+    {
+        nombre: "Pinterest",
+        imagen: "imagenes/pinterest.png",
+        descripcion: "Pinterest es una plataforma visual lanzada en 2010, utilizada para descubrir y guardar ideas mediante imágenes. Su identidad visual destaca por una letra P estilizada, generalmente presentada en rojo."
+    },
+    {
+        nombre: "Snapchat",
+        imagen: "imagenes/snapchat.png",
+        descripcion: "Snapchat es una aplicación de mensajería multimedia lanzada en 2011. Su identidad visual utiliza la silueta blanca de un fantasma sobre un fondo amarillo, creando un símbolo llamativo y juvenil."
+    },
+    {
+        nombre: "Spotify",
+        imagen: "imagenes/spotify.png",
+        descripcion: "Spotify es una plataforma de música y contenido de audio fundada en 2006. Su identidad visual utiliza un círculo verde con tres líneas curvas que representan ondas sonoras."
+    },
+    {
+        nombre: "Twitch",
+        imagen: "imagenes/twitch.png",
+        descripcion: "Twitch es una plataforma de transmisiones en vivo lanzada en 2011. Su identidad visual utiliza un símbolo inspirado en una burbuja de diálogo, con formas geométricas y el color morado como elemento principal."
+    },
+    {
+        nombre: "LinkedIn",
+        imagen: "imagenes/linkedin.png",
+        descripcion: "LinkedIn es una red social profesional lanzada en 2003. Su identidad visual utiliza las letras in dentro de un cuadrado azul, representando una imagen corporativa sencilla y reconocible."
+    },
+    {
+        nombre: "Discord",
+        imagen: "imagenes/discord.png",
+        descripcion: "Discord es una plataforma de comunicación lanzada en 2015. Su identidad visual utiliza un símbolo estilizado inspirado en un control de videojuegos, acompañado por un color azul violáceo característico."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+let elementoAnterior = null;
+
+/* CREAR LAS TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.type = "button";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-logo .cerrar").focus();
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-info .cerrar").focus();
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+
+    document.getElementById("imagen-grande")
+        .removeAttribute("src");
+
+    if (elementoAnterior) {
+        elementoAnterior.focus();
+    }
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

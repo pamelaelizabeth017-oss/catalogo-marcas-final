@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bebidas | Signo escritural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#5B7569;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+      radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+      radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+      radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+      radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+      linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+    background:radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(151,218,181,.14) 40%,
+      transparent 80%
+    );
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+    background:radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(142,210,173,.17) 40%,
+      transparent 80%
+    );
+}
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO PRINCIPAL */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:
+      radial-gradient(circle at 92% 20%,rgba(143,219,172,.24),transparent 32%),
+      linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* SECCIONES */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES GENERALES */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+    border-top:1px solid rgba(197,160,96,.35);
+    margin-top:13px;
+    padding-top:12px;
+}
+
+/* TARJETAS DE MARCAS: MISMA ESTRUCTURA QUE AUTOMÓVILES */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    border-bottom:3px solid var(--dorado);
+}
+
+.tarjeta-cabecera .numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* LOGOTIPO Y LEYENDA EN EL MISMO PANEL */
+
+.panel-logo{
+    min-height:185px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:260px;
+    height:115px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:115px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+/* CINCO PARÁMETROS */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(
+      110deg,
+      rgba(225,240,228,.95),
+      rgba(250,243,227,.95)
+    );
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+@media(max-width:760px){
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas,
+    .clasificaciones{
+        grid-template-columns:1fr;
+    }
+
+    .presentacion{
+        padding:25px 22px;
+    }
+
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+        letter-spacing:-1px;
+    }
+
+    .seccion h2{
+        font-size:29px;
+    }
+
+    .resumen{
+        padding:18px;
+    }
+
+    .observacion,
+    .cierre{
+        padding:23px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / BEBIDAS</div>
+    <h1 class="titulo">SIGNO ESCRITURAL</h1>
+    <p class="subtitulo">
+        La tipografía como elemento de identidad visual
+    </p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+
+    <h2>¿Cómo se representan los nombres?</h2>
+
+    <p>
+        El signo escritural analiza la representación
+        gráfica de los nombres de marca mediante sus
+        características tipográficas. En la categoría
+        Bebidas se identifican las clasificaciones
+        tipográficas presentes y los estilos utilizados:
+        peso, inclinación, mayúsculas y minúsculas
+        y personalización de las letras.
+        El análisis se centra en los identificadores
+        visuales de diez marcas de bebidas.
+    </p>
+</section>
+
+<!-- PRIMER APARTADO -->
+
+<div class="seccion">
+    <small>01 / ANÁLISIS DE LA CATEGORÍA</small>
+    <h2>Clasificaciones tipográficas presentes</h2>
+</div>
+
+<section class="resumen">
+
+    <p class="resumen-intro">
+        En esta categoría se identifican principalmente
+        tipografías sans serif, escrituras caligráficas
+        y letras decorativas personalizadas.
+        Las marcas modifican sus caracteres para
+        reforzar su reconocimiento y personalidad visual.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+            <h3>01. Sans serif</h3>
+            <p>
+                Letras sin remates, de construcción
+                limpia, geométrica o compacta.
+            </p>
+            <div class="ejemplos">
+                Pepsi, Fanta, Red Bull, Gatorade,
+                Powerade y Nestea.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>02. Caligráfica o script</h3>
+            <p>
+                Escritura inspirada en trazos manuales,
+                con conexiones entre letras y
+                variaciones de grosor.
+            </p>
+            <div class="ejemplos">
+                Coca-Cola.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>03. Decorativa</h3>
+            <p>
+                Letras expresivas, con contornos
+                particulares, trazos irregulares
+                y modificaciones visuales.
+            </p>
+            <div class="ejemplos">
+                Sprite, Monster Energy y Schweppes.
+            </div>
+        </article>
+
+        <article class="clasificacion">
+            <h3>04. Personalizada</h3>
+            <p>
+                Letras adaptadas específicamente
+                para construir una identidad
+                comercial reconocible.
+            </p>
+            <div class="ejemplos">
+                Se observa en distintos grados
+                en las diez marcas.
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- SEGUNDO APARTADO -->
+
+<div class="seccion">
+    <small>02 / ANÁLISIS DE CADA MARCA</small>
+    <h2>Estilos tipográficos utilizados</h2>
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN -->
+
+<section class="observacion">
+    <p>
+        <strong>Observación escritural:</strong>
+        Las clasificaciones se establecen según
+        las características visuales de los
+        logotipos seleccionados. Algunas marcas
+        combinan rasgos de varias familias tipográficas
+        y utilizan lettering diseñado específicamente
+        para su identidad. Por ello, las categorías
+        decorativa y personalizada pueden coincidir.
+        El análisis describe la apariencia gráfica
+        sin atribuir una fuente comercial específica
+        cuando esta no está documentada.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas de bebidas predominan
+        las letras sin remates y los diseños
+        personalizados. Coca-Cola se diferencia
+        por su escritura caligráfica, mientras
+        que Sprite, Monster Energy y Schweppes
+        destacan por sus tratamientos decorativos.
+        El peso, la inclinación, el uso de
+        mayúsculas y minúsculas y la modificación
+        de los caracteres permiten construir
+        identidades visuales distintivas.
+        La tipografía contribuye al reconocimiento
+        de cada marca y a la comunicación
+        de su personalidad.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · BEBIDAS · SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  Utiliza la carpeta "imagenes" existente.
+
+  Si alguno de tus logotipos tiene otro nombre,
+  modifica únicamente la lista "imagenes"
+  de esa marca.
+*/
+
+const marcas = [
+{
+    nombre:"Coca-Cola",
+    imagenes:["cocacola","coca_cola","coca-cola","coca cola"],
+    leyenda:"Escritura caligráfica personalizada.",
+    clasificacion:"Script caligráfica.",
+    peso:"Contraste entre trazos gruesos y finos.",
+    inclinacion:"Inclinación hacia la derecha.",
+    mayusculas:"Iniciales mayúsculas en Coca y Cola; las demás letras son minúsculas.",
+    personalizacion:"Letras enlazadas, curvas ornamentales y prolongaciones de los trazos. Su composición caligráfica crea un identificador distintivo."
+},
+{
+    nombre:"Pepsi",
+    imagenes:["pepsi"],
+    leyenda:"Sans serif de apariencia geométrica.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso, de apariencia compacta.",
+    inclinacion:"Recta.",
+    mayusculas:"Mayúsculas: PEPSI, en la versión circular del catálogo.",
+    personalizacion:"Caracteres compactos y legibles integrados con el identificador circular. El nombre mantiene una composición sencilla y reconocible."
+},
+{
+    nombre:"Sprite",
+    imagenes:["sprite"],
+    leyenda:"Lettering decorativo y dinámico.",
+    clasificacion:"Decorativa con base sans serif.",
+    peso:"Grueso, con variaciones visuales en las formas.",
+    inclinacion:"Inclinación marcada en varios caracteres.",
+    mayusculas:"Inicial mayúscula y letras restantes minúsculas.",
+    personalizacion:"Letras estilizadas con ángulos pronunciados y terminaciones particulares que transmiten dinamismo."
+},
+{
+    nombre:"Fanta",
+    imagenes:["fanta"],
+    leyenda:"Sans serif decorativa personalizada.",
+    clasificacion:"Sans serif decorativa.",
+    peso:"Grueso y compacto.",
+    inclinacion:"Irregular, con ligeras variaciones entre letras.",
+    mayusculas:"Mayúsculas: FANTA, en la versión del catálogo.",
+    personalizacion:"Caracteres de proporciones variables y composición lúdica que refuerzan una identidad juvenil y expresiva."
+},
+{
+    nombre:"Red Bull",
+    imagenes:["redbull","red_bull","red bull"],
+    leyenda:"Sans serif robusta y compacta.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso, de apariencia sólida.",
+    inclinacion:"Recta.",
+    mayusculas:"Iniciales mayúsculas y letras restantes minúsculas.",
+    personalizacion:"Letras compactas y de estructura robusta que comunican fuerza y estabilidad visual."
+},
+{
+    nombre:"Monster Energy",
+    imagenes:["monster","monsterenergy","monster_energy","monster energy"],
+    leyenda:"Lettering decorativo de trazos irregulares.",
+    clasificacion:"Decorativa personalizada.",
+    peso:"Variable, con trazos angulares y expresivos.",
+    inclinacion:"Irregular.",
+    mayusculas:"Mayúsculas en MONSTER y ENERGY.",
+    personalizacion:"Caracteres puntiagudos y de apariencia desgastada. La palabra ENERGY presenta menor tamaño y mayor separación entre letras."
+},
+{
+    nombre:"Gatorade",
+    imagenes:["gatorade"],
+    leyenda:"Sans serif personalizada de estilo deportivo.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta en la versión seleccionada.",
+    mayusculas:"Mayúsculas: GATORADE.",
+    personalizacion:"Letras robustas que acompañan una G de gran tamaño y el símbolo del rayo, creando una composición deportiva."
+},
+{
+    nombre:"Powerade",
+    imagenes:["powerade"],
+    leyenda:"Sans serif geométrica de carácter deportivo.",
+    clasificacion:"Sans serif geométrica personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta, con cortes angulares.",
+    mayusculas:"Mayúsculas: POWERADE.",
+    personalizacion:"Caracteres geométricos, proporciones amplias y modificaciones en los extremos de las letras."
+},
+{
+    nombre:"Schweppes",
+    imagenes:["schweppes"],
+    leyenda:"Lettering inclinado de carácter decorativo.",
+    clasificacion:"Decorativa con rasgos de escritura inclinada.",
+    peso:"Medio a grueso.",
+    inclinacion:"Marcada hacia la derecha.",
+    mayusculas:"Inicial mayúscula y letras restantes minúsculas.",
+    personalizacion:"Letras estrechas y estilizadas adaptadas a una composición diagonal, característica del identificador."
+},
+{
+    nombre:"Nestea",
+    imagenes:["nestea"],
+    leyenda:"Sans serif personalizada de trazos amplios.",
+    clasificacion:"Sans serif personalizada.",
+    peso:"Grueso.",
+    inclinacion:"Recta.",
+    mayusculas:"Mayúsculas: NESTEA.",
+    personalizacion:"Caracteres compactos y de alta legibilidad, integrados visualmente con elementos gráficos asociados al té."
+}
+];
+
+const zona = document.getElementById("tarjetas");
+
+function dato(titulo,descripcion){
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+    return bloque;
+}
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=["png","jpg","jpeg","webp","svg"];
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+            rutas.push("imagenes/"+nombre);
+        }else{
+            extensiones.forEach(ext=>{
+                rutas.push("imagenes/"+nombre+"."+ext);
+            });
+        }
+    });
+
+    let posicion=0;
+
+    function intentar(){
+        if(posicion>=rutas.length){
+            imagen.style.display="none";
+
+            const alternativo=document.createElement("div");
+            alternativo.className="logo-alternativo";
+            alternativo.style.display="flex";
+            alternativo.textContent=nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+    intentar();
+}
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=document.createElement("article");
+    tarjeta.className="tarjeta";
+
+    const cabecera=document.createElement("div");
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=document.createElement("span");
+    numero.className="numero";
+    numero.textContent=
+        "MARCA "+String(indice+1).padStart(2,"0");
+
+    const nombre=document.createElement("h3");
+    nombre.textContent=marca.nombre.toUpperCase();
+
+    cabecera.append(numero,nombre);
+
+    const panel=document.createElement("div");
+    panel.className="panel-logo";
+
+    const imagen=document.createElement("img");
+    imagen.alt="Logotipo de "+marca.nombre;
+
+    const leyenda=document.createElement("p");
+    leyenda.className="leyenda";
+    leyenda.textContent=marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    const contenido=document.createElement("div");
+    contenido.className="tarjeta-contenido";
+
+    contenido.append(
+        dato("Clasificación tipográfica",marca.clasificacion),
+        dato("Peso tipográfico",marca.peso),
+        dato("Inclinación",marca.inclinacion),
+        dato("Mayúsculas y minúsculas",marca.mayusculas),
+        dato("Personalización",marca.personalizacion)
+    );
+
+    tarjeta.append(cabecera,panel,contenido);
+    zona.appendChild(tarjeta);
+
+    buscarLogo(imagen,marca.imagenes,marca.nombre);
+});
+
+</script>
+
+</body>
+</html>

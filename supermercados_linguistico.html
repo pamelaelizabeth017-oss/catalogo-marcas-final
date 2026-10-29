@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supermercados | Signo lingüístico</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+    background:
+      radial-gradient(circle at 8% 12%,rgba(255,255,255,.95),transparent 26%),
+      radial-gradient(circle at 92% 18%,rgba(62,148,111,.28),transparent 35%),
+      radial-gradient(circle at 5% 65%,rgba(74,170,134,.21),transparent 35%),
+      radial-gradient(circle at 90% 85%,rgba(198,160,96,.15),transparent 32%),
+      linear-gradient(145deg,#F2F6EF,#E0EDE4 46%,#F4F0E5);
+    background-attachment:fixed;
+}
+body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+}
+body::before{
+    width:330px;height:330px;
+    right:-130px;top:150px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(151,218,181,.14) 40%,transparent 80%);
+}
+body::after{
+    width:220px;height:220px;
+    left:-105px;bottom:55px;
+    background:radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(142,210,173,.17) 40%,transparent 80%);
+}
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+}
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+.titulo{
+    font-family:"Bodoni MT","Didot","Libre Bodoni",Georgia,serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    margin:0 0 16px;
+}
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    margin:0;
+}
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(115deg,#043626,#126348);
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+.presentacion::after{
+    content:"A";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+}
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+}
+.seccion{
+    margin:38px 0 22px;
+}
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+.introduccion{
+    background:rgba(255,255,255,.9);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    padding:24px;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+.grupo{
+    margin-bottom:32px;
+}
+.grupo-titulo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:17px 22px;
+    background:linear-gradient(110deg,#06402E,#17664A);
+    color:white;
+    border-radius:12px 12px 0 0;
+    border-bottom:3px solid var(--dorado);
+}
+.grupo-titulo h3{
+    font:500 25px "Libre Bodoni",Georgia,serif;
+    margin:0;
+}
+.grupo-titulo span{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+.grupo-descripcion{
+    padding:17px 22px;
+    background:#E2F0E7;
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    border:1px solid rgba(153,190,161,.38);
+}
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    padding-top:18px;
+}
+.tarjeta{
+    padding:25px;
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-top:3px solid var(--dorado);
+    border-radius:13px;
+    box-shadow:0 9px 24px rgba(28,95,63,.07);
+}
+.tarjeta:nth-child(even){
+    background:rgba(226,240,231,.94);
+}
+.numero{
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.2px;
+}
+.tarjeta h4{
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    margin:12px 0;
+}
+.tarjeta p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+.etiqueta{
+    display:inline-block;
+    margin-top:17px;
+    padding:7px 11px;
+    border-radius:6px;
+    background:#E2F0E7;
+    color:#17664A;
+    font-size:11px;
+    font-weight:800;
+}
+.observacion,.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+    background:linear-gradient(110deg,
+      rgba(225,240,228,.95),
+      rgba(250,243,227,.95));
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+.observacion p,.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+.observacion strong{color:var(--verde)}
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+@media(max-width:760px){
+    .contenedor{width:93%}
+    .tarjetas{grid-template-columns:1fr}
+    .presentacion{padding:25px 22px}
+    .titulo{font-size:38px}
+    .grupo-titulo h3{font-size:21px}
+    .seccion h2{font-size:29px}
+    .observacion,.cierre{padding:23px 20px}
+}
+</style>
+</head>
+<body>
+<main class="contenedor">
+
+<header class="encabezado">
+    <div class="ruta">CATÁLOGO DE MARCAS / SUPERMERCADOS</div>
+    <h1 class="titulo">SIGNO LINGÜÍSTICO</h1>
+    <p class="subtitulo">El significado y la construcción de los nombres comerciales</p>
+</header>
+
+<section class="presentacion">
+    <div class="codigo">APARTADO A / ANÁLISIS LINGÜÍSTICO</div>
+    <h2>¿Qué comunican los nombres?</h2>
+    <p>
+        El signo lingüístico estudia los nombres comerciales
+        y su significado. En esta categoría se analizan
+        diez supermercados nacionales e internacionales
+        según el origen y la construcción de sus denominaciones.
+        Cada nombre se relaciona con una tipología lingüística
+        predominante y se explica su justificación.
+    </p>
+</section>
+
+<div class="seccion">
+    <small>01 / CLASIFICACIÓN LINGÜÍSTICA</small>
+    <h2>Tipologías presentes en la categoría</h2>
+</div>
+
+<div class="introduccion">
+    Para este análisis se consideran las tipologías
+    <strong>descriptiva, evocativa, patronímica,
+    sigla y alteración</strong>.
+    Algunas marcas combinan más de un recurso lingüístico;
+    por ello se presenta su característica predominante
+    y se explica la construcción del nombre.
+</div>
+
+<!-- GRUPOS -->
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>01. Descriptivo</h3>
+        <span>2 MARCAS</span>
+    </div>
+    <div class="grupo-descripcion">
+        Nombres que informan directamente sobre la actividad
+        comercial, la categoría del establecimiento
+        o una característica del servicio.
+    </div>
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <div class="numero">MARCA 01</div>
+            <h4>Mi Comisariato</h4>
+            <p>
+                La palabra «comisariato» identifica un
+                establecimiento dedicado a la venta de
+                productos de consumo. El posesivo «mi»
+                introduce una idea de cercanía y pertenencia.
+                Su denominación comunica directamente
+                la naturaleza comercial del negocio.
+            </p>
+            <span class="etiqueta">DENOMINACIÓN DESCRIPTIVA</span>
+        </article>
+        <article class="tarjeta">
+            <div class="numero">MARCA 02</div>
+            <h4>Coral Hipermercados</h4>
+            <p>
+                La palabra «hipermercados» describe
+                expresamente el tipo de establecimiento.
+                «Coral» funciona como elemento distintivo,
+                mientras que el segundo término informa
+                sobre la actividad comercial.
+                Se trata de una denominación compuesta.
+            </p>
+            <span class="etiqueta">DESCRIPTIVO + DISTINTIVO</span>
+        </article>
+    </div>
+</section>
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>02. Evocativo</h3>
+        <span>2 MARCAS</span>
+    </div>
+    <div class="grupo-descripcion">
+        Nombres que sugieren ideas, cualidades o asociaciones
+        relacionadas con la marca sin describir
+        literalmente todos sus servicios.
+    </div>
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <div class="numero">MARCA 03</div>
+            <h4>Supermaxi</h4>
+            <p>
+                Combina «super», asociado a superioridad
+                o gran tamaño, con «maxi», que sugiere
+                amplitud y abundancia. El nombre evoca
+                variedad, cantidad y una experiencia
+                de compra completa.
+            </p>
+            <span class="etiqueta">EVOCACIÓN DE AMPLITUD</span>
+        </article>
+        <article class="tarjeta">
+            <div class="numero">MARCA 04</div>
+            <h4>Megamaxi</h4>
+            <p>
+                Utiliza «mega» y «maxi», dos elementos
+                que evocan gran tamaño. La combinación
+                sugiere un establecimiento amplio,
+                con extensa variedad de productos.
+                Su construcción también es una
+                combinación léxica creada para la marca.
+            </p>
+            <span class="etiqueta">EVOCACIÓN DE GRAN TAMAÑO</span>
+        </article>
+    </div>
+</section>
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>03. Patronímico</h3>
+        <span>1 MARCA</span>
+    </div>
+    <div class="grupo-descripcion">
+        Denominaciones que proceden del nombre
+        o apellido de una persona, generalmente
+        relacionada con el origen de la empresa.
+    </div>
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <div class="numero">MARCA 05</div>
+            <h4>Walmart</h4>
+            <p>
+                El nombre se relaciona con Sam Walton,
+                fundador de la empresa. Combina una forma
+                abreviada de su apellido con «mart»,
+                término inglés relacionado con un mercado
+                o establecimiento comercial.
+                Por su origen personal, presenta
+                un componente patronímico.
+            </p>
+            <span class="etiqueta">ORIGEN EN APELLIDO</span>
+        </article>
+    </div>
+</section>
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>04. Sigla</h3>
+        <span>1 MARCA</span>
+    </div>
+    <div class="grupo-descripcion">
+        Nombres construidos a partir de iniciales
+        de palabras que forman una denominación
+        más extensa.
+    </div>
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <div class="numero">MARCA 06</div>
+            <h4>Aldi</h4>
+            <p>
+                El nombre procede de la contracción
+                de «Albrecht Diskont», que combina
+                el apellido familiar Albrecht
+                con una referencia al descuento.
+                Técnicamente es una contracción
+                o acrónimo formado por segmentos,
+                no una sigla de iniciales puras.
+            </p>
+            <span class="etiqueta">ACRÓNIMO POR CONTRACCIÓN</span>
+        </article>
+    </div>
+</section>
+
+<section class="grupo">
+    <div class="grupo-titulo">
+        <h3>05. Alteración o construcción compuesta</h3>
+        <span>4 MARCAS</span>
+    </div>
+    <div class="grupo-descripcion">
+        Denominaciones creadas mediante combinaciones,
+        modificaciones o adaptaciones de palabras
+        y nombres propios.
+    </div>
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <div class="numero">MARCA 07</div>
+            <h4>Tía</h4>
+            <p>
+                Su denominación se vincula históricamente
+                con las iniciales de «Tiendas Industriales
+                Asociadas». Aunque coincide con la palabra
+                cotidiana «tía», su construcción
+                empresarial corresponde a un acrónimo
+                pronunciable.
+            </p>
+            <span class="etiqueta">ACRÓNIMO</span>
+        </article>
+        <article class="tarjeta">
+            <div class="numero">MARCA 08</div>
+            <h4>Carrefour</h4>
+            <p>
+                «Carrefour» es una palabra francesa
+                que significa «cruce de caminos».
+                El nombre conserva su forma original
+                y evoca un punto de encuentro.
+                Es principalmente evocativo y
+                no una alteración ortográfica.
+            </p>
+            <span class="etiqueta">PALABRA EVOCATIVA</span>
+        </article>
+        <article class="tarjeta">
+            <div class="numero">MARCA 09</div>
+            <h4>Costco</h4>
+            <p>
+                Su nombre es una forma comercial
+                compacta relacionada con la idea
+                de costos y compra a gran escala.
+                La terminación breve facilita
+                su pronunciación y reconocimiento.
+            </p>
+            <span class="etiqueta">CONSTRUCCIÓN COMERCIAL</span>
+        </article>
+        <article class="tarjeta">
+            <div class="numero">MARCA 10</div>
+            <h4>Lidl</h4>
+            <p>
+                «Lidl» procede de un apellido alemán.
+                Su denominación es breve y distintiva,
+                pero su origen corresponde a un nombre
+                propio y no a una palabra modificada
+                para describir el servicio.
+            </p>
+            <span class="etiqueta">ORIGEN PATRONÍMICO</span>
+        </article>
+    </div>
+</section>
+
+<section class="observacion">
+    <p>
+        <strong>Observación lingüística:</strong>
+        Los nombres de supermercados utilizan
+        diferentes estrategias para comunicar
+        identidad y facilitar su reconocimiento.
+        Algunos describen el establecimiento,
+        otros evocan tamaño o abundancia,
+        y varios proceden de apellidos o
+        contracciones de denominaciones originales.
+        Es importante distinguir entre
+        siglas, acrónimos, nombres patronímicos
+        y palabras evocativas.
+    </p>
+</section>
+
+<section class="cierre">
+    <h3>Conclusión del análisis</h3>
+    <p>
+        En las diez marcas analizadas se evidencia
+        que el signo lingüístico contribuye a
+        construir una identidad comercial
+        memorable. Supermaxi y Megamaxi sugieren
+        amplitud; Mi Comisariato y Coral
+        Hipermercados describen la actividad;
+        Walmart y Lidl presentan vínculos
+        con apellidos; Tía y Aldi proceden
+        de denominaciones abreviadas;
+        Carrefour evoca un lugar de encuentro;
+        y Costco utiliza una construcción
+        comercial breve. La diversidad de
+        nombres demuestra que la identidad
+        verbal puede comunicar tanto la
+        función del establecimiento como
+        su historia y posicionamiento.
+    </p>
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS · SUPERMERCADOS · SIGNO LINGÜÍSTICO
+</footer>
+
+</main>
+</body>
+</html>

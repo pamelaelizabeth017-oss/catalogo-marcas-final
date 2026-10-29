@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Electrodomésticos - Catálogo de marcas</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f8;
+    font-family: Arial, sans-serif;
+    color: #142b46;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* CUADRÍCULA DE MARCAS */
+.contenedor-marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TARJETAS */
+.tarjeta {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 3px solid #d9b547;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.17);
+    z-index: 2;
+}
+
+/* LOGOTIPOS */
+.tarjeta img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.08);
+}
+
+.tarjeta h3 {
+    margin: 17px 0 12px;
+    font-size: 17px;
+}
+
+/* BOTÓN CONOCER + */
+.boton-conocer {
+    border: none;
+    background: transparent;
+    color: #b78319;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.boton-conocer:hover {
+    color: #142b46;
+}
+
+/* VENTANAS MODALES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,30,0.85);
+    z-index: 1000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #ffffff;
+    border-radius: 17px;
+    padding: 30px;
+    width: min(90vw, 580px);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    padding-right: 35px;
+    color: #142b46;
+}
+
+.modal-contenido p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: #142b46;
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.cerrar:hover {
+    background: #d9b547;
+    color: #142b46;
+}
+
+/* LOGOTIPO AMPLIADO */
+#imagen-grande {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-marcas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta {
+        padding: 15px 8px;
+    }
+
+    .tarjeta img {
+        height: 85px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .tarjeta img {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="encabezado">
+    <h1>ELECTRODOMÉSTICOS</h1>
+    <p>Explora las marcas de electrodomésticos y descubre su identidad visual.</p>
+</header>
+
+<main class="contenedor-marcas" id="marcas"></main>
+
+<!-- VENTANA PARA AMPLIAR LOGOTIPOS -->
+<div class="modal" id="modal-logo"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Logotipo ampliado">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar imagen">×</button>
+
+        <img id="imagen-grande"
+             src=""
+             alt="Logotipo ampliado">
+    </div>
+</div>
+
+<!-- VENTANA CONOCER + -->
+<div class="modal" id="modal-info"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Información de la marca">
+
+    <div class="modal-contenido">
+        <button class="cerrar"
+                type="button"
+                onclick="cerrarModales()"
+                aria-label="Cerrar información">×</button>
+
+        <h2 id="titulo-marca"></h2>
+        <div id="texto-marca"></div>
+    </div>
+</div>
+
+<script>
+/* =====================================
+   LAS 10 MARCAS DE ELECTRODOMÉSTICOS
+   NOMBRES EXACTOS DE TUS IMÁGENES
+   ===================================== */
+
+const marcas = [
+    {
+        nombre: "LG",
+        imagen: "imagenes/lg.png",
+        descripcion: "LG es una empresa surcoreana de tecnología y electrodomésticos. Su identidad visual destaca por un símbolo circular que combina las letras L y G para formar una figura semejante a un rostro humano, acompañado del nombre de la marca."
+    },
+    {
+        nombre: "Whirlpool",
+        imagen: "imagenes/whirlpool.png",
+        descripcion: "Whirlpool es una empresa estadounidense fundada en 1911, especializada en electrodomésticos. Su identidad visual utiliza un logotipo tipográfico acompañado por una forma curva que rodea parte del nombre."
+    },
+    {
+        nombre: "Mabe",
+        imagen: "imagenes/mabe.png",
+        descripcion: "Mabe es una empresa mexicana fundada en 1946, dedicada a la fabricación y comercialización de electrodomésticos. Su identidad visual utiliza una tipografía sencilla y el color azul como uno de sus elementos principales."
+    },
+    {
+        nombre: "Electrolux",
+        imagen: "imagenes/electrolux.png",
+        descripcion: "Electrolux es una empresa sueca de electrodomésticos fundada en 1919. Su identidad visual combina el nombre de la marca con un símbolo geométrico circular, generalmente presentado en azul oscuro."
+    },
+    {
+        nombre: "Bosch",
+        imagen: "imagenes/bosch.png",
+        descripcion: "Bosch es una empresa alemana fundada en 1886. Su identidad visual utiliza el nombre BOSCH en letras rojas, acompañado por un símbolo circular inspirado en un inducido de motor eléctrico."
+    },
+    {
+        nombre: "Oster",
+        imagen: "imagenes/oster.png",
+        descripcion: "Oster es una marca estadounidense de pequeños electrodomésticos. Su identidad visual destaca por el uso del color azul y una tipografía de formas curvas, reconocible en productos para el hogar."
+    },
+    {
+        nombre: "Black+Decker",
+        imagen: "imagenes/blackdecker.png",
+        descripcion: "Black+Decker es una marca estadounidense fundada en 1910, conocida por sus herramientas y electrodomésticos. Su identidad visual utiliza letras mayúsculas de gran peso visual y el signo + como parte del nombre."
+    },
+    {
+        nombre: "KitchenAid",
+        imagen: "imagenes/kitchenaid.png",
+        descripcion: "KitchenAid es una marca estadounidense de electrodomésticos fundada en 1919. Su identidad visual utiliza un logotipo tipográfico con letras destacadas, asociado con productos de cocina y preparación de alimentos."
+    },
+    {
+        nombre: "Philips",
+        imagen: "imagenes/philips.png",
+        descripcion: "Philips es una empresa neerlandesa fundada en 1891. Su identidad visual utiliza letras mayúsculas de color azul y una composición tipográfica sencilla que facilita su reconocimiento."
+    },
+    {
+        nombre: "Teka",
+        imagen: "imagenes/teka.png",
+        descripcion: "Teka es una marca de origen alemán especializada en equipamiento de cocina y electrodomésticos. Su identidad visual utiliza un logotipo tipográfico de letras mayúsculas, asociado con una imagen corporativa moderna."
+    }
+];
+
+const contenedor = document.getElementById("marcas");
+let elementoAnterior = null;
+
+/* CREAR LAS TARJETAS */
+marcas.forEach((marca, indice) => {
+
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta";
+
+    const imagen = document.createElement("img");
+    imagen.src = marca.imagen;
+    imagen.alt = "Logotipo de " + marca.nombre;
+    imagen.tabIndex = 0;
+    imagen.setAttribute("role", "button");
+    imagen.setAttribute(
+        "aria-label",
+        "Ampliar logotipo de " + marca.nombre
+    );
+
+    imagen.addEventListener("click", () => {
+        ampliarLogo(indice);
+    });
+
+    imagen.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" ||
+            evento.key === " ") {
+            evento.preventDefault();
+            ampliarLogo(indice);
+        }
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = marca.nombre;
+
+    const boton = document.createElement("button");
+    boton.className = "boton-conocer";
+    boton.type = "button";
+    boton.textContent = "CONOCER +";
+
+    boton.addEventListener("click", () => {
+        mostrarInformacion(indice);
+    });
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+});
+
+/* AMPLIAR LOGOTIPO */
+function ampliarLogo(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    const imagenGrande =
+        document.getElementById("imagen-grande");
+
+    imagenGrande.src = marca.imagen;
+    imagenGrande.alt =
+        "Logotipo ampliado de " + marca.nombre;
+
+    document.getElementById("modal-logo")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-logo .cerrar").focus();
+}
+
+/* MOSTRAR INFORMACIÓN */
+function mostrarInformacion(indice) {
+    const marca = marcas[indice];
+
+    elementoAnterior = document.activeElement;
+
+    document.getElementById("titulo-marca")
+        .textContent = marca.nombre;
+
+    document.getElementById("texto-marca")
+        .textContent = marca.descripcion;
+
+    document.getElementById("modal-info")
+        .classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector("#modal-info .cerrar").focus();
+}
+
+/* CERRAR VENTANAS */
+function cerrarModales() {
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+            modal.classList.remove("visible");
+        });
+
+    document.body.style.overflow = "";
+
+    document.getElementById("imagen-grande")
+        .removeAttribute("src");
+
+    if (elementoAnterior) {
+        elementoAnterior.focus();
+    }
+}
+
+/* CERRAR AL HACER CLIC FUERA */
+document.querySelectorAll(".modal")
+    .forEach(modal => {
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                cerrarModales();
+            }
+        });
+    });
+
+/* CERRAR CON ESCAPE */
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        cerrarModales();
+    }
+});
+</script>
+
+</body>
+</html>

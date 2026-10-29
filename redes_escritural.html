@@ -1,0 +1,1251 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Redes sociales y plataformas | Signo escritural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Bodoni:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* PALETA GENERAL */
+
+:root{
+    --verde:#063D2D;
+    --verde2:#17664A;
+    --dorado:#C5A060;
+    --texto:#587064;
+    --crema:#F8F4ED;
+    --salvia:#E2F0E7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"DM Sans",Arial,sans-serif;
+    color:var(--verde);
+
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255,255,255,.95),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(62,148,111,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 5% 65%,
+            rgba(74,170,134,.21),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(198,160,96,.15),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #F2F6EF,
+            #E0EDE4 46%,
+            #F4F0E5
+        );
+
+    background-attachment:fixed;
+}
+
+/* BURBUJAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.8);
+    pointer-events:none;
+    z-index:0;
+}
+
+body::before{
+    width:330px;
+    height:330px;
+    right:-130px;
+    top:150px;
+
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(151,218,181,.14) 40%,
+        transparent 80%
+    );
+}
+
+body::after{
+    width:220px;
+    height:220px;
+    left:-105px;
+    bottom:55px;
+
+    background:radial-gradient(
+        circle at 30% 25%,
+        rgba(255,255,255,.85),
+        rgba(142,210,173,.17) 40%,
+        transparent 80%
+    );
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 50px;
+    position:relative;
+    z-index:1;
+}
+
+/* ENCABEZADO */
+
+.encabezado{
+    text-align:center;
+    padding:22px 12px 25px;
+    margin-bottom:28px;
+}
+
+.ruta{
+    color:#A17B3D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.titulo{
+    font-family:
+        "Bodoni MT",
+        "Didot",
+        "Libre Bodoni",
+        Georgia,
+        serif;
+
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+    letter-spacing:-2px;
+    line-height:1.15;
+    margin:0 0 16px;
+}
+
+.subtitulo{
+    color:#4F7160;
+    font-size:15px;
+    line-height:1.7;
+    margin:0;
+}
+
+.encabezado::after{
+    content:"";
+    display:block;
+    width:85px;
+    height:2px;
+    background:var(--dorado);
+    margin:20px auto 0;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion{
+    padding:34px 38px;
+    margin-bottom:35px;
+    border-radius:16px;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 92% 20%,
+            rgba(143,219,172,.24),
+            transparent 32%
+        ),
+        linear-gradient(
+            115deg,
+            #043626,
+            #126348
+        );
+
+    border:1px solid rgba(207,174,109,.5);
+    box-shadow:0 12px 30px rgba(4,54,38,.13);
+    position:relative;
+    overflow:hidden;
+}
+
+.presentacion::after{
+    content:"B";
+    position:absolute;
+    right:25px;
+    bottom:-65px;
+    font:175px "Libre Bodoni",Georgia,serif;
+    color:rgba(255,255,255,.06);
+}
+
+.codigo{
+    color:#E6C98D;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion h2{
+    font:500 32px "Libre Bodoni",Georgia,serif;
+    margin:13px 0;
+    position:relative;
+    z-index:1;
+}
+
+.presentacion p{
+    color:#E6F2E9;
+    font-size:14px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0;
+    position:relative;
+    z-index:1;
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.seccion{
+    margin:38px 0 22px;
+}
+
+.seccion small{
+    color:#A47B39;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.seccion h2{
+    font:500 34px "Libre Bodoni",Georgia,serif;
+    margin:10px 0 0;
+}
+
+/* CLASIFICACIONES */
+
+.resumen{
+    padding:25px;
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(28,95,63,.06);
+}
+
+.resumen-intro{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.9;
+    margin:0 0 20px;
+}
+
+.clasificaciones{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.clasificacion{
+    padding:22px;
+    border-radius:12px;
+    background:#F9F9F5;
+    border:1px solid rgba(23,102,74,.13);
+    border-top:3px solid var(--dorado);
+}
+
+.clasificacion:nth-child(even){
+    background:#E3F0E7;
+}
+
+.clasificacion h3{
+    font:500 23px "Libre Bodoni",Georgia,serif;
+    margin:0 0 10px;
+}
+
+.clasificacion p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+.ejemplos{
+    color:#17664A;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.7;
+    border-top:1px solid rgba(197,160,96,.35);
+    margin-top:13px;
+    padding-top:12px;
+}
+
+/* TARJETAS DE MARCAS */
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:stretch;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(153,190,161,.38);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(28,95,63,.09);
+    transition:transform .25s,box-shadow .25s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(28,95,63,.13);
+}
+
+.tarjeta-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    min-height:55px;
+    padding:17px 21px;
+
+    background:linear-gradient(
+        110deg,
+        #06402E,
+        #17664A
+    );
+
+    border-bottom:3px solid var(--dorado);
+}
+
+.numero{
+    color:#E8C98C;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tarjeta-cabecera h3{
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    text-align:right;
+    margin:0;
+}
+
+/* PANEL DE LOGOTIPO */
+
+.panel-logo{
+    min-height:190px;
+    padding:23px 18px 19px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    background:#F8F4ED;
+    border-bottom:1px solid rgba(197,160,96,.22);
+}
+
+.tarjeta:nth-child(even) .panel-logo{
+    background:#E2F0E7;
+}
+
+.panel-logo img{
+    width:100%;
+    max-width:280px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+}
+
+.logo-alternativo{
+    display:none;
+    height:120px;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    font:500 27px "Libre Bodoni",Georgia,serif;
+    text-align:center;
+    color:var(--verde);
+}
+
+.leyenda{
+    color:#AE853E;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.1px;
+    text-align:center;
+    text-transform:uppercase;
+    line-height:1.7;
+    margin:0;
+}
+
+/* DATOS TIPOGRÁFICOS */
+
+.tarjeta-contenido{
+    padding:22px;
+}
+
+.dato{
+    margin-bottom:19px;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+    display:block;
+    color:#AE853E;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.dato p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.85;
+    margin:0;
+}
+
+/* OBSERVACIÓN Y CONCLUSIÓN */
+
+.observacion,
+.cierre{
+    margin-top:30px;
+    padding:28px 30px;
+
+    background:linear-gradient(
+        110deg,
+        rgba(225,240,228,.95),
+        rgba(250,243,227,.95)
+    );
+
+    border:1px solid rgba(197,160,96,.35);
+    border-left:4px solid var(--dorado);
+    border-radius:0 14px 14px 0;
+}
+
+.observacion p,
+.cierre p{
+    color:var(--texto);
+    font-size:13px;
+    line-height:1.95;
+    margin:0;
+}
+
+.observacion strong{
+    color:var(--verde);
+}
+
+.cierre h3{
+    font:500 28px "Libre Bodoni",Georgia,serif;
+    margin:0 0 12px;
+}
+
+.pie{
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid rgba(177,151,98,.45);
+    text-align:center;
+    color:#668073;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+
+@media(max-width:760px){
+
+    .contenedor{
+        width:93%;
+    }
+
+    .tarjetas,
+    .clasificaciones{
+        grid-template-columns:1fr;
+    }
+
+    .presentacion{
+        padding:25px 22px;
+    }
+
+    .titulo{
+        font-size:clamp(30px,7vw,44px);
+    }
+
+    .seccion h2{
+        font-size:29px;
+    }
+
+    .resumen{
+        padding:18px;
+    }
+
+    .observacion,
+    .cierre{
+        padding:23px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+
+    <div class="ruta">
+        CATÁLOGO DE MARCAS /
+        REDES SOCIALES Y PLATAFORMAS
+    </div>
+
+    <h1 class="titulo">
+        SIGNO ESCRITURAL
+    </h1>
+
+    <p class="subtitulo">
+        La tipografía en las identidades digitales
+    </p>
+
+</header>
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion">
+
+    <div class="codigo">
+        APARTADO B / ANÁLISIS ESCRITURAL
+    </div>
+
+    <h2>
+        ¿Cómo se representan los nombres digitales?
+    </h2>
+
+    <p>
+        El signo escritural analiza las
+        características tipográficas
+        de las marcas, considerando
+        la clasificación de sus letras,
+        el peso visual, la inclinación,
+        el uso de mayúsculas y minúsculas,
+        y la personalización de
+        sus identificadores.
+
+        En esta categoría se estudian
+        diez redes sociales y plataformas
+        digitales, a partir de las
+        versiones de sus logotipos
+        presentadas en el catálogo.
+    </p>
+
+</section>
+
+<!-- 01. CLASIFICACIONES TIPOGRÁFICAS -->
+
+<div class="seccion">
+
+    <small>
+        01 / CLASIFICACIONES TIPOGRÁFICAS
+    </small>
+
+    <h2>
+        Familias y estilos presentes
+    </h2>
+
+</div>
+
+<section class="resumen">
+
+    <p class="resumen-intro">
+        En esta categoría predominan las
+        tipografías sin remates
+        (sans serif), con diferentes
+        grados de grosor y personalización.
+        Algunas marcas utilizan letras
+        geométricas y redondeadas,
+        mientras que otras presentan
+        caracteres de mayor peso
+        y composición compacta.
+        También existen identificadores
+        que se reconocen principalmente
+        por sus símbolos, sin mostrar
+        el nombre escrito en la versión
+        analizada.
+    </p>
+
+    <div class="clasificaciones">
+
+        <article class="clasificacion">
+
+            <h3>
+                01. Sans serif
+            </h3>
+
+            <p>
+                Letras sin remates,
+                caracterizadas por
+                su limpieza visual
+                y facilidad de lectura.
+            </p>
+
+            <div class="ejemplos">
+                YouTube, Facebook,
+                Pinterest, Snapchat,
+                Spotify, Twitch,
+                LinkedIn y Discord.
+            </div>
+
+        </article>
+
+        <article class="clasificacion">
+
+            <h3>
+                02. Geométrica
+            </h3>
+
+            <p>
+                Caracteres construidos
+                con círculos, rectas
+                y proporciones regulares.
+            </p>
+
+            <div class="ejemplos">
+                Facebook, Spotify,
+                LinkedIn y Discord.
+            </div>
+
+        </article>
+
+        <article class="clasificacion">
+
+            <h3>
+                03. Redondeada
+            </h3>
+
+            <p>
+                Letras con curvas
+                suaves y terminaciones
+                que generan una
+                apariencia cercana.
+            </p>
+
+            <div class="ejemplos">
+                Spotify, Pinterest,
+                Discord y Snapchat.
+            </div>
+
+        </article>
+
+        <article class="clasificacion">
+
+            <h3>
+                04. Personalizada
+            </h3>
+
+            <p>
+                Letras modificadas
+                en sus proporciones,
+                formas o distribución
+                para construir
+                un identificador propio.
+            </p>
+
+            <div class="ejemplos">
+                YouTube, TikTok,
+                Instagram, Pinterest,
+                Twitch y LinkedIn.
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- 02. ANÁLISIS INDIVIDUAL -->
+
+<div class="seccion">
+
+    <small>
+        02 / ANÁLISIS DE CADA MARCA
+    </small>
+
+    <h2>
+        Estilos tipográficos de las diez marcas
+    </h2>
+
+</div>
+
+<section class="tarjetas" id="tarjetas"></section>
+
+<!-- OBSERVACIÓN ESCRITURAL -->
+
+<section class="observacion">
+
+    <p>
+        <strong>Observación escritural:</strong>
+        Las marcas digitales analizadas
+        emplean principalmente
+        tipografías sans serif,
+        caracterizadas por la ausencia
+        de remates y su adaptación
+        a pantallas.
+
+        Se observan diferentes
+        pesos tipográficos,
+        desde caracteres regulares
+        hasta letras gruesas
+        y compactas.
+
+        Instagram, TikTok, Facebook
+        y Twitch destacan por
+        sus identificadores icónicos,
+        mientras que YouTube,
+        Pinterest, Spotify,
+        LinkedIn y Discord
+        utilizan combinaciones
+        de símbolo y denominación
+        tipográfica.
+    </p>
+
+</section>
+
+<!-- CONCLUSIÓN -->
+
+<section class="cierre">
+
+    <h3>
+        Conclusión del análisis
+    </h3>
+
+    <p>
+        El signo escritural de las diez
+        marcas demuestra que la tipografía
+        cumple una función importante
+        en el reconocimiento visual
+        de las plataformas digitales.
+
+        Las letras sans serif,
+        los pesos tipográficos
+        definidos y las formas
+        personalizadas permiten
+        construir identidades
+        contemporáneas y legibles.
+
+        La combinación de logotipos
+        e íconos facilita
+        su aplicación en páginas web,
+        redes sociales y
+        dispositivos móviles.
+    </p>
+
+</section>
+
+<footer class="pie">
+    CATÁLOGO DE MARCAS ·
+    REDES SOCIALES Y PLATAFORMAS ·
+    SIGNO ESCRITURAL
+</footer>
+
+</main>
+
+<script>
+
+/*
+  DATOS DE LAS DIEZ MARCAS
+
+  Las imágenes se buscan dentro
+  de la carpeta "imagenes".
+*/
+
+const marcas = [
+
+{
+    nombre:"Instagram",
+
+    imagenes:[
+        "instagram"
+    ],
+
+    leyenda:
+        "Identificador icónico y logotipo personalizado",
+
+    clasificacion:
+        "En su logotipo escrito, Instagram utiliza una tipografía sans serif personalizada de apariencia contemporánea. La versión mostrada en el catálogo corresponde al símbolo, no al nombre escrito.",
+
+    peso:
+        "Medio a grueso en las versiones tipográficas de la marca.",
+
+    inclinacion:
+        "Predominantemente recta en las versiones tipográficas actuales.",
+
+    mayusculas:
+        "Inicial mayúscula y letras restantes minúsculas cuando aparece el nombre escrito.",
+
+    personalizacion:
+        "El símbolo principal es una cámara estilizada con formas redondeadas. Debe distinguirse del logotipo escritural, que utiliza el nombre de la plataforma."
+},
+
+{
+    nombre:"TikTok",
+
+    imagenes:[
+        "tiktok",
+        "tik_tok"
+    ],
+
+    leyenda:
+        "Logotipo sans serif personalizado",
+
+    clasificacion:
+        "Sans serif personalizada, de construcción gruesa y compacta. La versión mostrada en el catálogo utiliza principalmente el símbolo musical.",
+
+    peso:
+        "Grueso o negrita.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Se utiliza una mayúscula inicial en cada componente: TikTok.",
+
+    personalizacion:
+        "En el logotipo escrito se emplean caracteres personalizados; la identidad también incorpora una nota musical estilizada con efectos cromáticos."
+},
+
+{
+    nombre:"YouTube",
+
+    imagenes:[
+        "youtube",
+        "you_tube"
+    ],
+
+    leyenda:
+        "Sans serif gruesa y compacta",
+
+    clasificacion:
+        "Sans serif personalizada, de apariencia geométrica y alta legibilidad.",
+
+    peso:
+        "Grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Inicial mayúscula en You y en Tube.",
+
+    personalizacion:
+        "Las letras negras presentan una composición compacta. Se complementan con un rectángulo rojo de bordes redondeados que contiene un triángulo blanco."
+},
+
+{
+    nombre:"Facebook",
+
+    imagenes:[
+        "facebook"
+    ],
+
+    leyenda:
+        "Sans serif geométrica",
+
+    clasificacion:
+        "Sans serif personalizada de apariencia geométrica. En el catálogo se muestra principalmente la letra f como símbolo.",
+
+    peso:
+        "Medio a grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "El logotipo escrito utiliza normalmente minúsculas; el nombre comercial se escribe Facebook.",
+
+    personalizacion:
+        "La letra f presenta una forma distintiva que funciona como símbolo independiente dentro de un recuadro azul."
+},
+
+{
+    nombre:"Pinterest",
+
+    imagenes:[
+        "pinterest"
+    ],
+
+    leyenda:
+        "Sans serif redondeada",
+
+    clasificacion:
+        "Sans serif personalizada con curvas y terminaciones suaves.",
+
+    peso:
+        "Grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Inicial mayúscula y letras restantes minúsculas.",
+
+    personalizacion:
+        "El nombre utiliza letras rojas y se acompaña de una P estilizada que incorpora una forma semejante a un alfiler."
+},
+
+{
+    nombre:"Snapchat",
+
+    imagenes:[
+        "snapchat"
+    ],
+
+    leyenda:
+        "Sans serif redondeada",
+
+    clasificacion:
+        "En sus versiones escritas utiliza una tipografía sans serif de apariencia sencilla y redondeada. En el catálogo aparece únicamente el fantasma.",
+
+    peso:
+        "Medio a grueso según la aplicación.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Inicial mayúscula y letras restantes minúsculas cuando se escribe el nombre.",
+
+    personalizacion:
+        "El fantasma blanco con contorno negro sobre amarillo es el símbolo de la marca. No debe confundirse con un elemento tipográfico."
+},
+
+{
+    nombre:"Spotify",
+
+    imagenes:[
+        "spotify"
+    ],
+
+    leyenda:
+        "Sans serif redondeada y gruesa",
+
+    clasificacion:
+        "Sans serif personalizada de formas redondeadas.",
+
+    peso:
+        "Grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Inicial mayúscula y letras restantes minúsculas.",
+
+    personalizacion:
+        "La denominación utiliza letras verdes en la versión del catálogo y se acompaña de un círculo con tres líneas curvas."
+},
+
+{
+    nombre:"Twitch",
+
+    imagenes:[
+        "twitch"
+    ],
+
+    leyenda:
+        "Tipografía geométrica y angular",
+
+    clasificacion:
+        "Sans serif personalizada de apariencia geométrica, con formas angulares y rasgos inspirados en gráficos digitales.",
+
+    peso:
+        "Grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "El logotipo escrito suele utilizar letras minúsculas; en el catálogo aparece el símbolo de la plataforma.",
+
+    personalizacion:
+        "El identificador incorpora un globo de diálogo angular con dos trazos verticales, que recuerda una estética digital o de videojuegos."
+},
+
+{
+    nombre:"LinkedIn",
+
+    imagenes:[
+        "linkedin",
+        "linked_in"
+    ],
+
+    leyenda:
+        "Sans serif moderna",
+
+    clasificacion:
+        "Sans serif personalizada, de proporciones equilibradas.",
+
+    peso:
+        "Medio a grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Mayúscula inicial en Linked y en In en la denominación LinkedIn.",
+
+    personalizacion:
+        "La abreviatura in se presenta en blanco sobre un recuadro azul. Esta composición permite identificar la marca incluso sin mostrar el nombre completo."
+},
+
+{
+    nombre:"Discord",
+
+    imagenes:[
+        "discord"
+    ],
+
+    leyenda:
+        "Sans serif geométrica personalizada",
+
+    clasificacion:
+        "Sans serif personalizada de apariencia geométrica y redondeada.",
+
+    peso:
+        "Grueso.",
+
+    inclinacion:
+        "Recta.",
+
+    mayusculas:
+        "Inicial mayúscula y letras restantes minúsculas.",
+
+    personalizacion:
+        "La denominación presenta letras violetas de formas redondeadas, acompañadas por un símbolo estilizado que representa un mando o personaje digital."
+}
+
+];
+
+/* CONTENEDOR */
+
+const zona=document.getElementById("tarjetas");
+
+/* CREAR CAMPOS */
+
+function dato(titulo,descripcion){
+
+    const bloque=document.createElement("div");
+    bloque.className="dato";
+
+    const etiqueta=document.createElement("strong");
+    etiqueta.textContent=titulo;
+
+    const texto=document.createElement("p");
+    texto.textContent=descripcion;
+
+    bloque.append(etiqueta,texto);
+
+    return bloque;
+}
+
+/* BUSCAR IMÁGENES */
+
+function buscarLogo(imagen,nombres,nombreMarca){
+
+    const extensiones=[
+        "png",
+        "jpg",
+        "jpeg",
+        "webp",
+        "svg"
+    ];
+
+    const rutas=[];
+
+    nombres.forEach(nombre=>{
+
+        if(/\.(png|jpg|jpeg|webp|svg)$/i.test(nombre)){
+
+            rutas.push("imagenes/"+nombre);
+
+        }else{
+
+            extensiones.forEach(ext=>{
+                rutas.push(
+                    "imagenes/"+nombre+"."+ext
+                );
+            });
+
+        }
+
+    });
+
+    let posicion=0;
+
+    function intentar(){
+
+        if(posicion>=rutas.length){
+
+            imagen.style.display="none";
+
+            const alternativo=
+                document.createElement("div");
+
+            alternativo.className=
+                "logo-alternativo";
+
+            alternativo.style.display="flex";
+
+            alternativo.textContent=
+                nombreMarca;
+
+            imagen.parentNode.insertBefore(
+                alternativo,
+                imagen.nextSibling
+            );
+
+            return;
+        }
+
+        imagen.src=rutas[posicion];
+        posicion++;
+    }
+
+    imagen.onerror=intentar;
+
+    intentar();
+}
+
+/* GENERAR LAS DIEZ TARJETAS */
+
+marcas.forEach((marca,indice)=>{
+
+    const tarjeta=
+        document.createElement("article");
+
+    tarjeta.className="tarjeta";
+
+    /* CABECERA */
+
+    const cabecera=
+        document.createElement("div");
+
+    cabecera.className="tarjeta-cabecera";
+
+    const numero=
+        document.createElement("span");
+
+    numero.className="numero";
+
+    numero.textContent=
+        "MARCA "+
+        String(indice+1).padStart(2,"0");
+
+    const nombre=
+        document.createElement("h3");
+
+    nombre.textContent=marca.nombre;
+
+    cabecera.append(numero,nombre);
+
+    /* LOGOTIPO */
+
+    const panel=
+        document.createElement("div");
+
+    panel.className="panel-logo";
+
+    const imagen=
+        document.createElement("img");
+
+    imagen.alt=
+        "Identificador de "+marca.nombre;
+
+    const leyenda=
+        document.createElement("p");
+
+    leyenda.className="leyenda";
+
+    leyenda.textContent=
+        marca.leyenda;
+
+    panel.append(imagen,leyenda);
+
+    /* ANÁLISIS */
+
+    const contenido=
+        document.createElement("div");
+
+    contenido.className=
+        "tarjeta-contenido";
+
+    contenido.append(
+        dato(
+            "Clasificación tipográfica",
+            marca.clasificacion
+        ),
+        dato(
+            "Peso tipográfico",
+            marca.peso
+        ),
+        dato(
+            "Inclinación",
+            marca.inclinacion
+        ),
+        dato(
+            "Mayúsculas y minúsculas",
+            marca.mayusculas
+        ),
+        dato(
+            "Personalización",
+            marca.personalizacion
+        )
+    );
+
+    tarjeta.append(
+        cabecera,
+        panel,
+        contenido
+    );
+
+    zona.appendChild(tarjeta);
+
+    buscarLogo(
+        imagen,
+        marca.imagenes,
+        marca.nombre
+    );
+
+});
+
+</script>
+
+</body>
+</html>
